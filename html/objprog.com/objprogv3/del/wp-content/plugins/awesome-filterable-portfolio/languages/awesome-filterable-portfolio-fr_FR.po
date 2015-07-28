@@ -1,0 +1,161 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/awesome-filterable-portfolio\n"
+"POT-Creation-Date: 2013-07-09 21:07:24+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-07-09 22:17+0100\n"
+"Last-Translator: Brini <contact@brinidesigner.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: afp.php:130 afp.php:137
+msgid "Add New Portfolio Item"
+msgstr "Ajouter un nouvel élément"
+
+#: afp.php:141 afp.php:211
+msgid "Project Name :"
+msgstr "Nom du projet:"
+
+#: afp.php:145 afp.php:215
+msgid "Client :"
+msgstr "Client:"
+
+#: afp.php:149 afp.php:219
+msgid "Date :"
+msgstr "Date:"
+
+#: afp.php:153 afp.php:223
+msgid "Project Link :"
+msgstr "Lien du projet:"
+
+#: afp.php:155
+msgid "Add a URL to your project. If left empty no date will be displayed"
+msgstr ""
+
+#: afp.php:158 afp.php:227
+msgid "Category :"
+msgstr ""
+
+#: afp.php:170 afp.php:239
+msgid "Image"
+msgstr ""
+
+#: afp.php:171 afp.php:240
+msgid "Upload Image"
+msgstr ""
+
+#: afp.php:172 afp.php:241
+msgid ""
+"This is the image that will be displayed when you show the project details."
+msgstr ""
+
+#: afp.php:175 afp.php:244
+msgid "Thumbnail"
+msgstr ""
+
+#: afp.php:176 afp.php:245
+msgid "Upload Thumbnail"
+msgstr ""
+
+#: afp.php:177 afp.php:246
+msgid ""
+"Use a small image for preview purpose. You may select an image from the "
+"Media Library and select Thumbnail for the image size."
+msgstr ""
+
+#: afp.php:180 afp.php:249 afp.php:363 afp.php:401
+msgid "Description :"
+msgstr ""
+
+#: afp.php:184
+msgid "Save New Portfolio Item"
+msgstr ""
+
+#: afp.php:198 afp.php:207
+msgid "Edit Portfolio Item"
+msgstr ""
+
+#: afp.php:199
+msgid "Portfolio Item added successfully"
+msgstr ""
+
+#: afp.php:199
+msgid "Portfolio Item edited successfully"
+msgstr ""
+
+#: afp.php:254
+msgid "Save Portfolio Item"
+msgstr ""
+
+#: afp.php:279
+msgid "Portfolio Items "
+msgstr ""
+
+#: afp.php:335 afp.php:476
+msgid "Delete"
+msgstr ""
+
+#: afp.php:336 afp.php:477
+msgid "Cancel"
+msgstr ""
+
+#: afp.php:347 afp.php:355
+msgid "Add New Category"
+msgstr ""
+
+#: afp.php:359 afp.php:397
+msgid "Category name :"
+msgstr ""
+
+#: afp.php:367
+msgid "Save New Category"
+msgstr ""
+
+#: afp.php:385 afp.php:393
+msgid "Edit Category"
+msgstr "aaaaaaaaaaaaaaaaaaaaaaa"
+
+#: afp.php:386
+msgid "Category added successfully"
+msgstr "aaaaaaaaaaaaaaaaaaaaaaa"
+
+#: afp.php:386
+msgid "Category edited successfully"
+msgstr "aaaaaaaaaaaaaaaaaaaaaaa"
+
+#: afp.php:406
+msgid "Save Category"
+msgstr "aaaaaaaaaaaaaaaaaaaaaaa"
+
+#: afp.php:431
+msgid "Categories "
+msgstr "aaaaaaaaaaaaaaaaaaaaaaa"
+
+#: afp.php:489
+msgid "Options"
+msgstr "aaaaaaaaaaaaaaaaaaaaaaa"
+
+#: afp.php:497
+msgid "Portfolio Options"
+msgstr "aaaaaaaaaaaaaaaaaaaaaaa"
+
+#: afp.php:516
+msgid ""
+"Select a creteria to sort the portfolio items. Choose the empty option to "
+"sort by the items' order of creation."
+msgstr "aaaaaaaaaaaaaaaaaaaaaaa"
+
+#: afp.php:529
+msgid ""
+"This option specifies where the Project Link for a Portfolio Item should be "
+"open."
+msgstr "aaaaaaaaaaaaaaaaaaaaaaa"
+
+#: afp.php:550
+msgid "Save Options"
+msgstr "Enregistrer"

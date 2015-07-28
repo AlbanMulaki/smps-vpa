@@ -1,0 +1,273 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/awesome-filterable-portfolio\n"
+"POT-Creation-Date: 2013-07-09 22:10:55+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-06-05 15:40+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.6.5\n"
+
+#: afp.php:137 afp.php:144
+msgid "Add New Portfolio Item"
+msgstr "Yeni Portfolyo Öğesi Ekle"
+
+#: afp.php:148 afp.php:218
+msgid "Project Name :"
+msgstr "Proje Adı:"
+
+#: afp.php:152 afp.php:222
+msgid "Client :"
+msgstr "Şirket:"
+
+#: afp.php:156 afp.php:226
+msgid "Date :"
+msgstr "Tarih:"
+
+#: afp.php:160 afp.php:230
+msgid "Project Link :"
+msgstr "Proje Linki:"
+
+#: afp.php:162
+msgid "Add a URL to your project. If left empty no date will be displayed"
+msgstr "Projenizin linkini giriniz. Eğer boş bırakırsanız gösterilmeyecektir."
+
+#: afp.php:165 afp.php:234
+msgid "Category :"
+msgstr "Kategor:"
+
+#: afp.php:177 afp.php:246
+msgid "Image"
+msgstr "Resim:"
+
+#: afp.php:178 afp.php:247
+msgid "Upload Image"
+msgstr "Resim Yükle"
+
+#: afp.php:179 afp.php:248
+msgid ""
+"This is the image that will be displayed when you show the project details."
+msgstr "Bu resim proje detaylarınıza görünecek resim olacaktır."
+
+#: afp.php:182 afp.php:251 afp.php:295 afp.php:325
+msgid "Thumbnail"
+msgstr "Küçükresim"
+
+#: afp.php:183 afp.php:252
+msgid "Upload Thumbnail"
+msgstr "Küçükresim Yükle"
+
+#: afp.php:184 afp.php:253
+msgid ""
+"Use a small image for preview purpose. You may select an image from the "
+"Media Library and select Thumbnail for the image size."
+msgstr ""
+"Önizleme için küçük bir resim kullanınız. Eğer isterseniz ortam "
+"kütüphanenizden bir resim seçip Küçükresim olarak kullanabilirsiniz."
+
+#: afp.php:187 afp.php:256 afp.php:368 afp.php:406
+msgid "Description :"
+msgstr "Açıklama:"
+
+#: afp.php:191
+msgid "Save New Portfolio Item"
+msgstr "Yeni Portfolyo Öğesini Kaydet"
+
+#: afp.php:205 afp.php:214
+msgid "Edit Portfolio Item"
+msgstr "Portfolyo Öğesini Düzenle"
+
+#: afp.php:206
+msgid "Portfolio Item added successfully"
+msgstr "Portfolyo Öğesi başarıyla eklendi."
+
+#: afp.php:206
+msgid "Portfolio Item edited successfully"
+msgstr "Portfolyo öğesi başarıyla düzenlendi."
+
+#: afp.php:261
+msgid "Save Portfolio Item"
+msgstr "Portfolyo Öğesini Kaydet"
+
+#: afp.php:286
+msgid "Portfolio Items "
+msgstr "Portfoly Öğeleri"
+
+#: afp.php:286 afp.php:436
+msgid "Add New"
+msgstr "Yeni Ekle"
+
+#: afp.php:289
+msgid "You don't have any portfolio item."
+msgstr "Henüz hiç portfolyo öğesi girmemişsiniz."
+
+#: afp.php:289
+msgid "Please"
+msgstr "Lütfen"
+
+#: afp.php:289
+msgid "Add a New Item"
+msgstr "Yeni bir Portfolyo Öğesi Ekleyin"
+
+#: afp.php:296 afp.php:326
+msgid "Title"
+msgstr "Başlık"
+
+#: afp.php:297 afp.php:327
+msgid "Client"
+msgstr "Şirket"
+
+#: afp.php:298 afp.php:328 afp.php:515
+msgid "Date"
+msgstr "Tarih"
+
+#: afp.php:299 afp.php:329
+msgid "Link"
+msgstr "Link"
+
+#: afp.php:300 afp.php:330
+msgid "Category"
+msgstr "Kategori"
+
+#: afp.php:338 afp.php:477
+msgid "Delete Confirmation"
+msgstr "Öğeyi Sil"
+
+#: afp.php:339
+msgid "Are you sure you want to delete this portfolio item?"
+msgstr "Portfolyo öğesini silmek istediğinizden emin misiniz ?"
+
+#: afp.php:340 afp.php:479
+msgid "Delete"
+msgstr "Sil"
+
+#: afp.php:341 afp.php:480
+msgid "Cancel"
+msgstr "İptal Et"
+
+#: afp.php:352 afp.php:360
+msgid "Add New Category"
+msgstr "Yeni Kategori Ekle"
+
+#: afp.php:364 afp.php:402
+msgid "Category name :"
+msgstr "Kategori İsmi:"
+
+#: afp.php:372
+msgid "Save New Category"
+msgstr "Yeni Kategoriyi Kaydet"
+
+#: afp.php:390 afp.php:398
+msgid "Edit Category"
+msgstr "Kategoriyi Düzenle"
+
+#: afp.php:391
+msgid "Category added successfully"
+msgstr "Kategori başarıyla eklendi"
+
+#: afp.php:391
+msgid "Category edited successfully"
+msgstr "Kategori başarıyla düzenlendi"
+
+#: afp.php:411
+msgid "Save Category"
+msgstr "Kategoriyi Kaydet"
+
+#: afp.php:436
+msgid "Categories "
+msgstr "Kategoriler"
+
+#: afp.php:478
+msgid "Are you sure you want to delete this category?"
+msgstr "Bu kategoriyi silmek istediğinizden emin misiniz ?"
+
+#: afp.php:492
+msgid "Options"
+msgstr "Ayarlar"
+
+#: afp.php:500
+msgid "Portfolio Options"
+msgstr "Portfolyo Ayarları"
+
+#: afp.php:505
+msgid "Sort Categories:"
+msgstr "Kategorileri Sırala"
+
+#: afp.php:507
+msgid "Sort categories by name"
+msgstr "Kategorileri alfabetik sırala"
+
+#: afp.php:511
+msgid "Sort Portfolio Items by:"
+msgstr "Portfolyo Öğelerini Buna göre Sırala:"
+
+#: afp.php:514
+msgid "Project Name"
+msgstr "Proje İsmine"
+
+#: afp.php:516
+msgid "Client Name"
+msgstr "Şirket İsmine"
+
+#: afp.php:519
+msgid ""
+"Select a creteria to sort the portfolio items. Choose the empty option to "
+"sort by the items' order of creation."
+msgstr ""
+"Portfolyo öğelerini sıralamak için bir kriter belirleyiniz. Eğer seçmezseniz "
+"öğeler olusturulma tarihine göre sıralanacaktır."
+
+#: afp.php:526
+msgid "Project Links open in:"
+msgstr "Proje Linki Açılacak:"
+
+#: afp.php:529
+msgid "New Tab / Window"
+msgstr "Yeni Sekme/Pencere"
+
+#: afp.php:530
+msgid "Same Tab / Window"
+msgstr "Aynı Sekme/Pencere"
+
+#: afp.php:532
+msgid ""
+"This option specifies where the Project Link for a Portfolio Item should be "
+"open."
+msgstr "Bu seçenek portfolyo öğesinin açılma tipini belirler."
+
+#: afp.php:539
+msgid "Animation Properties:"
+msgstr "Animasyon Özellikleri"
+
+#: afp.php:542
+msgid "Slow"
+msgstr "Yavaş"
+
+#: afp.php:543
+msgid "Medium"
+msgstr "Orta Hız"
+
+#: afp.php:544
+msgid "Fast"
+msgstr "Hızlı"
+
+#: afp.php:548
+msgid "Use easing for animations"
+msgstr "Animasyonlar için kolayını kullan"
+
+#: afp.php:553
+msgid "Save Options"
+msgstr "Ayarları Kaydet"
+
+#: afp.php:771
+msgid "All"
+msgstr "Tümü"
+
+#: afp.php:788
+msgid "Project Link"
+msgstr "Proje Linki"

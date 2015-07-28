@@ -1,0 +1,6 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^webmail\.vpa\-uni\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.webmail\.vpa\-uni\.com$
+RewriteRule ^/?$ "http\:\/\/email\.vpa\-uni\.com" [R=301,L]
+

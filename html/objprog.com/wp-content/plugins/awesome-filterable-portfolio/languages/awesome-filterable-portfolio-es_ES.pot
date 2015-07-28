@@ -1,0 +1,276 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Awesome Filterable Portfolio Colaboration\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/awesome-filterable-portfolio\n"
+"POT-Creation-Date: 2013-07-09 22:10:55+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-05-17 18:33+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Sergio Cobos <sergio.cobos.ruiz@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es_ES\n"
+"X-Generator: Poedit 1.6.5\n"
+
+#: afp.php:137 afp.php:144
+msgid "Add New Portfolio Item"
+msgstr "Añadir Nuevo Portfolio"
+
+#: afp.php:148 afp.php:218
+msgid "Project Name :"
+msgstr "Nombre del Proyecto :"
+
+#: afp.php:152 afp.php:222
+msgid "Client :"
+msgstr "Cliente :"
+
+#: afp.php:156 afp.php:226
+msgid "Date :"
+msgstr "Fecha :"
+
+#: afp.php:160 afp.php:230
+msgid "Project Link :"
+msgstr "Enlace :"
+
+#: afp.php:162
+msgid "Add a URL to your project. If left empty no date will be displayed"
+msgstr "Añadir URL al proyecto. Si se deja vacio la fecha no aparecerá"
+
+#: afp.php:165 afp.php:234
+msgid "Category :"
+msgstr "Categoría :"
+
+#: afp.php:177 afp.php:246
+msgid "Image"
+msgstr "Imagen"
+
+#: afp.php:178 afp.php:247
+msgid "Upload Image"
+msgstr "Subir imagen"
+
+#: afp.php:179 afp.php:248
+msgid ""
+"This is the image that will be displayed when you show the project details."
+msgstr "Esta imagen se verá cuando se muestren los detalles del proyecto."
+
+#: afp.php:182 afp.php:251 afp.php:295 afp.php:325
+msgid "Thumbnail"
+msgstr "Miniatura"
+
+#: afp.php:183 afp.php:252
+msgid "Upload Thumbnail"
+msgstr "Subir Miniatura"
+
+#: afp.php:184 afp.php:253
+msgid ""
+"Use a small image for preview purpose. You may select an image from the "
+"Media Library and select Thumbnail for the image size."
+msgstr ""
+"Usar una iamgen prqueña para vista previa. Debes selecionar una imagen de la "
+"Librería Multimedia y seleccionar Miniatura en el tamaño de la imagen."
+
+#: afp.php:187 afp.php:256 afp.php:368 afp.php:406
+msgid "Description :"
+msgstr "Descripción :"
+
+#: afp.php:191
+msgid "Save New Portfolio Item"
+msgstr "Guardar Nuevo Portfolio"
+
+#: afp.php:205 afp.php:214
+msgid "Edit Portfolio Item"
+msgstr "Editar Portfolio"
+
+#: afp.php:206
+msgid "Portfolio Item added successfully"
+msgstr "Portfolio añadido con éxito"
+
+#: afp.php:206
+msgid "Portfolio Item edited successfully"
+msgstr "Portfolio editado con éxito"
+
+#: afp.php:261
+msgid "Save Portfolio Item"
+msgstr "Guardar Portfolio"
+
+#: afp.php:286
+msgid "Portfolio Items "
+msgstr "Portfolios"
+
+#: afp.php:286 afp.php:436
+msgid "Add New"
+msgstr "Añadir Nuevo"
+
+#: afp.php:289
+msgid "You don't have any portfolio item."
+msgstr "No hay ningún portfolio"
+
+#: afp.php:289
+msgid "Please"
+msgstr "Por favor"
+
+#: afp.php:289
+msgid "Add a New Item"
+msgstr "Añadir Nuevo"
+
+#: afp.php:296 afp.php:326
+msgid "Title"
+msgstr "Título"
+
+#: afp.php:297 afp.php:327
+msgid "Client"
+msgstr "Cliente"
+
+#: afp.php:298 afp.php:328 afp.php:515
+msgid "Date"
+msgstr "Fecha"
+
+#: afp.php:299 afp.php:329
+msgid "Link"
+msgstr "Enlace"
+
+#: afp.php:300 afp.php:330
+msgid "Category"
+msgstr "Categoría"
+
+#: afp.php:338 afp.php:477
+msgid "Delete Confirmation"
+msgstr "Confirmación para eliminar"
+
+#: afp.php:339
+msgid "Are you sure you want to delete this portfolio item?"
+msgstr "¿Estás seguro de que quieres eliminar este portfolio?"
+
+#: afp.php:340 afp.php:479
+msgid "Delete"
+msgstr "Eliminar"
+
+#: afp.php:341 afp.php:480
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: afp.php:352 afp.php:360
+msgid "Add New Category"
+msgstr "Añadir Nueva Categoría"
+
+#: afp.php:364 afp.php:402
+msgid "Category name :"
+msgstr "Nombre de categoría :"
+
+#: afp.php:372
+msgid "Save New Category"
+msgstr "Guardar Nueva Categoría"
+
+#: afp.php:390 afp.php:398
+msgid "Edit Category"
+msgstr "Editar Categoría"
+
+#: afp.php:391
+msgid "Category added successfully"
+msgstr "Categoría añadida con éxito"
+
+#: afp.php:391
+msgid "Category edited successfully"
+msgstr "Categoría editada con éxito"
+
+#: afp.php:411
+msgid "Save Category"
+msgstr "Gurardar Categoría"
+
+#: afp.php:436
+msgid "Categories "
+msgstr "Categorías"
+
+#: afp.php:478
+msgid "Are you sure you want to delete this category?"
+msgstr "¿Estás seguro de que quieres eliminar esta categoría?"
+
+#: afp.php:492
+msgid "Options"
+msgstr "Opciones"
+
+#: afp.php:500
+msgid "Portfolio Options"
+msgstr "Opciones de Portfolio"
+
+#: afp.php:505
+msgid "Sort Categories:"
+msgstr "Ordenar Categorías:"
+
+#: afp.php:507
+msgid "Sort categories by name"
+msgstr "Ordenar categorías por nombre"
+
+#: afp.php:511
+msgid "Sort Portfolio Items by:"
+msgstr "Ordenar categorías por:"
+
+#: afp.php:514
+msgid "Project Name"
+msgstr "Nombre del Proyecto"
+
+#: afp.php:516
+msgid "Client Name"
+msgstr "Nombre del Cliente"
+
+#: afp.php:519
+msgid ""
+"Select a creteria to sort the portfolio items. Choose the empty option to "
+"sort by the items' order of creation."
+msgstr ""
+"Seleciona un criterio para ordenar los portfolios. Si eliges dejar vacía "
+"esta opción se pondrán por orden de creación."
+
+#: afp.php:526
+msgid "Project Links open in:"
+msgstr "Abrir los enlaces en:"
+
+#: afp.php:529
+msgid "New Tab / Window"
+msgstr "Nueva Pestaña / Ventana"
+
+#: afp.php:530
+msgid "Same Tab / Window"
+msgstr "Misma Pestaña / Ventana"
+
+#: afp.php:532
+msgid ""
+"This option specifies where the Project Link for a Portfolio Item should be "
+"open."
+msgstr ""
+"Estas opciones especifican donde deberá abrirse el Enlace del Proyecto."
+
+#: afp.php:539
+msgid "Animation Properties:"
+msgstr "Propiedades de la animación:"
+
+#: afp.php:542
+msgid "Slow"
+msgstr "Lento"
+
+#: afp.php:543
+msgid "Medium"
+msgstr "Medio"
+
+#: afp.php:544
+msgid "Fast"
+msgstr "Rápido"
+
+#: afp.php:548
+msgid "Use easing for animations"
+msgstr "Aligear animaciones"
+
+#: afp.php:553
+msgid "Save Options"
+msgstr "Guardar Opciones"
+
+#: afp.php:771
+msgid "All"
+msgstr "Todo"
+
+#: afp.php:788
+msgid "Project Link"
+msgstr "Enlace del Proyecto"

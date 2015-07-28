@@ -1,0 +1,39 @@
+/*** RESTTING ***/
+ul#afp-filter, ul#afp-filter li, ul.afp-items, li.afp-single-item, ul.afp-item-details, ul.afp-item-details li{
+	margin: 0;
+	padding: 0;
+}
+/****************/
+
+ul#afp-filter{
+	display: block;
+	list-style: none;
+}
+
+ul#afp-filter li{
+	display: inline-block;
+	padding-right: 20px;
+}
+
+ul.afp-items{
+	display: block;
+	list-style: none;
+}
+
+li.afp-single-item{
+	float: left;
+}
+
+ul.afp-item-details{
+	display: block;
+	list-style: none;
+}
+
+.afp-active-cat{
+	font-weight: bold;
+}
+
+/*** Clear Fix ***/
+.afp-clear{
+	clear: both;
+}

@@ -1,0 +1,201 @@
+/************************************************************************************
+MEDIA QUERIES
+*************************************************************************************/
+
+/* Large screens */
+@media only screen and (min-width : 1680px) {
+
+}
+
+/* Tablet Landscape */
+ @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+
+
+}
+
+/* Smaller than 960px */
+@media only screen and (max-width: 959px) {	
+
+
+}
+
+/* for 980px or less */
+@media screen and (max-width: 980px) {
+	
+	
+}
+
+/* for 750px or less */
+@media screen and (max-width: 750px) {
+	
+		   span.data-a {
+	width:100% !important;
+	display: block !important	
+	}
+	
+	span.data-b {
+	width:!important;
+	display:block !important; 
+	margin-top:5px; 
+	}
+	
+	.uultra-profile-basic-wrap .uu-right .photos ul li{	
+		width:45% !important;	
+	}
+	
+		.usersultra-dahsboard-cont .usersultra-dahsboard-left{
+
+		display:inline !important;
+		float:none !important;
+		clear:both !important;	
+		vertical-align:top;
+		width: 98% !important;
+	}
+	
+	.usersultra-dahsboard-cont .usersultra-dahsboard-center{
+
+		display:inline !important;
+		float:none !important;
+		clear:both !important;	
+		vertical-align:top;
+		width: 98% !important;
+	}
+	
+	
+	.usersultra-dahsboard-cont .usersultra-dahsboard-left ul.main_menu li{
+		
+		display:inline-block !important;		
+		width:30% !important;
+	}
+
+
+	
+	
+	.commons-panel-content .pr_col{
+		
+		display:inline !important;
+		clear:both;
+		
+	}
+	.commons-panel-content .pr_col .col1{
+		
+		width:30% !important;
+	
+	}
+	
+	
+	
+	.commons-panel-content .pr_col_element 
+	{
+		display:inline !important;
+		clear:both;
+		width:98% !important;		
+		
+	}
+	
+	.xoouserultra-field-type {
+		display:inline !important;
+		clear:both;
+		width:98% !important;
+		margin-top:10px !important;
+		
+		
+		
+	}
+	.xoouserultra-field-value {
+		display:inline !important;
+		clear:both;
+		width:98% !important;
+		margin-top:10px !important;	
+		
+	}	
+	
+}
+
+
+/* for 600px or less */
+@media screen and (max-width: 600px) {
+	
+
+   span.data-a {
+	width:100% !important;
+	display: block !important	
+	}
+	
+	span.data-b {
+	width:!important;
+	display:block !important; 
+	margin-top:5px; 
+	}
+	
+	
+	.uultra-profile-basic-wrap .uu-right .photos ul li{	
+		width:45% !important;	
+	
+
+	}
+
+}
+
+
+/*  GO FULL WIDTH AT LESS THAN 580 PIXELS */
+
+
+@media only screen and (max-width: 580px) {
+
+	
+
+		
+	
+	.usersultra-dahsboard-cont .usersultra-dahsboard-left ul.main_menu li{
+		
+		display:inline-block !important;		
+		width:20% !important;
+		margin:1% !important;
+	}
+
+	.uultra-btn-u-menu span.uultra-user-menu-text{	
+	
+		text-align:left;
+		display:none !important;		
+	
+	}
+	
+
+
+
+}
+
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+	
+	.uultra-profile-basic-wrap .uu-right .photos ul li{	
+		width:99% !important;		
+
+	}
+	
+	
+		.usersultra-dahsboard-cont .usersultra-dahsboard-left ul.main_menu li{
+		
+		display:inline-block !important;		
+		width:18% !important;
+		margin:1% !important;
+	}
+
+	.uultra-btn-u-menu span.uultra-user-menu-text{	
+	
+		text-align:left;
+		display:none !important;		
+	
+	}
+
+}
+
+/* =Content Styles
+-------------------------------------------------------------- */
+
+
+/* Parallax Fix */
+@media only screen and (min-width: 1930px) {  }

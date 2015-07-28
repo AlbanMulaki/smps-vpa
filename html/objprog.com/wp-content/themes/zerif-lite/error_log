@@ -1,0 +1,3 @@
+[17-Nov-2014 23:57:19 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/albanmulaki/public_html/objprog.com/wp-content/themes/zerif-lite/index.php on line 27
+[17-Nov-2014 23:58:36 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/albanmulaki/public_html/objprog.com/wp-content/themes/zerif-lite/index.php on line 27
+[18-Nov-2014 00:32:17 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/albanmulaki/public_html/objprog.com/wp-content/themes/zerif-lite/index.php on line 27

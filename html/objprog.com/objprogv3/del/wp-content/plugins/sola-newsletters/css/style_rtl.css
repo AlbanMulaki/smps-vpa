@@ -1,0 +1,292 @@
+/*----- RESET ----*/
+
+
+
+p{
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+}
+body{
+    background-color: initial;
+}
+.update-nag{
+    display:none;
+}
+
+hr{
+    border-top: 1px solid #CCC;
+}
+
+/*Jarryd*/
+
+#sola_newsletter_preview{
+    margin: 0 auto;
+}
+
+/*Preview - Desktop*/
+.preview_desktop {
+    background-image: url(../images/preview/desktop_preview.png);
+    background-size: 800px;
+    background-repeat: no-repeat;
+    padding: 92px 28px 138px 136px;
+}
+.preview_desktop #sola_newsletter_wrapper{
+    width: 687px;
+    height: 812px;
+    zoom: 0.9;
+}
+.preview_desktop .preview_container {
+    height: 360px;
+    overflow-y: scroll;
+    width: 636px;
+}
+
+/*Preview - Mobile*/
+.preview_mobile {
+    background-image: url(../images/preview/iphone_preview.png);
+    background-size: 250px;
+    background-repeat: no-repeat;
+    padding: 208px 90px 97px 25px;
+}
+.preview_mobile #sola_newsletter_wrapper{
+    width: 264px;
+    height: 790px;
+    zoom: 0.7;
+}
+.preview_mobile .preview_container {
+    height: 230px;
+    overflow-y: scroll;
+    width: 202px;
+}
+
+/*Preview - iPad*/
+.preview_tablet {
+    background-image: url(../images/preview/ipad_preview.png);
+    background-size: 500px;
+    background-repeat: no-repeat;
+    padding: 136px 53px 105px 216px;
+}
+.preview_tablet #sola_newsletter_wrapper{
+    width: 357px;
+    height: 790px;
+    zoom: 0.6;
+}
+.preview_tablet .preview_container {
+    height: 455px;
+    overflow-y: scroll;
+    width: 231px;
+}
+
+/*Preview - Nexus*/
+.preview_tablet_landscape {
+    background-image: url(../images/preview/tablet_landscape.png);
+    background-size: 800px;
+    background-repeat: no-repeat;
+    padding: 95px 72px 97px 237px;
+}
+.preview_tablet_landscape #sola_newsletter_wrapper{
+    width: 676px;
+    height: 812px;
+    zoom: 0.7;
+}
+.preview_tablet_landscape .preview_container {
+    height: 343px;
+    overflow-y: scroll;
+    width: 490px;
+}
+
+/*Preview Choices*/
+
+/*.sola_nl_preview_choices{
+    text-align: center;
+    background-color: #303E48;
+    width: 99%;    
+}
+.sola_nl_preview_choices li{
+    display: inline-block;
+    width: 195px;    
+    padding: 15px 5px;        
+}
+.sola_nl_preview_choices li a{
+    color: #EC6851;
+    text-decoration: none;
+}
+
+.sola_nl_preview_choices a.active{
+    color:#FFFFFF;
+}
+*/
+.preview_actions{
+    position: relative;
+    margin-top: 10px;
+}
+.preview_actions .return_editor{
+    display: inline-block;
+    right: 0;
+}
+
+.preview_actions .confirm_camp {
+    position: absolute;
+    right: 125px;
+    text-align: right;
+    display: inline-block;
+}
+
+/*----- CUSTOM STYLES ------*/
+.sola-input{
+   width:300px;
+}
+.sola-td-vert{
+   vertical-align: top;
+}
+.sola-input-subject{
+   width:500px;
+   font-size: 16px;
+   font-weight: bold;
+}
+.progressBar {
+    width: 100px;
+    height: 10px;
+    border: 1px solid #111;
+    background-color: #3C3C3C;
+    display: inline-block;
+    margin-top: 3px;
+    clear:both;
+}
+
+.progressBar div {
+    height: 100%;
+    color: #fff;
+    text-align: right;
+    line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+    width: 0;
+    background-color: #0099ff;
+}
+.sola_nl_sign_up_box .sola_nl_sub_form .sola_sign_up_form_row{
+    padding:10px 0;
+}
+.sola_nl_sign_up_box .sola_nl_sub_form .sola_sign_up_form_row label{
+   width: 50px;
+   display:inline-block;
+}
+
+/*New Look*/
+
+/*.wrap {
+    margin: 10px 20px 0 2px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    box-shadow: 0px 8px 20px -10px;
+}*/
+.sola_header td{
+    text-align:center;
+    vertical-align:middle;
+}
+.sola_header img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.sola_header_menu a{
+    color:#920506;
+    font-weight:bold;
+    text-decoration: none;
+}
+.sola_header_menu a:hover{
+    text-decoration:underline;
+}
+.sola_header_menu td {
+    padding: 5px;
+}
+
+#sola_tabs .ui-tabs-nav{
+    padding:0; 
+    height:30px;  
+}
+
+#sola_tabs .ui-tabs-nav {
+    border-bottom: 1px solid #EC6851;
+}
+#sola_tabs .ui-tabs-panel{
+    padding:0;
+}
+#sola_tabs .ui-tabs-panel table {
+/*    border: 1px solid #E7e7e7;
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;*/
+    padding: 5px;
+}
+#sola_tabs .ui-state-default{
+    background-color: #EC6851;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#sola_tabs .ui-state-default a{
+    color:#FFFFFF;
+    text-decoration:none;
+}
+#sola_tabs .ui-state-default a:hover{
+    color:#FFFFFF;
+    text-decoration:none;    
+    cursor: pointer;
+}
+
+#sola_tabs .ui-state-active a:hover{
+    cursor: pointer;
+    color: #EC6851;
+}
+#sola_tabs .ui-state-active {
+    background-color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-left: 1px solid #303E48;
+    border-top: 1px solid #303E48;  
+    border-right: 1px solid #303E48;    
+    height: 28px;
+}
+#sola_tabs .ui-state-active a{
+    color:#920506;
+}
+#sola_tabs .ui-tabs-nav {
+    text-align: center;
+}
+#sola_tabs .ui-tabs-nav li {
+    float: none !important;
+    display: inline-block;
+}
+#wpadminbar ul #wp-admin-bar-sola_toolbar_pending, #wpadminbar ul #wp-admin-bar-sola_progress_bar, #wpadminbar ul #wp-admin-bar-sola_toolbar_label {
+    padding-left: 10px;
+}
+#toplevel_page_sola-nl-menu .wp-menu-image img{
+    padding:0 !important;
+}
+.theme_div_wrapper input[type=radio]{
+  display:none;
+}
+.theme_div_wrapper input[type=radio] + img{
+  cursor:pointer;
+  border:1px solid transparent;
+  border-radius: 10px;
+}
+.theme_div_wrapper input[type=radio]:checked + img{
+  border:8px solid #ec6851;
+}
+.themes_wrapper{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.theme_div_wrapper{
+    display: inline-block;
+    text-align: center;
+}
+.theme_img{
+    border: solid 1px #000;
+    border-radius: 10px;
+    
+}
+.theme_radio_btn{
+    text-align: center;
+}
+

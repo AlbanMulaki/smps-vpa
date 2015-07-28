@@ -1,0 +1,72 @@
+<error>
+	<dateline>1415882080</dateline>
+	<script>index.php</script>
+	<line>23</line>
+	<type>2</type>
+	<friendly_type>Warning</friendly_type>
+	<message>require(/home/albanmulaki/public_html/objprog.com/wp-includes/themes/zerif-lite/header.php): failed to open stream: No such file or directory</message>
+</error>
+
+<error>
+	<dateline>1415882168</dateline>
+	<script>index.php</script>
+	<line>23</line>
+	<type>2</type>
+	<friendly_type>Warning</friendly_type>
+	<message>require(/home/albanmulaki/public_html/objprog.com/wp-includes/themes/zerif-lite/header.php): failed to open stream: No such file or directory</message>
+</error>
+
+<error>
+	<dateline>1415882170</dateline>
+	<script>index.php</script>
+	<line>23</line>
+	<type>2</type>
+	<friendly_type>Warning</friendly_type>
+	<message>require(/home/albanmulaki/public_html/objprog.com/wp-includes/themes/zerif-lite/header.php): failed to open stream: No such file or directory</message>
+</error>
+
+<error>
+	<dateline>1415882301</dateline>
+	<script>index.php</script>
+	<line>23</line>
+	<type>2</type>
+	<friendly_type>Warning</friendly_type>
+	<message>require(/home/albanmulaki/public_html/objprog.com/wp-content/themes/tehemes.php): failed to open stream: No such file or directory</message>
+</error>
+
+<error>
+	<dateline>1415884816</dateline>
+	<script>index.php</script>
+	<line>23</line>
+	<type>2</type>
+	<friendly_type>Warning</friendly_type>
+	<message>require(/home/albanmulaki/public_html/objprog.com/wp-content/themes/tehemes.php): failed to open stream: No such file or directory</message>
+</error>
+
+<error>
+	<dateline>1415885727</dateline>
+	<script>index.php</script>
+	<line>23</line>
+	<type>2</type>
+	<friendly_type>Warning</friendly_type>
+	<message>require(/home/albanmulaki/public_html/objprog.com/wp-content/themes/tehemes.php): failed to open stream: No such file or directory</message>
+</error>
+
+<error>
+	<dateline>1415885821</dateline>
+	<script>index.php</script>
+	<line>23</line>
+	<type>2</type>
+	<friendly_type>Warning</friendly_type>
+	<message>require(/home/albanmulaki/public_html/objprog.com/wp-content/themes/tehemes.php): failed to open stream: No such file or directory</message>
+</error>
+
+<error>
+	<dateline>1415886190</dateline>
+	<script>index.php</script>
+	<line>23</line>
+	<type>2</type>
+	<friendly_type>Warning</friendly_type>
+	<message>require(/home/albanmulaki/public_html/objprog.com/wp-content/themes/tehemes.php): failed to open stream: No such file or directory</message>
+</error>
+

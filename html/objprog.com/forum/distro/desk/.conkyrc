@@ -1,0 +1,85 @@
+background yes
+use_xft yes
+xftfont 123:size=8
+xftalpha 0.1
+update_interval 0.5
+total_run_times 0
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 250 5
+maximum_width 400
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color gray
+default_shade_color red
+default_outline_color green
+alignment top_right
+gap_x 10
+gap_y 10
+no_buffers no
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 1
+override_utf8_locale yes
+use_spacer yes
+text_buffer_size 256
+
+TEXT
+
+${font openlogos:size=20}${color #fff}OBJprog${font Arial:size=20} ${color Ivory}
+
+${voffset -90}
+${color DimGray}
+${font}
+${font Arial:bold:size=10}${color fff}SYSTEM CPU ${acpitemp}C* ${color 00BBBD} ${hr 2}
+
+$font${color fff}$sysname $kernel $alignr $machine
+Uptime $alignr${uptime}
+File System $alignr${fs_type}
+${color BFEAFF}${battery_percent}% Battery ${battery_time}${battery_bar}
+
+
+${font Arial:bold:size=10}${color fff}PROCESSORS ${color 00BBBD}${hr 2}
+$font${color eee}
+CPU  ${cpu cpu0}% ${cpugraph cpu0}
+${font Arial:bold:size=10}${color fff}MEMORY ${color 00BBBD}${hr 2}
+$font${color eee}MEM $alignc $mem / $memmax $alignr $memperc%
+$membar
+
+${font Arial:bold:size=10}${color fff}HDD ${color 00BBBD}${hr 2}
+$font${color eee}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_free_perc /}%
+${fs_bar /}
+$font${color eee}Home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_free_perc /home}%
+${fs_bar /home}
+$font${color eee}SWAP $alignc ${swap} / ${swapmax} $alignr ${swapperc}%
+${swapbar}
+
+
+${font Arial:bold:size=10}${color fff}TOP PROCESSES ${color 00BBBD}${hr 2}
+${color fff}$font${top_mem name 2}${alignr}${top mem 2} %
+$font${top_mem name 3}${alignr}${top mem 3} %
+$font${top_mem name 4}${alignr}${top mem 4} %
+$font${top_mem name 5}${alignr}${top mem 5} %
+
+${font Arial:bold:size=10}${color fff}Ethernet ${color 00BBBD}${hr 2}
+$font${color fff}IP on enp3s0 $alignr ${addr enp3s0}
+Down $alignr ${downspeed enp3s0} kb/s
+Up $alignr ${upspeed enp3s0} kb/s
+${color 00BBBD} ${hr 1}
+${font Arial:bold:size=10}${color fff}${wireless_essid wlo1} Wifi
+$font${color fff}IP on wlo1 $alignr ${addr wlo1}
+Down $alignr ${downspeed wlo1} kb/s
+Up $alignr ${upspeed wlo1} kb/s
+
+
+${font Arial:bold:size=10}${color fff}Server Service ${color 00BBBD}${hr 2}$font
+${color fff}Apache Server      $alignr ${color BD5800} ${execi 1 sh /home/alban/start.sh apache}
+${color fff}MySQL Server      $alignr ${color BD5800} ${execi 1 sh /home/alban/start.sh mysql}
+${color fff}SSH Server      $alignr ${color BD5800} ${execi 1 sh /home/alban/start.sh sshd}
+${color fff}FTP Server      $alignr ${color BD5800} ${execi 1 sh /home/alban/start.sh ftp}
+

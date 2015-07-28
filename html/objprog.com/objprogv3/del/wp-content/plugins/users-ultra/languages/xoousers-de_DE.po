@@ -1,0 +1,389 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Users Ultra Lite\n"
+"POT-Creation-Date: 2014-06-04 19:40-0300\n"
+"PO-Revision-Date: 2014-06-04 19:40-0300\n"
+"Last-Translator: Andreas Reitberger <andy.reitberger@gmail.com>\n"
+"Language-Team: wdbase.de <kontakt@wdbase.de>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../addons/photocategories/admin/admin.php:33
+#, fuzzy
+msgid "Manage Photo Categories"
+msgstr "Meine Galerien"
+
+#: ../addons/photocategories/admin/admin.php:89
+#: ../admin/tabs/membership.php:22
+#, fuzzy
+msgid "Name:"
+msgstr "Name"
+
+#: ../addons/photocategories/admin/admin.php:94
+#: ../xooclasses/xoo.userultra.mymessage.php:226
+#: ../xooclasses/xoo.userultra.photos.php:1611
+#: ../xooclasses/xoo.userultra.photos.php:1729
+#: ../xooclasses/xoo.userultra.photos.php:1850
+msgid "Close"
+msgstr "Schließen"
+
+#: ../addons/photocategories/admin/admin.php:94
+#: ../xooclasses/xoo.userultra.photos.php:1611
+#: ../xooclasses/xoo.userultra.photos.php:1729
+#: ../xooclasses/xoo.userultra.photos.php:1850
+msgid "Save"
+msgstr "Speichern"
+
+#: ../addons/photocategories/admin/admin.php:135
+#, fuzzy
+msgid "Photo Categories"
+msgstr "Meine Galerien"
+
+#: ../addons/photocategories/admin/panels/manage.php:12
+#: ../admin/tabs/fields.php:262 ../admin/tabs/fields.php:656
+#: ../admin/tabs/membership.php:14 ../admin/tabs/orders.php:44
+#: ../admin/tabs/users.php:44
+msgid "Sucess "
+msgstr "Erfolgreich"
+
+#: ../addons/photocategories/admin/panels/manage.php:24
+#: ../admin/tabs/membership.php:108
+#: ../xooclasses/xoo.userultra.payment.paypal.php:756
+#: ../xooclasses/xoo.userultra.user.php:552
+#: ../xooclasses/xoo.userultra.user.php:623
+#: ../xooclasses/xoo.userultra.user.php:692
+msgid "Confirm"
+msgstr "Bestätigen"
+
+#: ../addons/photocategories/admin/panels/manage.php:43
+#: ../admin/tabs/orders.php:145 ../admin/tabs/users.php:145
+msgid "#"
+msgstr "#"
+
+#: ../addons/photocategories/admin/panels/manage.php:44
+#: ../templates/basic/dashboard.php:365 ../templates/basic/dashboard.php:692
+#: ../xooclasses/xoo.userultra.payment.paypal.php:794
+#: ../xooclasses/xoo.userultra.photos.php:1570
+#: ../xooclasses/xoo.userultra.photos.php:1710
+#: ../xooclasses/xoo.userultra.photos.php:1831
+msgid "Name"
+msgstr "Name"
+
+#: ../addons/photocategories/admin/panels/manage.php:49
+#: ../xooclasses/xoo.userultra.publisher.php:463
+msgid "Actions"
+msgstr "Aktionen"
+
+#: ../addons/photocategories/admin/panels/manage.php:70
+#: ../admin/tabs/fields.php:348 ../xooclasses/xoo.userultra.mymessage.php:947
+#: ../xooclasses/xoo.userultra.mymessage.php:1077
+#: ../xooclasses/xoo.userultra.mymessage.php:1129
+#: ../xooclasses/xoo.userultra.payment.paypal.php:824
+#: ../xooclasses/xoo.userultra.user.php:691
+msgid "Delete"
+msgstr "Löschen"
+
+#: ../addons/photocategories/admin/panels/manage.php:71
+#: ../admin/tabs/fields.php:348
+#: ../xooclasses/xoo.userultra.payment.paypal.php:824
+#: ../xooclasses/xoo.userultra.publisher.php:479
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: ../addons/photocategories/admin/panels/manage.php:86
+#, fuzzy
+msgid "There are no categories yet."
+msgstr "Es gibt aktuell keine Pakete."
+
+#: ../admin/tabs/donate.php:8
+msgid "Support Users Ultra Lite with your donation!"
+msgstr ""
+"Unterstütze Users Ultra Lite oder den <a href=\"http://wdbase.de/spenden/\" "
+"target=\"_blank\">Übersetzer</a> mit einer kleinen Spende!"
+
+#: ../admin/tabs/donate.php:9
+msgid ""
+"If you like Users Ultra and you are satisfied with the plugin, isn't that "
+"worth a coffee or two? Please consider donating via PayPal. Any amount is "
+"appreciated. Donations help us to continue support and development of this "
+"free software!"
+msgstr ""
+"Wenn Sie Users Ultra mögen und mit uns zufrieden sind, wäre das nicht einen "
+"oder zwei Kaffee wert? Bitte ziehen Sie eine Spende via PayPal in betracht. "
+"Wir schätzen jeden Betrag! Spenden helfen unseren Support aufrecht zu "
+"erhalten und die Software dauerhaft kostenlos anzubieten!"
+
+#: ../admin/tabs/fields.php:14
+msgid "Profile Fields Customizer"
+msgstr "Profilfeld-Anpasser"
+
+#: ../admin/tabs/fields.php:17
+msgid ""
+"Organize profile fields, add custom fields to profiles, control privacy of "
+"each field, and more using the following customizer. You can drag and drop "
+"the fields to change the order in which they are displayed on profiles and "
+"the registration form."
+msgstr ""
+"Organisiere Profilfelder, füge eigene Felder zu deinen Profilen hinzu, "
+"kontrolliere den Datenschutz für jedes einzelne Feld und vieles mehr! Sie "
+"können mit Hilfe von \"Drag and Drop\" die Reihenfolge der Felder ändern, "
+"wie diese auf der Seite angezeigt werden sollen."
+
+#: ../admin/tabs/fields.php:22
+msgid "Profile fields have been restored"
+msgstr "Profilfelder wurden wiederhergestellt"
+
+#: ../admin/tabs/fields.php:26
+msgid "Click here to add new field"
+msgstr "Klicken Sie hier um ein neues Feld hinzuzufügen."
+
+#: ../admin/tabs/fields.php:31
+msgid "Click here to restore default fields"
+msgstr "Klicken Sie hier um die Standardfelder wiederherzustellen."
+
+#: ../admin/tabs/fields.php:41
+#: ../xooclasses/xoo.userultra.payment.paypal.php:798
+#: ../xooclasses/xoo.userultra.photos.php:1838
+msgid "Type"
+msgstr "Typ"
+
+#: ../admin/tabs/fields.php:45 ../admin/tabs/fields.php:381
+msgid "Profile Field"
+msgstr "Profilfeld"
+
+#: ../admin/tabs/fields.php:48 ../admin/tabs/fields.php:384
+msgid "Separator"
+msgstr "Separator"
+
+#: ../admin/tabs/fields.php:51
+msgid "You can create a seperator or a usermeta (profile field)"
+msgstr "Sie können einen Separator oder Benutzer Meta (Profilfeld) erstellen."
+
+#: ../admin/tabs/fields.php:56
+msgid "Editor / Input Type"
+msgstr "Editior / Eingabetyp"
+
+#: ../admin/tabs/fields.php:65 ../admin/tabs/fields.php:405
+msgid ""
+"When user edit profile, this field can be an input (text, textarea, image "
+"upload, etc.)"
+msgstr ""
+"Wenn Mitglideder Ihr Profil bearbeiten, kann dieses Feld ein Eingabefeld "
+"sein (Text, Textfeld, Bilder-Upload, etc.)"
+
+#: ../admin/tabs/fields.php:70
+msgid "Existing Meta Key / Field"
+msgstr "Existierende Meta-Schlüssel / Feld"
+
+#: ../admin/tabs/fields.php:74
+msgid "Choose a Meta Key"
+msgstr "Wähle einen Meta-Schlüssel"
+
+#: ../admin/tabs/fields.php:78 ../admin/tabs/fields.php:106
+msgid "New Custom Meta Key"
+msgstr "Neuer Meta-Schlüssel"
+
+#: ../admin/tabs/fields.php:99 ../admin/tabs/fields.php:431
+msgid ""
+"Choose from a predefined/available list of meta fields (usermeta) or skip "
+"this to define a new custom meta key for this field below."
+msgstr ""
+"Wählen Sie von einer vordefinierten/verfügbaren Liste von Meta-Feldern "
+"(Benutzer-Meta) oder überspringen Sie diesen Schritt um neue, eigene Meta-"
+"Schlüssel für dieses Feld festzulegen."
+
+#: ../admin/tabs/fields.php:111 ../admin/tabs/fields.php:440
+msgid ""
+"Enter a custom meta key for this profile field if do not want to use a "
+"predefined meta field above. It is recommended to only use alphanumeric "
+"characters and underscores, for example my_custom_meta is a proper meta key."
+msgstr ""
+"Geben Sie einen eigenen Meta-Schlüssel für diese Profilfeld ein, wenn Sie "
+"nicht die vordefinierten nutzen wollen. Es ist empfohlen nur "
+"Alphanummerische Zeichen und Unterstriche zu verwenden, wie "
+"\"mein_eigenes_Meta\"."
+
+#: ../admin/tabs/fields.php:116
+msgid "Label"
+msgstr "Label"
+
+#: ../admin/tabs/fields.php:122 ../admin/tabs/fields.php:448
+msgid ""
+"Enter the label / name of this field as you want it to appear in front-end "
+"(Profile edit/view)"
+msgstr ""
+"Geben Sie ein Label / Name für diese Feld an, wenn Sie wollen, dass es auf "
+"der Frontend Seite sichtbar ist. (Profil bearbeiten / ansehen)"
+
+#: ../admin/tabs/fields.php:127 ../admin/tabs/fields.php:455
+msgid "Tooltip Text"
+msgstr "Tooltip Text"
+
+#: ../admin/tabs/fields.php:133 ../admin/tabs/fields.php:460
+msgid "A tooltip text can be useful for social buttons on profile header."
+msgstr ""
+"Ein Tooltip Text kann für die Social Buttons im Profilkopf sehr hilfreich "
+"sein."
+
+#: ../admin/tabs/fields.php:138 ../admin/tabs/fields.php:463
+msgid "This field is social"
+msgstr "This ist ein soziales Feld"
+
+#: ../admin/tabs/fields.php:142 ../admin/tabs/fields.php:160
+#: ../admin/tabs/fields.php:172 ../admin/tabs/fields.php:190
+#: ../admin/tabs/fields.php:202 ../admin/tabs/fields.php:218
+#: ../admin/tabs/fields.php:233 ../admin/tabs/fields.php:467
+#: ../admin/tabs/fields.php:486 ../admin/tabs/fields.php:498
+#: ../admin/tabs/fields.php:518 ../admin/tabs/fields.php:531
+#: ../admin/tabs/fields.php:547 ../admin/tabs/fields.php:583
+#: ../admin/tabs/settings.php:167
+msgid "No"
+msgstr "Nein"
+
+#: ../admin/tabs/fields.php:145 ../admin/tabs/fields.php:157
+#: ../admin/tabs/fields.php:175 ../admin/tabs/fields.php:187
+#: ../admin/tabs/fields.php:205 ../admin/tabs/fields.php:221
+#: ../admin/tabs/fields.php:236 ../admin/tabs/fields.php:470
+#: ../admin/tabs/fields.php:483 ../admin/tabs/fields.php:501
+#: ../admin/tabs/fields.php:515 ../admin/tabs/fields.php:534
+#: ../admin/tabs/fields.php:550 ../admin/tabs/fields.php:586
+#: ../admin/tabs/settings.php:166
+msgid "Yes"
+msgstr "Ja"
+
+#: ../admin/tabs/fields.php:148 ../admin/tabs/fields.php:473
+msgid ""
+"A social field can show a button with your social profile in the head of "
+"your profile. Such as Facebook page, Twitter, etc."
+msgstr ""
+"Ein Soziales Feld kann Buttons mit Ihren Sozialen Profilen im Profilkopf "
+"anzeigen, wie zum Beispiel die Facebook-Seite, Twitter, etc."
+
+#: ../admin/tabs/fields.php:153 ../admin/tabs/fields.php:479
+msgid "User can edit"
+msgstr "Benutzer kann bearbeiten"
+
+#: ../admin/tabs/fields.php:163 ../admin/tabs/fields.php:489
+msgid "Users can edit this profile field or not."
+msgstr "Mitglieder können dieses Profilfeld bearbeiten oder nicht."
+
+#: ../admin/tabs/fields.php:168
+msgid "Allow HTML Content"
+msgstr "HTML Inhalt erlauben"
+
+#: ../admin/tabs/fields.php:178 ../admin/tabs/fields.php:504
+msgid "If yes, users will be able to write HTML code in this field."
+msgstr ""
+"Wenn Ja, ist es Mitgliedern erlaubt HTML Code in Ihre Felder einzubinden "
+"(nicht empfohlen)."
+
+#: ../admin/tabs/fields.php:183 ../admin/tabs/fields.php:511
+msgid "User can hide"
+msgstr "Benutzer können verbergen"
+
+#: ../admin/tabs/fields.php:193 ../admin/tabs/fields.php:521
+msgid ""
+"Allow users to hide this profile field from public viewing or not. Selecting "
+"No will cause the field to always be publicly visible if you have public "
+"viewing of profiles enabled. Selecting Yes will give the user a choice if "
+"the field should be publicy visible or not. Private fields are not affected "
+"by this option."
+msgstr ""
+"Erlaubt es Mitgliedern gewisse Felder vor der Öffentlichkeit zu verbergen "
+"oder freizugeben. Bei der Wahl Nein, werden alle Felder immer für die "
+"Öffentlichkeit sichtbar sein, wenn Sie den öffentlichen Zugang zu Profilen "
+"aktiviert haben. Bei Ja wird es dem Mitglied selbst überlassen, wie Sie Ihre "
+"Felder sichtbar schalten. <strong>Private Felder sind mit dieser Option "
+"nicht betroffen! Diese sind immer unsichtbar vor der Öffentlichkeit!</strong>"
+
+#: ../admin/tabs/fields.php:198 ../admin/tabs/fields.php:527
+msgid "This field is private"
+msgstr "Dieses Feld ist privat."
+
+#: ../admin/tabs/fields.php:208 ../admin/tabs/fields.php:537
+msgid "Make this field Private. Only admins can see private fields."
+msgstr ""
+"Mache diese Feld Privat. Nur Admins und Sie können private Profilfelder "
+"sehen."
+
+#: ../admin/tabs/fields.php:214
+msgid "This field is required"
+msgstr "Dieses Feld wird benötigt."
+
+#: ../admin/tabs/fields.php:224 ../admin/tabs/fields.php:553
+msgid ""
+"Selecting yes will force user to provide a value for this field at "
+"registeration and edit profile. Registration or profile edits will not be "
+"accepted if this field is left empty."
+msgstr ""
+"Bei Ja wird der Benutzer dazu gezwungen eine Eingabe in dieses Feld bei der "
+"Registrierung und beim Profil berabeiten zu machen. Eine Registrierung oder "
+"das Bearbeiten des Profiles ist nicht möglich, sofern dieses Feld leer ist."
+
+#: ../admin/tabs/fields.php:229
+msgid "Show on Registration form"
+msgstr "Bei der Registrierung anzeigen"
+
+#: ../admin/tabs/fields.php:239
+msgid ""
+"Show this field on the registration form? If you choose no, this field will "
+"be shown on edit profile only and not on the registration form. Most users "
+"prefer fewer fields when registering, so use this option with care."
+msgstr ""
+"Dieses Feld bei der Registrierung anzeigen? Bei Nein, wird dieses Feld nur "
+"beim Profil Bearbeiten angezeigt und nicht bei der Registrierung. Die "
+"meisten Benutzer bevorzugen weniger Felder bei der Registration, seien Sie "
+"also sparsam mit dieser Option."
+
+#: ../admin/tabs/fields.php:248
+msgid "Icon for this field"
+msgstr "Icon für das Feld"
+
+#: ../admin/tabs/fields.php:251 ../admin/tabs/fields.php:616
+#: ../admin/tabs/fields.php:633 ../admin/tabs/fields.php:639
+msgid "None"
+msgstr "Keine"
+
+#: ../admin/tabs/fields.php:263
+msgid "Submit New Field"
+msgstr "Neues Feld absenden"
+
+#: ../admin/tabs/fields.php:265 ../admin/tabs/fields.php:662
+#: ../admin/tabs/membership.php:107 ../templates/basic/dashboard.php:376
+#: ../templates/basic/dashboard.php:718
+#: ../xooclasses/xoo.userultra.payment.paypal.php:755
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../admin/tabs/fields.php:279
+msgid "CLICK TO CONFIRM REARRANGE "
+msgstr "Klicke um die Umgruppierung zu bestätigen!"
+
+#: ../admin/tabs/fields.php:330
+msgid " - Separator"
+msgstr " - Separator"
+
+#: ../admin/tabs/fields.php:333
+msgid " - Profile Field"
+msgstr " - Profilfeld"
+
+#: ../admin/tabs/fields.php:359
+msgid "Sucess! This field has been deleted "
+msgstr "Das Feld wurde erfolgreich gelöscht"
+
+#: ../admin/tabs/fields.php:368
+msgid "Position"
+msgstr "Position"
+
+#: ../admin/tabs/fields.php:373
+msgid ""
+"Please use a unique position. Position lets you place the new field in the "
+"place you want exactly in Profile 

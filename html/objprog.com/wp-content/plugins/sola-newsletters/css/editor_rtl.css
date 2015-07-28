@@ -1,0 +1,369 @@
+/* CHANGES TO WORDPRESS STYLES */
+
+body{
+    background-color: transparent;
+}
+    
+#wpfooter{
+    display:none;
+}
+#wpbody-content{
+    padding-bottom: 0;
+}
+
+/* EDITOR Admin Panel */
+
+.sola-content-fixed{
+    position: fixed;
+    right: 0px;
+    left: 0px;
+}
+.sola-header-content{
+    height: 70px;
+    margin-right: 160px;
+    background: #fff;
+    display: block; 
+    border-bottom: 1px solid #cecece;
+}
+.sola-content-fixed .sola-header-content .sola-sidebar-header{
+    float:right;
+    padding: 25px 0 15px 0;
+    width: 350px;
+    text-align: center;
+    border-right: 1px solid #cecece;
+    z-index: 999;
+    
+     
+}
+.sola-content-fixed .sola-header-content .sola-sidebar-header ul{
+    display: inline-block;
+}
+.sola-content-fixed .sola-header-content .sola-sidebar-header ul li{
+    margin:0;
+    list-style: none;
+    float: left;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;  
+    padding: 5px 20px;
+    border: solid 2px #d1d1d1;
+    border-right:0;
+    cursor: pointer;
+}
+.sola-content-fixed .sola-header-content .sola-sidebar-header ul li:hover{
+    background: #e0e0e0;
+}
+.sola-content-fixed .sola-header-content .sola-sidebar-header ul li:last-child{
+    border: solid 2px #d1d1d1;
+    border-radius: 0 5px 5px 0;
+}
+.sola-content-fixed .sola-header-content .sola-sidebar-header ul li:first-child{
+    border-radius: 5px 0 0 5px;
+}
+.sola-content-fixed .sola-header-content .sola-sidebar-header ul  .active{
+    background: #e0e0e0;
+    cursor: default;
+}
+.sola-content-fixed .sola-header-content .header-right{
+    padding: 20px;
+    margin-left: 350px;
+    text-align: center; 
+    height: 69px;
+    float: right;
+}
+
+
+.sidebar{
+    position: fixed;
+    height: 100%;
+    width:350px;
+    background-color:#ffffff;
+    border-left: 1px solid #cecece;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;  
+    margin-right: 160px;
+}
+.sidebar #editor_options{
+    overflow: hidden;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+.sidebar .content{
+    
+    width: 350px;
+    text-align: center;
+}
+.sidebar .content .add-box{
+    display: inline-block;
+    height:150px;
+    width:150px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;   
+    padding:10px;
+    background: #f2f2f2;
+    margin: 15px 0px 0px 15px;
+    border-radius: 10px;
+   -webkit-box-shadow: 0px 0px 7px 2px rgba(50, 50, 50, 0.25);
+-moz-box-shadow:    0px 0px 7px 2px rgba(50, 50, 50, 0.25);
+box-shadow:         0px 0px 7px 2px rgba(50, 50, 50, 0.25); 
+}
+.sidebar .content .expandable-div .add-box-title{
+    line-height: 40px;
+}
+#sola_newsletter_preview{   
+    padding-right: 330px;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding-top: 70px;
+}
+.sidebar .content .expandable-div{
+    width: 100%;
+    border-radius: 0;
+    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    inset 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         inset 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    padding: 10px 0 10px 0 ;
+    height: auto;
+    min-height: 150px
+}
+.sola-extra-content{
+    display:none;
+    text-align: left;
+}
+.sola_addable_item{
+    cursor:  all-scroll;
+}
+.sola_addable_item td{
+    width:150px;
+}
+.sola_sub_addable_item {
+    
+    line-height: 40px;
+    border-bottom: solid 1px #222;
+}
+.sola-extra-content .first{
+    border-top: solid 1px #222;
+}
+
+.style{
+    border-bottom: 1px solid #cecece;
+    padding: 10px;
+}
+.style-name{
+    text-align: center;
+    cursor: pointer;
+}
+.colorpicker {
+    width: 100%;
+    height: 30px;
+    border:1px solid #ccc;
+}
+#sola_nl_send_test{
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    background: #fff;
+    width: 350px;
+    border-top: 1px solid #cecece;
+    border-left: 1px solid #cecece;
+}
+#sola_nl_send_test input{
+    width: 244px
+}
+
+.next-button{
+    float: right;
+}
+
+/* CUSTOM Styles */
+
+#my_sortable, #my_dropable{
+	list-style-type: none;
+	margin: 0px;
+	float: left;
+	margin-right: 10px;
+	background: #eee;
+	padding: 5px;
+	width: 143px;
+}
+.sortable-list{
+    min-height: 100px;
+}
+.sortable-item {
+    vertical-align: top;
+    clear:both;
+    max-width:595px;
+}
+.sortable-item:hover {
+    border:1px dashed #ccc;
+}
+.sortable-item img { max-width:595px; }
+
+.sola_input {
+    width:580px;
+    height:20px;
+    
+}
+h1 { padding-top:0 !important; margin-top:0 !important; }
+h2 { padding-top:0 !important; margin-top:0 !important; }
+h3 { padding-top:0 !important; margin-top:0 !important; }
+h4 { padding-top:0 !important; margin-top:0 !important; }
+
+
+/*Page Corners
+#sola_newsletter_outer_wrapper {
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.2),inset 0 0 20px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,0.2),inset 0 0 20px rgba(0,0,0,0.1);
+    box-shadow: 0 0 5px rgba(0,0,0,0.2),inset 0 0 20px rgba(0,0,0,0.1);
+} */
+/*#sola_newsletter_outer_wrapper:before,  #sola_newsletter_outer_wrapper:after{
+    position: absolute;
+    width: 40%;
+    height: 10px;
+    content: ' ';
+    left: 12px;
+    bottom: 12px;
+    background: transparent;
+    -webkit-transform: skew(-5deg) rotate(-5deg);
+    -moz-transform: skew(-5deg) rotate(-5deg);
+    -ms-transform: skew(-5deg) rotate(-5deg);
+    -o-transform: skew(-5deg) rotate(-5deg);
+    transform: skew(-5deg) rotate(-5deg);
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    z-index: -1;
+}*/
+#sola_newsletter_outer_wrapper:after {
+    left: auto;
+    right: 12px;
+    -webkit-transform: skew(5deg) rotate(5deg);
+    -moz-transform: skew(5deg) rotate(5deg);
+    -ms-transform: skew(5deg) rotate(5deg);
+    -o-transform: skew(5deg) rotate(5deg);
+    transform: skew(5deg) rotate(5deg);
+}
+
+.editHover{  
+    background-color: #EEE;
+}  
+  
+.editBox{  
+    width: 326px;  
+    min-height: 20px;  
+    padding: 10px 15px;  
+    background-color: #fff;  
+    border: 2px solid #E8F3FF;  
+}  
+.editable a { font-size:11px; }
+.btnSave, .btnCancel{  
+    padding: 6px 30px 6px 75px;  
+}  
+li.noPad{  
+    padding: 0;  
+    width: 360px;  
+}  
+.placeholder {
+	background-color: #EEE !important;
+	
+	height: 50px;
+	margin-bottom: 5px;
+        width:100%;
+}
+
+
+.right_box_style {
+    
+    height: 25px;
+    line-height: 25px;
+    margin-bottom:15px;
+    background-color: #F5F5F5;
+    background-image: -moz-linear-gradient(center top, #f9f9f9, #ececec);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#ececec');
+    background: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#ececec));
+    border: 1px solid #DFDFDF;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 #FFFFFF inset;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0 0 0 7px;
+    color: #222;
+    text-shadow: 0 1px 0 #FFFFFF;
+    }
+.sola_addable_image {
+    
+    margin-bottom:15px;
+    background-color: #F5F5F5;
+    border: 1px solid #DFDFDF;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 #FFFFFF inset;
+    display: block;
+    padding: 0 0 0 7px;
+    cursor: move;
+    color: #222;
+}
+.sola_addable_hr{
+    cursor: all-scroll;
+}
+li { list-style: disc; margin-left:30px; }
+.block{height:100px!important;background:#bbb;margin-bottom:10px;width:500px;color:#000}
+
+#sola_toolbar {
+    position:static;
+    top:0;
+    left:0;
+    padding:0;
+    margin:0;
+    width:100%;
+    height:20px;
+    background-color: #F5F5F5;
+    box-shadow: 0 1px 0 #FFFFFF inset;
+}
+.sola_tool_icon {
+    float:right;
+    cursor:pointer;
+    display:block;
+    width:15px;
+    text-align: center;
+    font-size: 20px;    
+}
+
+.sola_nl_btn{
+    cursor: all-scroll;
+}
+.style-open{
+    background-color: #f2f2f2;
+}
+
+
+
+
+// STYLE EDITOR 
+
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 900px) {
+    
+    
+    .header-content{
+        left:36px;     
+    }
+}
+@media screen and ( max-width: 782px ) {
+    .header-content{
+        left:0px;     
+    }
+}
+
+
+
+

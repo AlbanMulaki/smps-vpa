@@ -1,0 +1,302 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/awesome-filterable-portfolio\n"
+"POT-Creation-Date: 2013-07-09 22:24:11+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-07-10 03:51+0100\n"
+"Last-Translator: Brini <contact@brinidesigner.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: afp.php:61
+msgid "Portfolio Items"
+msgstr "قائمة المشاريع"
+
+#: afp.php:71
+msgid "Add New Item"
+msgstr "إضافة مشروع جديد"
+
+#: afp.php:81
+msgid "Categories List"
+msgstr "قائمة التصنيفات"
+
+#: afp.php:92 afp.php:351 afp.php:359
+msgid "Add New Category"
+msgstr "إضافة تصنيف جديد"
+
+#: afp.php:136 afp.php:143
+msgid "Add New Portfolio Item"
+msgstr "إضافة مشروع جديد"
+
+#: afp.php:147 afp.php:217
+msgid "Project Name :"
+msgstr "إسم المشروع:"
+
+#: afp.php:151 afp.php:221
+msgid "Client :"
+msgstr "الحريف:"
+
+#: afp.php:155 afp.php:225
+msgid "Date :"
+msgstr "تاريخ الإنجاز:"
+
+#: afp.php:159 afp.php:229
+msgid "Project Link :"
+msgstr "الرابط:"
+
+#: afp.php:161
+msgid "Add a URL to your project. If left empty no date will be displayed"
+msgstr "أدخل الرابط نحو المشروع."
+
+#: afp.php:164 afp.php:233
+msgid "Category :"
+msgstr "التصنيف:"
+
+#: afp.php:176 afp.php:245
+msgid "Image"
+msgstr "الصورة"
+
+#: afp.php:177 afp.php:246
+msgid "Upload Image"
+msgstr "تحميل صورة"
+
+#: afp.php:178 afp.php:247
+msgid ""
+"This is the image that will be displayed when you show the project details."
+msgstr "هذه الصورة ستظهر عند عرض تفاصيل المشروع."
+
+#: afp.php:181 afp.php:250 afp.php:294 afp.php:324
+msgid "Thumbnail"
+msgstr "الصورة المصغرة"
+
+#: afp.php:182 afp.php:251
+msgid "Upload Thumbnail"
+msgstr "تحميل صورة مصغرة"
+
+#: afp.php:183 afp.php:252
+msgid ""
+"Use a small image for preview purpose. You may select an image from the "
+"Media Library and select Thumbnail for the image size."
+msgstr "إختر صورة صغيرة."
+
+#: afp.php:186 afp.php:255 afp.php:367 afp.php:405
+msgid "Description :"
+msgstr "الوصف:"
+
+#: afp.php:190
+msgid "Save New Portfolio Item"
+msgstr "حفض المشروع"
+
+#: afp.php:204 afp.php:213
+msgid "Edit Portfolio Item"
+msgstr "تغيير معلومات المشروع"
+
+#: afp.php:205
+msgid "Portfolio Item added successfully"
+msgstr "تمت إضافة المشروع بنجاح"
+
+#: afp.php:205
+msgid "Portfolio Item edited successfully"
+msgstr "تم تعديل المشروع بنجاح"
+
+#: afp.php:260
+msgid "Save Portfolio Item"
+msgstr "حفض المشروع"
+
+#: afp.php:285
+msgid "Portfolio Items "
+msgstr "قائمة المشاريع"
+
+#: afp.php:285 afp.php:435
+msgid "Add New"
+msgstr "إضافة جديد"
+
+#: afp.php:288
+msgid "You don't have any portfolio item."
+msgstr "ليس لديك أي مشروع جديد"
+
+#: afp.php:288 afp.php:439
+msgid "Please"
+msgstr "الرجاء"
+
+#: afp.php:288
+msgid "Add a New Item"
+msgstr "إضافة مشروع جديد"
+
+#: afp.php:295 afp.php:325
+msgid "Title"
+msgstr "العنوان"
+
+#: afp.php:296 afp.php:326
+msgid "Client"
+msgstr "الحريف"
+
+#: afp.php:297 afp.php:327 afp.php:514
+msgid "Date"
+msgstr "التاريخ"
+
+#: afp.php:298 afp.php:328
+msgid "Link"
+msgstr "الرابط"
+
+#: afp.php:299 afp.php:329
+msgid "Category"
+msgstr "التصنيف"
+
+#: afp.php:337 afp.php:476
+msgid "Delete Confirmation"
+msgstr "تأكيد الحذف"
+
+#: afp.php:338
+msgid "Are you sure you want to delete this portfolio item?"
+msgstr "هل تريد حذف هذا المشروع ؟"
+
+#: afp.php:339 afp.php:478
+msgid "Delete"
+msgstr "حذف"
+
+#: afp.php:340 afp.php:479
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: afp.php:363 afp.php:401
+msgid "Category name :"
+msgstr "إسم التصنيف"
+
+#: afp.php:371
+msgid "Save New Category"
+msgstr "حفض التصنيف"
+
+#: afp.php:389 afp.php:397
+msgid "Edit Category"
+msgstr "تعديل التصنيف"
+
+#: afp.php:390
+msgid "Category added successfully"
+msgstr "تمت إضافة التصنيف بنجاح"
+
+#: afp.php:390
+msgid "Category edited successfully"
+msgstr "تم تعديل التصنيف بنجاح"
+
+#: afp.php:410
+msgid "Save Category"
+msgstr "حفض التصنيف"
+
+#: afp.php:435
+msgid "Categories "
+msgstr "التصنيفات"
+
+#: afp.php:439
+msgid "You don't have any categories."
+msgstr "ليس لديك أي تصنيف."
+
+#: afp.php:439
+msgid "Add a New Category"
+msgstr "إضافة تصنيف جديد"
+
+#: afp.php:445 afp.php:467
+msgid "Name"
+msgstr "الإسم"
+
+#: afp.php:446 afp.php:468
+msgid "Description"
+msgstr "الوصف"
+
+#: afp.php:477
+msgid "Are you sure you want to delete this category?"
+msgstr "هل تريد حذف هذا التصنيف ؟"
+
+#: afp.php:491 afp.php:566
+msgid "Options"
+msgstr "الخيارات"
+
+#: afp.php:499
+msgid "Portfolio Options"
+msgstr "قائمة المشاريع"
+
+#: afp.php:504
+msgid "Sort Categories:"
+msgstr "ترتيب التصنيفات:"
+
+#: afp.php:506
+msgid "Sort categories by name"
+msgstr "ترتيب التصنيفات حسب الإسم"
+
+#: afp.php:510
+msgid "Sort Portfolio Items by:"
+msgstr "ترتيب المشاريع حسب:"
+
+#: afp.php:513
+msgid "Project Name"
+msgstr "إسم المشروع"
+
+#: afp.php:515
+msgid "Client Name"
+msgstr "إسم الحريف"
+
+#: afp.php:518
+msgid ""
+"Select a creteria to sort the portfolio items. Choose the empty option to "
+"sort by the items' order of creation."
+msgstr ""
+"إختر خيار ترتيب المشاريع. إختر الخيار الفارغ لترتيب المشاريع حسب احداثها."
+
+#: afp.php:525
+msgid "Project Links open in:"
+msgstr "فتح الرابط:"
+
+#: afp.php:528
+msgid "New Tab / Window"
+msgstr "نافذة جديدة"
+
+#: afp.php:529
+msgid "Same Tab / Window"
+msgstr "نفس النافذة"
+
+#: afp.php:531
+msgid ""
+"This option specifies where the Project Link for a Portfolio Item should be "
+"open."
+msgstr "تحديد مكان فتح الروابط"
+
+#: afp.php:538
+msgid "Animation Properties:"
+msgstr "خيارات التحريك"
+
+#: afp.php:539
+msgid "Speed:"
+msgstr "السرعة:"
+
+#: afp.php:541
+msgid "Slow"
+msgstr "بطئ"
+
+#: afp.php:542
+msgid "Medium"
+msgstr "متوسط"
+
+#: afp.php:543
+msgid "Fast"
+msgstr "سريع"
+
+#: afp.php:547
+msgid "Use easing for animations"
+msgstr "إستعمال التخفيف للحركة"
+
+#: afp.php:552
+msgid "Save Options"
+msgstr "حفض الخيارات"
+
+#: afp.php:770
+msgid "All"
+msgstr "الكل"
+
+#: afp.php:787
+msgid "Project Link"
+msgstr "رابط المشروع"
