@@ -110,15 +110,7 @@
         <th>{{ Lang::get('general.name')}} {{ Lang::get('general.surname')}}</th>
         <th>{{ Lang::get('general.email') }}</th>
         <th style='width:20%;'> 
-            <a href="#" class="btn btn-sm btn-success">
-                <span class="fa fa-file-excel-o fa-lg"></span> 
-            </a>
-            <a href="{{ action('StaffController@getPrintPdf') }}" type="button" class="btn btn-sm btn-danger">
-                <span class="fa fa-file-pdf-o fa-lg"></span> 
-            </a>
-            <a href="" id="printPlanProgrammin" class="btn btn-sm btn-default">
-                <span class="fa fa-print fa-lg"></span>  
-            </a></th>
+            </th>
     </tr>
     @foreach($students as $value)
     <tr>

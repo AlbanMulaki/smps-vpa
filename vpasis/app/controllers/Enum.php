@@ -102,6 +102,33 @@ class Enum extends Controller {
     const successful = 1;
     const failed = 2;
 
+
+
+    /*
+     * Llojet e pagesave
+     */
+    const pagessemestri = 1;
+    const pagestjeter = 2;
+
+    public static function getLlojetPagesave() {
+        return array(-1 => Lang::get('general.select_feetype'),
+            self::pagessemestri => Lang::get('general.fee_semester'),
+            self::pagestjeter => Lang::get('general.other')
+        );
+    }
+
+    public static function convertLlojetPagesave($acc) {
+
+        switch ($acc) {
+            case self::pagessemestri :
+                return Lang::get('general.fee_semester');
+                break;
+            case self::pagestjeter :
+                return Lang::get('general.other');
+                break;
+        }
+    }
+
     public static function getGjinia() {
         return array(-1 => Lang::get('general.gender'),
             self::mashkull => Lang::get('general.male'),

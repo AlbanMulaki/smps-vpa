@@ -300,5 +300,16 @@ return array(
     "contract_fee" => "Kontrata",
     "choose_semester" => "Zgjidh semestrin",
     "num_hour" => "Numri orëve",
+    "payer"=>"Paguesi",
+    "fee_semester" => "Pages semestri",
+    "other" => "Tjeter",
+    "select_feetype" => "Selekto llojin e pageses",
+    "feetype" => "Lloji",
+    "description_fee" =>"Pershkrimi pageses",
+    "register_fee" => "Regjistro Pagesat",
+    "registred" => "Regjistruar",
+    "list_fee" => "Lista Pagesave",
+    "total_sum" => "Shuma totale",
+    "apply" => "Apliko",
         )
 ;

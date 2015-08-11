@@ -111,4 +111,5 @@ induviduale e jo në menyrë grupore.",
     "title_contract_studies" => "Kontrat për studime",
     "law" => "Neni",
     "title_list_student" => "Lista studentve",
+    "title_fee" => "Pagesat",
 );

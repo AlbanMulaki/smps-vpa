@@ -122,10 +122,10 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#" class='text-danger'><i class="fa fa-eur fa-lg"></i> {{ Lang::get('general.fee') }} <span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-eur fa-lg"></i> {{ Lang::get('general.fee') }} <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">Sub menu 1</a>
+                        <a href="{{ action('FeeController@getIndex') }}">{{ Lang::get('general.fee') }}</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

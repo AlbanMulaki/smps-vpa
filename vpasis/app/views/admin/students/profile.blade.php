@@ -113,6 +113,82 @@
 
 @stop
 
+@section('pagesat')
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+        {{ Lang::get('general.list_fee') }}
+
+    </div>
+    <div class="panel-body">
+        <div class="col-lg-offset-11 col-lg-1">
+            <a class="btn btn-info" href="{{ action('StudentController@getPrintListPagesat',array($profile['uid'])) }}">
+                <span class="fa fa-print fa-lg"></span>
+            </a>
+        </div>
+        <br>
+        <br>
+        <table class='table table-responsive table-bordered'>
+            <tr>
+                <th>#</th>
+                <th>{{ Lang::get('general.bank_name') }}</th>
+                <th>{{ Lang::get('general.description_fee') }}</th>
+                <th>{{ Lang::get('general.feetype') }}</th>
+                <th>{{ Lang::get('general.sum') }}</th>
+                <th>{{ Lang::get('general.registred');$numFee=0 }}</th>
+            </tr>
+
+            @foreach($pagesat as $value)
+            <tr>
+                <td>{{ ++$numFee}}</td>
+                <td>{{ $value['emri_bankes'] }}</td>
+                <td>{{ $value['pershkrimi'] }}</td>
+                <td>{{ Enum::convertLlojetPagesave($value['tipi']) }}</td>
+                <td><span class="label label-info">{{ $value['shuma'];$shumaPaguar = $shumaPaguar + $value['shuma'] }} <span class="fa fa-euro"></span> </span></td>
+                <td>{{ $value['created_at'] }}</td>
+            </tr>
+            @endforeach
+            <tr>
+                <td colspan="4" class="text-right bold">{{ Lang::get('general.total_sum') }}</td>
+                <td><span class="label label-primary">{{ $shumaPaguar }} <span class="text-center fa fa-lg fa-euro"></span> </span></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+@stop
+
+@section('notimet')
+
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+        {{ Lang::get('general.exams') }}
+
+    </div>
+    <div class="panel-body">
+
+        <table class='table table-responsive table-bordered'>
+            <tr>
+                <th>#</th>
+                <th>{{ Lang::get('general.course') }}</th>
+                <th>{{ Lang::get('general.grade') }}</th>
+                <th>{{ Lang::get('general.lecturer') }}</th>
+                <th>{{ Lang::get('general.date') }}</th>
+                @if($settings['provim_active'] == Enum::yes)
+                <th>{{ Lang::get('general.refuse')}}</th>
+                <th>{{ Lang::get('general.apply')}}</th>
+                @endif
+                <th>{{ Lang::get('general.attendance')}}</th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+@stop
+
 @section('content')
 
 
@@ -120,24 +196,22 @@
 <hr>
 @yield('notification')
 
-<div>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ Lang::get('general.student_profile') }}</a></li>
+    <li role="presentation"><a href="#vijushmeria" aria-controls="vijushmeria" role="tab" data-toggle="tab">{{ Lang::get('general.attendance') }}</a></li>
+    <li role="presentation"><a href="#notimet" aria-controls="notimet" role="tab" data-toggle="tab">{{ Lang::get('general.exams') }}</a></li>
+    <li role="presentation"><a href="#pagesat" aria-controls="pagesat" role="tab" data-toggle="tab">{{ Lang::get('general.fee') }}</a></li>
+</ul>
 
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#profile" aria-controls="home" role="tab" data-toggle="tab">{{ Lang::get('general.student_profile') }}</a></li>
-        <li role="presentation"><a href="#vijushmeria" aria-controls="profile" role="tab" data-toggle="tab">{{ Lang::get('general.attendance') }}</a></li>
-        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">{{ Lang::get('general.exams') }}</a></li>
-        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">{{ Lang::get('general.fee') }}</a></li>
-    </ul>
+<!-- Tab panes -->
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="profile">@yield('profile')</div>
+    <div role="tabpanel" class="tab-pane" id="vijushmeria">@yield('vijushmeria')</div>
+    <div role="tabpanel" class="tab-pane" id="notimet">@yield('notimet')</div>
+    <div role="tabpanel" class="tab-pane" id="pagesat">@yield('pagesat')<div>
+        </div>
 
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="profile">@yield('profile')</div>
-        <div role="tabpanel" class="tab-pane" id="vijushmeria">@yield('vijushmeria')</div>
-        <div role="tabpanel" class="tab-pane" id="messages">...</div>
-        <div role="tabpanel" class="tab-pane" id="settings">...</div>
     </div>
 
-</div>
-
-@stop
+    @stop

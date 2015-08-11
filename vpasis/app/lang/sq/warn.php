@@ -53,5 +53,6 @@ return array(
     "delete_msg" => "Fshirja lëndës është bërë me sukses",
     "delete_student" => "Fshirja studentit është bërë me sukses",
     "success_register_attendance" => "Regjistrimi vijushmeris eshte ber me sukses.",
+    "succes_register_fee" => "Regjistrimi pageses është bërë me sukses",
         )
 ;

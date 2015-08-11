@@ -71,6 +71,7 @@ if ($check->isLogin() == 2) {
             Route::controller('/smps/admin/staff', 'StaffController');
             Route::controller('/smps/admin/student', 'StudentController');
             Route::controller('/smps/admin/vijushmeria', 'VijushmeriaController');
+            Route::controller('/smps/admin/fee','FeeController');
 
 
             Route::put('/smps/admin/setting', 'SettingsController@Update');

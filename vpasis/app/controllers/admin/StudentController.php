@@ -192,7 +192,11 @@ class StudentController extends \BaseController {
     }
 
     public function getProfile($uid) {
-
+        $shumaPaguar = 0;
+        $settings = Settings::getAllSettings();
+        $pagesat = Pagesat::where('paguesi', '=', $uid)
+                ->where('deleted', '=', Enum::notdeleted)
+                ->get();
 
         $profile = Studenti::where('uid', '=', $uid)->get();
         $drejtimet = Drejtimet::getComboDrejtimetGroupedAll();
@@ -205,14 +209,17 @@ class StudentController extends \BaseController {
                 ->where('vijushmeria.deleted', '=', Enum::notdeleted)
                 ->get();
         $vijushmeria_ = $vijushmeria;
-        $i=0;
+        $i = 0;
         foreach ($vijushmeria_ as $value) {
             $vijushmeria[$i++]['numhour'] = Vijushmeria::where('idl', '=', $value['idl'])->count();
         }
 
         return View::make('admin.students.profile', ['profile' => $profile[0],
                     'drejtimet' => $drejtimet,
-                    'vijushmeria' => $vijushmeria]);
+                    'vijushmeria' => $vijushmeria,
+                    'pagesat' => $pagesat,
+                    'shumaPaguar' => $shumaPaguar,
+                    'settings' => $settings]);
     }
 
     public function getListPrintPdfDirect($id = 0, $drejtimi = 0) {
@@ -303,6 +310,27 @@ class StudentController extends \BaseController {
 
         file_put_contents(self::printdir('ListStudentve', null, Session::get('uid')), $pdf->output());
         return $pdf->download(self::printdir('ListStudentve', null, Session::get('uid')));
+    }
+
+    /*
+     * Print listen e pagesave per student
+     */
+
+    public function getPrintListPagesat($uid) {
+
+        $shumaPaguar = 0;
+        $pagesat = Pagesat::where('paguesi', '=', $uid)
+                ->where('deleted', '=', Enum::notdeleted)
+                ->get();
+
+
+        $pdf = PDF::loadView('admin.pagesat.print_pagesat_profile', [ 'title' => Lang::get('printable.title_fee'),
+                    'pagesat' => $pagesat,
+                    'shumaPaguar' => $shumaPaguar]);
+
+        file_put_contents(self::printdir('ListPagesaveStudent', null, Session::get('uid')), $pdf->output());
+        return $pdf->stream();
+        return $pdf->download(self::printdir('ListPagesaveStudent', null, Session::get('uid')));
     }
 
     public function postSearch() {

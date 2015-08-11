@@ -16,6 +16,11 @@ class Pagesat extends Eloquent implements UserInterface, RemindableInterface {
      * @var string
      */
     protected $table = 'pagesat';
+    
+    public static function getAllPagesat(){
+        return self::where('deleted','=',Enum::notdeleted)->orderBy('created_at','DESC')->get();
+    }
+    
 
     /**
      * The attributes excluded from the model's JSON form.
