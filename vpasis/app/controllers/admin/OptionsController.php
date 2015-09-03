@@ -23,7 +23,8 @@ class OptionsController extends \BaseController {
             'phone' => 'required',
             'info_email' => 'required',
             'support_email' => 'required',
-            'website' => 'required'
+            'website' => 'required',
+            'provim_active' => 'required'
         );
         $valid = Validator::make(Input::all(), $rule);
 
@@ -33,7 +34,8 @@ class OptionsController extends \BaseController {
                 'phone' => Input::get('phone'),
                 'info_email' => Input::get('info_email'),
                 'support_email' => Input::get('support_email'),
-                'website' => Input::get('website')
+                'website' => Input::get('website'),
+                'provim_active' => Input::get('provim_active')
             );
             // update logo
             if (Input::hasFile('logo')) {

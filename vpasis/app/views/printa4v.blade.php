@@ -3,8 +3,8 @@
 <style>
     @page { margin: 35px 15px 35px 15px; }
 
-    html{font-family: sans-serif;}
-    body{font-family: sans-serif;}
+    html{font-family: "Helvetica",  sans-serif;}
+    body{font-family: "Helvetica",  sans-serif;}
     h1,h2,h3,h4,h5,h6{
         text-transform: uppercase;
     }
@@ -15,7 +15,9 @@
     table{
         border-collapse: collapse;
     }
-
+    .page-break {
+        page-break-after: always;
+    }
     /* Style definitions for pdfs */
 
     /**********************************************************************/
@@ -27,7 +29,7 @@
     body {
         background-color: #114C8D;
         color: #000033;
-        font-family: "verdana", "sans-serif";
+        font-family: "Helvetica", "sans-serif";
         margin: 0px;
         padding-top: 0px;
         font-size: 0.9em;
@@ -138,7 +140,7 @@
         color: #114C8D;
         border: 1px solid #114C8D;
         background-color: #FFFFff;
-        font-family: "verdana", "sans-serif";
+        font-family: "Helvetica",  "sans-serif";
         font-size: 1em;
         padding-left: 3px;
     }
@@ -147,7 +149,7 @@
         color: #114C8D;
         border: 1px solid #114C8D;
         background-color: #FFFFff;
-        font-family: "verdana", "sans-serif";
+        font-family: "Helvetica", "sans-serif";
         font-size: 1em;
     }
 
@@ -155,7 +157,7 @@
         color: #114C8D;
         border: 1px solid #114C8D;
         background-color: #FFFFff;
-        font-family: "verdana", "sans-serif";
+        font-family: "Helvetica", "sans-serif";
         font-size: 1em;
     }
 
@@ -1105,7 +1107,7 @@
         background-color: #FFFFff;
         border: 1px solid #114C8D;
         padding: 1px 2px 1px 2px;
-        font-family: "verdana", "sans-serif";
+        font-family: "Helvetica", "sans-serif";
         font-size: 9px; 
     }
 

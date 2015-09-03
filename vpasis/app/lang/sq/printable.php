@@ -112,4 +112,10 @@ induviduale e jo në menyrë grupore.",
     "law" => "Neni",
     "title_list_student" => "Lista studentve",
     "title_fee" => "Pagesat",
+    "deadline" => "Afati",
+    "title_report_grade" => "Raporit Notave",
+    "department" => "Departmenti",
+    "profile" => "Drejtimi",
+    "status" => "Statusi",
+    
 );

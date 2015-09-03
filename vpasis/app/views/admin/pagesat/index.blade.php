@@ -93,8 +93,8 @@
         </tr>
         @foreach($pagesat as $value)
         <tr>
-            <td>{{ ++$numFee}}</td>
-            <td>{{ $value['paguesi'] }}</td>
+            <td>{{ $value['paguesi']}}</td>
+            <td>{{ " (<b>".Enum::convertUID($value['paguesi'])."</b>) " }}</td>
             <td>{{ $value['emri_bankes'] }}</td>
             <td>{{ $value['pershkrimi'] }}</td>
             <td>{{ $value['tipi'] }}</td>

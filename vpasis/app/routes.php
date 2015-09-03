@@ -72,6 +72,7 @@ if ($check->isLogin() == 2) {
             Route::controller('/smps/admin/student', 'StudentController');
             Route::controller('/smps/admin/vijushmeria', 'VijushmeriaController');
             Route::controller('/smps/admin/fee','FeeController');
+            Route::controller('/smps/admin/provimet','ProvimetController');
 
 
             Route::put('/smps/admin/setting', 'SettingsController@Update');
@@ -85,8 +86,6 @@ if ($check->isLogin() == 2) {
             Route::get('/smps/admin/hsub/print/{id}', 'OrariController@PrintOrari');
             Route::resource('/smps/admin/hsub', 'OrariController'); // Konfigurimi Orarit
             Route::controller('/smps/admin/', 'AdminController');
-            Route::get('/smps/admin/exams/print/{id}', 'ProvimetController@print_provimet');
-            Route::resource('/smps/admin/exams', 'ProvimetController');
             Route::controller('/smps/admin/ajax', 'AjaxController');
             Route::controller('/smps/admin/departments', 'DepartmentsController');
             Route::get('/smps/admin/person/{id}/print', 'PersonController@print_transkript');

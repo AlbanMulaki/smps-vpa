@@ -3,8 +3,10 @@
 
 class StudentController extends \BaseController {
 
-    public function getPrint() {
-        $listStaff = Admin::where('deleted', '=', Enum::notdeleted)->get();
+    public function getPrint($drejtimi) {
+        $listStaff = Studenti::where('deleted', '=', Enum::notdeleted)
+                ->where('drejtimi','=',$drejtimi)
+                ->get();
         $pdf = PDF::loadView('admin.students.kontrata_student', [ 'title' => Lang::get('printable.title_contract_studies'),
                     'listStaff' => $listStaff]);
         file_put_contents(self::printdir('ListStaffit', null, Session::get('uid')), $pdf->output());
@@ -213,13 +215,17 @@ class StudentController extends \BaseController {
         foreach ($vijushmeria_ as $value) {
             $vijushmeria[$i++]['numhour'] = Vijushmeria::where('idl', '=', $value['idl'])->count();
         }
+        
+        $notimet = StudentLendet::getLendetProfile();
+//        SELECT * FROM `raporti_notave_student` where studenti=1373
 
         return View::make('admin.students.profile', ['profile' => $profile[0],
                     'drejtimet' => $drejtimet,
                     'vijushmeria' => $vijushmeria,
                     'pagesat' => $pagesat,
                     'shumaPaguar' => $shumaPaguar,
-                    'settings' => $settings]);
+                    'settings' => $settings,
+                    'notimet' => $notimet]);
     }
 
     public function getListPrintPdfDirect($id = 0, $drejtimi = 0) {

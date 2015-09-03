@@ -1,6 +1,6 @@
 <?php
 
-class ProvimetController extends BaseController {
+class ProvieeemetController extends BaseController {
 
     public function print_provimet($id) {
 

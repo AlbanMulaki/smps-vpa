@@ -45,6 +45,7 @@
     {{ HTML::style('style/css/style.css') }}
     {{ HTML::style('style/css/metisMenu.min.css') }}
     {{ HTML::style('style/css/jasny-bootstrap.min.css') }}
+    {{ HTML::style('style/css/jquery-ui.min.css') }}
 
     {{ HTML::script('style/js/jquery-1.11.1.min.js') }}
     {{ HTML::script('style/js/jquery.cycle.all.js') }}
@@ -62,8 +63,7 @@
 
 
 @section('sidebar')
-
-
+ 
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
@@ -116,7 +116,7 @@
                 <a href="#" class='text-danger'><i class="fa fa-file-text-o fa-lg"></i> {{ Lang::get('general.exams') }} <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">Sub menu 1</a>
+                        <a href="{{ action('ProvimetController@getRaportiNotave') }}">{{ Lang::get('general.report_grade') }}</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

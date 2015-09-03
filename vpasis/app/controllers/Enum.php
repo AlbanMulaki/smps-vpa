@@ -102,11 +102,25 @@ class Enum extends Controller {
     const successful = 1;
     const failed = 2;
 
+    /*
+     * gjendjet e afati te provimeve
+     */
+    const mbyllur = 1;
+    const hapur = 2;
+    const perpunim = 3;
 
+    public static function getGjendjetProvimeve() {
+        return array(
+            self::mbyllur => Lang::get('general.closed'),
+            self::perpunim => Lang::get('general.prepare'),
+            self::hapur => Lang::get('general.public')
+        );
+    }
 
     /*
      * Llojet e pagesave
      */
+
     const pagessemestri = 1;
     const pagestjeter = 2;
 
@@ -314,6 +328,15 @@ class Enum extends Controller {
         return $drejtimi[0]['Emri'];
     }
 
+    public static function convertUID($id) {
+
+        $user = Studenti::where('uid', '=', $id)->get();
+        if ($user->count() < 1) {
+            $user = Admin::where('uid', '=', $id)->get();
+        }
+        return $user[0]['emri'] ." " . $user[0]['mbiemri'];
+    }
+
     public static function convertaccess($acc) {
 
         switch ($acc) {
@@ -370,6 +393,115 @@ class Enum extends Controller {
 
             case self::shtune :
                 return Lang::get('general.saturday');
+                break;
+        }
+    }
+
+    /*
+     * Mirembajtje
+     */
+
+    public static function getYear() {
+        return array(
+            2017 => 2017,
+            2016 => 2016,
+            2015 => 2015,
+            2014 => 2014,
+            2013 => 2013,
+            2012 => 2012,
+            2011 => 2011,
+            2010 => 2010);
+    }
+
+    public static function getMonthExams() {
+        return array(
+            01 => Lang::get('general.january'),
+            04 => Lang::get('general.april'),
+            06 => Lang::get('general.june'),
+            09 => Lang::get('general.september'),
+            11 => Lang::get('general.november')
+        );
+        
+    }
+    const january = 1;
+    const february = 2;
+    const march = 3;
+    const april = 4;
+    const may = 5;
+    const june = 6;
+    const july = 7;
+    const august = 8;
+    const september = 9;
+    const october = 10;
+    const november = 11;
+    const december = 12;
+    
+    public static function convertMonths($ref) {
+        switch ($ref) {
+            case self::january :
+                return Lang::get('general.january');
+                break;
+
+            case self::february :
+                return Lang::get('general.february');
+                break;
+
+            case self::march :
+                return Lang::get('general.march');
+                break;
+
+            case self::april :
+                return Lang::get('general.april');
+                break;
+
+            case self::may :
+                return Lang::get('general.may');
+                break;
+
+            case self::june :
+                return Lang::get('general.june');
+                break;
+
+            case self::july :
+                return Lang::get('general.july');
+                break;
+
+            case self::august :
+                return Lang::get('general.august');
+                break;
+
+            case self::september :
+                return Lang::get('general.september'); 
+                break;
+
+            case self::november :
+                return Lang::get('general.november');
+                break;
+
+            case self::december :
+                return Lang::get('general.december');
+                break;
+        }
+    }
+    public static function convertRefuzimi($ref) {
+        switch ($ref) {
+            case self::refuzuar :
+                return Lang::get('general.refuse');
+                break;
+
+            case self::parefuzuar :
+                return Lang::get('general.accepted');
+                break;
+        }
+    }
+    public static function convertParaqitjen($ref) {
+        switch ($ref) {
+            case self::paraqitur :
+                return Lang::get('general.featured');
+                break;
+
+            case self::paraqiturprezent :
+                return Lang::get('general.featuredpresent');
                 break;
         }
     }

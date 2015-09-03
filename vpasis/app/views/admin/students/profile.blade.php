@@ -183,11 +183,22 @@
                 @endif
                 <th>{{ Lang::get('general.attendance')}}</th>
             </tr>
+            @foreach($notimet as $value)
+            <tr>
+                <td> </td>
+                <td>{{ $value['lenda'] }}</td>
+                <td>{{ $value['nota'] }}</td>
+                <td>{{ $value['prof'] }}</td>
+                <td>{{ $value['data'] }}</td>
+            </tr>
+            @endforeach
         </table>
     </div>
 </div>
 
 @stop
+
+
 
 @section('content')
 

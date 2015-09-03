@@ -57,7 +57,7 @@
                 <a href="#" class="btn btn-sm btn-success">
                     <span class="fa fa-file-excel-o fa-lg"></span> 
                 </a>
-                <a href="{{ action('StaffController@getPrintPdf') }}" type="button" class="btn btn-sm btn-danger">
+                <a href="{{ action('StudentController@getListPrintPdf',array($rows,$drejtimi)) }}" type="button" class="btn btn-sm btn-danger">
                     <span class="fa fa-file-pdf-o fa-lg"></span> 
                 </a>
                 <a href="{{ action('StudentController@getListPrintPdfDirect',array($rows,$drejtimi)) }}" id="printPlanProgrammin" class="btn btn-sm btn-default">
