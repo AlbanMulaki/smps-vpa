@@ -1,0 +1,84 @@
+<?php $__env->startSection('content'); ?>
+<center>
+    <p><strong><?php echo Lang::get('printable.employer_description'); ?></strong> </p>
+</center>
+<div class='right'>
+    <strong><?php echo Lang::get('printable.date'); ?>: <?php echo date('d-m-Y'); ?> - Ferizaj</strong> 
+</div>
+<table class="list" style="width: 99%; margin-top: 1em;">
+    <tbody>
+        <tr>
+            <td style='border:1px solid #000;'> <strong><?php echo Lang::get('printable.employer'); ?>: <?php echo $options['name_company']; ?></strong></td>
+        </tr>
+        <tr>
+            <td style='border:1px solid #000;'>
+                <?php echo Lang::get('printable.employer_info1',array('university'=>$options['name_company'])); ?>
+
+            </td>
+        </tr>
+        <tr>
+            <td style='border:1px solid #000;'> 
+                <?php echo Lang::get('printable.employer_info2'); ?>
+
+            </td>
+        </tr>
+        <tr><td style='border:1px solid #000;'><br></td></tr>
+        <tr>
+            <td style='border:1px solid #000;'> 
+                <?php echo Lang::get('printable.employer_info3'); ?>
+
+            </td>
+        </tr>
+        <tr><td style='border:1px solid #000;'><br></td></tr>
+        <tr>
+            <td style='border:1px solid #000;'> 
+                <?php echo Lang::get('printable.employer_info4'); ?>
+
+            </td>
+        </tr>
+        <tr><td style='border:1px solid #000;'><br></td></tr>
+        <tr>
+            <td style='border:1px solid #000;'> 
+                <?php echo Lang::get('printable.employer_info5'); ?>
+
+            </td>
+        </tr>
+        <tr><td style='border:1px solid #000;'><br></td></tr>
+        <tr>
+            <td style='border:1px solid #000;'> 
+                <?php echo Lang::get('printable.employer_info6'); ?>
+
+            </td>
+        </tr>
+        <tr><td style='border:1px solid #000;'><br></td></tr>
+        <tr>
+            <td style='border:1px solid #000;'> 
+                <?php echo Lang::get('printable.employer_info7'); ?>
+
+            </td>
+        </tr>
+        <tr><td style='border:1px solid #000;'><br></td></tr>
+        <tr>
+            <td style='border:1px solid #000;'> 
+                <?php echo Lang::get('printable.employer_info8'); ?>
+
+            </td>
+        </tr>
+        <tr><td style='border:1px solid #000;'><br></td></tr>
+        <tr>
+            <td style='border:1px solid #000;'> 
+                <?php echo Lang::get('printable.employer_info9'); ?>
+
+            </td>
+        </tr>
+        <tr><td style='border:1px solid #000;'><br></td></tr>
+        <tr>
+            <td style='border:1px solid #000;'> 
+                <?php echo Lang::get('printable.employer_info10'); ?>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('printa4v', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

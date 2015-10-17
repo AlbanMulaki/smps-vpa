@@ -1,0 +1,60 @@
+<?php $__env->startSection('content'); ?>
+<table class="list">
+    <tbody>
+        <tr>
+            <td><?php echo Lang::get('general.department'); ?>: <strong><?php echo $departmenti[0]['Emri']; ?></strong></td>
+        </tr>
+        <tr>
+            <td><?php echo Lang::get('general.profile'); ?>: <strong><?php echo $drejtimi[0]['Emri']; ?></strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="list" style="width: 99%; margin-top: 1em;">
+    <tbody>
+        <tr class="head">
+            <td> #</td>
+            <td class="center" style="width: 70%">Lëndët</td>
+            <td style="width: 5%">Zgjedhore</td>
+            <td class="center" style="width: 25%">ECT</td>
+        </tr>
+        <?php echo "";$semestriCount=0; ?>
+
+        <?php echo "";$count=1; ?>
+
+        <?php echo "";$crs=0; ?>
+
+        <?php foreach($lendet as $value): ?>
+        <?php echo "";$crs++; ?>
+
+        <?php if($value['Semestri'] != $semestriCount): ?>
+        <tr class='head'>
+            <td colspan="5" class='center'><strong><?php echo Lang::get('general.semester')." - ".$value['Semestri']; ?></strong></td>
+        </tr>
+        <?php echo "";$semestriCount = $value['Semestri']; ?>
+
+
+        <?php echo "";$count=1; ?>
+
+        <?php endif; ?>
+        <tr>
+            <td class="center"><?php echo $count++; ?></td>
+            <td><?php echo $value['Emri']; ?></td>
+            <?php if($value['Zgjedhore'] == Enum::zgjedhore): ?>
+            <td>Z</td>
+            <?php else: ?>
+            <td>O</td>
+            <?php endif; ?>
+            <td class="center"><?php echo $value['Ect']; ?></td>
+        </tr>
+        <?php endforeach; ?>
+
+        <tr class='foot'>
+            <td  colspan='5' class='center'><strong><?php echo Lang::get('general.all_ect')." - 180"; ?></strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('printa4v', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

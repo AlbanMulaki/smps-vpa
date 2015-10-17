@@ -1,0 +1,9 @@
+
+
+<div style="z-index:1; position:fixed;">
+
+<?php foreach($person as $id=>$value): ?>
+<?php echo link_to('/smps/admin/person/'.$value['uid'].'/edit', $value['emri'].' '.$value['mbiemri'].' ('.$value['uid'].')', array('class'=>'list-group-item'),null);; ?>
+
+<?php endforeach; ?>
+</div>

@@ -1,0 +1,548 @@
+ 
+<?php $__env->startSection('addDepartment'); ?>
+<?php echo Form::open(array('url'=>action('DepartmentsController@postRegisterDepartment'),'method'=>'POST','id'=>'form1')); ?>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addDempartment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><?php echo Lang::get('general.departments'); ?></h4>
+            </div>         
+            <div class="modal-body">
+                <div class="input-group input-group">
+                    <span class="input-group-addon" id="sizing-addon1"><?php echo Lang::get('general.name'); ?></span>
+                    <?php echo Form::text('departmenti',null,array('class'=>'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" name="submit" class="btn btn-primary"><?php echo Lang::get('general.save'); ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $('#form1').submit(function(e) {
+
+
+    e.preventDefault();
+            var dataString = $('#form1').serialize();
+            $.ajax({
+            type: "POST",
+                    url: "<?php echo action('DepartmentsController@postRegisterDepartment'); ?>",
+                    data: dataString,
+                    success: function(data) {
+                    console.log(data);
+                            $('#errors').empty().append(data);
+                            $('.myModalerror').modal('show');
+                            $('button').click(function(){
+                    location.reload(true);
+                    });
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                            alert(thrownError);
+                    }
+            },
+                    "json");
+    });</script>
+
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?> 
+<?php $__env->startSection('listDepartment'); ?>
+<div class="col-sm-8  panel-primary ">
+    <div class="panel-heading">
+        <h3 class="panel-title"><?php echo Lang::get('general.departments'); ?></h3>
+    </div>
+    <div class="panel panel-primary ">
+        <div class="panel-body">
+            <div class="col-sm-12"><?php echo Lang::get('general.registred_department'); ?></div>
+
+
+
+            <!-- List Departmentet -->
+            <div class="list-group">
+                <?php foreach($departmentet as $value): ?>
+                <a href="#" class="list-group-item">
+                    <strong data-toggle="modal" data-target=".drejtimetmodal<?php echo $value['idDepartmentet']; ?>" ><?php echo $value['Emri']; ?></strong>
+                    <span class="pull-right">
+                        <span class="text-danger fa fa-lg fa-times" data-toggle="modal" data-target="#myModal<?php echo $value['idDepartmentet']; ?>" ></span>
+                    </span>
+                </a>
+                <?php echo Form::open(array('url'=>'admin/departments/deldepartment/'.$value['idDepartmentet'],'method'=>'POST','class'=>'form-horizontal','id'=>'formd'.$value['idDepartmentet'] )); ?>
+
+
+                <div class="modal fade" id="myModal<?php echo $value['idDepartmentet']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel"><?php echo Lang::get('general.are_you_sure'); ?></h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <div id="departmenti<?php echo $value['idDepartmentet']; ?>">
+                                        <?php echo Form::label('departmenti',Lang::get('general.name'),array('class'=>'control-label col-sm-2')); ?>
+
+                                        <div class=" col-sm-10">
+                                            <?php echo Form::label('departmenti',$value['Emri'],array('class'=>'form-control')); ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Lang::get('general.close'); ?></button>
+                                <input type="submit" class="btn btn-primary"  value="<?php echo Lang::get('general.delete'); ?>" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php echo Form::close(); ?>
+
+                <!-- List Drejtimet + lendet Details-->
+                <div class="modal fade drejtimetmodal<?php echo $value['idDepartmentet']; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="panel-group" id="accordion">
+                                <?php foreach($drejtimet as $valdrejtimet): ?>
+
+                                <?php if($valdrejtimet['idd'] == $value['idDepartmentet']): ?>
+
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <div class="col-sm-11">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#drej<?php echo $valdrejtimet['idDrejtimet']; ?>">
+                                                    <?php echo $valdrejtimet['Emri']; ?>
+
+                                                </a>
+                                            </div>
+
+                                            <!-- Create Lenden -->
+                                            <div class="text-right">
+                                                <a data-toggle="collapse" class="btn btn-success btn-sm"  data-parent="#accordion" href="#createlendet<?php echo $valdrejtimet['idDrejtimet']; ?>">
+                                                    <span class='fa fa-plus-square'></span>
+                                                </a>
+                                            </div>
+
+                                            <div class="panel-group" id="accordion">
+                                                <div class="panel panel-default">
+                                                    <div id="createlendet<?php echo $valdrejtimet['idDrejtimet']; ?>" class="panel-collapse collapse">
+                                                        <div class="panel-body">
+                                                            <div id="createlendetnotification"></div>
+                                                            <?php echo Form::open(array('url'=>'admin/departments/createlendet/'.$valdrejtimet['idDrejtimet'],'method'=>'POST','class'=>'form-horizontal','id'=>'createlendetprc'.$valdrejtimet['idDrejtimet'] )); ?>
+
+                                                            <div class="container-fluid">
+
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon"><?php echo Lang::get('general.name'); ?></div>
+                                                                        <input class="form-control" type="text" name="name" >
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon"><?php echo Lang::get('general.zgjedhore'); ?></div>
+                                                                        <?php echo Form::select('zgjedhore',$cbzgjedhore,current($cbzgjedhore),array('class'=>'form-control')); ?>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon"><?php echo Lang::get('general.ect'); ?></div>
+                                                                        <input class="form-control" type="text" name="ect">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon"><?php echo Lang::get('general.semester'); ?></div>
+
+                                                                        <?php echo Form::selectRange('semester',1,8,array(1),array('class'=>'form-control')); ?>
+
+
+                                                                    </div>
+                                                                </div>
+                                                                <input type="hidden" name="drejtimi" value="<?php echo $valdrejtimet['idDrejtimet']; ?>">
+
+                                                                <div id="createlendetnotification<?php echo $valdrejtimet['idDrejtimet']; ?>" ></div>
+                                                                <button type="submit" class="btn btn-primary" name="submit" value="submit" >Sub</button>
+                                                            </div>
+                                                            <?php echo Form::close(); ?>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </h4>
+                                        <script>
+
+                                                    $('#createlendetprc' + <?php echo $valdrejtimet['idDrejtimet']; ?>).submit(function(e) {
+                                            e.preventDefault();
+                                                    var dataString = $('#createlendetprc' + <?php echo $valdrejtimet['idDrejtimet']; ?>).serialize();
+                                                    $.ajax({
+                                                    type: "POST",
+                                                            url: "departments/createlendet/<?php echo $valdrejtimet['idDrejtimet']; ?>",
+                                                            data: dataString,
+                                                            error: function(xhr, ajaxOptions, thrownError) {
+                                                            alert(xhr.status + thrownError);
+                                                            },
+                                                            success: function(data) {
+                                                            console.log(data);
+                                                                    $('#createlendetnotification' + <?php echo $valdrejtimet['idDrejtimet']; ?>).empty().append(data);
+                                                            }},
+                                                            "json");
+                                            });</script>
+                                        <!-- End Create Lenden -->
+                                        <div class="modal fade createobl<?php echo $valdrejtimet['idDrejtimet']; ?>" tabindex="-1" role="dialog" 
+                                             <!-- List Drejtimet -->
+                                             <div class="text-right" style="margin-top:-20px;">  
+                                                <div class="modal fade createobl<?php echo $valdrejtimet['idDrejtimet']; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm">
+                                                        <div class="modal-content container-fluid" style="padding:20px;">
+
+                                                            <div class="form-group">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon"><?php echo Lang::get('general.name'); ?></div>
+                                                                    <input class="form-control" type="text" name="name" value="">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon"><?php echo Lang::get('general.zgjedhore'); ?></div>
+                                                                    <input class="form-control" type="text" name="zgjedhore" value="">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon"><?php echo Lang::get('general.ect'); ?></div>
+                                                                    <input class="form-control" type="text" name="ect" value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon"><?php echo Lang::get('general.semester'); ?></div>
+
+                                                                    <?php echo Form::selectRange('semester',1,8,array(1),array('class'=>'form-control')); ?>
+
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div id="editnotification"></div>
+                                                            <div>
+                                                                <button type="submit" class="btn btn-primary"><?php echo Lang::get('general.save'); ?></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                        <!-- End List Drejtimet -->
+                                        <div id="drej<?php echo $valdrejtimet['idDrejtimet']; ?>" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th><?php echo Lang::get('general.course'); ?> </th>
+                                                                <th><?php echo Lang::get('general.semester'); ?></th>
+                                                                <th><?php echo Lang::get('general.zgjedhore'); ?></th>  
+                                                                <th><?php echo Lang::get('general.ect'); ?></th>    
+                                                                <th></th>    
+                                                                <th></th>   
+                                                            </tr>
+                                                            <?php foreach($lendet as $lendetval): ?>
+                                                            <?php if($lendetval['Drejtimi'] == $valdrejtimet['idDrejtimet'] ): ?>
+                                                            <tr id="lendetlistid<?php echo $lendetval['idl']; ?>">
+                                                                <td><?php echo $lendetval['Emri']; ?></td>
+                                                                <td><?php echo $lendetval['Semestri']; ?></td>
+                                                                <td><?php echo $lendetval['Zgjedhore']; ?></td>   
+                                                                <td><?php echo $lendetval['ETC']; ?></td>
+                                                                <td><a href="#" data-toggle="modal" data-target=".editlendet<?php echo $lendetval['idl']; ?>" class="btn-sm btn-default active"> <span class="fa fa-pencil-square-o"></span></a></div>
+                                                                <td><a href="#" data-toggle="modal" data-target=".deletelendet<?php echo $lendetval['idl']; ?>" class="btn-sm btn-default active"> <span class="fa fa-trash-o"></span></a></div>
+                                                                    <?php echo Form::open(array('url'=>'editlendet'.$lendetval['idl'],'method'=>'POST','class'=>'form-horizontal','id'=>'editlendetprc'.$lendetval['idl'] )); ?>
+
+                                                                    <!-- Start Edit Lenden -->
+                                                                    <div class="modal fade editlendet<?php echo $lendetval['idl']; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-sm">
+                                                                            <div class="modal-content container-fluid" style="padding:20px;">
+
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group">
+                                                                                        <div class="input-group-addon"><?php echo Lang::get('general.name'); ?></div>
+                                                                                        <input class="form-control" type="text" name="name" value="<?php echo $lendetval['Emri']; ?>">
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group">
+                                                                                        <div class="input-group-addon"><?php echo Lang::get('general.zgjedhore'); ?></div>
+                                                                                        <input class="form-control" type="text" name="zgjedhore" value="<?php echo $lendetval['Zgjedhore']; ?>">
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group">
+                                                                                        <div class="input-group-addon"><?php echo Lang::get('general.ect'); ?></div>
+                                                                                        <input class="form-control" type="text" name="ect" value="<?php echo $lendetval['ETC']; ?>">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group">
+                                                                                        <div class="input-group-addon"><?php echo Lang::get('general.semester'); ?></div>
+
+                                                                                        <?php echo Form::selectRange('semester',1,8,array(1),array('class'=>'form-control')); ?>
+
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div id="editnotification<?php echo $lendetval['idl']; ?>"></div>
+                                                                                <div>
+                                                                                    <button type="submit" class="btn btn-primary"><?php echo Lang::get('general.save'); ?></button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <?php echo Form::close(); ?>
+
+                                                                    <script>
+
+                                                                                $('#editlendetprc' + <?php echo $lendetval['idl']; ?>).submit(function(e) {
+                                                                        e.preventDefault();
+                                                                                var dataString = $('#editlendetprc' + <?php echo $lendetval['idl']; ?>).serialize();
+                                                                                $.ajax({
+                                                                                type: "POST",
+                                                                                        url: "departments/editlendet/<?php echo $lendetval['idl']; ?>",
+                                                                                        data: dataString,
+                                                                                        error: function(xhr, ajaxOptions, thrownError) {
+                                                                                        alert(xhr.status + thrownError);
+                                                                                        },
+                                                                                        success: function(data) {
+                                                                                        console.log(data);
+                                                                                                $('#editnotification' + <?php echo $lendetval['idl']; ?>).empty().append(data);
+                                                                                        }},
+                                                                                        "json");
+                                                                        });</script>
+
+                                                                    <!-- End Edit Lenden -->
+
+                                                                    <!-- Start Delete Lenden -->
+                                                                    <?php echo Form::open(array('url'=>'','method'=>'POST','class'=>'form-horizontal','id'=>'deletelendetc'.$lendetval['idl'] )); ?>
+
+
+                                                                    <div class="modal fade deletelendet<?php echo $lendetval['idl']; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-sm">
+                                                                            <div class="modal-content container-fluid" style="padding:20px;">
+
+                                                                                <div class="form-group has-error">
+                                                                                    <div class="input-group">
+                                                                                        <div class="input-group-addon"><?php echo Lang::get('general.name'); ?></div>
+                                                                                        <input class="form-control" type="text" name="name" value="<?php echo $lendetval['Emri']; ?>" disabled>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group has-error">
+                                                                                    <div class="input-group">
+                                                                                        <div class="input-group-addon"><?php echo Lang::get('general.zgjedhore'); ?></div>
+                                                                                        <input class="form-control" type="text" name="zgjedhore" value="<?php echo $lendetval['Zgjedhore']; ?>" disabled>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group has-error">
+                                                                                    <div class="input-group">
+                                                                                        <div class="input-group-addon"><?php echo Lang::get('general.ect'); ?></div>
+                                                                                        <input class="form-control" type="text" name="ect" value="<?php echo $lendetval['ETC']; ?>" disabled>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- Notification -->
+                                                                                <div id="deletenotification<?php echo $lendetval['idl']; ?>"></div>
+                                                                                <div>
+                                                                                    <button type="submit" class="btn btn-primary"><?php echo Lang::get('general.delete'); ?></button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <?php echo Form::close(); ?>
+
+                                                                </td>
+                                                            </tr>   
+                                                        <script>
+
+                                                                    $('#deletelendetc' + <?php echo $lendetval['idl']; ?>).submit(function(e) {
+                                                            e.preventDefault();
+                                                                    var dataString = $('#deletelendetc' + <?php echo $lendetval['idl']; ?>).serialize();
+                                                                    $.ajax({
+                                                                    type: "POST",
+                                                                            url: "departments/deletelendet/<?php echo $lendetval['idl']; ?>",
+                                                                            data: dataString,
+                                                                            error: function(xhr, ajaxOptions, thrownError) {
+                                                                            alert(xhr.status + thrownError);
+                                                                            },
+                                                                            success: function(data) {
+                                                                            console.log(data);
+                                                                                    $('#deletenotification' + <?php echo $lendetval['idl']; ?>).empty().append(data);
+                                                                                    $('#lendetlistid' + <?php echo $lendetval['idl']; ?>).addClass('alert-danger');
+                                                                            }},
+                                                                            "json");
+                                                            });</script>
+
+                                                        <!-- End Delete Lenden -->
+                                                        <?php endif; ?>
+                                                        <?php endforeach; ?>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <?php endif; ?>
+
+                                    <?php endforeach; ?>
+                                    <a data-toggle="collapse" class="btn btn-info btn-block"  data-parent="#accordion" href="#addrejtimi<?php echo $value['idDepartmentet']; ?>">
+                                        <span class='fa fa-plus-square'></span>
+                                    </a>
+                                    <div class="panel-group" id="accordion">
+                                        <div class="panel panel-default ">
+                                            <div id="addrejtimi<?php echo $value['idDepartmentet']; ?>" class="panel-collapse collapse">
+                                                <?php echo Form::open(array('url'=>'','method'=>'POST','class'=>'form-horizontal','id'=>'createdrejtimet'.$value['idDepartmentet'] )); ?>
+
+                                                <div id="createdrejtiminotification<?php echo $value['idDepartmentet']; ?>"> </div>
+                                                <div class="col-lg-6">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">Emri Drejtimit</span>
+                                                        <input type="text" name='name' class="form-control">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default" type="submit"><?php echo Lang::get('general.register'); ?>!</button>
+                                                        </span>
+                                                    </div><!-- /input-group -->
+                                                </div><!-- /.col-lg-6 -->
+
+                                                <?php echo Form::close(); ?>
+
+                                                <script>
+
+                                                            $('#createdrejtimet' + <?php echo $value['idDepartmentet']; ?>).submit(function(e) {
+                                                    e.preventDefault();
+                                                            var dataString = $('#createdrejtimet' + <?php echo $value['idDepartmentet']; ?>).serialize();
+                                                            $.ajax({
+                                                            type: "POST",
+                                                                    url: "departments/createdrejtimet/<?php echo $value['idDepartmentet']; ?>",
+                                                                    data: dataString,
+                                                                    error: function(xhr, ajaxOptions, thrownError) {
+                                                                    alert(xhr.status + thrownError);
+                                                                    },
+                                                                    success: function(data) {
+                                                                    console.log(data);
+                                                                            $('#createdrejtiminotification' + <?php echo $value['idDepartmentet']; ?>).empty().append(data);
+                                                                    }},
+                                                                    "json");
+                                                    });</script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="errorssuc"></div>
+                    <script>
+                                $('#formd' + <?php echo $value['idDepartmentet']; ?>).submit(function(e) {
+                        e.preventDefault();
+                                var dataString = $('#formd' + <?php echo $value['idDepartmentet']; ?>).serialize();
+                                $.ajax({
+                                type: "POST",
+                                        url: "departments/destroy/<?php echo $value['idDepartmentet']; ?>",
+                                        data: dataString,
+                                        error: function(xhr, ajaxOptions, thrownError) {
+                                        alert(xhr.status + thrownError);
+                                        },
+                                        success: function(data) {
+                                        console.log(data);
+                                                location.reload(true);
+                                        }},
+                                        "json");
+                        });</script>
+                    <?php endforeach; ?>
+                    <!-- End List Departmentet -->
+                </div>
+            </div>
+        </div>  
+    </div>
+    <div id="errors"></div>
+    <script>
+                $(document).ready(function() {
+        $('#drejtimetlist').change(function(e) {
+        e.preventDefault();
+                var dataString = $('#drejtimetlist').serialize();
+                $.ajax({
+                type: "POST",
+                        url: "/admin/ajax/listprovimet",
+                        data: dataString,
+                        success: function(data) {
+                        $('.succesupd').modal('show');
+                                $('#listprovimet').empty().append(data);
+                        }
+                },
+                        "json");
+        });
+        });
+    </script>
+
+
+    <?php $__env->stopSection(); ?> 
+
+    <?php $__env->startSection('listDepartments'); ?> 
+    <!-- Small button group -->
+    <?php echo Form::open(array('url'=>'','method'=>'POST','class'=>'form-inline col-sm-3','id'=>'departmentList'.$value['idDepartmentet'] )); ?>
+
+
+    <div class="form-group">
+        <select class="form-control">
+            <option selected></option>
+            <?php foreach($departmentet as $value ): ?>
+            <option value='<?php echo $value['idDepartmentet']; ?>'><?php echo $value['Emri']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <!-- Button trigger modal -->
+    </div>
+
+    <?php echo Form::close(); ?>
+
+    
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDempartment">
+        <span class='fa fa-plus' ></span>
+    </button>
+    <?php echo $__env->yieldContent("addDepartment"); ?>
+    <?php $__env->stopSection(); ?>
+
+    <?php $__env->startSection('content'); ?> 
+    <br><br>
+    <div class="thumbnail row"><br>
+        <?php echo $__env->yieldContent('listDepartments'); ?>
+    </div>
+    <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

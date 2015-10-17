@@ -1,0 +1,665 @@
+
+<?php $__env->startSection('addStudent'); ?>
+<?php echo Form::open(array('action'=>'AdminStudentController@postRegister','method'=>'POST','class'=>'form-horizontal','id'=>'form1','role'=>'form','name'=>'form1')); ?>
+
+
+<div class="pager">
+    <div class="alert alert-info fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        <?php echo Lang::get('general.latestStudentRegistered'); ?> <?php echo $lastStudentRegistred; ?> 
+    </div>
+</div>    
+<div class='rows'>
+    <div class="panel panel-default well">
+        <div class="panel-heading">
+            <h3 class="panel-title"><?php echo Lang::get('general.personale'); ?></h3>
+        </div>
+        <div class="panel-body ">
+            <div class='col-md-4'>
+                <div class="form-group-lg">
+                    <div class="input-group">
+                        <label for='emri' class="input-group-addon"><?php echo Lang::get('general.name'); ?></label>
+                        <input id='emri' class="form-control"  type="text"  name="emri">
+                    </div>
+
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class="form-group-lg">
+                    <div class="input-group">
+                        <label for='mbiemri' class="input-group-addon"><?php echo Lang::get('general.surname'); ?></label>
+                        <input id='mbiemri' class="form-control" type="text" name="mbiemri">
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class="btn-group" data-toggle="buttons">
+
+                    <label class="btn btn-default">
+                        <input type="radio" name="gjinia" id="gjinia1" value="<?php echo Enum::femer; ?>"><?php echo Lang::get('general.female'); ?>
+
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gjinia" id="gjinia2" value="<?php echo Enum::mashkull; ?>"> <?php echo Lang::get('general.male'); ?>
+
+                    </label>
+                </div>
+            </div>
+            <br><br>
+            <div class='col-md-4'>           
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon"><?php echo Lang::get('general.dad_name'); ?></div>
+                        <input class="form-control" type="text" name="emri_prindit">
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon"><?php echo Lang::get('general.dad_surname'); ?></div>
+                        <input class="form-control" type="text" name="mbiemri_prindit">
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon"><?php echo Lang::get('general.birthplace'); ?></div>
+                        <input class="form-control" type="text" name="vendilindjes">
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class='col-md-4'>
+
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon"><?php echo Lang::get('general.birthdate'); ?></div>
+                        <input class="form-control" type="date" name="datalindjes" placeholder="<?php echo Lang::get('general.date_format'); ?>">
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon">ID Personale<span class="fa fa-credit-card"></spoan></div>
+                        <input class="form-control" type="text" name="idpersonal">
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+
+            </div>
+
+
+
+        </div> 
+
+
+        <div class="panel-heading">
+            <h3 class="panel-title"><?php echo Lang::get('general.info_adress'); ?></h3>
+        </div>
+        <div class="panel-body ">
+
+            <div class='col-md-4'>
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon "><span class="fa fa-mobile fa-lg"></span></div>
+                        <input class="form-control " type="text" name="phone" placeholder="<?php echo Lang::get("general.phone_format"); ?>">
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon"><?php echo Lang::get('general.email'); ?></div>
+                        <input class="form-control" type="email" name="email" placeholder="<?php echo Lang::get("general.email_format"); ?>">
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon"><?php echo Lang::get('general.state'); ?></div>
+                        <input class="form-control" type="text" name="shtetas">
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class='col-md-4'>
+
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon"><?php echo Lang::get('general.nationality'); ?></div>
+                        <input class="form-control" type="text" name="nacionaliteti">
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon"><?php echo Lang::get('general.adress'); ?></div>
+                        <input class="form-control" type="text" name="adress">
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon"><?php echo Lang::get('general.location'); ?></div>
+                        <input class="form-control" type="text" name="vendbanimi">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-heading">
+            <h3 class="panel-title"><?php echo Lang::get('general.education'); ?></h3>
+        </div>
+        <div class="panel-body ">
+
+            <div class='col-md-4'>
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon"><?php echo Lang::get('general.profile'); ?></div>
+
+                        <?php echo Form::select('drejtimet',$drejtimi,null,array('class'=>'form-control')); ?>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class="input-group ">
+                    <div class="input-group-addon"><?php echo Lang::get('general.status'); ?></div>
+
+                    <?php echo Form::select('status',$statusi,null,array('class'=>'form-control')); ?>
+
+
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class="btn-group" data-toggle="buttons">
+
+                    <label class="btn btn-default active">
+                        <input type="radio" name="level" id="gjinia2" value="<?php echo Enum::bachelor; ?>" checked="checked"> <?php echo Lang::get('general.bachelor'); ?>
+
+                    </label>
+                </div>
+            </div>
+            <br><br>
+            <div class='col-md-4'>
+                <div class="btn-group" data-toggle="buttons">
+
+                    <label class="btn btn-default">
+                        <input type="checkbox" name="transfer" id="transfer1" value="<?php echo Enum::transfer; ?>"><?php echo Lang::get('general.transfer'); ?>
+
+
+                    </label>
+
+
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class="form-group-lg ">
+                    <div class="input-group ">
+                        <div class="input-group-addon"><?php echo Lang::get('general.qualification'); ?></div>
+                        <textarea class="form-control" type="text" name="qualification"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+
+            </div>
+            <br><br>
+        </div>
+
+        <div class="panel-heading">
+            <h3 class="panel-title"><?php echo Lang::get('general.contracts'); ?></h3>
+        </div>
+        <div class="panel-body ">
+            <div class='col-md-4'>
+
+                <div class="form-group-lg">
+
+                    <div class="label label-default text-center col-md-12"><?php echo Lang::get('general.semester'); ?></div><br>
+                    <div class="btn-group" data-toggle="buttons" >
+
+                        <label class="btn btn-default" for="semester">
+                            <input type="radio" name="semester" id="semester" value="1">1
+                        </label>
+                        <label class="btn btn-default" for="semester">
+                            <input type="radio" name="semester" id="semester" value="2">2
+                        </label>
+                        <label class="btn btn-default" for="semester">
+                            <input type="radio" name="semester" id="semester" value="3">3
+                        </label>
+                        <label class="btn btn-default" for="semester">
+                            <input type="radio" name="semester" id="semester" value="4">4
+                        </label>
+                        <label class="btn btn-default" for="semester">
+                            <input type="radio" name="semester" id="semester" value="5">5
+                        </label>
+                        <label class="btn btn-default" for="semester">
+                            <input type="radio" name="semester" id="semester" value="6">6
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+
+                <div class="form-group-lg">
+                    <div class="label label-default text-center col-md-12">
+                        <div class="fa fa-eur ">
+
+                        </div>
+
+                    </div><br>
+
+                    <input class="form-control" type="text" name="shuma">
+
+                </div>
+            </div>
+            <div class='col-md-4'>
+
+                <div class="form-group-lg ">
+                    <div class="label label-default text-center col-md-12"><?php echo Lang::get('general.description_contrat'); ?></div><br>
+
+                    <textarea style="height:150px;" class="form-control" type="text" name="desccont"></textarea>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<?php echo Form::close(); ?>
+
+
+
+<div class="modal fade confirm bs-example-modal-lg" id="confirm_student" style="display: table;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" id="verifyClose" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"> <?php echo Lang::get('general.success'); ?></h4>
+            </div>
+            <div class="modal-body">
+                <div id="preview"></div>
+            </div>
+            <div class="modal-footer">
+                <input type="button" id="but2" class="btn btn-primary" name="send" value="<?php echo Lang::get('general.confirm'); ?>" data-dismiss="modal" />
+                <input type="button" class="btn btn-default" value="<?php echo Lang::get('general.close'); ?>" id="verifyClose">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+
+    $('#verifyClose').click(function () {
+        $('#confirm_student').modal('hide');
+    });
+    $('#but2').click(function () {
+        $('#form1').submit();
+    });
+    // Request data for verification
+    $('#confirm_student_data').click(function (e) {
+        e.preventDefault();
+        var dataString = $('form').serialize();
+        $.ajax({
+            type: "GET",
+            url: "<?php echo action('AdminStudentController@getRegisterVerification'); ?>",
+            data: dataString,
+            success: function (data) {
+                console.log(data);
+                $('#preview').empty().append(data);
+                $('.confirm').modal('show');
+            }},
+        "json");
+
+    });
+
+
+</script>
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('addStudentForm'); ?>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="registerStudent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><?php echo Lang::get('general.register_student'); ?></h4>
+            </div>
+            <div class="modal-body">
+                <?php echo $__env->yieldContent('addStudent'); ?> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Lang::get("general.close"); ?></button>
+                <button type="button" id="confirm_student_data" class="btn btn-primary" ><?php echo Lang::get("general.verify"); ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#laststudent').on('closed.bs.alert', function () {
+        $(".alert").alert();
+    });
+    //  $('#confirm_student_data').click(function(){
+    //alert("hello");
+    //     $('#confirm_student').modal('show');
+    // });
+
+
+
+    // Request data for verification
+    $('#confirm_student_data').click(function (e) {
+        e.preventDefault();
+        var dataString = $('form').serialize();
+        $.ajax({
+            type: "GET",
+            url: "<?php echo action('AdminStudentController@getRegisterVerification'); ?>",
+            data: dataString,
+            success: function (data) {
+                console.log(data);
+                $('#preview').empty().append(data);
+                $('.confirm').modal('show');
+            }},
+        "json");
+
+    });
+
+</script>
+<?php $__env->stopSection(); ?>
+
+
+
+<?php $__env->startSection('hidden'); ?>
+<?php echo $__env->yieldContent('addStudentForm'); ?>
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('search'); ?>
+<?php echo Form::open(array(null,'method'=>'GET','files' =>true, 'class'=>'navbar-form navbar-left','id'=>'form1search','role'=>'search','name'=>'form1search')); ?>
+
+
+<div class="form-group">
+    <div class="input-group">
+        <span class="input-group-addon" style="width:0;">
+            <input type="checkbox" name='admin' value='admin'>
+        </span>
+        <input id="search" type="text" class="form-control " autocomplete="off" placeholder="<?php echo Lang::get('general.search_person'); ?>" name="search">
+    </div>
+</div>
+<div id="listpeople"></div>
+<?php echo Form::close(); ?>
+
+<script>
+    $("#search").keyup(function () {
+        var dataString = $('#form1search').serialize();
+        $.ajax({
+            type: "POST",
+            url: "/smps/admin/search",
+            data: dataString,
+            error: function () {
+                alert('Something went go wrong');
+            },
+            success: function (data) {
+                console.log(data);
+                $('#listpeople').empty().append(data);
+
+            }},
+        "json");
+    });
+</script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('header'); ?>
+<head>
+    <title><?php echo $title; ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php echo HTML::style('style/css/bootstrap.min.css'); ?>
+
+    <?php echo HTML::style('style/css/timeline.css'); ?>
+
+    <?php echo HTML::style('style/css/sb-admin-2.css'); ?>
+
+    <?php echo HTML::style('style/fonts/awesome/css/font-awesome.min.css'); ?>
+
+    <?php echo HTML::style('style/css/bootstrapValidator.min.css'); ?>
+
+    <?php echo HTML::style('style/awesome/font-awesome.min.css'); ?>
+
+    <?php echo HTML::style('style/css/style.css'); ?>
+
+    <?php echo HTML::style('style/css/metisMenu.min.css'); ?>
+
+
+    <?php echo HTML::script('style/js/jquery-1.11.1.min.js'); ?>
+
+    <?php echo HTML::script('style/js/jquery.cycle.all.js'); ?>
+
+    <?php echo HTML::script('style/js/bootstrap.min.js'); ?>
+
+    <?php echo HTML::script('style/js/sb-admin-2.js'); ?>
+
+    <?php echo HTML::script('style/js/metisMenu.min.js'); ?>
+
+    <?php echo HTML::script('style/js/morris-data.js'); ?>
+
+    <?php echo HTML::script('style/js/flot-data.js'); ?>
+
+    <?php echo HTML::script('style/js/holder.js'); ?>
+
+</head>
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('sidebar'); ?>
+
+
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+                <!-- /input-group -->
+            </li>
+            <li class="<?php echo Request::path() == 'smps/admin/setting'
+                        || Request::path() == 'smps/admin/hsub'
+                        || Request::path() == 'smps/admin/exams'
+                        || Request::path() == 'smps/admin/departments'
+                        ? 'active' : '';; ?>">
+                <a href="#" ><i class="fa fa-bar-chart-o fa-fw"></i> <?php echo Lang::get('general.settings'); ?> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="<?php echo action('DepartmentsController@getIndex'); ?>"> <?php echo Lang::get('general.departments'); ?> </a>
+                    </li>
+                    <li>
+                        <a href="#">Sub menu 1</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-graduation-cap fa-lg"></i> <?php echo Lang::get('general.student'); ?> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Sub menu 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub menu 1</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-file-text-o fa-lg"></i> <?php echo Lang::get('general.exams'); ?> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Sub menu 1</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-eur fa-lg"></i> <?php echo Lang::get('general.fee'); ?> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Sub menu 1</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-book fa-lg"></i> <?php echo Lang::get('general.library'); ?> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Sub menu 1</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-user fa-lg"></i> <?php echo Lang::get('general.account'); ?> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Sub menu 1</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-group fa-lg"></i> <?php echo Lang::get('general.employe'); ?> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Sub menu 1</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-envelope-o fa-lg"></i> <?php echo Lang::get('general.about'); ?> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Sub menu 1</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+    <div class="well text-center">
+        <?php echo Lang::get('footer.author'); ?> <br>
+        <?php echo link_to('http://www.vpa-uni.com', Lang::get('footer.copyright'), $attributes = array(), $secure = null);; ?><br>
+        <?php echo link_to('http://www.objprog.com', Lang::get('footer.copyright1'), $attributes = array(), $secure = null);; ?><br>
+        <?php echo link_to('http://www.trebla-ks.com', Lang::get('footer.copyright2'), $attributes = array(), $secure = null);; ?>
+
+    </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('navbar'); ?>
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">SMPS VPA</a>
+    </div>
+    <!-- /.navbar-header -->
+
+    <ul class="nav navbar-top-links navbar-right">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                </li>
+                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                </li>
+            </ul>
+            <!-- /.dropdown-user -->
+        </li>
+        <!-- /.dropdown -->
+    </ul>
+    <!-- /.navbar-top-links -->
+
+    <?php echo $__env->yieldContent('sidebar'); ?>
+    <!-- /.navbar-static-side -->
+</nav>
+
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('container'); ?>
+<body>    
+
+    <div id="wrapper">
+        <?php echo $__env->yieldContent('navbar'); ?>
+
+        <div id="page-wrapper">
+            <?php echo $__env->yieldContent('content'); ?>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+
+</body>
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <?php echo $__env->yieldContent('header'); ?>
+    <?php echo $__env->yieldContent('hidden'); ?>
+    <?php echo $__env->yieldContent('container'); ?>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+<?php $__env->startSection('toolbox'); ?>
+<div class='row'>
+    <div class='col-md-8'>
+        <form class='form-inline' role="form">
+            <div class='form-group'>
+                <?php echo Form::select('sortaca',array('','2014/2015'=>"2014/2015"),null,array('class'=>'form-control','id'=>'sortaca')); ?>
+
+            </div> 
+        </form>
+    </div>    
+</div>    
+<script>
+    $('#sortaca').change(function() {
+
+        var dataString = $('#sortaca').serialize();
+        $.ajax({
+            type: "POST",
+            url: "<?php echo action('AdminController@postSortaca'); ?>",
+            data: dataString,
+            error: function() {
+                alert('Something went go wrong');
+            },
+            success: function(data) {
+                console.log(data);
+                $('#sorting').empty().append(data);
+
+            }},
+        "json");
+    });
+</script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('list'); ?>
+<div id='sorting'>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>#</th>
+                <th>Studenti</th>
+                <th>Semestri</th>
+                <th>Drejtimi</th>
+            </tr>
+        </table>
+    </div>
+    <div class="text-center" style="color:#cccccc;">
+        <span class="fa fa-cloud fa-5x"></span>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+
+
+<?php $__env->startSection('content'); ?>
+<div class='container'>
+    <?php echo $__env->yieldContent('toolbox'); ?><br><br>
+    <?php echo $__env->yieldContent('list'); ?>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

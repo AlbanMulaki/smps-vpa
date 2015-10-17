@@ -1,0 +1,89 @@
+<?php $__env->startSection('content'); ?>
+
+<div class='right'>
+    <strong><?php echo Lang::get('printable.date'); ?>: <?php echo date('d-m-Y'); ?> - Ferizaj</strong> 
+</div>
+<p>
+<h3><?php echo Lang::get('printable.title_contract_studies'); ?></h3>
+<div>
+    <?php echo Lang::get('printable.con_reg_p2'); ?>:
+</div>
+<?php echo Lang::get('printable.con_reg_p1'); ?>
+
+</p>
+<table class='list'>
+    <tbody>
+        <tr>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo Lang::get('general.name'); ?></td>
+            <td style='border: 1px solid #000; padding-left: 5px;'><?php echo $profile['emri']; ?></td>
+            <td style='border: 1px solid #000; padding-left: 5px;'><?php echo Lang::get('general.surname'); ?></td>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo $profile['mbiemri']; ?></td>
+        </tr>
+        <tr>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo Lang::get('general.birthdate'); ?></td>
+            <td style='border: 1px solid #000; padding-left: 5px;'><?php echo $profile['datalindjes']; ?></td>
+            <td style='border: 1px solid #000; padding-left: 5px;'><?php echo Lang::get('general.birthplace'); ?></td>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo $profile['vendlindja']; ?></td>
+        </tr>
+        <tr>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo Lang::get('general.adress'); ?></td>
+            <td style='border: 1px solid #000; padding-left: 5px;'><?php echo $profile['adressa']; ?></td>
+            <td style='border: 1px solid #000; padding-left: 5px;'><?php echo Lang::get('general.phone'); ?></td>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo $profile['telefoni']; ?></td>
+        </tr>
+        <tr>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo Lang::get('general.status_studies'); ?></td>
+            <td style='border: 1px solid #000; padding-left: 5px;'><?php echo Enum::convertstatusi($profile['statusi']); ?></td>
+            <td style='border: 1px solid #000; padding-left: 5px;'><?php echo Lang::get('general.email'); ?></td>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo $profile['email']; ?></td>
+        </tr>
+        <tr>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo Lang::get('general.qualification'); ?></td>
+            <td colspan='3' style='border: 1px solid #000; padding-left: 5px;'><?php echo $profile['kualifikimi']; ?></td>
+
+        </tr>
+        <tr>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo Lang::get('general.faculty'); ?></td>
+            <td style='border: 1px solid #000; padding-left: 5px;'><?php echo Enum::convertdrejtimi($profile['drejtimi']); ?></td>
+            <td style='border: 1px solid #000; padding-left: 5px;'><?php echo Lang::get('general.subject'); ?></td>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo Enum::convertdrejtimi($profile['drejtimi']); ?></td>
+        </tr>
+        <tr>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo Lang::get('general.name_dad'); ?></td>
+            <td style='border: 1px solid #000; padding-left: 5px;'><?php echo $profile['emri_prindit']; ?></td>
+            <td style='border: 1px solid #000; padding-left: 5px;'><?php echo Lang::get('general.surname_dad'); ?></td>
+            <td style='border: 1px solid #000; padding-left:5px;'><?php echo $profile['mbiemri_prindit']; ?></td>
+        </tr>
+    </tbody>
+</table>
+<br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 1</strong></center><?php echo Lang::get('printable.l1'); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 2</strong></center><?php echo Lang::get('printable.l2'); ?><br><br>
+<center><strong><br><br><?php echo Lang::get('printable.law'); ?> 3</strong></center><?php echo Lang::get('printable.l3'); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 4</strong></center><?php echo Lang::get('printable.l4',array('shuma'=>$profile['kontrata_pageses'])); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 5</strong></center><?php echo Lang::get('printable.l5'); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 6</strong></center><?php echo Lang::get('printable.l6'); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 7</strong></center><?php echo Lang::get('printable.l7'); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 8</strong></center><?php echo Lang::get('printable.l8'); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 9</strong></center><?php echo Lang::get('printable.l9'); ?><br><br>
+<center><strong><br><br><br><br><?php echo Lang::get('printable.law'); ?> 10</strong></center><?php echo Lang::get('printable.l10'); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 11</strong></center><?php echo Lang::get('printable.l11'); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 12</strong></center><?php echo Lang::get('printable.l12'); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 13</strong></center><?php echo Lang::get('printable.l13'); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 14</strong></center><?php echo Lang::get('printable.l14'); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 15</strong></center><?php echo Lang::get('printable.l15'); ?><br><br>
+<center><strong><?php echo Lang::get('printable.law'); ?> 16</strong></center><?php echo Lang::get('printable.l16'); ?><br><br>
+<table style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="width:50%;"><?php echo Lang::get('general.for_vpa'); ?></td>
+            <td style="width:50%;"><div  class="right"><?php echo Lang::get('general.student'); ?></div></td>
+        </tr>
+        <tr>
+            <td style="width:50%;">____________________________</td>
+            <td style="width:50%;"><div  class="right">____________________________</div></td>
+        </tr>
+    </tbody>
+</table>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('printa4v', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

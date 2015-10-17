@@ -1,0 +1,22 @@
+<?php $__env->startSection('content'); ?>
+<center>
+    <h2>    Lista studenteve te vitit akademik </h2>
+</center>
+<table style='width:100%;'>
+    <tr>
+        <th>#</th>
+        <th>Studenti</th>
+        <th>Semestri</th>
+        <th>Drejtimi</th>
+    </tr>
+    <?php foreach($student as $val): ?>
+    <tr>
+        <td><?php echo $val['uid']; ?> </td>
+        <td><?php echo $val['emri']; ?> <?php echo $val['mbiemri']; ?></td>
+        <td><?php echo $val['semestri']; ?> </td>
+        <td><?php echo $val['Emri']; ?> </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('printa4v', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

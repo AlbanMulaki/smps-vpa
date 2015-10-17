@@ -1,0 +1,152 @@
+<?php $__env->startSection('content'); ?>
+<div class=' col-md-5' >
+    <div class="panel panel-default" id="vijushmeriaView">
+        <div class="panel-heading">
+            <h3 class="panel-title">Regjistrimi i vijushmeris</h3>
+        </div>
+        <div class="panel-body">
+            <?php echo Session::get('notification'); ?>
+
+            <?php echo Form::open(array('url'=>action('AdminStudentController@getVijushmeria'),'method'=>'POST','class'=>'form-vertical','id'=>'search_sort')); ?>
+
+            <?php echo Form::model('test'); ?>
+
+            <div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><?php echo Lang::get('general.course'); ?></div>
+                        <?php echo Form::select('drejtimi',$drejtimet,current($drejtimet),array('class'=>'form-control','id'=>'drejtimi')); ?>
+
+
+                        <div id='crsajx'> <?php echo Form::select('crs',array(''),null,array('class'=>'form-control','id'=>'crs','disabled')); ?>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6">
+                    <?php for($i=1;$i<=20;$i++): ?>
+
+                    <div class="form-group" >
+
+                        <div class="input-group" id="listStudentnum<?php echo $i; ?>">
+
+                            <div class="input-group-addon"><?php echo $i; ?></div>
+                            <?php echo Form::text('searchstudent[]',"",array('autocomplete'=>"off",'id'=>'searchStudent'.$i,'class'=>'form-control','placeholder'=>Lang::get('general.search_student'))); ?>
+
+
+                            <script>
+
+                                $('#searchStudent<?php echo $i; ?>').keyup(function () {
+                                var datastr = {searchStudent: $('#searchStudent<?php echo $i; ?>').val(), id:<?php echo $i; ?>};
+                                        $.ajax({
+                                        type: "POST",
+                                                url: "<?php echo action('AdminStudentController@postSearchStudentVijushmeria'); ?>",
+                                                data: datastr,
+                                                error: function () {
+                                                alert('Report to developers')
+                                                },
+                                                success: function (datastr) {
+                                                console.log(datastr);
+                                                $('#liststudent<?php echo $i; ?>').empty().append(datastr)
+                                                }
+                                        });
+                                });</script>
+                        </div>
+                    </div>
+                    <div id="liststudent<?php echo $i; ?>"></div>
+                    <?php endfor; ?>
+                </div>
+                <div class="col-sm-6">
+
+                    <?php for($i=21;$i<40;$i++): ?>
+
+                    <div class="form-group" >
+
+                        <div class="input-group">
+
+                            <div class="input-group-addon"><?php echo $i; ?></div>
+                            <?php echo Form::text('searchstudent[]',"",array('autocomplete'=>"off",'id'=>'searchStudent'.$i,'class'=>'form-control','placeholder'=>Lang::get('general.search_student'))); ?>
+
+                            <script>
+
+                                        $('#searchStudent<?php echo $i; ?>').keyup(function () {
+                                var datastr = {searchStudent: $('#searchStudent<?php echo $i; ?>').val()};
+                                        $.ajax({
+                                        type: "POST",
+                                                url: "<?php echo action('AdminStudentController@postSearchStudentVijushmeria'); ?>",
+                                                data: datastr,
+                                                error: function () {
+                                                alert('Report to developers')
+                                                },
+                                                success: function (datastr) {
+                                                console.log(datastr);
+                                                        $('#liststudent<?php echo $i; ?>').empty().append(datastr)
+                                                }
+                                        });
+                                });</script>
+                        </div>
+                    </div>
+                    <div id="liststudent<?php echo $i; ?>"></div>
+                    <?php endfor; ?>
+
+
+                </div>
+                <div class=''>
+                    <div class='form-group'>
+                        <button type="submit" class="btn btn-primary"><?php echo Lang::get('general.register'); ?></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<?php echo Form::close();; ?>
+
+<script>
+            $(document).on('change', '#drejtimi', function () {
+    var datastring = $('#drejtimi').serialize();
+            $.ajax({
+            type: "POST",
+                    url: "<?php echo action('AdminMiscController@postLendet'); ?>",
+                    data: datastring,
+                    success: function (data) {
+                    console.log(data);
+                            $('#crsajx').empty().append(data);
+                    }
+            },
+                    "json");
+    });
+            var last = $('#idlast').html();
+            $('#addstudent').click(function () {
+    var master = $('#studenti').clone();
+            $('#studentmulti').append('<div class=\"form-group\">', master, '</div>');
+            $('#idlast').empty();
+            last = Number(last + 1);
+            console.log(last);
+            $('#idlast').append(last);
+    });
+            $('#removenota').click(function () {
+    $('#addnotat-here div:last-child').remove();
+    });
+            $('#drejtimi').change(function () {
+    var urlstr = '<?php echo action('NotimetController@postLendet'); ?>';
+            $.ajax({
+            type: "POST",
+                    url: urlstr,
+                    data: ({drejtimi: $('#drejtimi').val()}),
+                    error: function () {
+                    alert('Something went go wrong');
+                    },
+                    success: function (data) {
+                    console.log(data);
+                            $('#lendet').empty().append(data);
+                    }},
+                    "json");
+    });
+</script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
