@@ -38,7 +38,8 @@
                 <div class="form-group">
                     <label for="emri_bankes" class="col-sm-3 control-label">{{ Lang::get('general.bank_name') }}</label>
                     <div class="col-sm-9">
-                        <input name="emri_bankes" class="form-control" id="emri_bankes" placeholder="{{ Lang::get('general.bank_name') }}" type="text">
+                        {{ Form::select('emri_bankes',Enum::getTypeBank(),current(Enum::getTypeBank()),array('class'=>'form-control')) }}
+                       
                     </div>
                 </div>
                 <div class="form-group">
@@ -108,9 +109,19 @@
 @stop
 
 
+
+@section('title')
+<section class="content-header">
+    <h1>
+        {{ Lang::get('general.fee') }}<small>{{ Lang::get('general.fee') }}</small>
+    </h1>
+</section>
+@stop
+
 @section('content')
-<h2 class='text-capitalize '>{{ Lang::get('general.fee') }}</h2>
-<hr>
+@yield('title')
+
+<section class='content'>
 @yield('notification')
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fee">
     {{ Lang::get('general.register_fee') }}
@@ -120,5 +131,5 @@
 @yield('register_fee')
 <br>
 @yield('list_fee')
-
+</section>
 @stop

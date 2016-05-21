@@ -68,12 +68,12 @@
     <div class='col-md-4'>
         <div class="thumbnail">
             <div class='' style='border-bottom:#cc2200 2px solid;'>
-                <h6> {{ $latest_post[$i]['emri'] }}</h6>
+                <h6> {{ $latest_post[$i]['title_'.Session::get('lang')] }}</h6>
             </div>
             <img data-src="holder.js/300x300" alt="..." src='http://www.vpa-uni.com/img{{ $latest_post[$i]['img'] }}'>
             <div class="caption">
-                <h4>{{ $latest_post[$i]['titulli'] }}</h4>
-                <p>{{ substr($latest_post[$i]['msg'], 0, 100) }}</p>
+                <h4>{{ $latest_post[$i]['title_'.Session::get('lang')] }}</h4>
+                <p>{{ substr($latest_post[$i]['description_'.Session::get('lang')], 0, 100) }}</p>
                 <p><a href="{{ action('WebsiteController@getPost').'/'.$latest_post[$i]['id'] }}" class="btn btn-primary" role="button">Lexo</a> </p>
             </div>
         </div>
@@ -115,8 +115,8 @@
 
         @for($i=0;$i < count($latest_post);$i++)
         <div class="well ">
-            <h4>{{ $latest_post[$i]['titulli'] }}</h4>
-            <span class="h6">{{ substr( str_replace("<h3>"," ",str_replace('</h3>',"", $latest_post[$i]['msg'])), 0, 250)}}<br>
+            <h4>{{ $latest_post[$i]['title_'.Session::get('lang')] }}</h4>
+            <span class="h6">{{ substr( str_replace("<h3>"," ",str_replace('</h3>',"", $latest_post[$i]['description_'.Session::get('lang')])), 0, 250)}}<br>
                 <a href="{{ action('WebsiteController@getPost').'/'.$latest_post[$i]['id'] }}" class="btn btn-sm btn-warning" role="button">Lexo</a> 
             </span>
         </div>

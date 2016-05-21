@@ -18,6 +18,14 @@
 <!-- End Regjistrimi Departmentit -->
 @stop
 
+@section('title')
+<section class="content-header">
+    <h1>
+        {{ Lang::get('general.staff_list') }}<small>{{ Lang::get('general.staff_list') }}</small>
+    </h1>
+</section>
+@stop
+
 
 
 @section('listStaff')
@@ -60,8 +68,10 @@
 @stop
 
 @section('content')
-<h2 class='text-capitalize '>{{ Lang::get('general.staff_list') }}</h2>
-<hr>
+@yield('title')
+
+<section class='content'>
 @yield('notification')
 @yield('listStaff')
+</section>
 @stop

@@ -19,28 +19,34 @@
 @stop
 @section('addDepartment')
 {{ Form::open(array('url'=>action('DepartmentsController@postRegisterDepartment'),'method'=>'POST')) }}
+<div class="box box-success">
+    
+    
+    
 
-<!-- Modal -->
-<div class="modal fade" id="addDempartment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">{{ Lang::get('general.register_department') }}</h4>
-            </div>         
-            <div class="modal-body">
-                <div class="input-group input-group">
-                    <span class="input-group-addon" id="sizing-addon1">{{ Lang::get('general.name') }}</span>
-                    {{ Form::text('departmenti',null,array('class'=>'form-control')) }}
+        <!-- Modal -->
+        <div class="modal fade" id="addDempartment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">{{ Lang::get('general.register_department') }}</h4>
+                    </div>         
+                    <div class="modal-body">
+                        <div class="input-group input-group">
+                            <span class="input-group-addon" id="sizing-addon1">{{ Lang::get('general.name') }}</span>
+                            {{ Form::text('departmenti',null,array('class'=>'form-control')) }}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ Lang::get('general.close') }}</button>
+                        <button type="submit" name="submit" class="btn btn-primary">{{ Lang::get('general.save') }}</button>
+                    </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{ Lang::get('general.close') }}</button>
-                <button type="submit" name="submit" class="btn btn-primary">{{ Lang::get('general.save') }}</button>
-            </div>
         </div>
-    </div>
-</div>
+        </div>
+       
 {{ Form::close() }}
 @stop 
 
@@ -58,37 +64,32 @@
 @section('listDepartments') 
 <!-- Small button group -->
 {{ Form::open(array('url'=>'','method'=>'POST','class'=>'form-inline col-lg-5')) }}
-<div class="form-group">
-    <div class="input-group"> 
-        <span class="input-group-addon" id="basic-addon1">{{ Lang::get('general.departments') }}</span>
-        <select class="form-control" id='comboDepartmentet'>
-            <option >{{ Lang::get('general.choose_departments') }}</option>
-            @foreach($departmentet as $value )
-            @if(isset($selectedDepId) && $selectedDepId == $value['idDepartmentet'])
-            <option value='{{ $value['idDepartmentet'] }}' selected>{{ $value['Emri'] }}</option>
-            @else 
-            <option value='{{ $value['idDepartmentet'] }}'>{{ $value['Emri'] }}</option>
-            @endif
-            @endforeach
-            <option value="-1" class="alert-success"  data-toggle="modal" data-target="#addDempartment">{{ Lang::get('general.add_new_department') }}</option>
-        </select>
-        <!-- Button trigger modal -->
+<div class="box box-success">
+    
+    <div class="box-body">
 
+        <div class="form-group">
+            <div class="input-group"> 
+                <span class="input-group-addon" id="basic-addon1">{{ Lang::get('general.departments') }}</span>
+                <select class="form-control" id='comboDepartmentet'>
+                    <option >{{ Lang::get('general.choose_departments') }}</option>
+                    @foreach($departmentet as $value )
+                    @if(isset($selectedDepId) && $selectedDepId == $value['idDepartmentet'])
+                    <option value='{{ $value['idDepartmentet'] }}' selected>{{ $value['Emri'] }}</option>
+                    @else 
+                    <option value='{{ $value['idDepartmentet'] }}'>{{ $value['Emri'] }}</option>
+                    @endif
+                    @endforeach
+                    <option value="-1" class="alert-success"  data-toggle="modal" data-target="#addDempartment">{{ Lang::get('general.add_new_department') }}</option>
+                </select>
+                <!-- Button trigger modal -->
+
+            </div>
+        </div>
     </div>
-</div>
+</div>        
 {{  Form::close() }}
 
-<script>
-    $('#comboDepartmentet').change(function () {
-
-        var department = $("#comboDepartmentet").val();
-        if (department >= 1) {
-
-            window.location.href = "{{ action('DepartmentsController@getDep') }}/" + department;
-
-        }
-    });
-</script>
 
 @yield("addDepartment")
 
@@ -402,10 +403,32 @@
 @endif
 @stop
 
+@section('title')
+<section class="content-header">
+    <h1>
+        {{ Lang::get('general.departments') }}<small>{{ Lang::get('general.departments') }}</small>
+    </h1>
+</section>
+@stop
+
 @section('content') 
-<h2 class='text-capitalize '>{{ Lang::get('general.departments') }}</h2>
-<hr>
+@yield('title')
+
+<section class="content">
 @yield('notification')
 @yield('listDepartments')
+</section>
+@stop
+
+
+@section('scripts')
+<script type='text/javascript'>
+    $('#comboDepartmentet').change(function () {
+        var department = $("#comboDepartmentet").val();
+        if (department >= 1) {
+            window.location.href = "{{ action('DepartmentsController@getDep') }}/" + department;
+        }
+    });
+</script>
 
 @stop

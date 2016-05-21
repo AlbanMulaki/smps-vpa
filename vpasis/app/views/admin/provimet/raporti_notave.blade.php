@@ -24,18 +24,14 @@
 
 @stop
 
-@section('register_grade')
-
-
-{{ Form::open(array('url'=>action('ProvimetController@postRegisterNotat'),'method'=>'POST')) }}
-{{ Form::close() }}
-
-@stop
 
 
 @section('report_grade')
 {{ Form::open(array('url'=>action('ProvimetController@getRaportiNotave'),'method'=>'GET')) }}
 
+<div class="box box-success">
+    
+    <div class="box-body">
 <div class="row">
     <div class='col-lg-2'>
         <div class="form-group">
@@ -81,6 +77,9 @@
         </div>
     </div>
 </div>
+</div>
+</div>
+
 {{ Form::close() }}
 <table class='table table-responsive table-bordered'>
     <thead>
@@ -105,7 +104,7 @@
             @if($value['locked'] == Enum::nolocked)
             <td>
                 <div class="btn-group">
-                    <a href='#' class="btn btn-sm btn-success">{{ Lang::get('general.register_grade')}}</a>
+                    <a href='{{ action('ProvimetController@getRegisterNotat',array($value['idraportit'])) }}' class="btn btn-sm btn-success">{{ Lang::get('general.register_grade')}}</a>
                     <button type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
@@ -141,7 +140,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <table class='table table-responsive table-bordered'>
+                                <table class='table table-bordered'>
                                     <thead>
                                         <tr>
                                             <th>{{ Lang::get('general.student') }}</th>
@@ -189,10 +188,24 @@
     </tbody>
 </table>
 @stop
+@section('title')
+<section class="content-header">
+    <h1>
+        {{ Lang::get('general.report_grade') }}<small>{{ Lang::get('general.report_grade') }}</small>
+    </h1>
+</section>
+@stop
+
+
 
 @section('content')
-<h2 class='text-capitalize '>{{ Lang::get('general.report_grade') }}</h2>
+@yield('title')
+<section class="content">
+
+@yield('content')
+
 <hr>
 @yield('notification')
 @yield('report_grade')
+</section>
 @stop

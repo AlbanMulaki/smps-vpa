@@ -189,10 +189,19 @@
 {{ Form::close() }}
 @stop
 
-@section('content')
+@section('title')
+<section class="content-header">
+    <h1>
+        {{ Lang::get('general.add_employe') }}<small>{{ Lang::get('general.add_employe') }}</small>
+    </h1>
+    <br>
 
-<h2 class='text-capitalize '>{{ Lang::get('general.add_employe') }}</h2>
-<hr>
+</section>
+@stop
+@section('content')
+@yield('title')
+
+<section class="content">
 @yield('notification')
 <div class="panel panel-default">
     <div class="panel-heading">{{ Lang::get('general.add_employe') }}</div>
@@ -200,4 +209,5 @@
         @yield('registerForm')
     </div>
 </div>
+</section>
 @stop

@@ -1,0 +1,234 @@
+<?php $__env->startSection('notification'); ?>
+
+<!-- Regjistrimi Departmentit -->
+<?php if(null !== Session::get('message') && Session::get('message') == Enum::successful): ?>
+<div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <?php echo Session::get('reason'); ?>
+
+</div>
+<?php elseif(Session::get('message') == Enum::failed): ?>
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <?php echo Lang::get('warn.error_undefined'); ?>
+
+</div>
+
+<?php endif; ?>
+<!-- End Regjistrimi Departmentit -->
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('profile'); ?>
+<br><br>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading"><?php echo Lang::get('general.student_details'); ?></div>
+        <div class="panel-body">
+            <div class='col-lg-3'>
+                <div class='img-thumbnail '>
+                    <img src="/smpsfl/doc/avatar/<?php echo $profile['avatar']; ?>" class="img img-rounded  img-responsive">
+                </div>
+            </div>
+            <div class='col-lg-6'>
+                <br>
+                <strong class='text-uppercase fa-lg' ><?php echo $profile['emri']." ( ".$profile['emri_prindit']." ".$profile['mbiemri_prindit']." ) " .$profile['mbiemri']; ?></strong>
+
+                <br>
+                <strong><?php echo Lang::get('general.uid'); ?>:</strong> <?php echo $profile['uid']; ?> 
+                <br><b><?php echo Lang::get('general.birthdate'); ?>:</b><?php echo $profile['datalindjes']; ?>
+
+                <br><b><?php echo Lang::get('general.subject'); ?>:</b> <?php echo Enum::convertdrejtimi($profile['drejtimi']); ?>
+
+                <br><b><?php echo Lang::get('general.semester'); ?>:</b> <?php echo $profile['semestri']; ?>
+
+            </div>
+            <div class="col-lg-3">
+                <ul class="list-group">
+                    <li class="list-group-item"> <strong><?php echo Lang::get('general.contract_fee'); ?>: </strong><span class="label label-info" ><?php echo $profile['kontrata_pageses']; ?> <span class="fa fa-euro"></span> </span> </li>
+                    <li class="list-group-item"><strong><?php echo Lang::get('general.installments'); ?>: </strong> <?php echo $profile['keste']; ?></li>
+                    <li class="list-group-item "><strong><?php echo Lang::get('general.installments_month'); ?>: </strong> <span class="label label-info" ><?php echo $profile['kontrata_pageses']/$profile['keste']; ?> <span class="fa fa-euro"></span></span>  </li>
+                </ul>
+                <a class="btn btn-info" href="/smpsfl/doc/kontrata/student/<?php echo $profile['kontrata_dir']; ?>"><span class="fa fa-print fa-lg"></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6">
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-heading"><?php echo Lang::get('general.student_details'); ?></div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item"> <strong><?php echo Lang::get('general.location'); ?>: </strong><?php echo $profile['vendbanimi']; ?> - <?php echo $profile['adressa']; ?></li>
+                <li class="list-group-item"><strong><?php echo Lang::get('general.birthplace'); ?>: </strong> <?php echo $profile['vendlindja']; ?></li>
+                <li class="list-group-item"><strong><?php echo Lang::get('general.gender'); ?>: </strong> <?php echo Enum::convertGjinia($profile['gjinia']); ?></li>
+                <li class="list-group-item"><strong><?php echo Lang::get('general.phone'); ?>: </strong> <?php echo $profile['telefoni']; ?></li>
+                <li class="list-group-item"><strong><?php echo Lang::get('general.email'); ?>: </strong> <?php echo $profile['email']; ?></li>
+                <li class="list-group-item"><strong><?php echo Lang::get('general.idpersonal'); ?>: </strong> <?php echo $profile['nrpersonal']; ?></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6">
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-heading"><?php echo Lang::get('general.education_details'); ?></div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item"> <strong><?php echo Lang::get('general.subject'); ?>: </strong><?php echo Enum::convertdrejtimi($profile['drejtimi']); ?> </li>
+                <li class="list-group-item"><strong><?php echo Lang::get('general.level'); ?>: </strong> <?php echo Enum::convertLevel($profile['niveli']); ?></li>
+                <li class="list-group-item"><strong><?php echo Lang::get('general.status'); ?>: </strong> <?php echo Enum::convertStatusi($profile['statusi']); ?></li>
+                <li class="list-group-item"><strong><?php echo Lang::get('general.academic_year'); ?>: </strong> <?php echo $profile['viti_aka']; ?></li>
+                <li class="list-group-item"><strong><?php echo Lang::get('general.transfer'); ?>: </strong> <?php echo Enum::convertTransfer($profile['transfer']); ?></li>
+                <li class="list-group-item"><strong><?php echo Lang::get('general.qualification'); ?>: </strong> <?php echo $profile['kualifikimi']; ?></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('vijushmeria'); ?>
+<br>
+
+<div class="panel panel-default">
+    <div class="panel-heading"><?php echo Lang::get('general.attendance'); ?></div>
+    <div class="panel-body">
+        <table class='table table-responsive table-bordered'>
+            <tr>
+                <th><?php echo Lang::get("general.course"); ?></th>
+                <th><?php echo Lang::get("general.professor"); ?></th>
+                <th><?php echo Lang::get("general.num_hour"); ?></th>
+            </tr>
+            <?php foreach($vijushmeria as $value): ?>
+            <tr>
+                <td><?php echo $value['lenda']; ?></td>
+                <td><?php echo $value['prof']; ?></td>
+                <td><?php echo $value['numhour']; ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+
+    </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('pagesat'); ?>
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+        <?php echo Lang::get('general.list_fee'); ?>
+
+
+    </div>
+    <div class="panel-body">
+        <div class="col-lg-offset-11 col-lg-1">
+            <a class="btn btn-info" href="<?php echo action('StudentController@getPrintListPagesat',array($profile['uid'])); ?>">
+                <span class="fa fa-print fa-lg"></span>
+            </a>
+        </div>
+        <br>
+        <br>
+        <table class='table table-responsive table-bordered'>
+            <tr>
+                <th>#</th>
+                <th><?php echo Lang::get('general.bank_name'); ?></th>
+                <th><?php echo Lang::get('general.description_fee'); ?></th>
+                <th><?php echo Lang::get('general.feetype'); ?></th>
+                <th><?php echo Lang::get('general.sum'); ?></th>
+                <th><?php echo Lang::get('general.registred');$numFee=0; ?></th>
+            </tr>
+
+            <?php foreach($pagesat as $value): ?>
+            <tr>
+                <td><?php echo ++$numFee; ?></td>
+                <td><?php echo $value['emri_bankes']; ?></td>
+                <td><?php echo $value['pershkrimi']; ?></td>
+                <td><?php echo Enum::convertLlojetPagesave($value['tipi']); ?></td>
+                <td><span class="label label-info"><?php echo $value['shuma'];$shumaPaguar = $shumaPaguar + $value['shuma']; ?> <span class="fa fa-euro"></span> </span></td>
+                <td><?php echo $value['created_at']; ?></td>
+            </tr>
+            <?php endforeach; ?>
+            <tr>
+                <td colspan="4" class="text-right bold"><?php echo Lang::get('general.total_sum'); ?></td>
+                <td><span class="label label-primary"><?php echo $shumaPaguar; ?> <span class="text-center fa fa-lg fa-euro"></span> </span></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('notimet'); ?>
+
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+        <?php echo Lang::get('general.exams'); ?>
+
+
+    </div>
+    <div class="panel-body">
+
+        <table class='table table-responsive table-bordered'>
+            <tr>
+                <th>#</th>
+                <th><?php echo Lang::get('general.course'); ?></th>
+                <th><?php echo Lang::get('general.grade'); ?></th>
+                <th><?php echo Lang::get('general.lecturer'); ?></th>
+                <th><?php echo Lang::get('general.date'); ?></th>
+                <?php if($settings['provim_active'] == Enum::yes): ?>
+                <th><?php echo Lang::get('general.refuse'); ?></th>
+                <th><?php echo Lang::get('general.apply'); ?></th>
+                <?php endif; ?>
+                <th><?php echo Lang::get('general.attendance'); ?></th>
+            </tr>
+            <?php foreach($notimet as $value): ?>
+            <tr>
+                <td> </td>
+                <td><?php echo $value['lenda']; ?></td>
+                <td><?php echo $value['nota']; ?></td>
+                <td><?php echo $value['prof']; ?></td>
+                <td><?php echo $value['data']; ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php $__env->startSection('content'); ?>
+
+
+<h2 class='text-capitalize '><?php echo $profile['emri']." ".$profile['mbiemri']; ?></h2>
+<hr>
+<?php echo $__env->yieldContent('notification'); ?>
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><?php echo Lang::get('general.student_profile'); ?></a></li>
+    <li role="presentation"><a href="#vijushmeria" aria-controls="vijushmeria" role="tab" data-toggle="tab"><?php echo Lang::get('general.attendance'); ?></a></li>
+    <li role="presentation"><a href="#notimet" aria-controls="notimet" role="tab" data-toggle="tab"><?php echo Lang::get('general.exams'); ?></a></li>
+    <li role="presentation"><a href="#pagesat" aria-controls="pagesat" role="tab" data-toggle="tab"><?php echo Lang::get('general.fee'); ?></a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="profile"><?php echo $__env->yieldContent('profile'); ?></div>
+    <div role="tabpanel" class="tab-pane" id="vijushmeria"><?php echo $__env->yieldContent('vijushmeria'); ?></div>
+    <div role="tabpanel" class="tab-pane" id="notimet"><?php echo $__env->yieldContent('notimet'); ?></div>
+    <div role="tabpanel" class="tab-pane" id="pagesat"><?php echo $__env->yieldContent('pagesat'); ?><div>
+        </div>
+
+    </div>
+
+    <?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

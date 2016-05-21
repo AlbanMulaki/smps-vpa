@@ -39,18 +39,26 @@ class Lendet extends Eloquent implements UserInterface, RemindableInterface {
 
     // Return te lendet
     public static function getComboLendetAll($idd = 0) {
+        $cmb = array('');
         if ($idd == 0) {
             $lendet = self::where('deleted', '=', Enum::notdeleted)->get();
+            $drejtimet = Drejtimet::all();
+            foreach($drejtimet as $drejtimi) {
+                foreach ($lendet as $value) {
+                    $cmb[$drejtimi['Emri']][$value['idl']] = $value['Emri'];
+                }
+            }
         } else {
             $lendet = self::where('deleted', '=', Enum::notdeleted)
                     ->where('Drejtimi', '=', $idd)
                     ->get();
+            foreach ($lendet as $value) {
+                $cmb[$value['idl']] = $value['Emri'];
+            }
         }
 
-        $cmb = array('');
-        foreach ($lendet as $value) {
-            $cmb[$value['idl']] = $value['Emri'];
-        }
+
+
         return $cmb;
     }
 
@@ -76,5 +84,4 @@ class Lendet extends Eloquent implements UserInterface, RemindableInterface {
         return $lendet;
     }
 
-    
 }

@@ -116,6 +116,8 @@ class StudentController extends \BaseController {
         $listDrejtimet = Drejtimet::getComboDrejtimetGroupedAll();
         $listDrejtimet[Lang::get('general.choose_subject')][0] = Lang::get('general.choose_subject');
         $selectedPage = $id / $numList;
+         $students = null;
+         $students = Studenti::paginate(15);
         return View::make('admin.students.list_students', ["students" => $students,
                     "studentNum" => $studentNum[0]['students'],
                     'page' => $page,

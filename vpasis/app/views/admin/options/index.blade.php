@@ -17,7 +17,7 @@
 @endif
 <!-- End Regjistrimi Departmentit -->
 @stop
-@section('settings')
+@section('settings')  
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class='col-sm-4'>
-                <img src='/img/{{ $settings['logo'] }}' alt="{{ Lang::get('general.logo') }}" class="well img-responsive img-rounded">
+                <img src='{{ asset("img/".$settings['logo']) }}' alt="{{ Lang::get('general.logo') }}" class="well img-responsive img-rounded">
                 <input type="file" name="logo" accept="image/*">
             </div>
         </div>
@@ -104,13 +104,18 @@
 </div>
 
 @stop
-
-
+@section('title')
+<section class="content-header">
+    <h1>
+        {{ Lang::get('general.options') }}<small>{{ Lang::get('general.options') }}</small>
+    </h1>
+</section>
+@stop
 @section('content')
 
-<h2 class='text-capitalize '>{{ Lang::get('general.options') }}</h2>
-<hr>
+@yield('title')
+<section class="content">
 @yield('notification')
 @yield('settings')
-
+</section>
 @stop

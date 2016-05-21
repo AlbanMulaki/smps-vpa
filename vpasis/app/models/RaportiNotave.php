@@ -16,6 +16,20 @@ class RaportiNotave extends Eloquent implements UserInterface, RemindableInterfa
      * @var string
      */
     protected $table = 'raporti_notave';
+    
 
+    public function raportiNotaveStudent() {
+        return self::hasMany('RaportiNotaveStudent', 'idraportit', 'id');
+    }
+
+    public function lendet() {
+        return self::belongsToMany('Lendet', 'id', 'idl');
+    }
+
+    public static function findOrCreate($id) {
+        $obj = static::find($id);
+        return $obj ? : new static;
+    }
+    
 
 }

@@ -347,6 +347,22 @@ return array(
     "signature_lecturer" => "Nënshkrimi ligjeruesit",
     "administrata_signature" => "Nënshkrimi nga administrata",
     "dean_profile" => "Dekani Fakultetit",
+    "teb_bank" => "TEB Bank",
+    "raiffeisen_bank" => "Raiffeisen Bank",
+    "vllesa_co" => "Vllesa CO",
+    "cash" => "Cash",
+    "procredit_bank" => "Pro Credit Bank",
+    "other_payment" => "Pagesa tjera",
+    "semester_1" => "Pages per Semestrin 1",
+    "semester_2" => "Pages per Semestrin 2",
+    "semester_3" => "Pages per Semestrin 3",
+    "semester_4" => "Pages per Semestrin 4",
+    "semester_5" => "Pages per Semestrin 5",
+    "semester_6" => "Pages per Semestrin 6",
+    "studentId" => "Student ID",
+    "add_new_row" => "Shto rresht te ri",
+    "add_new_report_grade" => "Regjistro raport",
+    "add_student" => "Regjistro student",
     
         )
 ;

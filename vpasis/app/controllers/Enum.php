@@ -7,6 +7,23 @@ class Enum extends Controller {
     /*
      * Grupet per access
      */
+    
+    
+    const BANK_TEB = 1;         // Teb Bank
+    const BANK_RAIFFEISEN = 2;  // Raiffeisen Bank
+    const BANK_PROCREDIT = 3;   // Pro Credit Bank
+    const VLLESA_CO = 4;        // Vllesa Co
+    const CASH = 5;             // Cash
+    
+    public static function getTypeBank() {
+        return array(
+            self::BANK_PROCREDIT => Lang::get('general.procredit_bank'),
+            self::BANK_TEB => Lang::get('general.teb_bank'),
+            self::BANK_RAIFFEISEN => Lang::get('general.raiffeisen_bank'),
+            self::VLLESA_CO => Lang::get('general.vllesa_co'),
+            self::CASH => Lang::get('general.cash')
+        );
+    }
 
     const student = 1;
     const puntor = 2;
@@ -31,6 +48,8 @@ class Enum extends Controller {
      */
     const irregullt = 0;
     const joirregullt = 1;
+    const I_RREGULLT = 0;
+    const JO_RREGULLT = 1;
     /*
      * Pagesat
      */
@@ -73,6 +92,8 @@ class Enum extends Controller {
     const femer = 1;
     const no = 0;
     const yes = 1;
+    const NO = 0;
+    const YES = 1;
     const pending = 2;
     const hene = 0;
     const marte = 1;
@@ -123,11 +144,23 @@ class Enum extends Controller {
 
     const pagessemestri = 1;
     const pagestjeter = 2;
+    const PAGESA_SEMESTRI_1 = 1;
+    const PAGESA_SEMESTRI_2 = 2;
+    const PAGESA_SEMESTRI_3 = 3;
+    const PAGESA_SEMESTRI_4 = 4;
+    const PAGESA_SEMESTRI_5 = 5;
+    const PAGESA_SEMESTRI_6 = 6;
+    const PAGESA_TJETER = 7;
 
     public static function getLlojetPagesave() {
-        return array(-1 => Lang::get('general.select_feetype'),
-            self::pagessemestri => Lang::get('general.fee_semester'),
-            self::pagestjeter => Lang::get('general.other')
+        return array(
+            self::PAGESA_SEMESTRI_1 => Lang::get('general.semester_1'),
+            self::PAGESA_SEMESTRI_2 => Lang::get('general.semester_2'),
+            self::PAGESA_SEMESTRI_3 => Lang::get('general.semester_3'),
+            self::PAGESA_SEMESTRI_4 => Lang::get('general.semester_4'),
+            self::PAGESA_SEMESTRI_5 => Lang::get('general.semester_5'),
+            self::PAGESA_SEMESTRI_6 => Lang::get('general.semester_6'),
+            self::PAGESA_TJETER => Lang::get('general.other_payment')
         );
     }
 

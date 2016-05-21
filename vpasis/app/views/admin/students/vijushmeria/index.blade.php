@@ -20,7 +20,9 @@
 
 @section('registerVijushmeria')
 {{ Form::open(array('url'=>action('VijushmeriaController@postRegisterVijushmeria'),'method'=>'POST','files'=>true,'class'=>"form-horizontal")) }}
+
 <div class='row'>
+
     <div class='col-lg-3'>
         <div class="form-group">
             <div class="input-group col-lg-10">
@@ -100,9 +102,11 @@
             </div>
         </div>
     </div>
+    
         
         @endif
 </div>
+
 
 <table class="table table-responsive table-striped">
     <tr>
@@ -159,11 +163,19 @@
 
 
 @stop
+@section('title')
+<section class="content-header">
+    <h1>
+        {{ Lang::get('general.attendance') }}<small>{{ Lang::get('general.attendance') }}</small>
+    </h1>
+</section>
+@stop
 @section('content')
-<h2 class='text-capitalize '>{{ Lang::get('general.attendance') }}</h2>
-<hr>
+@yield('title')
+<section class="content">
 @yield('notification')
 @yield('registerVijushmeria')
+</section>
 @stop
 
 

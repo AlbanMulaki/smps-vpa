@@ -20,6 +20,12 @@
 
 
 @section('registerStudent')
+
+
+<div class="box box-success">
+    
+    <div class="box-body">
+    <!-- /.box-body -->
 {{ Form::open(array('url'=>action('StudentController@postRegister'),'method'=>'POST','files'=>true,'class'=>"form-horizontal")) }}
 <div class='col-lg-6'>
     <div class="form-group">
@@ -229,14 +235,27 @@
     </div>
 </div>
 {{ Form::close() }}
+
+    </div>
+</div>
 @stop
 
+@section('title')
+<section class="content-header">
+    <h1>
+        {{ Lang::get('general.add_student') }}<small>{{ Lang::get('general.add_student') }}</small>
+    </h1>
+</section>
+@stop
 
 @section('content')
-<h2 class='text-capitalize '>{{ Lang::get('general.add_student') }}</h2>
-<hr>
+
+@yield('title')
+<section class="content">
+
 @yield('notification')
 @yield('registerStudent')
+</section>
 @stop
 
 

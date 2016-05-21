@@ -24,27 +24,26 @@ class Webcategory extends Eloquent implements UserInterface, RemindableInterface
      */
     public static function getCategory() {
         $ready = "<ul class=\"category\">";
-        $all_cat = self::where('deleted', '=', Enum::notdeleted)
-                ->where('tree', '=', 0)
+        $all_cat = self::where('tree', '=', 0)
                 ->where('cid', '=', 0)
                 ->orderby('prioid', 'ASC')
                 ->get();
         foreach ($all_cat as $value) {
             if ($value['id'] == 2 || $value['id'] == 3) {
-                $ready .= "<li><a href='/#' >" . $value['emri'] . "</a>";
+                $ready .= "<li><a href='/#' >" . $value['name_'.Session::get('lang')] . "</a>";
             } else if ($value['link'] == 1) {
-                $ready .= "<li><a href='" . action('WebsiteController@getCategory') . "/" . $value['id'] . "' >" . $value['emri'] . "</a>";
+                $ready .= "<li><a href='" . action('WebsiteController@getCategory') . "/" . $value['id'] . "' >" . $value['name_'.Session::get('lang')] . "</a>";
             } else {
-                $ready .= "<li><a href='" . $value['link'] . "' >" . $value['emri'] . "</a></li>";
+                $ready .= "<li><a href='" . $value['link'] . "' >" . $value['name_'.Session::get('lang')] . "</a></li>";
             }
             $nested = self::where('cid', '=', $value['id'])->get();
             if (count($nested) > 0) {
                 $ready .= "<ul>";
                 foreach ($nested as $val) {
                     if ($val['link'] == 1) {
-                        $ready .= "<li><a href='" . action('WebsiteController@getCategory') . "/" . $val['id'] . "' >" . $val['emri'] . "</a></li>";
+                        $ready .= "<li><a href='" . action('WebsiteController@getCategory') . "/" . $val['id'] . "' >" . $val['name_'.Session::get('lang')] . "</a></li>";
                     } else {
-                        $ready .= "<li><a href='" . $val['link'] . "' >" . $val['emri'] . "</a></li>";
+                        $ready .= "<li><a href='" . $val['link'] . "' >" . $val['name_'.Session::get('lang')] . "</a></li>";
                     }
                 }
                 $ready .= "</ul>";

@@ -111,6 +111,14 @@ class WebsiteController extends BaseController {
                     'statusi' => $statusi]);
     }
 
+    public function getLanguage($lang) {
+        if ($lang) {
+            Session::put('lang', $lang);
+        }
+        App::setLocale(Session::get('lang'));
+        return Redirect::to('/');
+    }
+
     public function postAplikoOnlineTani() {
         $rules = array('emri' => 'required',
             'mbiemri' => 'required',
@@ -144,11 +152,11 @@ class WebsiteController extends BaseController {
                 $vitiaka = 1;
             }
             Studenti::setApplikoOnline($filename, $vitiaka);
-              Session::flash('notification', self::getSucmsg(Lang::get('warn.success_apply_student')));
+            Session::flash('notification', self::getSucmsg(Lang::get('warn.success_apply_student')));
         } else {
-              Session::flash('notification', self::getErrormsg(Lang::get('warn.error_apply_student')));
+            Session::flash('notification', self::getErrormsg(Lang::get('warn.error_apply_student')));
         }
-        
+
         return Redirect::to('/apliko-online');
     }
 

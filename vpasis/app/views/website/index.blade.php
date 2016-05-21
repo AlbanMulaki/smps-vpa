@@ -1,19 +1,16 @@
 @section('header')
 <div class='quicknav col-md-12'>
-    <div class="col-md-offset-1 col-md-7 ">
+    <div class="col-md-offset-1 col-md-10 ">
         <ul class="quickmenu">
             @foreach($quickmenu as $value)
-            <li><a href="{{ $value['link'] }}">{{ $value['emri'] }}</a></li>
+            <li><a href="{{ $value['link'] }}">{{ $value['name_'.Session::get('lang')] }}</a></li>
             @endforeach
         </ul>
     </div>
-    <div class="col-md-3 ">
-        <div class="input-group input-group-sm">
-            <input type="text" class="form-control">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Kerko!</button>
-            </span>
-        </div>
+    <div class="col-md-1 ">
+            <a href="{{ action('WebsiteController@getLanguage',['language'=>'sq']) }}" style="color:#eee;">SQ</a>
+            <span> | </span>
+            <a href="{{ action('WebsiteController@getLanguage',['language'=>'en']) }}" style="color:#eee;">EN</a>
     </div>
     <div class="col-md-1 "></div>
 </div>
@@ -36,7 +33,7 @@
         <div class='col-md-3' style="border-right:1px dotted #fff;">
             <ul class="contfooter">
                 <li><h4>Ferizaj</h4></li>
-                <li>Rruga "Ahmet Kaçiku" PN</li>
+                <li>{{ Lang::get('website.str') }}  "Ahmet Kaçiku" PN</li>
                 <li>Ferizaj, Republika e Kosovës 70000</li>
                 <li><span class="fa fa-mobile fa-2x"></span> 044 583 573</li>
                 <li><span class="fa fa-mobile fa-2x"></span> 0290 326 080</li>
@@ -47,7 +44,7 @@
         <div class='col-md-3' style="border-right:1px dotted #fff;">
             <ul class="contfooter">
                 <li><h4>Prishtine</h4></li>
-                <li>Rruga "Eqrem Qabej" PN</li>
+                <li>{{ Lang::get('website.str') }} "Eqrem Qabej" PN</li>
                 <li>Prishtinë, Republika e Kosovës</li>
                 <li><span class="fa fa-mobile fa-2x"></span> 045 690 618</li>
                 <li><span class="fa fa-mobile fa-2x"></span> 049 346 035</li>
@@ -57,9 +54,9 @@
         </div>
         <div class='col-md-3' style="border-right:1px dotted #fff;">
             <ul class="contfooter">
-                <li><a href="/category/10">Bachelor</a></li>
-                <li><a href="/post/20">Staffi VPA</a></li>
-                <li><a href="/category/15">Aktivitet</a></li>
+                <li><a href="/category/10">{{ Lang::get('website.bachelor') }} </a></li>
+                <li><a href="/post/20">{{ Lang::get('website.vpa_staff') }} </a></li>
+                <li><a href="/category/15">{{ Lang::get('website.activity') }} </a></li>
             </ul>
         </div>
         <div class='col-md-3'>
@@ -74,7 +71,7 @@
     </div>
     <div class='col-md-12 container' style='border-top:1px dotted #fff; padding:7px; text-align: center; font-weight:500;'>
 
-        <a href="http://www.vpa-uni.com/" style="color:#B5F1FF;">Kolegji Univeristar VPA</a>: Te gjitha te drejtat e rezervuara VPA (<a style="color:#B5F1FF;" href="mailto:info@vpa-uni.com"> E-mail </a>)
+        <a href="http://www.vpa-uni.com/" style="color:#B5F1FF;">{{ Lang::get('website.college_vpa') }}</a>: {{ Lang::get('website.copyright') }}(<a style="color:#B5F1FF;" href="mailto:info@vpa-uni.com"> E-mail </a>)
 
     </div>
 </div>

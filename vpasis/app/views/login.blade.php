@@ -4,9 +4,8 @@
         <title> VPA - Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
-        <link href="/style/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <script src="/style/js/jquery-1.11.1.min.js"></script>
-        <script src="/style/js/bootstrap.min.js"></script>
+        
+    {{ HTML::style('style/css/bootstrap.min.css') }}
     </head>
     <body>
 
@@ -17,7 +16,7 @@
             <fieldset >
                 <div class="col-sm-5"></div>
                 <div class="col-sm-4">
-                    <div class="col-sm-8" ><img src="/img/login_logo.png" alt="VPA - Login" class="img-responsive"> </img>
+                    <div class="col-sm-8" ><img src="{{asset("img/login_logo.png")}}" alt="VPA - Login" class="img-responsive"> </img>
                     </div>
                 </div> 
                 <div class="col-sm-5"></div>
@@ -61,6 +60,8 @@
         </div>     
 
 
+    {{ HTML::script('style/js/jquery-1.11.1.min.js') }}
+    {{ HTML::script('style/js/bootstrap.min.js') }}
     </body>
 
 </html>

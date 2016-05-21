@@ -34,28 +34,27 @@
 @stop
 @section('header')
 <head>
+    <meta charset="UTF-8">
     <title>{{ $title }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ HTML::style('style/css/bootstrap.min.css') }}
+    {{ HTML::style('/style/css/bootstrap.min.css') }}
     {{ HTML::style('style/css/timeline.css') }}
-    {{ HTML::style('style/css/sb-admin-2.css') }}
+    {{ HTML::style('style/css/AdminLTE.min.css') }}
+    {{ HTML::style('style/css/skins/skin-blue.min.css') }}
     {{ HTML::style('style/fonts/awesome/css/font-awesome.min.css') }}
     {{ HTML::style('style/css/bootstrapValidator.min.css') }}
-    {{ HTML::style('style/awesome/font-awesome.min.css') }}
     {{ HTML::style('style/css/style.css') }}
-    {{ HTML::style('style/css/metisMenu.min.css') }}
     {{ HTML::style('style/css/jasny-bootstrap.min.css') }}
-    {{ HTML::style('style/css/jquery-ui.min.css') }}
+    {{ HTML::style('style/css/jquery-ui-1.10.0.custom.css') }}
+    {{ HTML::style('style/css/icheck/skins/square/blue.css') }}
+    {{ HTML::style('style/css/bootstrap-datetimepicker.min.css') }}
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-    {{ HTML::script('style/js/jquery-1.11.1.min.js') }}
-    {{ HTML::script('style/js/jquery.cycle.all.js') }}
-    {{ HTML::script('style/js/bootstrap.min.js') }}
-    {{ HTML::script('style/js/sb-admin-2.js') }}
-    {{ HTML::script('style/js/metisMenu.min.js') }}
-    {{ HTML::script('style/js/morris-data.js') }}
-    {{ HTML::script('style/js/flot-data.js') }}
-    {{ HTML::script('style/js/holder.js') }}
-    {{ HTML::script('style/js/jasny-bootstrap.min.js') }}
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 </head>
 @stop
 
@@ -63,73 +62,67 @@
 
 
 @section('sidebar')
- 
-<div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
-        <ul class="nav" id="side-menu">
-            <li class="sidebar-search">
-                <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
-                <!-- /input-group -->
-            </li>
-            <li class="{{Request::path() == 'smps/admin/options'
-                        || Request::path() == 'smps/admin/hsub'
-                        || Request::path() == 'smps/admin/exams'
-                        || Request::path() == 'smps/admin/departments'
-                        ? 'active' : ''; }}">
-                <a href="#" ><i class="fa fa-bar-chart-o fa-fw"></i> {{ Lang::get('general.settings') }} <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{ action('DepartmentsController@getIndex') }}"> {{ Lang::get('general.departments') }} </a>
-                    </li>
-                    <li>
-                        <a href="{{ action('OptionsController@getIndex') }}">{{ Lang::get('general.options') }}</a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
+<!-- Left side column. contains the sidebar -->
+<aside class="main-sidebar">
 
-            <li class="{{Request::path() == 'smps/admin/student'
-                        || Request::path() == 'smps/admin/vijushmeria'
-                        ? 'active' : ''; }}">
-                <a href="#" class='text-warning'><i class="fa fa-graduation-cap fa-lg"></i> {{ Lang::get('general.student') }} <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{ action('StudentController@getRegister') }}"></span>{{ Lang::get('general.register_student') }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ action('StudentController@getList') }}">{{ Lang::get('general.student_list') }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ action('VijushmeriaController@getVijushmeria') }}">{{ Lang::get('general.attendance') }}</a>
-                    </li>
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+
+        <!-- search form (Optional) -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                <span class="input-group-btn">
+                    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+        <!-- /.search form -->
+
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            <li class="treeview">
+                <a href="#"><span>{{ Lang::get('general.settings') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ action('DepartmentsController@getIndex') }}">{{ Lang::get('general.departments') }}</a></li>
+                    <li><a href="{{ action('OptionsController@getIndex') }}">{{ Lang::get('general.options') }}</a></li>
                 </ul>
-                <!-- /.nav-second-level -->
             </li>
-            <li>
-                <a href="#" class='text-danger'><i class="fa fa-file-text-o fa-lg"></i> {{ Lang::get('general.exams') }} <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{ action('ProvimetController@getRaportiNotave') }}">{{ Lang::get('general.report_grade') }}</a>
-                    </li>
+            <li class="treeview">
+                <a href="#"><span>{{ Lang::get('general.student') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ action('StudentController@getRegister') }}">{{ Lang::get('general.register_student') }}</a></li>
+                    <li><a href="{{ action('StudentController@getList') }}">{{ Lang::get('general.student_list') }}</a></li>
+                    <li><a href="{{ action('VijushmeriaController@getVijushmeria') }}">{{ Lang::get('general.attendance') }}</a></li>
                 </ul>
-                <!-- /.nav-second-level -->
             </li>
-            <li>
-                <a href="#"><i class="fa fa-eur fa-lg"></i> {{ Lang::get('general.fee') }} <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{ action('FeeController@getIndex') }}">{{ Lang::get('general.fee') }}</a>
-                    </li>
+            <li class="treeview">
+                <a href="#"><span>{{ Lang::get('general.exams') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ action('ProvimetController@getAddRaportiNotave') }}">{{ Lang::get('general.add_new_report_grade') }}</a></li>
+                    <li><a href="{{ action('ProvimetController@getRaportiNotave') }}">{{ Lang::get('general.report_grade') }}</a></li>
                 </ul>
-                <!-- /.nav-second-level -->
             </li>
+            <li class="treeview">
+                <a href="#"><span>{{ Lang::get('general.fee') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ action('FeeController@getIndex') }}">{{ Lang::get('general.fee') }}</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><span>{{ Lang::get('general.employe') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ action('StaffController@getRegister') }}">{{ Lang::get('general.add_employe') }}</a></li>
+                    <li><a href="{{ action('StaffController@getDisplayStaff') }}">{{ Lang::get('general.staff_list') }}</a></li>
+                </ul>
+            </li>
+        </ul><!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<!--
             <li>
                 <a href="#" class='text-danger'><i class="fa fa-book fa-lg "></i> {{ Lang::get('general.library') }} <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
@@ -147,7 +140,7 @@
                         <a href="#"><span class="label label-sm label-danger"> </span>{{ Lang::get('general.sold') }}</a>
                     </li>
                 </ul>
-                <!-- /.nav-second-level -->
+                 /.nav-second-level 
             </li>
 
             <li>
@@ -157,26 +150,7 @@
                         <a href="#">Sub menu 1</a>
                     </li>
                 </ul>
-                <!-- /.nav-second-level -->
-            </li>
-
-            <li>
-                <a href="#"><i class="fa fa-group fa-lg"></i> {{ Lang::get('general.employe') }} <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{ action('StaffController@getRegister') }}">{{ Lang::get('general.add_employe') }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ action('StaffController@getDisplayStaff') }}">{{ Lang::get('general.staff_list') }}</a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="label label-sm label-danger"> </span> {{ Lang::get('general.financial_details') }}</a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="label label-sm label-danger"> </span>{{ Lang::get('general.staff_slaray') }}</a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
+                 /.nav-second-level 
             </li>
             <li>
                 <a href="#" class='text-danger'><i class="fa fa-envelope-o fa-lg"></i> {{ Lang::get('general.about') }} <span class="fa arrow"></span></a>
@@ -185,63 +159,173 @@
                         <a href="#">Sub menu 1</a>
                     </li>
                 </ul>
-                <!-- /.nav-second-level -->
+                 /.nav-second-level 
             </li>
 
         </ul>
     </div>
-    <!-- /.sidebar-collapse -->
+     /.sidebar-collapse 
     <div class="well text-center">
         {{ Lang::get('footer.author') }} <br>
         {{ link_to('http://www.vpa-uni.com', Lang::get('footer.copyright'), $attributes = array(), $secure = null); }}<br>
         {{ link_to('http://www.objprog.com', Lang::get('footer.copyright1'), $attributes = array(), $secure = null); }}<br>
         {{ link_to('http://www.trebla-ks.com', Lang::get('footer.copyright2'), $attributes = array(), $secure = null); }}
     </div>
-</div>
+</div>-->
 
 @stop
 
 @section('navbar')
+<!-- Main Header -->
+<header class="main-header">
 
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <!-- Logo -->
+    <a href="{{ action('AdminController@getIndex') }}" class="logo"><b>SMPS </b> - {{ $university_name }}</a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="{{ action('AdminController@getIndex') }}">SMPS - {{ $university_name }}</a>
-    </div>
-    <!-- /.navbar-header -->
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="label label-success">4</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 4 messages</li>
+                        <li>
+                            <!-- inner menu: contains the messages -->
+                            <ul class="menu">
+                                <li><!-- start message -->
+                                    <a href="#">
+                                        <div class="pull-left">
+                                            <!-- User Image -->
+                                            <img src="{{ asset("/bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image"/>
+                                        </div>
+                                        <!-- Message title and timestamp -->
+                                        <h4>                            
+                                            Support Team
+                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                        </h4>
+                                        <!-- The message -->
+                                        <p>Why not buy a new awesome theme?</p>
+                                    </a>
+                                </li><!-- end message -->                      
+                            </ul><!-- /.menu -->
+                        </li>
+                        <li class="footer"><a href="#">See All Messages</a></li>
+                    </ul>
+                </li><!-- /.messages-menu -->
 
-    <ul class="nav navbar-top-links navbar-right">
-        <li>
-            <img src='/smpsfl/doc/avatar/{{$user['avatar'] }}' class='img- img-rounded' width="50"></img>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">  <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                <!-- Notifications Menu -->
+                <li class="dropdown notifications-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning">10</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 10 notifications</li>
+                        <li>
+                            <!-- Inner Menu: contains the notifications -->
+                            <ul class="menu">
+                                <li><!-- start notification -->
+                                    <a href="#">
+                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                    </a>
+                                </li><!-- end notification -->                      
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">View all</a></li>
+                    </ul>
                 </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                <!-- Tasks Menu -->
+                <li class="dropdown tasks-menu">
+                    <!-- Menu Toggle Button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-flag-o"></i>
+                        <span class="label label-danger">9</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 9 tasks</li>
+                        <li>
+                            <!-- Inner menu: contains the tasks -->
+                            <ul class="menu">
+                                <li><!-- Task item -->
+                                    <a href="#">
+                                        <!-- Task title and progress text -->
+                                        <h3>
+                                            Design some buttons
+                                            <small class="pull-right">20%</small>
+                                        </h3>
+                                        <!-- The progress bar -->
+                                        <div class="progress xs">
+                                            <!-- Change the css width attribute to simulate progress -->
+                                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="sr-only">20% Complete</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li><!-- end task item -->                      
+                            </ul>
+                        </li>
+                        <li class="footer">
+                            <a href="#">View all tasks</a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="divider"></li>
-                <li><a href="{{ action('AuthController@getLogout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <!-- User Account Menu -->
+                <li class="dropdown user user-menu">
+                    <!-- Menu Toggle Button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <!-- The user image in the navbar-->
+                        <img src="{{ asset('smpsfl/doc/avatar/'.$user['avatar']) }}" class="user-image" alt="User Image"/>
+                        <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                        <span class="hidden-xs">Alexander Pierce</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- The user image in the menu -->
+                        <li class="user-header">
+                            <img src="{{ asset('smpsfl/doc/avatar/'.$user['avatar']) }}" class="img-circle" alt="User Image" />
+                            <p>
+                                Alexander Pierce - Web Developer
+                                <small>Member since Nov. 2012</small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <li class="user-body">
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Followers</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Sales</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Friends</a>
+                            </div>
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="{{ action('AuthController@getLogout') }}" class="btn btn-default btn-flat">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
                 </li>
             </ul>
-            <!-- /.dropdown-user -->
-        </li>
-
-        <!-- /.dropdown -->
-    </ul>
-    <!-- /.navbar-top-links -->
-
-    @yield('sidebar')
-    <!-- /.navbar-static-side -->
-</nav>
+        </div>
+    </nav>
+</header>
 
 
 @stop
@@ -250,18 +334,52 @@
 
 
 @section('container')
-<body>    
+<body  class="hold-transition skin-blue sidebar-mini">    
 
     <div id="wrapper">
         @yield('navbar')
 
-        <div id="page-wrapper">
+        @yield('sidebar')
+        <div class="content-wrapper">
             @yield('content')
         </div>
-        <!-- /#page-wrapper -->
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.0.1
+            </div>
+            <strong>Copyright © 2014-2016 <a href="http://trebla-ks.net">Trebla KS LLC</a>.</strong> All rights
+            reserved. Alban Mulaki
+        </footer>
 
     </div>
 
+    {{ HTML::script('style/js/jquery-1.11.1.min.js') }}
+    {{ HTML::script('style/js/raphael-min.js') }}
+    {{ HTML::script('style/js/morris.min.js') }}
+    {{ HTML::script('style/js/moment.min.js') }}
+    {{ HTML::script('style/js/bootstrap.min.js') }}
+    {{ HTML::script('style/js/icheck.min.js') }}
+    {{ HTML::script('style/js/bootstrap-datepicker.min.js') }}
+    {{ HTML::script('style/js/chart.min.js') }}
+    {{ HTML::script('style/js/pace.min.js') }}
+    {{ HTML::script('style/js/jasny-bootstrap.min.js') }}
+    {{ HTML::script('style/js/app.min.js') }}
+    {{ HTML::script('style/js/adminapp.js') }}
+    <script>
+        //Set datepicker class
+
+        $('.datetimepicker').datetimepicker({
+            defaultDate: "2016-12-01 05:40:05 +0000",
+            format: 'YYYY-MM-DD HH:mm:ss ZZ',
+        });
+        $(document).ready(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue'
+            });
+        });
+    </script>
 </body>
 @stop
 
@@ -274,6 +392,7 @@
     @yield('header')
     @yield('hidden')
     @yield('container')
+    @yield('scripts')
 </html>
 
 

@@ -8,15 +8,15 @@
 @section('post')
 <div class="row">
     <h3 class='bold'>
-        <strong>  {{ $post['titulli'] }}</strong></h3>
+        <strong>  {{ $post['title_'.Session::get('lang')] }}</strong></h3>
     <h6>{{ Lang::get('general.published') }}{{ $post['published'] }}</h6>
     @yield('navigation')
     <a class="thumbnail">
-        <img data-src="holder.js/100%x180" alt="{{ $post['titulli'] }}" src='http://www.vpa-uni.com/img{{ $post['img'] }}'>
+        <img data-src="holder.js/100%x180" alt="{{ $post['title_'.Session::get('lang')] }}" src='http://www.vpa-uni.com/img{{ $post['img'] }}'>
     </a
     <br>
     <p> 
-        {{ $post['msg'] }}
+        {{ $post['description_'.Session::get('lang')] }}
     </p>
     <div class='col-md-offset-1'>&nbsp;</div>
     <div class='hrred'></div><br>
@@ -42,11 +42,11 @@
         @foreach($listpost as $value)
         @if($post['id'] == $value['id'])
         <a href="{{action('WebsiteController@getPost')}}/{{ $value['id'] }}" class="list-group-item active">
-            {{ $value['titulli']  }}
+            {{ $value['title_'.Session::get('lang')]  }}
         </a>
         @else
         <a href="{{action('WebsiteController@getPost')}}/{{ $value['id'] }}" class="list-group-item">
-            {{ $value['titulli']  }}
+            {{ $value['title_'.Session::get('lang')]  }}
         </a>
         @endif
         @endforeach

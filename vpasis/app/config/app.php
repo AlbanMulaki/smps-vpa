@@ -12,7 +12,7 @@ return array(
       |
      */
 
-    'debug' => true,
+    'debug' => false,
     /*
       |--------------------------------------------------------------------------
       | Application URL
@@ -108,6 +108,7 @@ return array(
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
         'Barryvdh\DomPDF\ServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider',
        // 'Maatwebsite\Excel\ExcelServiceProvider',
     ),
     /*
@@ -171,6 +172,7 @@ return array(
         'Validator' => 'Illuminate\Support\Facades\Validator',
         'View' => 'Illuminate\Support\Facades\View',
         'PDF' => 'Barryvdh\DomPDF\Facade',
+        'Debugbar' => 'Barryvdh\Debugbar\Facade',
         //'Excel' => 'Maatwebsite\Excel\Facades\Excel',
     ),
 );
