@@ -1,9 +1,0 @@
-
-
-<div style="z-index:1; position:fixed;">
-
-<?php foreach($person as $id=>$value): ?>
-<?php echo link_to(action('AdminStudentController@getStudent').'/'.$value['uid'], $value['emri'].' '.$value['mbiemri'].' ('.$value['uid'].')', array('class'=>'list-group-item'),null);; ?>
-
-<?php endforeach; ?>
-</div>
