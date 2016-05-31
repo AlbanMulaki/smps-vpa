@@ -1,63 +1,186 @@
 <?php
+/**
+ * This file is part of the league/oauth2-client library
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @copyright Copyright (c) Alex Bilbie <hello@alexbilbie.com>
+ * @license http://opensource.org/licenses/MIT MIT
+ * @link http://thephpleague.com/oauth2-client/ Documentation
+ * @link https://packagist.org/packages/league/oauth2-client Packagist
+ * @link https://github.com/thephpleague/oauth2-client GitHub
+ */
 
 namespace League\OAuth2\Client\Token;
 
 use InvalidArgumentException;
+use JsonSerializable;
+use RuntimeException;
 
-class AccessToken
+/**
+ * Represents an access token.
+ *
+ * @link http://tools.ietf.org/html/rfc6749#section-1.4 Access Token (RFC 6749, §1.4)
+ */
+class AccessToken implements JsonSerializable
 {
     /**
-     * @var  string  accessToken
+     * @var string
      */
-    public $accessToken;
+    protected $accessToken;
 
     /**
-     * @var  int  expires
+     * @var int
      */
-    public $expires;
+    protected $expires;
 
     /**
-     * @var  string  refreshToken
+     * @var string
      */
-    public $refreshToken;
+    protected $refreshToken;
 
     /**
-     * @var  string  uid
+     * @var string
      */
-    public $uid;
+    protected $resourceOwnerId;
 
     /**
-     * Sets the token, expiry, etc values.
+     * @var array
+     */
+    protected $values = [];
+
+    /**
+     * Constructs an access token.
      *
-     * @param  array $options token options
-     * @return void
+     * @param array $options An array of options returned by the service provider
+     *     in the access token request. The `access_token` option is required.
+     * @throws InvalidArgumentException if `access_token` is not provided in `$options`.
      */
-    public function __construct(array $options = null)
+    public function __construct(array $options = [])
     {
-        if (! isset($options['access_token'])) {
-            throw new \InvalidArgumentException('Required option not passed: access_token'
-                                                 . PHP_EOL.print_r($options, true));
+        if (empty($options['access_token'])) {
+            throw new InvalidArgumentException('Required option not passed: "access_token"');
         }
 
         $this->accessToken = $options['access_token'];
 
-        // Some providers (not many) give the uid here, so lets take it
-        isset($options['uid']) and $this->uid = $options['uid'];
+        if (!empty($options['resource_owner_id'])) {
+            $this->resourceOwnerId = $options['resource_owner_id'];
+        }
 
-        // Vkontakte uses user_id instead of uid
-        isset($options['user_id']) and $this->uid = $options['user_id'];
+        if (!empty($options['refresh_token'])) {
+            $this->refreshToken = $options['refresh_token'];
+        }
 
-        // Mailru uses x_mailru_vid instead of uid
-        isset($options['x_mailru_vid']) and $this->uid = $options['x_mailru_vid'];
+        // We need to know when the token expires. Show preference to
+        // 'expires_in' since it is defined in RFC6749 Section 5.1.
+        // Defer to 'expires' if it is provided instead.
+        if (!empty($options['expires_in'])) {
+            $this->expires = time() + ((int) $options['expires_in']);
+        } elseif (!empty($options['expires'])) {
+            // Some providers supply the seconds until expiration rather than
+            // the exact timestamp. Take a best guess at which we received.
+            $expires = $options['expires'];
 
-        // We need to know when the token expires, add num. seconds to current time
-        isset($options['expires_in']) and $this->expires = time() + ((int) $options['expires_in']);
+            if (!$this->isExpirationTimestamp($expires)) {
+                $expires += time();
+            }
 
-        // Facebook is just being a spec ignoring jerk
-        isset($options['expires']) and $this->expires = time() + ((int) $options['expires']);
+            $this->expires = $expires;
+        }
 
-        // Grab a refresh token so we can update access tokens when they expires
-        isset($options['refresh_token']) and $this->refreshToken = $options['refresh_token'];
+        // Capure any additional values that might exist in the token but are
+        // not part of the standard response. Vendors will sometimes pass
+        // additional user data this way.
+        $this->values = array_diff_key($options, array_flip([
+            'access_token',
+            'resource_owner_id',
+            'refresh_token',
+            'expires_in',
+            'expires',
+        ]));
+    }
+
+    /**
+     * Check if a value is an expiration timestamp or second value.
+     *
+     * @param integer $value
+     * @return bool
+     */
+    protected function isExpirationTimestamp($value)
+    {
+        // If the given value is larger than the original OAuth 2 draft date,
+        // assume that it is meant to be a (possible expired) timestamp.
+        $oauth2InceptionDate = 1349067600; // 2012-10-01
+        return ($value > $oauth2InceptionDate);
+    }
+
+    /**
+     * Returns the access token string of this instance.
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * Returns the refresh token, if defined.
+     *
+     * @return string|null
+     */
+    public function getRefreshToken()
+    {
+        return $this->refreshToken;
+    }
+
+    /**
+     * Returns the expiration timestamp, if defined.
+     *
+     * @return integer|null
+     */
+    public function getExpires()
+    {
+        return $this->expires;
+    }
+
+    /**
+     * Returns the resource owner identifier, if defined.
+     *
+     * @return string|null
+     */
+    public function getResourceOwnerId()
+    {
+        return $this->resourceOwnerId;
+    }
+
+    /**
+     * Checks if this token has expired.
+     *
+     * @return boolean true if the token has expired, false otherwise.
+     * @throws RuntimeException if 'expires' is not set on the token.
+     */
+    public function hasExpired()
+    {
+        $expires = $this->getExpires();
+
+        if (empty($expires)) {
+            throw new RuntimeException('"expires" is not set on the token');
+        }
+
+        return $expires < time();
+    }
+
+    /**
+     * Returns additional vendor values stored in the token.
+     *
+     * @return array
+     */
+    public function getValues()
+    {
+        return $this->values;
     }
 
     /**
@@ -67,6 +190,35 @@ class AccessToken
      */
     public function __toString()
     {
-        return (string) $this->accessToken;
+        return (string) $this->getToken();
+    }
+
+    /**
+     * Returns an array of parameters to serialize when this is serialized with
+     * json_encode().
+     *
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        $parameters = $this->values;
+
+        if ($this->accessToken) {
+            $parameters['access_token'] = $this->accessToken;
+        }
+
+        if ($this->refreshToken) {
+            $parameters['refresh_token'] = $this->refreshToken;
+        }
+
+        if ($this->expires) {
+            $parameters['expires'] = $this->expires;
+        }
+
+        if ($this->resourceOwnerId) {
+            $parameters['resource_owner_id'] = $this->resourceOwnerId;
+        }
+
+        return $parameters;
     }
 }

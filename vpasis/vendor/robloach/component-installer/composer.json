@@ -1,7 +1,7 @@
 {
     "name": "robloach/component-installer",
     "description": "Allows installation of Components via Composer.",
-    "type": "composer-installer",
+    "type": "composer-plugin",
     "license": "MIT",
     "authors": [
         {
@@ -15,22 +15,30 @@
         }
     },
     "extra": {
-        "class": "ComponentInstaller\\Installer"
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        },
+        "class": "ComponentInstaller\\ComponentInstallerPlugin"
     },
     "require": {
         "php": ">=5.3.2",
-        "kriswallsmith/assetic": "1.*"
+        "kriswallsmith/assetic": "1.*",
+        "composer-plugin-api": "^1.0"
     },
     "require-dev": {
-        "composer/composer": "1.*"
+        "composer/composer": "1.*@alpha",
+        "phpunit/phpunit": "4.*"
     },
-    "minimum-stability": "alpha",
+    "scripts": {
+        "test": "phpunit"
+    },
     "archive": {
         "exclude": [
             "tests",
             "phpunit.xml.dist",
             ".travis.yml",
-            ".gitignore"
+            ".gitignore",
+            ".editorconfig"
         ]
     }
 }

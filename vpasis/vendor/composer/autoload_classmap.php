@@ -137,6 +137,7 @@ return array(
     'MsgInbox' => $baseDir . '/app/models/MsgInbox.php',
     'NewsController' => $baseDir . '/app/controllers/NewsController.php',
     'Njoftimet' => $baseDir . '/app/models/njoftimet.php',
+    'Normalizer' => $vendorDir . '/patchwork/utf8/src/Normalizer.php',
     'Notimet' => $baseDir . '/app/models/Notimet.php',
     'NotimetController' => $baseDir . '/app/controllers/NotimetController.php',
     'Null_Frame_Decorator' => $vendorDir . '/dompdf/dompdf/include/null_frame_decorator.cls.php',

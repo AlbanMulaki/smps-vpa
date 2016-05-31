@@ -1,46 +1,38 @@
 <?php
 
-namespace LeagueTest\OAuth2\Client\Grant;
+namespace League\OAuth2\Client\Test\Grant;
 
-use \Mockery as m;
+use League\OAuth2\Client\Grant\AuthorizationCode;
 
-class AuthorizationCodeTest extends \PHPUnit_Framework_TestCase
+class AuthorizationCodeTest extends GrantTestCase
 {
-    protected $provider;
-
-    protected function setUp()
+    public function providerGetAccessToken()
     {
-        $this->provider = new \League\OAuth2\Client\Provider\Google(array(
-            'clientId' => 'mock_client_id',
-            'clientSecret' => 'mock_secret',
-            'redirectUri' => 'none',
-        ));
+        return [
+            ['authorization_code', ['code' => 'mock_code']],
+        ];
     }
 
-    protected function tearDown()
+    protected function getParamExpectation()
     {
-#        m::close();
+        return function ($body) {
+            return !empty($body['grant_type'])
+                && $body['grant_type'] === 'authorization_code'
+                && !empty($body['code']);
+        };
     }
 
-    public function testGetAccessToken()
+    public function testToString()
     {
-        $grant = new \League\OAuth2\Client\Grant\AuthorizationCode();
+        $grant = new AuthorizationCode();
         $this->assertEquals('authorization_code', (string) $grant);
     }
 
     /**
-     * @expectedException BadMethodCallException
+     * @expectedException \BadMethodCallException
      */
     public function testInvalidRefreshToken()
     {
-        $response = m::mock('Guzzle\Http\Message\Response');
-        $response->shouldReceive('getBody')->times(2)->andReturn('{"access_token": "mock_access_token", "expires": 3600, "refresh_token": "mock_refresh_token", "uid": 1}');
-
-        $client = m::mock('Guzzle\Service\Client');
-        $client->shouldReceive('setBaseUrl')->times(1);
-        $client->shouldReceive('post->send')->times(1)->andReturn($response);
-        $this->provider->setHttpClient($client);
-
-        $token = $this->provider->getAccessToken('authorization_code', array('invalid_code' => 'mock_authorization_code'));
+        $this->provider->getAccessToken('authorization_code', ['invalid_code' => 'mock_authorization_code']);
     }
 }
