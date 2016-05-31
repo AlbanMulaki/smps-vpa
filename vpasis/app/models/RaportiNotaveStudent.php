@@ -33,11 +33,12 @@ class RaportiNotaveStudent extends Eloquent implements UserInterface, Remindable
     public static function getRaportNotaveList($id) {
         return self::where('idraportit', '=', $id)
                         ->where('raporti_notave_student.deleted', '=', Enum::notdeleted)
-                        ->get();
+                        ->first();
     }
 
     public function getStudent() {
-        return self::hasMany('Studenti', 'uid', 'studenti');
+        return self::hasOne('Studenti', 'uid', 'studenti');
     }
+    
 
 }

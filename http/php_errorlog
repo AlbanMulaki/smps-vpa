@@ -1,0 +1,5 @@
+[23-Feb-2016 12:52:26 UTC] PHP Fatal error:  Class 'Symfony\Component\Security\Core\Util\SecureRandom' not found in /home/vpauni98/vpasis/vendor/laravel/framework/src/Illuminate/Encryption/Encrypter.php on line 165
+[23-Feb-2016 12:52:35 UTC] PHP Fatal error:  Class 'Symfony\Component\Security\Core\Util\SecureRandom' not found in /home/vpauni98/vpasis/vendor/laravel/framework/src/Illuminate/Encryption/Encrypter.php on line 165
+[23-Feb-2016 12:52:37 UTC] PHP Fatal error:  Class 'Symfony\Component\Security\Core\Util\SecureRandom' not found in /home/vpauni98/vpasis/vendor/laravel/framework/src/Illuminate/Encryption/Encrypter.php on line 165
+[23-Feb-2016 12:52:38 UTC] PHP Fatal error:  Class 'Symfony\Component\Security\Core\Util\SecureRandom' not found in /home/vpauni98/vpasis/vendor/laravel/framework/src/Illuminate/Encryption/Encrypter.php on line 165
+[23-Feb-2016 12:52:43 UTC] PHP Fatal error:  Class 'Symfony\Component\Security\Core\Util\SecureRandom' not found in /home/vpauni98/vpasis/vendor/laravel/framework/src/Illuminate/Encryption/Encrypter.php on line 165

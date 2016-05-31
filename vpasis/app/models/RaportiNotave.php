@@ -23,7 +23,10 @@ class RaportiNotave extends Eloquent implements UserInterface, RemindableInterfa
     }
 
     public function lendet() {
-        return self::belongsToMany('Lendet', 'id', 'idl');
+        return self::hasOne('Lendet', 'idl', 'idl');
+    }
+    public function administrata() {
+        return self::hasOne('Admin', 'uid', 'prof');
     }
 
     public static function findOrCreate($id) {

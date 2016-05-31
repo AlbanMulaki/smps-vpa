@@ -28,7 +28,7 @@
                 $('#listpeople').empty().append(data);
 
             }},
-        "json");
+            "json");
     });
 </script>
 @stop
@@ -54,73 +54,73 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-</head>
-@stop
+        <![endif]-->
+    </head>
+    @stop
 
 
 
 
-@section('sidebar')
-<!-- Left side column. contains the sidebar -->
-<aside class="main-sidebar">
+    @section('sidebar')
+    <!-- Left side column. contains the sidebar -->
+    <aside class="main-sidebar">
 
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
 
 
-        <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                <span class="input-group-btn">
-                    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                </span>
-            </div>
-        </form>
-        <!-- /.search form -->
-
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-            <li class="treeview">
-                <a href="#"><span>{{ Lang::get('general.settings') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ action('DepartmentsController@getIndex') }}">{{ Lang::get('general.departments') }}</a></li>
-                    <li><a href="{{ action('OptionsController@getIndex') }}">{{ Lang::get('general.options') }}</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#"><span>{{ Lang::get('general.student') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ action('StudentController@getRegister') }}">{{ Lang::get('general.register_student') }}</a></li>
-                    <li><a href="{{ action('StudentController@getList') }}">{{ Lang::get('general.student_list') }}</a></li>
-                    <li><a href="{{ action('VijushmeriaController@getVijushmeria') }}">{{ Lang::get('general.attendance') }}</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#"><span>{{ Lang::get('general.exams') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ action('ProvimetController@getAddRaportiNotave') }}">{{ Lang::get('general.add_new_report_grade') }}</a></li>
-                    <li><a href="{{ action('ProvimetController@getRaportiNotave') }}">{{ Lang::get('general.report_grade') }}</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#"><span>{{ Lang::get('general.fee') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ action('FeeController@getIndex') }}">{{ Lang::get('general.fee') }}</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#"><span>{{ Lang::get('general.employe') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ action('StaffController@getRegister') }}">{{ Lang::get('general.add_employe') }}</a></li>
-                    <li><a href="{{ action('StaffController@getDisplayStaff') }}">{{ Lang::get('general.staff_list') }}</a></li>
-                </ul>
-            </li>
-        </ul><!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
-</aside>
+          
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu">
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-university" aria-hidden="true"></i>
+                        <span>{{ Lang::get('general.settings') }}</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ action('DepartmentsController@getIndex') }}">{{ Lang::get('general.departments') }}</a></li>
+                        <li><a href="{{ action('OptionsController@getIndex') }}">{{ Lang::get('general.options') }}</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-street-view" aria-hidden="true"></i>
+                        <span>{{ Lang::get('general.student') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ action('StudentController@getRegister') }}">{{ Lang::get('general.register_student') }}</a></li>
+                            <li><a href="{{ action('StudentController@getList') }}">{{ Lang::get('general.student_list') }}</a></li>
+                            <li><a href="{{ action('VijushmeriaController@getVijushmeria') }}">{{ Lang::get('general.attendance') }}</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-clipboard" aria-hidden="true"></i>
+                            <span>{{ Lang::get('general.exams') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ action('ProvimetController@getAddRaportiNotave') }}">{{ Lang::get('general.add_new_report_grade') }}</a></li>
+                                <li><a href="{{ action('ProvimetController@getRaportiNotave') }}">{{ Lang::get('general.report_grade') }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-eur" aria-hidden="true"></i>
+                                
+                                <span>{{ Lang::get('general.fee') }}</span> 
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ action('FeeController@getIndex') }}">{{ Lang::get('general.fee') }}</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#"><i class="fa fa-users" aria-hidden="true"></i>
+                                    <span>{{ Lang::get('general.employe') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="{{ action('StaffController@getRegister') }}">{{ Lang::get('general.add_employe') }}</a></li>
+                                        <li><a href="{{ action('StaffController@getDisplayStaff') }}">{{ Lang::get('general.staff_list') }}</a></li>
+                                    </ul>
+                                </li>
+                            </ul><!-- /.sidebar-menu -->
+                        </section>
+                        <!-- /.sidebar -->
+                    </aside>
 
 <!--
             <li>
@@ -191,96 +191,7 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <!-- Messages: style can be found in dropdown.less-->
-                <li class="dropdown messages-menu">
-                    <!-- Menu toggle button -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-envelope-o"></i>
-                        <span class="label label-success">4</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="header">You have 4 messages</li>
-                        <li>
-                            <!-- inner menu: contains the messages -->
-                            <ul class="menu">
-                                <li><!-- start message -->
-                                    <a href="#">
-                                        <div class="pull-left">
-                                            <!-- User Image -->
-                                            <img src="{{ asset("/bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image"/>
-                                        </div>
-                                        <!-- Message title and timestamp -->
-                                        <h4>                            
-                                            Support Team
-                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                        </h4>
-                                        <!-- The message -->
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li><!-- end message -->                      
-                            </ul><!-- /.menu -->
-                        </li>
-                        <li class="footer"><a href="#">See All Messages</a></li>
-                    </ul>
-                </li><!-- /.messages-menu -->
-
-                <!-- Notifications Menu -->
-                <li class="dropdown notifications-menu">
-                    <!-- Menu toggle button -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning">10</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="header">You have 10 notifications</li>
-                        <li>
-                            <!-- Inner Menu: contains the notifications -->
-                            <ul class="menu">
-                                <li><!-- start notification -->
-                                    <a href="#">
-                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                    </a>
-                                </li><!-- end notification -->                      
-                            </ul>
-                        </li>
-                        <li class="footer"><a href="#">View all</a></li>
-                    </ul>
-                </li>
-                <!-- Tasks Menu -->
-                <li class="dropdown tasks-menu">
-                    <!-- Menu Toggle Button -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-flag-o"></i>
-                        <span class="label label-danger">9</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="header">You have 9 tasks</li>
-                        <li>
-                            <!-- Inner menu: contains the tasks -->
-                            <ul class="menu">
-                                <li><!-- Task item -->
-                                    <a href="#">
-                                        <!-- Task title and progress text -->
-                                        <h3>
-                                            Design some buttons
-                                            <small class="pull-right">20%</small>
-                                        </h3>
-                                        <!-- The progress bar -->
-                                        <div class="progress xs">
-                                            <!-- Change the css width attribute to simulate progress -->
-                                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                <span class="sr-only">20% Complete</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li><!-- end task item -->                      
-                            </ul>
-                        </li>
-                        <li class="footer">
-                            <a href="#">View all tasks</a>
-                        </li>
-                    </ul>
-                </li>
+             
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
@@ -288,14 +199,14 @@
                         <!-- The user image in the navbar-->
                         <img src="{{ asset('smpsfl/doc/avatar/'.$user['avatar']) }}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">Albert Mulaki</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
                             <img src="{{ asset('smpsfl/doc/avatar/'.$user['avatar']) }}" class="img-circle" alt="User Image" />
                             <p>
-                                Alexander Pierce - Web Developer
+                                Albert Mulaki - Java Developer
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>
@@ -344,15 +255,16 @@
             @yield('content')
         </div>
 
-        <footer class="main-footer">
+        
+
+    </div>
+    <footer class="main-footer">
             <div class="pull-right hidden-xs">
-                <b>Version</b> 2.0.1
+                <b>Version</b> 2.0.2
             </div>
             <strong>Copyright © 2014-2016 <a href="http://trebla-ks.net">Trebla KS LLC</a>.</strong> All rights
             reserved. Alban Mulaki
         </footer>
-
-    </div>
 
     {{ HTML::script('style/js/jquery-1.11.1.min.js') }}
     {{ HTML::script('style/js/raphael-min.js') }}
@@ -389,10 +301,10 @@
 
 <!DOCTYPE html>
 <html>
-    @yield('header')
-    @yield('hidden')
-    @yield('container')
-    @yield('scripts')
+@yield('header')
+@yield('hidden')
+@yield('container')
+@yield('scripts')
 </html>
 
 

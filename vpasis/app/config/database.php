@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'vpauni98_smps',
-			'username'  => 'vpauni98_root',
-			'password'  => '4C=e3{d%$Dnc',
+			'database'  => 'smps_vpa',
+			'username'  => 'root',
+			'password'  => 'pragmatic',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

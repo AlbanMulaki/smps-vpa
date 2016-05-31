@@ -3,7 +3,6 @@
 
 @section('notification')
 
-<!-- Regjistrimi Departmentit -->
 @if(null !== Session::get('message') && Session::get('message') == Enum::successful)
 <div class="alert alert-success alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -16,9 +15,7 @@
 </div>
 
 @endif
-<!-- End Regjistrimi Departmentit -->
 @stop
-
 
 @section('view_report')
 
@@ -27,58 +24,55 @@
 
 
 @section('report_grade')
-{{ Form::open(array('url'=>action('ProvimetController@getRaportiNotave'),'method'=>'GET')) }}
-
 <div class="box box-success">
-    
+{{ Form::open(array('url'=>action('ProvimetController@getRaportiNotave'),'method'=>'GET')) }}
     <div class="box-body">
-<div class="row">
-    <div class='col-lg-2'>
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon">{{ Lang::get('general.year') }}</span>
-                @if(isset($year))
-                {{ Form::select('year', Enum::getYear(),$year,array('class'=>'form-control ')) }}
-                @else
-                {{ Form::select('year', Enum::getYear(),null,array('class'=>'form-control ')) }}
-                @endif
+        <div class="row">
+            <div class='col-lg-2'>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">{{ Lang::get('general.year') }}</span>
+                        @if(isset($year))
+                        {{ Form::select('year', Enum::getYear(),$year,array('class'=>'form-control ')) }}
+                        @else
+                        {{ Form::select('year', Enum::getYear(),null,array('class'=>'form-control ')) }}
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class='col-lg-3'>
+                <div class="form-group">
+                    <div class="input-group ">
+                        <span class="input-group-addon">{{ Lang::get('general.month') }}</span>    
+                        @if(isset($month))
+                        {{ Form::select('month', Enum::getMonthExams(),$month,array('class'=>'form-control ')) }}
+                        @else
+                        {{ Form::select('month', Enum::getMonthExams(),null,array('class'=>'form-control ')) }}
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class='col-lg-4'>
+                <div class="form-group">
+                    <div class="input-group ">
+                        <span class="input-group-addon">{{ Lang::get('general.profile') }}</span>
+                        @if(isset($drejtimSel))
+                        {{ Form::select('drejtimi', $drejtimi,$drejtimSel,array('class'=>'form-control ')) }}
+                        @else
+                        {{ Form::select('drejtimi', $drejtimi,null,array('class'=>'form-control ')) }}
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class='col-lg-2'>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button name="submit" type="submit" class="btn btn-primary"> {{ Lang::get('general.search') }}</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class='col-lg-3'>
-        <div class="form-group">
-            <div class="input-group ">
-                <span class="input-group-addon">{{ Lang::get('general.month') }}</span>    
-                @if(isset($month))
-                {{ Form::select('month', Enum::getMonthExams(),$month,array('class'=>'form-control ')) }}
-                @else
-                {{ Form::select('month', Enum::getMonthExams(),null,array('class'=>'form-control ')) }}
-                @endif
-            </div>
-        </div>
-    </div>
-    <div class='col-lg-4'>
-        <div class="form-group">
-            <div class="input-group ">
-                <span class="input-group-addon">{{ Lang::get('general.profile') }}</span>
-                @if(isset($drejtimSel))
-                {{ Form::select('drejtimi', $drejtimi,$drejtimSel,array('class'=>'form-control ')) }}
-                @else
-                {{ Form::select('drejtimi', $drejtimi,null,array('class'=>'form-control ')) }}
-                @endif
-            </div>
-        </div>
-    </div>
-    <div class='col-lg-2'>
-        <div class="form-group">
-            <div class="col-sm-9">
-                <button name="submit" type="submit" class="btn btn-primary"> {{ Lang::get('general.search') }}</button>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
 
 {{ Form::close() }}
 <table class='table table-responsive table-bordered'>
@@ -96,15 +90,15 @@
         @if(isset($raportet))
         @foreach($raportet as $value)
         <tr>
-            <td>{{ $value['idraportit'] }}</td>
-            <td>{{ $value['lenda'] }}</td>
-            <td>{{ $value['prof'] }}</td>
-            <td>{{ $value['drejtimi'] }}</td>
+            <td>{{ $value->id }}</td>
+            <td>{{ $value->lendet->Emri }}</td>
+            <td>{{ $value->administrata->emri." ".$value->administrata->mbiemri }}</td>
+            <td>{{ $value->lendet->drejtimi->Emri }}</td>
             <td>{{ $value['data_provimit'] }}</td>
             @if($value['locked'] == Enum::nolocked)
             <td>
                 <div class="btn-group">
-                    <a href='{{ action('ProvimetController@getRegisterNotat',array($value['idraportit'])) }}' class="btn btn-sm btn-success">{{ Lang::get('general.register_grade')}}</a>
+                    <a href='{{ action('ProvimetController@getRegisterNotat',array($value->id)) }}' class="btn btn-sm btn-success">{{ Lang::get('general.register_grade')}}</a>
                     <button type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
@@ -121,6 +115,11 @@
                 </button>
                 @if(isset($raportet))
                 @foreach($raportet as $value)
+
+                <?php
+                $year = substr($value['data_provimit'], 0, 4);
+                $month = substr($value['data_provimit'], 5, 2);
+                ?>
                 <div class="modal fade" id="viewReport{{ $value['idraportit'] }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -187,6 +186,8 @@
         @endif
     </tbody>
 </table>
+
+</div>
 @stop
 @section('title')
 <section class="content-header">
@@ -202,10 +203,10 @@
 @yield('title')
 <section class="content">
 
-@yield('content')
+    @yield('content')
 
-<hr>
-@yield('notification')
-@yield('report_grade')
+    <hr>
+    @yield('notification')
+    @yield('report_grade')
 </section>
 @stop

@@ -45,7 +45,7 @@ class Lendet extends Eloquent implements UserInterface, RemindableInterface {
             $drejtimet = Drejtimet::all();
             foreach($drejtimet as $drejtimi) {
                 foreach ($lendet as $value) {
-                    $cmb[$drejtimi['Emri']][$value['idl']] = $value['Emri'];
+                    $cmb[$value['idl']] = $value['Emri'];
                 }
             }
         } else {
@@ -84,4 +84,7 @@ class Lendet extends Eloquent implements UserInterface, RemindableInterface {
         return $lendet;
     }
 
+    public function drejtimi() {
+        return self::hasOne('Drejtimet', 'idDrejtimet', 'Drejtimi');
+    }
 }

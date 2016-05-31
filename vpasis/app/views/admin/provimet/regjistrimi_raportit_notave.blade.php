@@ -26,14 +26,14 @@
         <tr>
             <td colspan="12">
                 <div class='col-md-10'> 
-                    <h4><b>{{ Lang::get('general.course') }}</b>: {{ $details['lenda'] }}<br>
-                        <b>{{ Lang::get('general.lecturer')}}:</b> <span data-toggle="tooltip" data-placement="left" title="UID:{{ $details['profuid'] }}" > {{ $details['prof'] }}</span><br>
-                        <b>{{ Lang::get('general.date') }}</b>: {{ $details['data_provimit'] }}</h4>
+                    <h4><b>{{ Lang::get('general.course') }}</b>: {{ $raporti->lendet->Emri }}<br>
+                        <b>{{ Lang::get('general.lecturer')}}:</b> <span data-toggle="tooltip" data-placement="left" title="UID:{{ $raporti->administrata->uid }}" > {{ $raporti->administrata->emri." ".$raporti->administrata->mbiemri }}</span><br>
+                        <b>{{ Lang::get('general.date') }}</b>: {{ $raporti->data_provimit }}</h4>
                 </div>
                 <div class='col-md-2'>
                     <div class="text-right">
                         <a href="#" class="btn btn-sm btn-danger"><span class="fa fa-file-pdf-o" ></span></a>
-                        <a href="{{ action('ProvimetController@getPrintReportNotat',array(substr($details["data_provimit"],0,4),substr($details["data_provimit"],5,2),$details["drejtimiId"])) }}" class="btn btn-sm btn-default" ><span class="fa fa-print" ></span></a>
+                        <a href="{{ action('ProvimetController@getPrintReportNotat',array(substr($raporti->data_provimit,0,4),substr($raporti->data_provimit,5,2),$raporti->lendet->Drejtimi)) }}" class="btn btn-sm btn-default" ><span class="fa fa-print" ></span></a>
                     </div>
                 </div>
 
@@ -56,59 +56,8 @@
         </tr>
     </thead>
     <tbody>
-        {{ "";$i=1}}
-        @foreach($raporti as $value)
-        <tr class="provRow">
-            <td>
-                <input name='id[]' type='hidden' value='{{$value->id}}' />
-                <input name='idl' type='hidden' value='{{$raportiNotave->idl}}' />
-                <input name='idraportit' type='hidden' value='{{$raportiNotave->id}}' />
-                <input name="name_surname[]" class='form-control input-sm' type='text' value='{{ $value->getStudent[0]->emri." ".$value->getStudent[0]->mbiemri }}' />
-            </td>
-            <td>
-                <input name="uid[]" class='form-control input-sm' type='number' min="0" value='{{ $value->getStudent[0]->uid }}' />
-            </td>
-            <td>
-                <input name="testi_semestral[]" class='form-control input-sm' type='number' min="0" value='{{ $value['testi_semestral'] }}' />
-            </td>
-            <td>
-                <input name="testi_gjysemsemestral[]" class='form-control input-sm' type='number' min="0" value='{{ $value['testi_gjysemsemestral'] }}' />
-            </td>
-            <td>
-                <input name="seminari[]" class='form-control input-sm' style='width:60px;' type='number' min="0" value='{{ $value['seminari'] }}' />
-            </td>
-            <td>
-                <input name="pjesmarrja[]" class='form-control input-sm' style='width:60px;' type='number' min="0" value='{{ $value['pjesmarrja'] }}' />
-            </td>
-            <td>
-                <input name="praktike[]" class='form-control input-sm' type='number' value='{{ $value['praktike'] }}' />
-            </td>
-            <td>
-                <input name="testi_final[]" class='form-control input-sm' style='width:60px;' type='number' value='{{ $value['testi_final'] }}' />
-            </td>
-            <td>
-                {{ Form::selectRange('nota[]', 5,10,$value['nota'],array('class'=>'form-control input-sm')) }}
-            </td>
-            <td>
-
-                {{ Form::select('refuzim[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),$value['refuzim'],array('class'=>'form-control input-sm')) }}
-            </td>
-            <td>
-                {{ Form::select('paraqit[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),$value['paraqit'],array('class'=>'form-control input-sm')) }}
-            </td>
-            <td>
-                {{ Form::select('paraqit_prezent[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),$value['paraqit_prezent'],array('class'=>'form-control input-sm')) }}
-            </td>
-            <td>
-                <a href='#' class='btn btn-sm btn-default'><i class='fa fa-lg fa-times'></i> </a>
-            </td>
-        </tr>
-        {{ "";$i++ }}
-        @endforeach
-        <tr>
-            <td colspan="12">
-                <a href="#"  id="addNewRow"><span class="fa fa-plus-circle fa-lg"></span> {{ Lang::get('general.add_new_row') }}</a></td>
-        </tr>
+        
+        @include('admin.provimet.partial.list_of_student_report',array('$raportiNotave'=>$raporti->raportiNotaveStudent))
     </tbody>
 </table>
 <div class="text-center">
@@ -116,13 +65,28 @@
 </div>
 @stop
 
+@section('title')
+<section class="content-header">
+    <h1>
+        {{ Lang::get('general.report_grade') }}<small>{{ Lang::get('general.report_grade') }}</small>
+    </h1>
+</section>
+@stop
 
 @section('content')
-<h2 class='text-capitalize '>{{ Lang::get('general.report_grade') }}</h2>
-<hr>
-@yield('notification')
+@yield('title')
+<section class="content">
 
-{{ Form::open(array('url'=>action('ProvimetController@postUpdateReport'),'method'=>'POST','id'=>"submitRaport")) }}
-@yield('regjistrmiNotave')
-{{ Form::close() }}
+    <hr>
+    @yield('notification')
+    <div class="box box-warning">
+        <div class="box-body with-border">
+        {{ Form::open(array('url'=>action('ProvimetController@postUpdateReport'),'method'=>'POST','id'=>"submitRaport")) }}
+                <input name='idraportit' type='hidden' value='{{ $raporti->id }}' />
+            @yield('regjistrmiNotave')
+        {{ Form::close() }}
+        </div>
+    </div>
+    </div>
+</section>
 @stop

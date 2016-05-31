@@ -6,7 +6,6 @@
 
     <thead
         <tr>
-            <th>{{ Lang::get('general.student') }}</th>
             <th>{{ Lang::get('general.studentId') }}</th>
             <th>{{ Lang::get('general.test_semester') }}</th>
             <th>{{ Lang::get('general.test_semisemester') }}</th>
@@ -21,14 +20,11 @@
         </tr>
     </thead>
     <tbody>
+        @for($i=0;$i<50;$i++)
         <tr class="provRow">
-            <td>
+            <td> 
                 <input name='id[]' type='hidden' value='' />
-                <input name='idl' type='hidden' value='' />
                 <input name='idraportit' type='hidden' value='' />
-                <input name="name_surname[]" class='form-control input-sm' type='text' value='' />
-            </td>
-            <td>
                 <input name="uid[]" class='form-control input-sm' type='number' min="0" value='' />
             </td>
             <td>
@@ -63,6 +59,7 @@
                 {{ Form::select('paraqit_prezent[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),Enum::YES,array('class'=>'form-control input-sm')) }}
             </td>
         </tr>
+        @endfor
         <tr>
             <td colspan="12">
                 <a href="#"  id="addNewRow"><span class="fa fa-plus-circle fa-lg"></span> {{ Lang::get('general.add_new_row') }}</a></td>

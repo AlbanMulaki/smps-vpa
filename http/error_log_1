@@ -1,0 +1,79 @@
+[16-Oct-2014 20:20:37 UTC] PHP Fatal error:  Interface 'Illuminate\Support\Contracts\ResponsePreparerInterface' not found in /home/albanmulaki/vpasis/vendor/laravel/framework/src/Illuminate/Foundation/Application.php on line 23
+[16-Oct-2014 20:23:35 UTC] PHP Fatal error:  Interface 'Illuminate\Support\Contracts\ResponsePreparerInterface' not found in /home/albanmulaki/vpasis/vendor/laravel/framework/src/Illuminate/Foundation/Application.php on line 23
+[16-Oct-2014 20:23:41 UTC] PHP Fatal error:  Interface 'Illuminate\Support\Contracts\ResponsePreparerInterface' not found in /home/albanmulaki/vpasis/vendor/laravel/framework/src/Illuminate/Foundation/Application.php on line 23
+[16-Oct-2014 20:23:42 UTC] PHP Fatal error:  Interface 'Illuminate\Support\Contracts\ResponsePreparerInterface' not found in /home/albanmulaki/vpasis/vendor/laravel/framework/src/Illuminate/Foundation/Application.php on line 23
+[17-Oct-2014 21:34:14 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:34:29 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:34:36 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:34:39 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:34:48 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:35:23 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:35:25 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:35:30 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:35:31 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:38:09 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:38:12 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:38:14 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:38:49 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[17-Oct-2014 21:38:50 UTC] PHP Fatal error:  Can't use function return value in write context in /home/albanmulaki/vpasis/app/controllers/NewsController.php on line 32
+[25-Oct-2014 12:25:09 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/albanmulaki/vpasis/vendor/dompdf/dompdf/include/frame.cls.php on line 1059
+[26-Oct-2014 18:30:13 UTC] PHP Parse error:  syntax error, unexpected 'endif' (T_ENDIF) in /home/albanmulaki/vpasis/app/storage/views/11feff273d1c96358315be6a745d4990 on line 14
+[26-Oct-2014 18:30:15 UTC] PHP Parse error:  syntax error, unexpected 'endif' (T_ENDIF) in /home/albanmulaki/vpasis/app/storage/views/11feff273d1c96358315be6a745d4990 on line 14
+[26-Oct-2014 18:30:16 UTC] PHP Parse error:  syntax error, unexpected 'endif' (T_ENDIF) in /home/albanmulaki/vpasis/app/storage/views/11feff273d1c96358315be6a745d4990 on line 14
+[26-Oct-2014 18:44:33 UTC] PHP Fatal error:  Call to undefined function now() in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:44:33 UTC] PHP Fatal error:  Call to undefined function now() in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:44:33 UTC] PHP Fatal error:  Call to undefined function now() in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:44:33 UTC] PHP Fatal error:  Call to undefined function now() in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:45:14 UTC] PHP Fatal error:  Class 'Studenti\studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:45:14 UTC] PHP Fatal error:  Class 'Studenti\studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:45:16 UTC] PHP Fatal error:  Class 'Studenti\studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:45:16 UTC] PHP Fatal error:  Class 'Studenti\studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:46:04 UTC] PHP Fatal error:  Class 'Studenti\studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:46:05 UTC] PHP Fatal error:  Class 'Studenti\studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:46:05 UTC] PHP Fatal error:  Class 'Studenti\studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:46:05 UTC] PHP Fatal error:  Class 'Studenti\studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:46:17 UTC] PHP Fatal error:  Class 'Studenti\Studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:46:17 UTC] PHP Fatal error:  Class 'Studenti\Studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:46:17 UTC] PHP Fatal error:  Class 'Studenti\Studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:46:17 UTC] PHP Fatal error:  Class 'Studenti\Studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:46:30 UTC] PHP Fatal error:  Class 'DB\Studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:46:30 UTC] PHP Fatal error:  Class 'DB\Studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:46:30 UTC] PHP Fatal error:  Class 'DB\Studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[26-Oct-2014 18:46:31 UTC] PHP Fatal error:  Class 'DB\Studenti' not found in /home/albanmulaki/vpasis/app/controllers/AjaxController.php on line 30
+[29-Oct-2014 20:38:10 UTC] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting ')' in /home/albanmulaki/vpasis/app/storage/views/c4e90d945aaaa48bae9dccdab9152263 on line 514
+[29-Oct-2014 20:38:21 UTC] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting ')' in /home/albanmulaki/vpasis/app/storage/views/c4e90d945aaaa48bae9dccdab9152263 on line 514
+[29-Oct-2014 20:38:23 UTC] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting ')' in /home/albanmulaki/vpasis/app/storage/views/c4e90d945aaaa48bae9dccdab9152263 on line 514
+[29-Oct-2014 20:38:25 UTC] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting ')' in /home/albanmulaki/vpasis/app/storage/views/c4e90d945aaaa48bae9dccdab9152263 on line 514
+[31-Oct-2014 12:47:04 UTC] PHP Parse error:  syntax error, unexpected ''),null,array('' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/albanmulaki/vpasis/app/storage/views/43d9f9b97f1855943a688a48790ee24f on line 6
+[31-Oct-2014 12:47:12 UTC] PHP Parse error:  syntax error, unexpected ''),null,array('' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/albanmulaki/vpasis/app/storage/views/43d9f9b97f1855943a688a48790ee24f on line 6
+[31-Oct-2014 12:49:32 UTC] PHP Fatal error:  Cannot use object of type Illuminate\Database\Eloquent\Builder as array in /home/albanmulaki/vpasis/app/models/Studenti.php on line 28
+[31-Oct-2014 13:25:14 UTC] PHP Parse error:  syntax error, unexpected '$i' (T_VARIABLE), expecting ')' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 13
+[31-Oct-2014 13:40:15 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 14
+[31-Oct-2014 13:40:18 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 14
+[31-Oct-2014 13:40:21 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 14
+[31-Oct-2014 13:41:03 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 14
+[31-Oct-2014 13:41:06 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 14
+[31-Oct-2014 13:41:43 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 14
+[31-Oct-2014 13:42:15 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 14
+[31-Oct-2014 13:42:20 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 14
+[31-Oct-2014 13:42:23 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 14
+[31-Oct-2014 13:43:28 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 14
+[31-Oct-2014 13:44:14 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 14
+[31-Oct-2014 13:44:44 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ';' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 14
+[31-Oct-2014 14:01:48 UTC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 27
+[31-Oct-2014 14:01:50 UTC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 27
+[31-Oct-2014 14:19:02 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '(' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 38
+[31-Oct-2014 14:19:06 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '(' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 38
+[31-Oct-2014 14:19:16 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '(' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 38
+[31-Oct-2014 14:20:13 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '(' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 38
+[31-Oct-2014 14:29:57 UTC] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '$' in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 37
+[31-Oct-2014 14:30:16 UTC] PHP Parse error:  syntax error, unexpected '!=' (T_IS_NOT_EQUAL) in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 37
+[31-Oct-2014 14:30:19 UTC] PHP Parse error:  syntax error, unexpected '!=' (T_IS_NOT_EQUAL) in /home/albanmulaki/vpasis/app/storage/views/6679b66faf8a45ad003044fffdff134f on line 37
+[02-Nov-2014 15:19:40 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/albanmulaki/vpasis/app/storage/views/72ad8fb9d9d6dce91a7fcbcaad7d0dbd on line 8
+[02-Nov-2014 18:25:30 UTC] PHP Fatal error:  Call to undefined function ccount() in /home/albanmulaki/vpasis/app/models/Notimet.php on line 40
+[02-Nov-2014 18:25:33 UTC] PHP Fatal error:  Call to undefined function ccount() in /home/albanmulaki/vpasis/app/models/Notimet.php on line 40
+[02-Nov-2014 18:25:39 UTC] PHP Fatal error:  Call to undefined function ccount() in /home/albanmulaki/vpasis/app/models/Notimet.php on line 40
+[02-Nov-2014 18:25:42 UTC] PHP Fatal error:  Call to undefined function ccount() in /home/albanmulaki/vpasis/app/models/Notimet.php on line 40
+[10-Feb-2015 22:44:40 UTC] PHP Parse error:  syntax error, unexpected '$pdf' (T_VARIABLE), expecting function (T_FUNCTION) in /home/albanmulaki/vpasis/app/controllers/RatingController.php on line 84
+[10-Feb-2015 22:44:50 UTC] PHP Parse error:  syntax error, unexpected '$pdf' (T_VARIABLE), expecting function (T_FUNCTION) in /home/albanmulaki/vpasis/app/controllers/RatingController.php on line 84
+[10-Feb-2015 22:45:10 UTC] PHP Fatal error:  Class 'Rout' not found in /home/albanmulaki/vpasis/app/routes.php on line 91

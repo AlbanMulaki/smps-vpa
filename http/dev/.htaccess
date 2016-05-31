@@ -1,0 +1,14 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+RewriteRule /dev dev.php [L]
+RewriteCond %{HTTP_HOST} ^pragmaticlinux\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.pragmaticlinux\.com$
+RewriteRule ^/?$ "http\:\/\/pragmaticlinux\.com\/pragmaticlinux\.com" [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^blog\.pragmaticlinux\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.blog\.pragmaticlinux\.com$
+RewriteRule ^/?$ "http\:\/\/google\.com" [R=301,L]
