@@ -21,6 +21,12 @@ class Pagesat extends Eloquent implements UserInterface, RemindableInterface {
         return self::where('deleted','=',Enum::notdeleted)->orderBy('created_at','DESC')->get();
     }
     
+    
+    
+    public function getPaguesi() {
+        return self::hasOne('Studenti', 'uid', 'paguesi');
+    }
+    
 
     /**
      * The attributes excluded from the model's JSON form.

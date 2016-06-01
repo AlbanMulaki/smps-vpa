@@ -92,10 +92,15 @@
             <th>{{ Lang::get('general.sum') }}</th>
             <th>{{ Lang::get('general.registred') }}</th>
         </tr>
+        {{ "";$i=0 }}
         @foreach($pagesat as $value)
         <tr>
             <td>{{ $value['paguesi']}}</td>
-            <td>{{ " (<b>".Enum::convertUID($value['paguesi'])."</b>) " }}</td>
+            @if(isset($value->getPaguesi->emri))
+            <td>{{ " (<b>".$value->getPaguesi->emri." ".$value->getPaguesi->mbiemri."</b>) " }}</td>
+            @else
+            <td> ------ </td>
+            @endif
             <td>{{ $value['emri_bankes'] }}</td>
             <td>{{ $value['pershkrimi'] }}</td>
             <td>{{ $value['tipi'] }}</td>
