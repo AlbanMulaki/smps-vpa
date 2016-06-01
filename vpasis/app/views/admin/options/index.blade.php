@@ -76,23 +76,9 @@
                 <input type="file" name="logo" accept="image/*">
             </div>
         </div>
+        
         <div class="row">
-            <div class='col-sm-12'>
-                <hr>
-                <h2>{{ Lang::get('general.managed_event') }}</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class='col-sm-12'>
-                <div class='col-sm-4'>
-                    <div class="form-group">
-                        <div class="input-group col-lg-10">
-                            <span class="input-group-addon">{{ Lang::get('general.deadline_exams') }}</span>
-                            {{ Form::select('provim_active', Enum::getGjendjetProvimeve(),$settings['provim_active'],array('class'=>'form-control')) }}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="form-group"> 
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">{{ Lang::get('general.update') }}</button>
