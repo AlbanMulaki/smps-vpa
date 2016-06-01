@@ -98,8 +98,8 @@
 </section>
 @stop
 @section('content')
-
 @yield('title')
+
 <section class="content">
 @yield('notification')
 @yield('settings')
