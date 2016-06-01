@@ -276,7 +276,6 @@ return array(
     "cancel" => "Anulo",
     "chose_image" => "Zgjidh foton",
     "select_file" => "Selekto CV",
-    "select_prof" => "Zgjidh professorin",
     "remove" => "Fshij",
     "change" => "Ndrysho",
     "view_profile" => "Shiko profilin",
@@ -366,6 +365,7 @@ return array(
     "add_new_report_grade" => "Regjistro raport",
     "add_student" => "Regjistro student",
     "saved_successful"=>"Ndryshimet u bene me sukses",
+    "changing"=>"Ndryshimi i te dhenave",
     
         )
 ;

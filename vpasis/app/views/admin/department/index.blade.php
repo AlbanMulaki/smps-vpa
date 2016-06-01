@@ -136,9 +136,7 @@
                         </a>
                     </div>
                     <div class="col-lg-4">
-                        <a href="#" class="btn btn-sm btn-success">
-                            <span class='fa fa-file-excel-o fa-lg' ></span> 
-                        </a>
+                        
                         <a href="{{ action('DepartmentsController@getPrintLendet')."/".$value['idDrejtimet'] }}"type="button" class="btn btn-sm btn-danger">
                             <span class='fa fa-file-pdf-o fa-lg' ></span> 
                         </a>
