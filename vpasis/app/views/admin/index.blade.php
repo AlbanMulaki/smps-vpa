@@ -28,7 +28,7 @@
                 $('#listpeople').empty().append(data);
 
             }},
-                "json");
+            "json");
     });
 </script>
 @stop
@@ -55,81 +55,129 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-</head>
-@stop
+    </head>
+    @stop
 
 
 
 
-@section('sidebar')
-<!-- Left side column. contains the sidebar -->
-<aside class="main-sidebar">
+    @section('sidebar')
+    <!-- Left side column. contains the sidebar -->
+    <aside class="main-sidebar">
 
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
 
 
+          
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu">
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-university" aria-hidden="true"></i>
+                        <span>{{ Lang::get('general.settings') }}</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ action('DepartmentsController@getIndex') }}">{{ Lang::get('general.departments') }}</a></li>
+                        <li><a href="{{ action('OptionsController@getIndex') }}">{{ Lang::get('general.options') }}</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-street-view" aria-hidden="true"></i>
+                        <span>{{ Lang::get('general.student') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ action('StudentController@getRegister') }}">{{ Lang::get('general.register_student') }}</a></li>
+                            <li><a href="{{ action('StudentController@getList') }}">{{ Lang::get('general.student_list') }}</a></li>
+                            <li><a href="{{ action('VijushmeriaController@getVijushmeria') }}">{{ Lang::get('general.attendance') }}</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-clipboard" aria-hidden="true"></i>
+                            <span>{{ Lang::get('general.exams') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ action('ProvimetController@getAddRaportiNotave') }}">{{ Lang::get('general.add_new_report_grade') }}</a></li>
+                                <li><a href="{{ action('ProvimetController@getRaportiNotave') }}">{{ Lang::get('general.report_grade') }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-eur" aria-hidden="true"></i>
+                                
+                                <span>{{ Lang::get('general.fee') }}</span> 
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ action('FeeController@getIndex') }}">{{ Lang::get('general.fee') }}</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#"><i class="fa fa-users" aria-hidden="true"></i>
+                                    <span>{{ Lang::get('general.employe') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="{{ action('StaffController@getRegister') }}">{{ Lang::get('general.add_employe') }}</a></li>
+                                        <li><a href="{{ action('StaffController@getDisplayStaff') }}">{{ Lang::get('general.staff_list') }}</a></li>
+                                    </ul>
+                                </li>
+                            </ul><!-- /.sidebar-menu -->
+                        </section>
+                        <!-- /.sidebar -->
+                    </aside>
 
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-            <li class="treeview">
-                <a href="#"><i class="fa fa-university" aria-hidden="true"></i>
-                    <span>{{ Lang::get('general.settings') }}</span> <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ action('DepartmentsController@getIndex') }}">{{ Lang::get('general.departments') }}</a></li>
-                    <li><a href="{{ action('OptionsController@getIndex') }}">{{ Lang::get('general.options') }}</a></li>
+<!--
+            <li>
+                <a href="#" class='text-danger'><i class="fa fa-book fa-lg "></i> {{ Lang::get('general.library') }} <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+
+                    <li>
+                        <a href="#"><span class="label label-sm label-danger"> </span>{{ Lang::get('general.general_details') }}</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="label label-sm label-danger"> </span>{{ Lang::get('general.issue_return') }}</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="label label-sm label-danger"> </span>{{ Lang::get('general.lost') }}</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="label label-sm label-danger"> </span>{{ Lang::get('general.sold') }}</a>
+                    </li>
                 </ul>
+                 /.nav-second-level 
             </li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-street-view" aria-hidden="true"></i>
-                    <span>{{ Lang::get('general.student') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ action('StudentController@getRegister') }}">{{ Lang::get('general.register_student') }}</a></li>
-                    <li><a href="{{ action('StudentController@getList') }}">{{ Lang::get('general.student_list') }}</a></li>
-                    <li><a href="{{ action('VijushmeriaController@getVijushmeria') }}">{{ Lang::get('general.attendance') }}</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-clipboard" aria-hidden="true"></i>
-                    <span>{{ Lang::get('general.exams') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ action('ProvimetController@getAddRaportiNotave') }}">{{ Lang::get('general.add_new_report_grade') }}</a></li>
-                    <li><a href="{{ action('ProvimetController@getRaportiNotave') }}">{{ Lang::get('general.report_grade') }}</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-eur" aria-hidden="true"></i>
 
-                    <span>{{ Lang::get('general.fee') }}</span> 
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ action('FeeController@getIndex') }}">{{ Lang::get('general.fee') }}</a></li>
+            <li>
+                <a href="#" class='text-danger'><i class="fa fa-user fa-lg"></i> {{ Lang::get('general.account') }} <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Sub menu 1</a>
+                    </li>
                 </ul>
+                 /.nav-second-level 
             </li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-users" aria-hidden="true"></i>
-                    <span>{{ Lang::get('general.employe') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ action('StaffController@getRegister') }}">{{ Lang::get('general.add_employe') }}</a></li>
-                    <li><a href="{{ action('StaffController@getDisplayStaff') }}">{{ Lang::get('general.staff_list') }}</a></li>
+            <li>
+                <a href="#" class='text-danger'><i class="fa fa-envelope-o fa-lg"></i> {{ Lang::get('general.about') }} <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Sub menu 1</a>
+                    </li>
                 </ul>
+                 /.nav-second-level 
             </li>
-        </ul><!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
-</aside>
 
-
+        </ul>
+    </div>
+     /.sidebar-collapse 
+    <div class="well text-center">
+        {{ Lang::get('footer.author') }} <br>
+        {{ link_to('http://www.vpa-uni.com', Lang::get('footer.copyright'), $attributes = array(), $secure = null); }}<br>
+        {{ link_to('http://www.objprog.com', Lang::get('footer.copyright1'), $attributes = array(), $secure = null); }}<br>
+        {{ link_to('http://www.trebla-ks.com', Lang::get('footer.copyright2'), $attributes = array(), $secure = null); }}
+    </div>
+</div>-->
 
 @stop
 
 @section('navbar')
 <!-- Main Header -->
 <header class="main-header">
-
     <!-- Logo -->
     <a href="{{ action('AdminController@getIndex') }}" class="logo"><b>SMPS </b> - {{ $university_name }}</a>
 
@@ -142,7 +190,7 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-
+             
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
@@ -150,33 +198,21 @@
                         <!-- The user image in the navbar-->
                         <img src="{{ asset('smpsfl/doc/avatar/'.$user['avatar']) }}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Albert Mulaki</span>
+                        <span class="hidden-xs">{{ $user->emri." ".$user->mbiemri }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
                             <img src="{{ asset('smpsfl/doc/avatar/'.$user['avatar']) }}" class="img-circle" alt="User Image" />
                             <p>
-                                Albert Mulaki - Java Developer
-                                <small>Member since Nov. 2012</small>
+                                {{ $user->emri." ".$user->mbiemri }} - {{ Enum::convertaccess($user->grp) }}
+                                <small>Regjistruar me {{ $user->created_at}}</small>
                             </p>
-                        </li>
-                        <!-- Menu Body -->
-                        <li class="user-body">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="{{ action('StaffController@getProfile',[$user->uid]) }}" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{{ action('AuthController@getLogout') }}" class="btn btn-default btn-flat">Logout</a>
@@ -203,25 +239,19 @@
 
         @yield('sidebar')
         <div class="content-wrapper">
-            
-            <section class='content'>
-                @yield('content')
-                
-            </section>
-
-
+            @yield('content')
         </div>
 
-
+        
 
     </div>
     <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 2.0.2
-        </div>
-        <strong>Copyright © 2014-2016 <a href="http://trebla-ks.net">Trebla KS LLC</a>.</strong> All rights
-        reserved. Alban Mulaki
-    </footer>
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.0.3
+            </div>
+            <strong>Copyright © 2014-2016 <a href="http://trebla-ks.net">Trebla KS LLC</a>.</strong> All rights
+            reserved. Alban Mulaki
+        </footer>
 
     {{ HTML::script('style/js/jquery-1.11.1.min.js') }}
     {{ HTML::script('style/js/raphael-min.js') }}
@@ -258,10 +288,10 @@
 
 <!DOCTYPE html>
 <html>
-    @yield('header')
-    @yield('hidden')
-    @yield('container')
-    @yield('scripts')
+@yield('header')
+@yield('hidden')
+@yield('container')
+@yield('scripts')
 </html>
 
 
