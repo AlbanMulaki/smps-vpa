@@ -19,7 +19,7 @@
 
         </tr>
         <tr>
-            <th>{{ Lang::get('general.student') }}</th>
+            <th style="min-width: 100px;">{{ Lang::get('general.student') }}</th>
             <th>{{ Lang::get('general.studentId') }}</th>
             <th>{{ Lang::get('general.test_semester') }}</th>
             <th>{{ Lang::get('general.test_semisemester') }}</th>

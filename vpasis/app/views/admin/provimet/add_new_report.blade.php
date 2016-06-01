@@ -20,7 +20,7 @@
         </tr>
     </thead>
     <tbody>
-        @for($i=0;$i<50;$i++)
+        @for($i=0;$i<40;$i++)
         <tr class="provRow">
             <td> 
                 <input name='id[]' type='hidden' value='' />
@@ -50,20 +50,16 @@
             </td>
             <td>
 
-                {{ Form::select('refuzim[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),Enum::YES,array('class'=>'form-control input-sm')) }}
+                {{ Form::select('refuzim[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),Enum::NO,array('class'=>'form-control input-sm')) }}
             </td>
             <td>
                 {{ Form::select('paraqit[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),Enum::YES,array('class'=>'form-control input-sm')) }}
-            </td>
+            </td> 
             <td>
                 {{ Form::select('paraqit_prezent[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),Enum::YES,array('class'=>'form-control input-sm')) }}
             </td>
         </tr>
         @endfor
-        <tr>
-            <td colspan="12">
-                <a href="#"  id="addNewRow"><span class="fa fa-plus-circle fa-lg"></span> {{ Lang::get('general.add_new_row') }}</a></td>
-        </tr>
     </tbody>
 </table>
 <div class="text-center">
@@ -103,7 +99,7 @@
             <div class="form-group">
                 <div class="radio">
                     <label>
-                        <input type="radio" name="statusi_studentve" id="optionsRadios1" value="{{ Enum::I_RREGULLT }}">
+                        <input type="radio" name="statusi_studentve" id="optionsRadios1" value="{{ Enum::I_RREGULLT }}" checked="">
                         {{ Lang::get('general.regular') }}
                     </label>
                 </div>
@@ -134,6 +130,47 @@
         {{ Lang::get('general.add_new_report_grade') }}<small>{{ Lang::get('general.add_new_report_grade') }}</small>
     </h1>
 </section>
+@stop
+
+@section('notification')
+
+@if($errors->userDoesntExistError->any())
+<div class="callout callout-danger">
+    <h4>Student ID nuk egzizton</h4>
+    <ul>
+        @foreach($errors->userDoesntExistError->getMessages() as $userStudent)
+        <li>Student ID: <b>{{ $userStudent[0] }}</b></li>
+        @endforeach
+    </ul>
+</div>
+@endif
+@if($errors->validator->any())
+<div class="callout callout-danger">
+    <h4>Gabim!</h4>
+    <ul>
+        @foreach($errors->validator->getMessages() as $errorValid)
+        <li>{{ $errorValid[0] }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+<!-- Regjistrimi Departmentit -->
+@if(null !== Session::get('message') && Session::get('message') == Enum::successful)
+
+<div class="callout callout-success">
+    <h4>@lang('general.saved_successful')</h4>
+    <p>{{ Session::get('reason') }}</p>
+</div>
+
+@elseif(Session::get('message') == Enum::failed)
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{ Lang::get('warn.error_undefined') }}
+</div>
+
+@endif
+<!-- End Regjistrimi Departmentit -->
 @stop
 
 

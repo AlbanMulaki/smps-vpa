@@ -22,7 +22,7 @@
             <th>{{ Lang::get('general.student') }}</th>
             <th>{{ Lang::get('general.studentId') }}</th>
             <th>{{ Lang::get('general.test_semester') }}</th>
-            <th>{{ Lang::get('general.test_semisemester') }}</th>
+            <th>Testi Gj.Sem</th>
             <th>{{ Lang::get('general.seminar') }}</th>
             <th>{{ Lang::get('general.attendance') }}</th>
             <th>{{ Lang::get('general.practice_work') }}</th>
@@ -41,7 +41,7 @@
 @foreach($raporti->raportiNotaveStudent as $value)
         <tr class="provRow">
             <td>
-                <input name="name_surname[]" class='form-control input-sm' type='text' value='{{ $value->getStudent->emri." ".$value->getStudent->mbiemri }}' />
+                <input name="name_surname[]" class='form-control input-sm' type='text' value='{{ $value->getStudent->emri." ".$value->getStudent->mbiemri }}' disabled="" style="min-width:100px;"/>
             </td>
             <td>
                 <input name="uid[]" class='form-control input-sm' type='number' min="0" value='{{ $value->getStudent->uid }}' />
@@ -50,7 +50,7 @@
                 <input name="testi_semestral[]" class='form-control input-sm' type='number' min="0" value='{{ $value->testi_semestral }}' />
             </td>
             <td>
-                <input name="testi_gjysemsemestral[]" class='form-control input-sm' type='number' min="0" value='{{ $value->testi_gjysem_semestral }}' />
+                <input name="testi_gjysemsemestral[]" class='form-control input-sm' type='number' min="0" value='{{ $value->testi_gjysem_semestral }}'  style="min-width:40px;" />
             </td>
             <td>
                 <input name="seminari[]" class='form-control input-sm' style='width:60px;' type='number' min="0" value='{{ $value->seminari }}' />
