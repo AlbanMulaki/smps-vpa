@@ -42,9 +42,7 @@
             <th>{{ Lang::get('general.science_grade') }}</th>
             <th>{{ Lang::get('general.position_office') }}</th>
             <th> 
-                <a href="#" class="btn btn-sm btn-success">
-                    <span class="fa fa-file-excel-o fa-lg"></span> 
-                </a>
+                
                 <a href="{{ action('StaffController@getPrintPdf') }}" type="button" class="btn btn-sm btn-danger">
                     <span class="fa fa-file-pdf-o fa-lg"></span> 
                 </a>

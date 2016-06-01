@@ -57,9 +57,7 @@
                     <th>{{ Lang::get('general.gender') }}</th>
                     <th>{{ Lang::get('general.registred_date') }}</th>
                     <th> 
-                        <a href="#" class="btn btn-sm btn-success">
-                            <span class="fa fa-file-excel-o fa-lg"></span> 
-                        </a>
+                        
                         <a href="{{ action('StudentController@getListPrintPdf',array($rows,$drejtimi)) }}" type="button" class="btn btn-sm btn-danger">
                             <span class="fa fa-file-pdf-o fa-lg"></span> 
                         </a>
