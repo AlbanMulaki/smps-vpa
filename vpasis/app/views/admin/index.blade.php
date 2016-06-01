@@ -272,6 +272,10 @@
             defaultDate: "2016-12-01 05:40:05 +0000",
             format: 'YYYY-MM-DD HH:mm:ss ZZ',
         });
+        $('.datepicker').datetimepicker({
+            defaultDate: "2016-12-01",
+            format: 'YYYY-MM-DD',
+        });
         $(document).ready(function () {
             $('input').iCheck({
                 checkboxClass: 'icheckbox_square-blue',

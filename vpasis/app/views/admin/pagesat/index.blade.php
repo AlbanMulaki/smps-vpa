@@ -39,7 +39,7 @@
                     <label for="emri_bankes" class="col-sm-3 control-label">{{ Lang::get('general.bank_name') }}</label>
                     <div class="col-sm-9">
                         {{ Form::select('emri_bankes',Enum::getTypeBank(),current(Enum::getTypeBank()),array('class'=>'form-control')) }}
-                       
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -63,8 +63,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="data" class="col-sm-3 control-label">{{ Lang::get('general.date') }}</label>
+                    <div class="col-sm-4">
+                            <input  id="data"  type="text" name="data" id="datepicker" class="datepicker input-sm form-control">
+                    </div>
+                </div>
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{ Lang::get('general.close') }}</button>
                 <button type="submit" class="btn btn-primary">{{ Lang::get('general.register') }}</button>
@@ -104,8 +109,8 @@
             <td>{{ $value['emri_bankes'] }}</td>
             <td>{{ $value['pershkrimi'] }}</td>
             <td>{{ $value['tipi'] }}</td>
-            <td>{{ $value['shuma'] }}</td>
-            <td>{{ $value['created_at'] }}</td>
+            <td>{{ $value['shuma'] }} <span class='fa fa-euro'></span></td>
+            <td>{{ $value->data }}</td>
         </tr>
         @endforeach
     </table>
@@ -127,14 +132,14 @@
 @yield('title')
 
 <section class='content'>
-@yield('notification')
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fee">
-    {{ Lang::get('general.register_fee') }}
-</button>
+    @yield('notification')
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fee">
+        {{ Lang::get('general.register_fee') }}
+    </button>
 
 
-@yield('register_fee')
-<br>
-@yield('list_fee')
+    @yield('register_fee')
+    <br>
+    @yield('list_fee')
 </section>
 @stop
