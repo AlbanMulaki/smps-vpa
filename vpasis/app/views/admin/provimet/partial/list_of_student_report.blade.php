@@ -1,3 +1,42 @@
+<table class='table table-bordered'>
+
+    <thead>
+        <tr>
+            <td colspan="13">
+                <div class='col-md-10'> 
+                    <h4><b>{{ Lang::get('general.course') }}</b>: {{ $raporti->lendet->Emri }}<br>
+                        <b>{{ Lang::get('general.lecturer')}}:</b> <span data-toggle="tooltip" data-placement="left" title="UID:{{ $raporti->administrata->uid }}" > {{ $raporti->administrata->emri." ".$raporti->administrata->mbiemri }}</span><br>
+                        <b>{{ Lang::get('general.date') }}</b>: {{ $raporti->data_provimit }}</h4>
+                </div>
+                <div class='col-md-2'>
+                    <div class="text-right">
+                        <a href="{{ action('ProvimetController@getPrintReportNotat',[$raporti->id,1]) }}" class="btn btn-sm btn-danger" ><span class="fa fa-file-pdf-o" ></span></a>
+                        <a href="{{ action('ProvimetController@getPrintReportNotat',$raporti->id) }}" class="btn btn-sm btn-default" ><span class="fa fa-print" ></span></a>
+                    </div>
+                </div>
+
+            </td>
+
+        </tr>
+        <tr>
+            <th>{{ Lang::get('general.student') }}</th>
+            <th>{{ Lang::get('general.studentId') }}</th>
+            <th>{{ Lang::get('general.test_semester') }}</th>
+            <th>{{ Lang::get('general.test_semisemester') }}</th>
+            <th>{{ Lang::get('general.seminar') }}</th>
+            <th>{{ Lang::get('general.attendance') }}</th>
+            <th>{{ Lang::get('general.practice_work') }}</th>
+            <th>{{ Lang::get('general.final_test') }}</th>
+            <th style='width: 80px;'>{{ Lang::get('general.grade') }}</th>
+            <th style='width: 80px;'>{{ Lang::get('general.refuse') }}</th>
+            <th style='width: 80px;'>{{ Lang::get('general.apply') }}</th>
+            <th  style='width: 80px;'>{{ Lang::get('general.present') }}</th>
+            <th  style='width: 80px;'> &nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
 {{ "";$i=0 }}
 @foreach($raporti->raportiNotaveStudent as $value)
         <tr class="provRow">
@@ -37,6 +76,9 @@
             </td>
             <td>
                 {{ Form::select('paraqit_prezent[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),$value['paraqit_prezent'],array('class'=>'form-control input-sm')) }}
+            </td>
+            <td>
+                <a href="{{ action('ProvimetController@getDeleteStudent',[$raporti->id,$value->getStudent->uid]) }}" class="btn-danger btn btn-sm"><i class="fa fa-lg fa-close"></i></a>
             </td>
         </tr>
         {{ "";$i++ }}
@@ -85,3 +127,5 @@
         </tr>
         {{ "";$i++ }}
 @endfor
+    </tbody>
+</table>

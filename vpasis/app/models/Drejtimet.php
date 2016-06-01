@@ -42,4 +42,7 @@ class Drejtimet extends Eloquent implements UserInterface, RemindableInterface {
         return $combo;
     }
 
+    public function departmenti() {
+        return self::hasOne('Departments', 'idDepartmentet', 'idd');
+    }
 }

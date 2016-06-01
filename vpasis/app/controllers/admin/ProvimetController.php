@@ -37,55 +37,84 @@ class ProvimetController extends \BaseController {
         }
     }
 
-    /*
-     * Delete student prej raportit te notave
+    /**
+     * 
+     * Delete student from report grade
+     * @param type $idraportit
+     * @param type $idstudenti
+     * @return type
      */
 
     public function getDeleteStudent($idraportit, $idstudenti) {
-        $update = array('deleted' => Enum::deleted);
         RaportiNotaveStudent::where('studenti', '=', $idstudenti)
                 ->where('idraportit', '=', $idraportit)
-                ->update($update);
+                ->delete();
+        return Redirect::back();
     }
+    
+    /**
+     * Delete report grade with all students on it
+     * @param type $idraportit
+     * @return type
+     */
+    
+    
+    public function getDeleteReportGrade($idraportit) {
+        $raportiNotave = RaportiNotave::find($idraportit);
+        foreach($raportiNotave->raportiNotaveStudent as $value){
+            $value->delete();
+        }
+        $raportiNotave->delete();
+        return Redirect::back()->with('message',Enum::successful)->with('reason',Lang::get('warn.succes_report_grade_deleted',['id'=>$idraportit]));
+    }
+    
+    /**
+     * Lock report grade
+     * @param type $idraportit
+     * @return type
+     */
 
+    public function getLockReportGrade($idraportit) {
+        RaportiNotave::where('id', $idraportit)
+                ->update(array('locked'=>Enum::locked));
+        return Redirect::back()->with('message',Enum::successful);
+    }
+    
+    /**
+     * Get list of students included on report grade based on id of report grade
+     * @param type $idraportit
+     * @return type
+     */
     public function getRegisterNotat($idraportit) {
         $raporti = RaportiNotave::find($idraportit);
-//        $raport_details = RaportiNotave::select('lendet.Emri as lenda', DB::raw("CONCAT(administrata.emri,' ',administrata.mbiemri) as prof"), "administrata.uid as profuid", "drejtimet.emri as drejtimi", "raporti_notave.data_provimit as data_provimit", "drejtimet.idDrejtimet as drejtimiId", "raporti_notave.id as idraportit", "raporti_notave.locked as locked")
-//                ->join('lendet', 'lendet.idl', '=', 'raporti_notave.idl')
-//                ->join('administrata', 'administrata.uid', '=', 'raporti_notave.prof')
-//                ->join('drejtimet', 'drejtimet.idDrejtimet', '=', 'raporti_notave.drejtimi')
-//                ->where('raporti_notave.id', '=', $idraportit)
-//                ->where('raporti_notave.locked', '=', Enum::nolocked)
-//                ->get();
-//        $raport_details = RaportiNotave::where('raporti_notave.id',$idraportit)
-//                ->where('raporti_notave.locked',Enum::nolocked)
-//                ->get();
-
-        $raport_details = $raporti->raportiNotaveStudent;
-//        return $raport_details->count();
-//        $raport_details = $raport_details->filter(function($raport)use($idraportit){
-//            if($raport->idraportit == $idraportit){
-//                return $raport;
-//            }    
-//            
-//        });
-//        return $raport_details->count();
-        $raportiNotave = RaportiNotave::find($idraportit);
-
-        return View::make('admin.provimet.regjistrimi_raportit_notave', ['raporti' => $raporti,
-                    'details' => $raport_details,
-                    'raportiNotave' => $raportiNotave]);
+        return View::make('admin.provimet.regjistrimi_raportit_notave', ['raporti' => $raporti]);
     }
+    
+    /**
+     * Update report of grade
+     * @return type
+     */
 
     public function postUpdateReport() {
 
         $raportiNotave = RaportiNotave::find(Input::get('idraportit'));
         $i = 0;
+        $userDoesntExistError = [];
         for ($i = 0; $i < count(Input::get('uid')); $i++) {
             $uid = Input::get('uid.' . $i);
+            //If uid isset
+            if($uid == ""){
+                continue;
+            }
             $doesStudentExist = RaportiNotaveStudent::where('idraportit', Input::get('idraportit'))
                     ->where('studenti', $uid)
                     ->first();
+            //If student id doesnt exist return save for error
+            if($doesStudentExist == NULL){
+                $userDoesntExistError[] = $uid;
+                continue;
+            }
+            
              if($doesStudentExist != NULL){
                 $doesStudentExist->studenti = Input::get('uid.' . $i);
                 $doesStudentExist->testi_semestral = Input::get('testi_semestral.' . $i);
@@ -118,26 +147,21 @@ class ProvimetController extends \BaseController {
                 $raportiNotaveStudent->save();
             }
         }
-        return Redirect::back();
+        return Redirect::back()->withErrors($userDoesntExistError,'userDoesntExistError');
     }
-
-    public function getPrintReportNotat($idraportit) {
-        $drejtimet = Drejtimet::getComboDrejtimetGroupedAll();
-        $raporti = RaportiNotave::select('departmentet.Emri as departmenti', 'lendet.Emri as lenda', DB::raw("CONCAT(administrata.emri,' ',administrata.mbiemri) as prof"), "administrata.uid as profuid", "drejtimet.emri as drejtimi", "raporti_notave.data_provimit as data_provimit", "raporti_notave.id as idraportit", "raporti_notave.viti_aka as viti_aka", "raporti_notave.locked as locked")
-                ->join('lendet', 'lendet.idl', '=', 'raporti_notave.idl')
-                ->join('administrata', 'administrata.uid', '=', 'raporti_notave.prof')
-                ->join('drejtimet', 'drejtimet.idDrejtimet', '=', 'raporti_notave.drejtimi')
-                ->join('departmentet', 'departmentet.idDepartmentet', '=', 'raporti_notave.departmenti')
-                ->where('raporti_notave.id', '=', $idraportit)
-                ->get();
-        $reportlist = array();
-
-        // Fetch sudents for report
-        $reportlist = RaportiNotaveStudent::getRaportNotaveList($raporti[0]['idraportit']);
-
+    /**
+     * Print report of grade based id,and print type
+     * @param type $idraportit
+     * @param type $print
+     * @return PDF File, print
+     */
+    public function getPrintReportNotat($idraportit,$print=false) {
+        $raportiNotave = RaportiNotave::find($idraportit);
         $pdf = PDF::loadView('admin.provimet.print_raporti_notave', [ 'title' => Lang::get('printable.title_report_grade'),
-                    'students' => $reportlist,
-                    'raporti' => $raporti[0]])->setOrientation('landscape');
+                    'raportiNotave' => $raportiNotave])->setOrientation('landscape');
+        if($print){
+            return $pdf->download("RaportiNotave-".$raportiNotave->id.".pdf");
+        }
         return $pdf->stream();
     }
 
@@ -148,6 +172,12 @@ class ProvimetController extends \BaseController {
                     'raportiNotave' => $raportiNotave,
                     'prof' => $prof]);
     }
+    
+    /**
+     * Convert DateToExams
+     * @param type $month
+     * @return type
+     */
 
     public function convertDateToExamsDate($month) {
         if ($month >= Enum::january && $month < Enum::april) {
@@ -193,17 +223,11 @@ class ProvimetController extends \BaseController {
                 $raportiNotaveStudent->refuzim = Input::get('refuzim.' . $i);
                 $raportiNotaveStudent->paraqit = Input::get('paraqit.' . $i);
                 $raportiNotaveStudent->idl = Input::get('idl');
-                $raportiNotaveStudent->locked = Enum::nolocked;
                 $raportiNotaveStudent->paraqit_prezent = Input::get('paraqit_prezent.' . $i);
                 $raportiNotaveStudent->save();
             }
         }
-
-        // not completed
-
-
-
-        return Redirect::to('/smps/admin/provimet/add-raporti-notave');
+        return Redirect::to(action('ProvimetController@getRegisterNotat',[$raportiNotave->id]));
     }
 
 }

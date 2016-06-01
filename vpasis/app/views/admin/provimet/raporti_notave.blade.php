@@ -4,9 +4,10 @@
 @section('notification')
 
 @if(null !== Session::get('message') && Session::get('message') == Enum::successful)
-<div class="alert alert-success alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    {{ Session::get('reason') }}
+
+<div class="callout callout-success">
+    <h4>@lang('general.saved_successful')</h4>
+    <p>{{ Session::get('reason') }}</p>
 </div>
 @elseif(Session::get('message') == Enum::failed)
 <div class="alert alert-danger alert-dismissible" role="alert">
@@ -25,8 +26,8 @@
 
 @section('report_grade')
 <div class="box box-success">
-{{ Form::open(array('url'=>action('ProvimetController@getRaportiNotave'),'method'=>'GET')) }}
     <div class="box-body">
+        {{ Form::open(array('url'=>action('ProvimetController@getRaportiNotave'),'method'=>'GET')) }}
         <div class="row">
             <div class='col-lg-2'>
                 <div class="form-group">
@@ -72,120 +73,85 @@
                 </div>
             </div>
         </div>
-    </div>
+        {{ Form::close() }}
 
-{{ Form::close() }}
-<table class='table table-responsive table-bordered'>
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>{{ Lang::get('general.course') }}</th>
-            <th>{{ Lang::get('general.lecturer') }}</th>
-            <th>{{ Lang::get('general.profile') }}</th>
-            <th>{{ Lang::get('general.deadline_exams') }}</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if(isset($raportet))
-        @foreach($raportet as $value)
-        <tr>
-            <td>{{ $value->id }}</td>
-            <td>{{ $value->lendet->Emri }}</td>
-            <td>{{ $value->administrata->emri." ".$value->administrata->mbiemri }}</td>
-            <td>{{ $value->lendet->drejtimi->Emri }}</td>
-            <td>{{ $value['data_provimit'] }}</td>
-            @if($value['locked'] == Enum::nolocked)
-            <td>
-                <div class="btn-group">
-                    <a href='{{ action('ProvimetController@getRegisterNotat',array($value->id)) }}' class="btn btn-sm btn-success">{{ Lang::get('general.register_grade')}}</a>
-                    <button type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" data-toggle="modal" data-target="#deleteCourse26"><span class="fa fa-trash-o fa-lg"> </span> Fshij</a></li>
-                    </ul>
-                </div>
-            </td>
-            @else
-            <td>
-                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#viewReport{{ $value['idraportit'] }}">
-                    {{ Lang::get('general.view_report')}}
-                </button>
-                @if(isset($raportet))
+        @if(count($raportet))
+        <table class='table table-responsive table-bordered'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>{{ Lang::get('general.course') }}</th>
+                    <th>{{ Lang::get('general.lecturer') }}</th>
+                    <th>{{ Lang::get('general.profile') }}</th>
+                    <th>{{ Lang::get('general.deadline_exams') }}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
                 @foreach($raportet as $value)
+                <tr>
+                    <td>{{ $value->id }}</td>
+                    <td>{{ $value->lendet->Emri }}</td>
+                    <td>{{ $value->administrata->emri." ".$value->administrata->mbiemri }}</td>
+                    <td>{{ $value->lendet->drejtimi->Emri }}</td>
+                    <td>{{ $value['data_provimit'] }}</td>
+                    @if($value['locked'] == Enum::nolocked)
+                    <td>
+                        <div class="btn-group">
+                            <a href='{{ action('ProvimetController@getRegisterNotat',array($value->id)) }}' class="btn btn-sm btn-warning">{{ Lang::get('general.register_grade')}}</a>
+                            <button type="button" class="btn btn-sm btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"  data-toggle="modal" data-target="#deleteReportGradeConfirm{{$value->id}}"><span class="fa fa-trash-o fa-lg"> </span> Fshij</a></li>
 
-                <?php
-                $year = substr($value['data_provimit'], 0, 4);
-                $month = substr($value['data_provimit'], 5, 2);
-                ?>
-                <div class="modal fade" id="viewReport{{ $value['idraportit'] }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">{{ Lang::get('general.report_grade') }}</h4>
-                            </div>
-                            <div class="modal-body">
-                                <table class='table table-responsive table-bordered'>
-                                    <tr>
-                                        <td><h4><b>{{ Lang::get('general.course') }}</b>: {{ $value['lenda'] }}<br>
-                                                <b>{{ Lang::get('general.lecturer')}}:</b> <span data-toggle="tooltip" data-placement="left" title="UID:{{ $value['profuid'] }}" > {{ $value['prof'] }}</span><br>
-                                                <b>{{ Lang::get('general.date') }}</b>: {{ $value['data_provimit'] }}</h4></td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-sm btn-danger"><span class="fa fa-file-pdf-o" ></span></a>
-                                            <a href="{{ action('ProvimetController@getPrintReportNotat',array($year,$month,$drejtimSel)) }}" class="btn btn-sm btn-default" ><span class="fa fa-print" ></span></a>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <table class='table table-bordered'>
-                                    <thead>
-                                        <tr>
-                                            <th>{{ Lang::get('general.student') }}</th>
-                                            <th>{{ Lang::get('general.test_semester') }}</th>
-                                            <th>{{ Lang::get('general.test_semisemester') }}</th>
-                                            <th>{{ Lang::get('general.seminar') }}</th>
-                                            <th>{{ Lang::get('general.attendance') }}</th>
-                                            <th>{{ Lang::get('general.practice_work') }}</th>
-                                            <th>{{ Lang::get('general.final_test') }}</th>
-                                            <th>{{ Lang::get('general.grade') }}</th>
-                                            <th>{{ Lang::get('general.refuse') }}</th>
-                                            <th>{{ Lang::get('general.apply') }}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($reportList[$value['idraportit']] as $oneStudent)
-                                        <tr id="listRStdrow{{ $value['idraportit'].$oneStudent['studenti'] }}">
-                                            <td>{{ $oneStudent['emri']." ".$oneStudent['mbiemri'] }}</td>
-                                            <td>{{ $oneStudent['testi_semestral'] }}</td>
-                                            <td>{{ $oneStudent['testi_gjysemsemestral'] }}</td>
-                                            <td>{{ $oneStudent['seminari'] }}</td>
-                                            <td>{{ $oneStudent['pjesmarrja'] }}</td>
-                                            <td>{{ $oneStudent['puna praktike'] }}</td>
-                                            <td>{{ $oneStudent['testi_final'] }}</td>
-                                            <td>{{ $oneStudent['nota'] }}</td>
-                                            <td>{{ Enum::convertRefuzimi($oneStudent['refuzim']) }}</td>
-                                            <td>{{ Enum::convertParaqitjen($oneStudent['paraqit']) }}</td>
-
-                                        </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
+                            </ul>
+                            <div class="modal fade" id="deleteReportGradeConfirm{{$value->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span></button>
+                                            <h4 class="modal-title">@lang('general.are_you_sure')</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>@lang('general.are_you_sure_delete_report_grade',array('id'=>$value->id))</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success" data-dismiss="modal">@lang('general.no')</button>
+                                            <a href='{{ action('ProvimetController@getDeleteReportGrade',[$value->id]) }}' type="button" class="btn btn-danger">@lang('general.yes')</a>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </td>
+                    @else
+                    <td>
+                        <a href="{{ action('ProvimetController@getRegisterNotat',array($value->id)) }}" class="btn btn-sm btn-default">
+                            {{ Lang::get('general.view_report')}} &nbsp;  <i class='fa fa-lg fa-arrow-circle-right'></i>
+                        </a>
+                    </td>
+                    @endif
+                </tr>
                 @endforeach
-                @endif
-            </td>
-            @endif
-        </tr>
-        @endforeach
+            </tbody>
+        </table>
+        @else
+        <div class='text-center text-gray'>
+            <br><br>
+            <i class=" fa fa-5x fa-lg fa-exclamation-triangle"></i>
+            <br><br>
+            @lang('warn.no_result_found_empty')
+
         @endif
-    </tbody>
-</table>
+    </div>
+
+
+
 
 </div>
 @stop

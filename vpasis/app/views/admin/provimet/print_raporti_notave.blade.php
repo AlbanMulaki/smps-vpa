@@ -17,19 +17,19 @@
             <td>{{ Lang::get('general.refuse') }}</td>
             <td>{{ Lang::get('general.apply') }}</td>
         </tr>
-        @foreach($students as $value)
+        @foreach($raportiNotave->raportiNotaveStudent as $value)
         <tr class='head' style='background:#fff;'>
-            <td>{{ $value['uid'] }}</td>
-            <td>{{ $value['emri']." ".$value['mbiemri'] }}</td>
-            <td>{{ $value['testi_semestral'] }}</td>
-            <td>{{ $value['testi_gjysemsemestral'] }}</td>
-            <td>{{ $value['seminari'] }}</td>
-            <td>{{ $value['pjesmarrja'] }}</td>
-            <td>{{ $value['puna praktike'] }}</td>
-            <td>{{ $value['testi_final'] }}</td>
-            <td>{{ $value['nota'] }}</td>
-            <td>{{ Enum::convertRefuzimi($value['refuzim']) }}</td>
-            <td>{{ Enum::convertParaqitjen($value['paraqit']) }}</td>
+            <td>{{ $value->getStudent->uid }}</td>
+            <td>{{ $value->getStudent->emri." ".$value->getStudent->mbiemri }}</td>
+            <td>{{ $value->testi_semestral }}</td>
+            <td>{{ $value->testi_gjysem_semestral }}</td>
+            <td>{{ $value->seminari }}</td>
+            <td>{{ $value->pjesmarrja }}</td>
+            <td>{{ $value->puna_praktike}}</td>
+            <td>{{ $value->testi_final }}</td>
+            <td>{{ $value->nota }}</td>
+            <td>{{ Enum::convertRefuzimi($value->refuzim) }}</td>
+            <td>{{ Enum::convertParaqitjen($value->paraqit) }}</td>
         </tr>
         @endforeach
     </tbody>
@@ -40,25 +40,25 @@
 @section('content')
 <center>
     <b>{{ Lang::get('printable.report_grades') }}
-        {{ Lang::get('printable.deadline') }} {{ Enum::convertMonths(substr($raporti['data_provimit'],5,2)) }} {{ $raporti['viti_aka'] }}
+        {{ Lang::get('printable.deadline') }} {{ Enum::convertMonths(substr($raportiNotave->data_provimit,5,2)) }} 
     </b>
 </center>
 <table style='width: 100%;'>
     <tbody>
         <tr>
-            <td><b>{{ Lang::get('printable.department') }}:</b> {{ $raporti['departmenti'] }}</td>
-            <td style='text-align: right;'><b>{{ Lang::get('printable.date') }}:</b> {{ $raporti['data_provimit'] }}</td>
+            <td><b>{{ Lang::get('printable.department') }}:</b> {{ $raportiNotave->lendet->drejtimi->departmenti->Emri }}</td>
+            <td style='text-align: right;'><b>{{ Lang::get('printable.date') }}:</b> {{ $raportiNotave->data_provimit }}</td>
         </tr>
         <tr>
-            <td><b>{{ Lang::get('printable.profile') }}:</b> {{ $raporti['drejtimi'] }}</td>
+            <td><b>{{ Lang::get('printable.profile') }}:</b> {{ $raportiNotave->lendet->drejtimi->Emri }}</td>
             <td style='text-align: right;'><b>{{ Lang::get('printable.status') }}:</b> Te Rregullt</td>
         </tr>
         <tr>
-            <td><b>{{ Lang::get('general.course') }}:</b> {{ $raporti['lenda'] }}</td>
+            <td><b>{{ Lang::get('general.course') }}:</b> {{ $raportiNotave->lendet->Emri }}</td>
             <td style='text-align: right;'><b>{{ Lang::get('general.issued_by') }}:</b> {{ Enum::convertUID(Session::get('uid')) }} ({{ Session::get('uid') }})</td>
         </tr>
         <tr>
-            <td><b>{{ Lang::get('general.lecturer') }}:</b> {{ $raporti['prof'] }} - ({{ $raporti['profuid'] }})</td>
+            <td><b>{{ Lang::get('general.lecturer') }}:</b> {{ $raportiNotave->administrata->emri." ".$raportiNotave->administrata->mbiemri }} - ({{ $raportiNotave->administrata->uid }})</td>
             <td style='text-align: right;'></td>
         </tr>
         <tr>

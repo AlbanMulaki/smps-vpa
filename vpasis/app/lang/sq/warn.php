@@ -54,5 +54,7 @@ return array(
     "delete_student" => "Fshirja studentit është bërë me sukses",
     "success_register_attendance" => "Regjistrimi vijushmeris eshte ber me sukses.",
     "succes_register_fee" => "Regjistrimi pageses është bërë me sukses",
+    "succes_report_grade_deleted" => "Fshirja raportit te notave me id <b>#:id</b> eshte bere me sukses.",
+    "no_result_found_empty"=>"Nuk eshte gjetur asnje rezultat ose nuk ka te dhena"
         )
 ;

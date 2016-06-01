@@ -64,6 +64,7 @@ return array(
     "save" => "Ruaj",
     "check_sure" => "A jeni te sigurt qe ta beni ket ndryshim ?",
     "are_you_sure" => "A jeni te sigurt ?",
+    "are_you_sure_delete_report_grade" => "A jeni te sigurt qe deshironi te fshini nga sistemi raportin e notave # :id ?",
     "save_changes" => "Ruaj Ndryshimet",
     "close" => "Close",
     "save_success" => "Ruajtja u be me sukses",
@@ -363,6 +364,7 @@ return array(
     "add_new_row" => "Shto rresht te ri",
     "add_new_report_grade" => "Regjistro raport",
     "add_student" => "Regjistro student",
+    "saved_successful"=>"Ndryshimet u bene me sukses",
     
         )
 ;
