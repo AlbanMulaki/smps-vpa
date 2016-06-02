@@ -413,3 +413,54 @@ ls
 clear
 shutdown -h 0
 sudo shutdown -h 0
+ssh pragmatic@10.182.11.191
+clear
+pwd
+git status
+git HEAD
+sudo git add .
+sudo git commit -am "Rregullimi i dizajnimit,dhe validimi i te dhenave"
+sudo git push origin master
+sudo git pull origin master
+sudo git add .
+sudo git commit -am "Rregullimi i dizajnimit,dhe validimi i te dhenave"
+sudo git push origin master
+sudo git pull origin master
+sudo git diff HEAD
+sudo git diff 
+sudo git diff ^HEAD
+sudo git diff origin master
+sudo git diff -h
+sudo git log
+sudo git pull origin master
+sudo git add .
+git status
+sudo git status
+clear
+sudo git status
+sudo git push origin master
+sudo git log
+sudo git add .
+sudo git commit -am "Menu Header Dynamic #4"
+sudo git push origin master
+sudo git pull origin master
+git log
+clear
+ls
+sudo git add .
+sudo git commit -am "Menyja pagesat nuk funksjunon #9"
+sudo git push origin master
+sudo git add .
+git status
+ls
+mysqldump -u root -p smps_vpa > vpauni98_smps.sql
+rm vpauni98_smps.sql 
+mysqldump -u root -p smps_vpa > vpauni98_smps.sql
+ls
+ls -s
+clear
+ls
+sudo git status
+sudo git add .
+sudo git commit -am "Opsioni per daten e berjes se pageses #3"
+sudo git push origin master
