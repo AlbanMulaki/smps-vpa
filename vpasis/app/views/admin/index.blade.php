@@ -28,7 +28,7 @@
                 $('#listpeople').empty().append(data);
 
             }},
-            "json");
+                "json");
     });
 </script>
 @stop
@@ -55,9 +55,9 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-    </head>
-    @stop
-    
+</head>
+@stop
+
 @section('navbar')
 <!-- Main Header -->
 <header class="main-header">
@@ -73,7 +73,7 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-             
+
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
@@ -115,25 +115,25 @@
 
 
 @section('container')
-<body  class="hold-transition skin-blue sidebar-mini">    
+<body  class="skin-blue sidebar-mini">    
 
-    <div id="wrapper">
+    <div id="wrapper" class='fixed '>
         @yield('navbar')
         @include('admin.sidebar')
         <div class="content-wrapper">
             @yield('content')
         </div>
 
-        
+
 
     </div>
     <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 2.0.3
-            </div>
-            <strong>Copyright © 2014-2016 <a href="http://trebla-ks.net">Trebla KS LLC</a>.</strong> All rights
-            reserved. Alban Mulaki & Albert Mulaki
-        </footer>
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.0.3
+        </div>
+        <strong>Copyright © 2014-2016 <a href="http://trebla-ks.net">Trebla KS LLC</a>.</strong> All rights
+        reserved. Alban Mulaki & Albert Mulaki
+    </footer>
 
     {{ HTML::script('style/js/jquery-1.11.1.min.js') }}
     {{ HTML::script('style/js/raphael-min.js') }}
@@ -174,10 +174,10 @@
 
 <!DOCTYPE html>
 <html>
-@yield('header')
-@yield('hidden')
-@yield('container')
-@yield('scripts')
+    @yield('header')
+    @yield('hidden')
+    @yield('container')
+    @yield('scripts')
 </html>
 
 
