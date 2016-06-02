@@ -170,8 +170,8 @@
         </table>
     </div>
 </div>
-@stop
-
+@stop 
+ 
 @section('notimet')
 
 <br>
