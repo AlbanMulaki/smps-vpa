@@ -4,8 +4,8 @@
 class FeeController extends \BaseController {
 
     public function getIndex() {
-        $pagesat = Pagesat::getAllPagesat();
-        return View::make('admin/pagesat/index', ['pagesat' => $pagesat,'numFee' => 0]);
+        $pagesat = Pagesat::where('deleted','=',Enum::notdeleted)->orderBy('created_at','DESC')->paginate(25);
+        return View::make('admin/pagesat/index', ['pagesat' => $pagesat]);
     }
 
     public function postRegister() {

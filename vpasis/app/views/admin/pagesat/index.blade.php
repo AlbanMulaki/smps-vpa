@@ -66,7 +66,7 @@
                 <div class="form-group">
                     <label for="data" class="col-sm-3 control-label">{{ Lang::get('general.date') }}</label>
                     <div class="col-sm-4">
-                            <input  id="data"  type="text" name="data" id="datepicker" class="datepicker input-sm form-control">
+                        <input  id="data"  type="text" name="data" id="datepicker" class="datepicker input-sm form-control">
                     </div>
                 </div>
             </div>
@@ -82,38 +82,44 @@
 
 @section('list_fee')
 
-<div class="panel panel-default">
+<div class="box box-info">
     <!-- Default panel contents -->
-    <div class="panel-heading">{{ Lang::get('general.list_fee') }}</div>
-
+    <div class="box-header">
+        <h3 class='box-title'>{{ Lang::get('general.list_fee') }}</h3>
+        <div class='box-tools'>
+            {{ preg_replace("/class=\"pagination\"/","class=\"pagination pagination-sm no-margin pull-right\"", $pagesat->links()) }}
+        </div>
+    </div>
     <!-- Table -->
-    <table class="table">
-        <tr>
-            <th>#</th>
-            <th>{{ Lang::get('general.payer') }}</th>
-            <th>{{ Lang::get('general.bank_name') }}</th>
-            <th>{{ Lang::get('general.description_fee') }}</th>
-            <th>{{ Lang::get('general.feetype') }}</th>
-            <th>{{ Lang::get('general.sum') }}</th>
-            <th>{{ Lang::get('general.registred') }}</th>
-        </tr>
-        {{ "";$i=0 }}
-        @foreach($pagesat as $value)
-        <tr>
-            <td>{{ $value['paguesi']}}</td>
-            @if(isset($value->getPaguesi->emri))
-            <td>{{ " (<b>".$value->getPaguesi->emri." ".$value->getPaguesi->mbiemri."</b>) " }}</td>
-            @else
-            <td> ------ </td>
-            @endif
-            <td>{{ $value['emri_bankes'] }}</td>
-            <td>{{ $value['pershkrimi'] }}</td>
-            <td>{{ $value['tipi'] }}</td>
-            <td>{{ $value['shuma'] }} <span class='fa fa-euro'></span></td>
-            <td>{{ $value->data }}</td>
-        </tr>
-        @endforeach
-    </table>
+    <div class='box-body no-padding'>
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>{{ Lang::get('general.payer') }}</th>
+                <th>{{ Lang::get('general.bank_name') }}</th>
+                <th>{{ Lang::get('general.description_fee') }}</th>
+                <th>{{ Lang::get('general.feetype') }}</th>
+                <th>{{ Lang::get('general.sum') }}</th>
+                <th>{{ Lang::get('general.registred') }}</th>
+            </tr>
+            {{ "";$i=0 }}
+            @foreach($pagesat as $value)
+            <tr>
+                <td>{{ $value['paguesi']}}</td>
+                @if(isset($value->getPaguesi->emri))
+                <td>{{ " (<b>".$value->getPaguesi->emri." ".$value->getPaguesi->mbiemri."</b>) " }}</td>
+                @else
+                <td> ------ </td>
+                @endif
+                <td>{{ Enum::convertTypeBank($value->emri_bankes) }}</td>
+                <td>{{ $value['pershkrimi'] }}</td>
+                <td>{{  Enum::convertTypeFee($value->tipi) }}</td>
+                <td>{{ $value['shuma'] }} <span class='fa fa-euro'></span></td>
+                <td>{{ $value->data }}</td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
 </div>
 
 @stop

@@ -234,7 +234,7 @@ return array(
     "your_photo" => "Fotografia juaj.",
     "apply_online_student" => "Aplikimi Online për Student",
     "apply_now" => "Apliko tani",
-    "choose_course" => "Zgjidh lenden",
+    "choose_course" => "Zgjidh lenden", 
     "vijushmeria" => "Vijushmeria",
     "you_are_logged_in" => "Miresevini ",
     "stats" => "Statistikat",
@@ -246,7 +246,7 @@ return array(
     "fee" => "Pagesat",
     "library" => "Libraria",
     "account" => "Llogarit",
-    "employe" => "Puntoret",
+    "employe" => "Staffi",
     "about" => "Rreth SMPS",
     "register_department" => "Regjistro Departmentin",
     "add_new_department" => "Shto department",
@@ -276,6 +276,7 @@ return array(
     "cancel" => "Anulo",
     "chose_image" => "Zgjidh foton",
     "select_file" => "Selekto CV",
+    "select_prof" => "Zgjidh professorin",
     "remove" => "Fshij",
     "change" => "Ndrysho",
     "view_profile" => "Shiko profilin",
@@ -365,7 +366,6 @@ return array(
     "add_new_report_grade" => "Regjistro raport",
     "add_student" => "Regjistro student",
     "saved_successful"=>"Ndryshimet u bene me sukses",
-    "changing"=>"Ndryshimi i te dhenave",
     
         )
 ;

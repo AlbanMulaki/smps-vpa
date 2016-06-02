@@ -24,6 +24,29 @@ class Enum extends Controller {
             self::CASH => Lang::get('general.cash')
         );
     }
+    
+
+    public static function convertTypeBank($acc) {
+        switch ($acc) {
+            case self::BANK_PROCREDIT :
+                return Lang::get('general.procredit_bank');
+                break;
+            case self::BANK_TEB :
+                return Lang::get('general.teb_bank');
+                break;
+            case self::BANK_RAIFFEISEN :
+                return Lang::get('general.raiffeisen_bank');
+                break;
+            case self::VLLESA_CO :
+                return Lang::get('general.vllesa_co');
+                break;
+            case self::CASH :
+                return Lang::get('general.cash');
+                break;
+        }
+    }
+    
+    
 
     const student = 1;
     const puntor = 2;
@@ -162,6 +185,32 @@ class Enum extends Controller {
             self::PAGESA_SEMESTRI_6 => Lang::get('general.semester_6'),
             self::PAGESA_TJETER => Lang::get('general.other_payment')
         );
+    }
+    public static function convertTypeFee($acc) {
+
+        switch ($acc) {
+            case self::PAGESA_SEMESTRI_1 :
+                return Lang::get('general.semester_1');
+                break;
+            case self::PAGESA_SEMESTRI_2 :
+                return Lang::get('general.semester_2');
+                break;
+            case self::PAGESA_SEMESTRI_3 :
+                return Lang::get('general.semester_3');
+                break;
+            case self::PAGESA_SEMESTRI_4 :
+                return Lang::get('general.semester_4');
+                break;
+            case self::PAGESA_SEMESTRI_5 :
+                return Lang::get('general.semester_5');
+                break;
+            case self::PAGESA_SEMESTRI_6 :
+                return Lang::get('general.semester_6');
+                break;
+            case self::PAGESA_TJETER :
+                return Lang::get('general.other_payment');
+                break;
+        }
     }
 
     public static function convertLlojetPagesave($acc) {
