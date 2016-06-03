@@ -25,7 +25,7 @@
 <section class='content'>
 <div class='box box-warning'>
     <div class='box-header with-border'>
-        <h3 class='box-title'>@lang('general.changing')</h3>
+        <h3 class='box-title'>Informacione mbi studentin</h3>
     </div>
     <div class='box-body'>
         <div class='col-lg-6'>
