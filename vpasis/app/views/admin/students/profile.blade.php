@@ -20,13 +20,11 @@
 
 
 @section('profile')
-<br><br>
-
 
 <div class="box box-info">
 
     <div class="box-header with-border">
-        {{ Lang::get('general.student_details') }}
+        <h3 class='box-title'>{{ Lang::get('general.student_details') }}</h3>
     </div>
 
     <div class="box-body">
@@ -70,7 +68,9 @@
     <div  class='col-lg-6'>
         <br>
         <div class="box box-info">
-            <div class="box-header with-border">{{ Lang::get('general.student_details') }}</div>
+            <div class="box-header with-border">
+                <h3 class='box-title'>{{ Lang::get('general.student_details') }}</h3>
+            </div>
             <div class="box-body">
                 <ul class="list-group">
                     <li class="list-group-item"> <strong>{{ Lang::get('general.location') }}: </strong>{{ $profile['vendbanimi'] }} - {{ $profile['adressa'] }}</li>
@@ -88,7 +88,9 @@
 
     <div  class='col-lg-6'>
         <div class="box box-info">
-            <div class="box-header with-border">{{ Lang::get('general.education_details') }}</div>
+            <div class="box-header with-border">
+                <h3 class='box-title'>{{ Lang::get('general.education_details') }}</h3>
+            </div>
             <div class="box-body">
                 <ul class="list-group">
                     <li class="list-group-item"> <strong>{{ Lang::get('general.subject') }}: </strong>{{ Enum::convertdrejtimi($profile['drejtimi'])  }} </li>
@@ -107,11 +109,12 @@
 
 
 @section('vijushmeria')
-<br>
 
-<div class="panel panel-default">
-    <div class="panel-heading">{{ Lang::get('general.attendance') }}</div>
-    <div class="panel-body">
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class='box-title'>{{ Lang::get('general.attendance') }}</h3>
+    </div>
+    <div class="box-body">
         <table class='table table-responsive table-bordered'>
             <tr>
                 <th>{{ Lang::get("general.course") }}</th>
@@ -136,13 +139,13 @@
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title">{{ Lang::get('general.list_fee') }}</h3>
-        <div class="box-tools">
-                <a class="btn btn-sm btn-default" href="{{ action('StudentController@getPrintListPagesat',array($profile['uid'])) }}">
-                    <span class="fa fa-print"></span>
-                </a>
-        </div>
     </div>
-    <div class="box-body no-padding">
+    <div class="box-body">
+        <div class="col-lg-offset-11 col-lg-1">
+            <a class="btn btn-info" href="{{ action('StudentController@getPrintListPagesat',array($profile['uid'])) }}">
+                <span class="fa fa-print fa-lg"></span>
+            </a>
+        </div>
         <table class='table table-responsive table-bordered'>
             <tr>
                 <th>#</th>
@@ -168,20 +171,17 @@
                 <td><span class="label label-primary">{{ $shumaPaguar }} <span class="text-center fa fa-lg fa-euro"></span> </span></td>
             </tr>
         </table>
+
     </div>
 </div>
-@stop 
- 
+@stop
+
 @section('notimet')
-
-<br>
-<div class="panel panel-default">
-    <div class="panel-heading">
-
-        {{ Lang::get('general.exams') }}
-
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class='box-title'>{{ Lang::get('general.exams') }}</h3>
     </div>
-    <div class="panel-body">
+    <div class="box-body">
 
         <table class='table table-responsive table-bordered'>
             <tr>
@@ -223,8 +223,6 @@
 @section('content')
 @yield('title')
 <section class="content">
-
-    <hr>
     @yield('notification')
 
     <!-- Nav tabs -->
