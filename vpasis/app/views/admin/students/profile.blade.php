@@ -139,13 +139,13 @@
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title">{{ Lang::get('general.list_fee') }}</h3>
-    </div>
-    <div class="box-body">
-        <div class="col-lg-offset-11 col-lg-1">
-            <a class="btn btn-info" href="{{ action('StudentController@getPrintListPagesat',array($profile['uid'])) }}">
-                <span class="fa fa-print fa-lg"></span>
+        <div class="box-tools">
+            <a class="btn btn-default btn-sm" href="{{ action('StudentController@getPrintListPagesat',array($profile['uid'])) }}">
+                <span class="fa fa-print"></span>
             </a>
         </div>
+    </div>
+    <div class="box-body no-padding">
         <table class='table table-responsive table-bordered'>
             <tr>
                 <th>#</th>
@@ -154,16 +154,18 @@
                 <th>{{ Lang::get('general.feetype') }}</th>
                 <th>{{ Lang::get('general.sum') }}</th>
                 <th>{{ Lang::get('general.registred');$numFee=0 }}</th>
+                <th> </th>
             </tr>
 
-            @foreach($pagesat as $value)
+            @foreach($studenti->getPagesat as $value)
             <tr>
                 <td>{{ ++$numFee}}</td>
-                <td>{{ $value['emri_bankes'] }}</td>
+                <td>{{ Enum::convertTypeBank($value['emri_bankes']) }}</td>
                 <td>{{ $value['pershkrimi'] }}</td>
                 <td>{{ Enum::convertLlojetPagesave($value['tipi']) }}</td>
                 <td><span class="label label-info">{{ $value['shuma'];$shumaPaguar = $shumaPaguar + $value['shuma'] }} <span class="fa fa-euro"></span> </span></td>
-                <td>{{ $value['created_at'] }}</td>
+                <td>{{ $value->data }}</td>
+                <td><a href='{{ action('FeeController@getEdit',[$value->id]) }}' class='btn btn-sm btn-warning'><i class='fa fa-edit'></i></a></td>
             </tr>
             @endforeach
             <tr>

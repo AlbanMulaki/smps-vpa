@@ -201,8 +201,9 @@ class StudentController extends \BaseController {
         $pagesat = Pagesat::where('paguesi', '=', $uid)
                 ->where('deleted', '=', Enum::notdeleted)
                 ->get();
-
+        
         $profile = Studenti::where('uid', '=', $uid)->get();
+        $studenti = Studenti::where('uid', '=', $uid)->first();
         $drejtimet = Drejtimet::getComboDrejtimetGroupedAll();
 
         $vijushmeria = Vijushmeria::join('administrata', 'administrata.uid', '=', 'vijushmeria.professor')
@@ -227,7 +228,8 @@ class StudentController extends \BaseController {
                     'pagesat' => $pagesat,
                     'shumaPaguar' => $shumaPaguar,
                     'settings' => $settings,
-                    'notimet' => $notimet]);
+                    'notimet' => $notimet,
+                    'studenti' => $studenti]);
     }
 
     public function getListPrintPdfDirect($id = 0, $drejtimi = 0) {
@@ -336,7 +338,6 @@ class StudentController extends \BaseController {
                     'pagesat' => $pagesat,
                     'shumaPaguar' => $shumaPaguar]);
 
-        file_put_contents(self::printdir('ListPagesaveStudent', null, Session::get('uid')), $pdf->output());
         return $pdf->stream();
         return $pdf->download(self::printdir('ListPagesaveStudent', null, Session::get('uid')));
     }

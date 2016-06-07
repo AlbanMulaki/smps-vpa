@@ -97,4 +97,7 @@ class Studenti extends Eloquent implements UserInterface, RemindableInterface {
         $student->save();
     }
 
+    public function getPagesat() {
+        return self::hasMany('Pagesat', 'paguesi', 'uid');
+    }
 }

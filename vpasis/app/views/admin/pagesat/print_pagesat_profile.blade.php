@@ -17,7 +17,7 @@
     @foreach($pagesat as $value)
     <tr class='head' style='background:#fff; font-weight: 100;'>
         <td>{{ ++$numFee}}</td>
-        <td>{{ $value['emri_bankes'] }}</td>
+        <td>{{ Enum::convertTypeBank($value->emri_bankes) }}</td>
         <td>{{ $value['pershkrimi'] }}</td>
         <td>{{ Enum::convertLlojetPagesave($value['tipi']) }}</td>
         <td>{{ $value['shuma'];$shumaPaguar = $shumaPaguar + $value['shuma'] }} €</td>
