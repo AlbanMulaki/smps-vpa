@@ -47,14 +47,21 @@ Log::useFiles(storage_path() . '/logs/' . $logFile);
  */
 
 App::error(function(Exception $exception, $code) {
+    if ($code != 404) {
+        Log::error($exception);
+    }
     if (Request::is('smps/admin/*') && Session::get('uid')) {
         switch ($code) {
             case 404:
                 return View::make('admin.errors.404', ['errorCode' => $code]);
                 break;
+            default:
+                return View::make('admin.errors.404', ['errorCode' => $code]);
+                break;
         }
+    } else if (!Session::get('uid')) {
+        return Redirect::action('AuthController@getIndex');
     }
-    Log::error($exception);
     $web = new WebsiteController();
     return $web->getIndex();
 });
