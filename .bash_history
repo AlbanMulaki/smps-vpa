@@ -466,3 +466,5 @@ sudo git commit -am "Opsioni per daten e berjes se pageses #3"
 sudo git push origin master
 sudo git pull origin master
 exit
+systemctl status httpd.service
+exit
