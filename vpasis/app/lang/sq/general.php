@@ -367,6 +367,7 @@ return array(
     "add_new_report_grade" => "Regjistro raport",
     "add_student" => "Regjistro student",
     "saved_successful"=>"Ndryshimet u bene me sukses",
+    'edit_fee'=>"Ndrysho pagesen",
     
         )
 ;

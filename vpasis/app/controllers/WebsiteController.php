@@ -5,11 +5,20 @@ class WebsiteController extends BaseController {
      * |-------------------------------------------------------------------------- | Return Lendet |-------------------------------------------------------------------------- |@ Return @var | input Drejtimin |
      */
 
-    public function getIndex() {
+    public function getIndex($error=0) {
         $webquickmenu = Webquickmenu::getQuickMenu();
         $category = Webcategory::getCategory();
         $latest_post = Webpost::getLatestpost();
         $slide = Webpost::getSlide();
+        
+        if($error){
+            return View::make('website.errors.404', ['title' => 'Vizioni Per Arsim VPA',
+                    'descript' => "Vizioni per arsim mundeson ndertimin e se ardhmes, perparimin ne karrier,Vizioni per arsim offron fakultetin e shkencave kompjuterike, Menaxhment dhe Informatik, Ekonomi.",
+                    'quickmenu' => $webquickmenu,
+                    'category' => $category,
+                    'latest_post' => $latest_post,
+                    'slide' => $slide]);
+        }
         return View::make('website.post', ['title' => 'Vizioni Per Arsim VPA',
                     'descript' => "Vizioni per arsim mundeson ndertimin e se ardhmes, perparimin ne karrier,Vizioni per arsim offron fakultetin e shkencave kompjuterike, Menaxhment dhe Informatik, Ekonomi.",
                     'quickmenu' => $webquickmenu,
