@@ -203,9 +203,11 @@
 
 <section class="content">
 @yield('notification')
-<div class="panel panel-default">
-    <div class="panel-heading">{{ Lang::get('general.add_employe') }}</div>
-    <div class="panel-body">
+<div class="box box-warning">
+    <div class="box-header with-borders">
+        <h3 class="box-title">{{ Lang::get('general.add_employe') }}</h3>
+    </div>
+    <div class="box-body">
         @yield('registerForm')
     </div>
 </div>

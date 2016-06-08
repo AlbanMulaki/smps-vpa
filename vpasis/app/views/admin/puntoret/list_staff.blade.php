@@ -2,7 +2,7 @@
 
 @section('notification')
 
-<!-- Regjistrimi Departmentit -->
+
 @if(null !== Session::get('message') && Session::get('message') == Enum::successful)
 <div class="alert alert-success alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -15,7 +15,6 @@
 </div>
 
 @endif
-<!-- End Regjistrimi Departmentit -->
 @stop
 
 @section('title')
@@ -29,10 +28,14 @@
 
 
 @section('listStaff')
-<div class="panel panel-default">
+<div class="box box-info">
     <!-- Default panel contents -->
-    <div class="panel-heading">{{ Lang::get('general.staff_list') }}</div>
+    <div class="box-header with-border">
+        <h3 class='box-title'>{{ Lang::get('general.staff_list') }}</h3>
+    </div>
+
     <!-- Table -->
+
     <table class="table table-responsive table-hover">
         <tr>
             <th>#</th>
@@ -42,11 +45,11 @@
             <th>{{ Lang::get('general.science_grade') }}</th>
             <th>{{ Lang::get('general.position_office') }}</th>
             <th> 
-                
+
                 <a href="{{ action('StaffController@getPrintPdf') }}" type="button" class="btn btn-sm btn-danger">
                     <span class="fa fa-file-pdf-o fa-lg"></span> 
                 </a>
-                <a href="{{ action('StaffController@getPrintPdfDirect') }}" id="printPlanProgrammin" class="btn btn-sm btn-default">
+                <a href="{{ action('StaffController@getPrintPdfDirect',array(implode("-",$grp))) }}" id="printPlanProgrammin" class="btn btn-sm btn-default">
                     <span class="fa fa-print fa-lg"></span>  
                 </a></th>
         </tr>
@@ -62,6 +65,7 @@
         </tr>
         @endforeach
     </table>
+
 </div>
 @stop
 
@@ -69,7 +73,7 @@
 @yield('title')
 
 <section class='content'>
-@yield('notification')
-@yield('listStaff')
+    @yield('notification')
+    @yield('listStaff')
 </section>
 @stop

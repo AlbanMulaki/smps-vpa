@@ -46,6 +46,7 @@
                 <ul class="treeview-menu">
                     <li class='@if(Request::is('smps/admin/staff/register*')) active @endif'><a href="{{ action('StaffController@getRegister') }}">{{ Lang::get('general.add_employe') }}</a></li>
                     <li class='@if(Request::is('smps/admin/staff/display-staff*')) active @endif'><a href="{{ action('StaffController@getDisplayStaff') }}">{{ Lang::get('general.staff_list') }}</a></li>
+                    <li class='@if(Request::is('smps/admin/staff/display-academic-staff*')) active @endif'><a href="{{ action('StaffController@getDisplayAcademicStaff') }}">{{ Lang::get('general.academic_list') }}</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->

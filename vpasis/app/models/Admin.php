@@ -36,9 +36,20 @@ class Admin extends Eloquent implements UserInterface, RemindableInterface {
      * Return listene  staffit
      */
     
-    public static function getListStaff() {
-        return self::where('deleted', '=', Enum::notdeleted)->get();
+    public static function getListStaff($groups = null) {
+        if($groups!=null && count($groups)>0){
+            $admin =  Admin::query();
+            foreach($groups as $group){
+                $admin->orWhere('grp',$group);
+            }
+            $admin->orderBy('created_at','DESC');
+            return $admin->get(['uid','emri','mbiemri','email','telefoni','grada_shkencore','detyra']);
+        }else{
+            return self::where('deleted', '=', Enum::notdeleted)->orderBy('created_at','DESC')->get(['uid','emri','mbiemri','email','telefoni','grada_shkencore','detyra']);
+        }
+        
     }
+    
 
     private $range = "900000";
 

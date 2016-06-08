@@ -10,7 +10,8 @@ return array(
       | Website: www.trebla-ks.com
      */
     "student_list" => "Lista studenteve",
-    "staff_list" => "Lista Staffit",
+    "staff_list" => "Stafi Administrativ",
+    "academic_list" => "Stafi Akademik",
     "issue_return" => "Regjistrimi / Kthimi",
     "general_details" => "Detailet",
     "lost" => "Humbura",

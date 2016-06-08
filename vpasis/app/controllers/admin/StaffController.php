@@ -1,4 +1,5 @@
 <?php
+
 class StaffController extends \BaseController {
 
     public function getRegister() {
@@ -70,11 +71,11 @@ class StaffController extends \BaseController {
      */
 
     public function getDisplayStaff() {
-
-        $staff = Admin::getListStaff();
-
+        $grp = [Enum::admin,Enum::referent,Enum::drejtori];
+        $staff = Admin::getListStaff($grp);
         return View::make('admin.puntoret.list_staff', [
-                    'staff' => $staff
+                    'staff' => $staff,
+                    'grp' => $grp
         ]);
     }
 
@@ -139,8 +140,9 @@ class StaffController extends \BaseController {
         return Redirect::back()->with(['message' => Enum::failed, "reason" => Lang::get('warn.error_undefined')]);
     }
 
-    public function getPrintPdfDirect() {
-        $listStaff = Admin::where('deleted', '=', Enum::notdeleted)->get();
+    public function getPrintPdfDirect($grp) {
+        $grp = explode("-",$grp);
+        $listStaff = Admin::getListStaff($grp);
         $pdf = PDF::loadView('admin.puntoret.print_list_staff', [ 'title' => Lang::get('printable.title_list_staff'),
                     'listStaff' => $listStaff]);
         return $pdf->stream();
@@ -152,6 +154,16 @@ class StaffController extends \BaseController {
                     'listStaff' => $listStaff]);
         file_put_contents(self::printdir('ListStaffit', null, Session::get('uid')), $pdf->output());
         return $pdf->download(self::printdir('ListStaffit', null, Session::get('uid')));
+    }
+
+    public function getDisplayAcademicStaff() {
+        $grp = [Enum::akademik];
+        $staff = Admin::getListStaff($grp);
+        
+        return View::make('admin.puntoret.list_academic_staff', [
+                    'staff' => $staff,
+                    'grp' => $grp
+        ]);
     }
 
 }
