@@ -239,8 +239,6 @@ class StudentController extends \BaseController {
             $students = Studenti::orderBy('uid', 'DESC')
                     ->where('confirm', '=', Enum::confirmed)
                     ->where('deleted', '=', Enum::notdeleted)
-                    ->skip($id)
-                    ->take($numList)
                     ->get();
             $studentNum = Studenti::select(DB::raw('COUNT(*) as students'))
                     ->where('confirm', '=', Enum::confirmed)
@@ -251,8 +249,6 @@ class StudentController extends \BaseController {
                     ->where('drejtimi', '=', $drejtimi)
                     ->where('confirm', '=', Enum::confirmed)
                     ->where('deleted', '=', Enum::notdeleted)
-                    ->skip($id)
-                    ->take($numList)
                     ->get();
             $studentNum = Studenti::select(DB::raw('COUNT(*) as students'))
                     ->where('drejtimi', '=', $drejtimi)
