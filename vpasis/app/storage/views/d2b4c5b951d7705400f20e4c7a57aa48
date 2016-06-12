@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> VPA - Login</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <?php echo HTML::style('style/css/bootstrap.min.css'); ?>
+
+        <?php echo HTML::style('style/css/AdminLTE.min.css'); ?>
+
+    </head>
+    <body class="hold-transition lockscreen">
+        <div class="lockscreen-wrapper">
+            <div class="lockscreen-logo">
+                <a href="#"><b>SMPS</b> Login</a>
+            </div>
+            <?php if($errors->has()): ?>
+            <div class="callout callout-danger">
+                <h4>Gabim!</h4>
+                <p><?php echo $errors->first('id'); ?></p>
+                <p><?php echo $errors->first('us'); ?></p>
+                <p><?php echo $errors->first('password'); ?></p>
+            </div>
+            <?php endif; ?>
+            <div class="lockscreen-item">
+                <div class="lockscreen-image">
+                    <img src="<?php echo asset("img/login_logo.png"); ?>" alt="VPA - Login" class="img-responsive">
+                </div>
+                <?php echo Form::open(array('url' => action('AuthController@postLogin'),'method'=>'POST','class'=>'lockscreen-credentials')); ?>
+
+                <div class="input-group">
+                    <?php echo Form::text('id', Input::old('id'), array('placeholder' => Lang::get('general.id'),'class'=>'form-control input-lg  ')); ?>
+
+                    <?php echo Form::password('passwd',array('placeholder' => Lang::get('general.password'),'class'=>'form-control input-lg ')); ?>
+
+                    <div class="input-group-btn ">
+                        <button type="submit" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+                    </div>
+                </div>
+                <?php echo Form::close(); ?>
+
+            </div>
+           
+        </div>
+        <?php echo HTML::script('style/js/jquery-1.11.1.min.js'); ?>
+
+        <?php echo HTML::script('style/js/bootstrap.min.js'); ?>
+
+    </body>
+
+</html>

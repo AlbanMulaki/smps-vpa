@@ -1,0 +1,21 @@
+[2016-06-07 21:46:22] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' with message 'Controller method not found.' in /srv/vpasis/vendor/laravel/framework/src/Illuminate/Routing/Controller.php:254
+Stack trace:
+#0 [internal function]: Illuminate\Routing\Controller->missingMethod(Array)
+#1 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(231): call_user_func_array(Array, Array)
+#2 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(93): Illuminate\Routing\Controller->callAction('missingMethod', Array)
+#3 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(62): Illuminate\Routing\ControllerDispatcher->call(Object(StudentController), Object(Illuminate\Routing\Route), 'missingMethod')
+#4 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Routing/Router.php(967): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'StudentControll...', 'missingMethod')
+#5 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Array)
+#6 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Routing/Route.php(109): call_user_func_array(Object(Closure), Array)
+#7 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1033): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1001): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#9 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(775): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#10 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(745): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#11 /srv/vpasis/vendor/barryvdh/laravel-debugbar/src/Middleware/Stack.php(34): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#12 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(72): Barryvdh\Debugbar\Middleware\Stack->handle(Object(Illuminate\Http\Request), 1, true)
+#13 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#14 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#15 /srv/vpasis/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#16 /srv/vpasis/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(641): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#17 /srv/http/index.php(47): Illuminate\Foundation\Application->run()
+#18 {main} [] []

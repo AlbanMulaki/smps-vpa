@@ -1,0 +1,460 @@
+ 
+
+<?php $__env->startSection('notification'); ?>
+
+<!-- Regjistrimi Departmentit -->
+<?php if(null !== Session::get('message') && Session::get('message') == Enum::successful): ?>
+<div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <?php echo Session::get('reason'); ?>
+
+</div>
+<?php elseif(Session::get('message') == Enum::failed): ?>
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <?php echo Lang::get('warn.error_undefined'); ?>
+
+</div>
+
+<?php endif; ?>
+<!-- End Regjistrimi Departmentit -->
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('addDepartment'); ?>
+<?php echo Form::open(array('url'=>action('DepartmentsController@postRegisterDepartment'),'method'=>'POST')); ?>
+
+<div class="box box-success">
+    
+    
+    
+
+        <!-- Modal -->
+        <div class="modal fade" id="addDempartment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><?php echo Lang::get('general.register_department'); ?></h4>
+                    </div>         
+                    <div class="modal-body">
+                        <div class="input-group input-group">
+                            <span class="input-group-addon" id="sizing-addon1"><?php echo Lang::get('general.name'); ?></span>
+                            <?php echo Form::text('departmenti',null,array('class'=>'form-control')); ?>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Lang::get('general.close'); ?></button>
+                        <button type="submit" name="submit" class="btn btn-primary"><?php echo Lang::get('general.save'); ?></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+       
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?> 
+
+
+<?php $__env->startSection('addCourse'); ?>
+
+<?php $__env->stopSection(); ?> 
+
+
+<?php $__env->startSection('listLendet'); ?>
+
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('listDepartments'); ?> 
+<!-- Small button group -->
+<?php echo Form::open(array('url'=>'','method'=>'POST','class'=>'form-inline col-lg-5')); ?>
+
+<div class="box box-success">
+    
+    <div class="box-body">
+
+        <div class="form-group">
+            <div class="input-group"> 
+                <span class="input-group-addon" id="basic-addon1"><?php echo Lang::get('general.departments'); ?></span>
+                <select class="form-control" id='comboDepartmentet'>
+                    <option ><?php echo Lang::get('general.choose_departments'); ?></option>
+                    <?php foreach($departmentet as $value ): ?>
+                    <?php if(isset($selectedDepId) && $selectedDepId == $value['idDepartmentet']): ?>
+                    <option value='<?php echo $value['idDepartmentet']; ?>' selected><?php echo $value['Emri']; ?></option>
+                    <?php else: ?> 
+                    <option value='<?php echo $value['idDepartmentet']; ?>'><?php echo $value['Emri']; ?></option>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <option value="-1" class="alert-success"  data-toggle="modal" data-target="#addDempartment"><?php echo Lang::get('general.add_new_department'); ?></option>
+                </select>
+                <!-- Button trigger modal -->
+
+            </div>
+        </div>
+    </div>
+</div>        
+<?php echo Form::close(); ?>
+
+
+
+<?php echo $__env->yieldContent("addDepartment"); ?>
+
+<?php if(isset($selectedDep)): ?>
+<?php echo Form::open(array('url'=>action('DepartmentsController@postCreatedrejtimet'),'method'=>'POST')); ?>
+
+<input type="hidden" name="idd" value="<?php echo $selectedDepId; ?>">
+<!-- Modal -->
+<div class="modal fade" id="addDrejtim<?php echo $selectedDepId; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><?php echo Lang::get('general.register_profile'); ?></h4>
+            </div>         
+            <div class="modal-body">
+                <div class="input-group input-group">
+                    <span class="input-group-addon" id="sizing-addon1"><?php echo Lang::get('general.profile_name'); ?></span>
+                    <?php echo Form::text('Emri',null,array('class'=>'form-control')); ?>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Lang::get('general.close'); ?></button>
+                <button type="submit" name="submit" class="btn btn-primary"><?php echo Lang::get('general.save'); ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+<?php echo Form::close(); ?>
+
+<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addDrejtim<?php echo $selectedDepId; ?>">
+    <span class='fa fa-plus fa-lg' ></span>  <?php echo Lang::get('general.add_profile'); ?>
+
+</button>
+<br><br><br>
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <?php foreach($drejtimet as $value ): ?>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <a class="collapsed text-primary" role="button" data-toggle="collapse" data-parent="#accordion" href="#listdrejtimet<?php echo $value['idDrejtimet']; ?>" aria-expanded="false" aria-controls="collapseTwo">
+                            <?php echo $value['Emri']; ?>
+
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        
+                        <a href="<?php echo action('DepartmentsController@getPrintLendet')."/".$value['idDrejtimet']; ?>"type="button" class="btn btn-sm btn-danger">
+                            <span class='fa fa-file-pdf-o fa-lg' ></span> 
+                        </a>
+                        <a href="<?php echo action('DepartmentsController@getPrintLendetDirect')."/".$value['idDrejtimet']; ?>" id="printPlanProgrammin" class="btn btn-sm btn-default">
+                            <span class='fa fa-print fa-lg' ></span>  
+                        </a>
+                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addCourse<?php echo $value['idDrejtimet']; ?>">
+                            <span class='fa fa-plus fa-lg' ></span>  <?php echo Lang::get('general.add_course'); ?>
+
+                        </button>
+                    </div>
+                    <?php echo Form::open(array('url'=>action('DepartmentsController@postCreatelendet'),'method'=>'POST','class'=>'form-horizontal')); ?>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="addCourse<?php echo $value['idDrejtimet']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel"><?php echo Lang::get('general.add_course'); ?></h4>
+                                </div>         
+                                <div class="modal-body">
+
+                                    <input name="Drejtimi" value="<?php echo $value['idDrejtimet']; ?>" type="hidden">
+                                    <input name="idp" value="<?php echo $value['idd']; ?>" type="hidden">
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label"><?php echo Lang::get('general.course_name'); ?></label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control" name="Emri" placeholder="<?php echo Lang::get('reminders.course_name'); ?>" type="text">
+                                        </div>
+                                    </div>                           
+                                    <div class="form-group">
+                                        <label for="select" class="col-lg-2 control-label"><?php echo Lang::get('general.profile'); ?></label>
+                                        <div class="col-lg-10">
+                                            <select class="form-control" disabled="">
+                                                <option value="17"><?php echo $value['Emri']; ?></option>
+                                            </select>
+                                        </div>
+                                    </div>                     
+                                    <div class="form-group">
+                                        <label for="select" class="col-lg-2 control-label">Semestri</label>
+                                        <div class="col-lg-10">
+                                            <select class="form-control" name="Semestri">
+                                                <option value="1" selected="selected">1 </option>
+                                                <option value="2">2 </option>
+                                                <option value="3">3 </option>
+                                                <option value="4">4 </option>
+                                                <option value="5">5 </option>
+                                                <option value="6">6 </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label"></label>
+                                        <div class="col-lg-10">
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-primary
+
+                                                       active 
+                                                       ">
+                                                    <input name="zgjedhore" autocomplete="off" value="0" checked="checked" type="radio"> <?php echo Lang::get('general.mandatory'); ?>
+
+                                                </label>
+                                                <label class="btn btn-primary 
+                                                       ">
+                                                    <input name="zgjedhore" autocomplete="off" value="1" type="radio"> <?php echo Lang::get('general.zgjedhore'); ?>
+
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">ECT</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control" placeholder="Ect number" name="ect" value="6" type="text">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Lang::get('general.close'); ?></button>
+                                    <button type="submit" name="submit" class="btn btn-primary"><?php echo Lang::get('general.save'); ?></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php echo Form::close(); ?>
+
+                </div>
+            </h4>
+        </div>
+        <div id="listdrejtimet<?php echo $value['idDrejtimet']; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <div class="table-responsive">
+
+                    <table class="table table-striped">
+                        <tr>
+                            <th>#</th>
+                            <th><?php echo Lang::get('general.course'); ?></th>
+                            <th><?php echo Lang::get('general.zgjedhore'); ?></th>
+                            <th><?php echo Lang::get('general.ect'); ?></th>
+                            <th><?php echo Lang::get('general.options'); ?></th>
+                        </tr>
+
+                        <?php echo "";$ect=0;$crs=0;$z=0;$o=0; ?> <!-- Start val for calculaction -->
+                        <?php foreach($lendet as $lendetVal): ?>
+
+                        <?php if($lendetVal['Drejtimi'] == $value['idDrejtimet']): ?>
+
+                        <?php if($lendetVal['Zgjedhore'] == Enum::zgjedhore): ?>
+                        <?php echo "";$z++; ?>
+
+                        <?php else: ?>
+                        <?php echo "";$o++; ?>
+
+                        <?php endif; ?>
+
+                        <?php echo "";$ect = $ect+ (int)$lendetVal['Ect'];$crs++; ?>
+
+                        <?php if($lendetVal['Semestri'] != $semestriCount): ?>
+
+                        <tr class='info'>
+                            <td colspan="6" class='text-center'><strong><?php echo Lang::get('general.semester')." - ".$lendetVal['Semestri']; ?></strong></td>
+                        </tr>
+                        <?php echo "";$semestriCount = $lendetVal['Semestri'];$countcourse=0; ?>
+
+                        <?php endif; ?>
+                        <?php echo "";$countcourse++; ?>
+
+                        <tr>
+                            <td><?php echo $countcourse; ?></td>
+                            <td><?php echo $lendetVal['Emri']; ?></td>
+                            <td><?php if($lendetVal['Zgjedhore'] == Enum::zgjedhore): ?> Z <?php else: ?> O <?php endif; ?></td>
+                            <td><?php echo $lendetVal['Ect']; ?></td>
+                            <td> <!-- Split button -->
+                                <div class="btn-group">
+                                    <button type="button"  data-toggle="modal" data-target="#editLendet<?php echo $lendetVal['idl']; ?>" class="btn btn-sm btn-primary"><?php echo Lang::get('general.edit'); ?></button>
+                                    <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" data-toggle="modal" data-target="#deleteCourse<?php echo $lendetVal['idl']; ?>"><span class='fa fa-trash-o fa-lg'> </span> <?php echo Lang::get('general.delete'); ?></a></li>
+                                    </ul>
+                                </div>
+                                <!-- Modal Delete Course -->
+                                <div class="modal fade" id="deleteCourse<?php echo $lendetVal['idl']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content ">
+                                            <div class="modal-header alert-danger">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel"><?php echo Lang::get('general.are_you_sure'); ?></h4>
+                                            </div>         
+                                            <div class="modal-body alert-danger">
+                                                <p>
+                                                    <?php echo Lang::get('warn.warning_course_delete',array('course'=>$lendetVal['Emri'])); ?>
+
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer alert-danger">
+                                                <button type="button" class="btn btn-success" data-dismiss="modal"><?php echo Lang::get('general.close'); ?></button>
+                                                <a href="<?php echo action('DepartmentsController@getDeletelendet').'/'.$lendetVal['idl']; ?>" type="submit" name="submit" class="btn btn-danger"><?php echo Lang::get('general.delete'); ?></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="editLendet<?php echo $lendetVal['idl']; ?>" tabindex="-1" role="dialog" aria-labelledby="editLendet<?php echo $lendetVal['idl']; ?>">
+                                    <div class="modal-dialog" role="document">
+                                        <?php echo Form::open(array('url'=>action('DepartmentsController@postEditlendet'),'method'=>'POST','class'=>'form-horizontal')); ?>
+
+
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel"><?php echo $lendetVal['Emri']; ?></h4>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <input name='idl' value="<?php echo $lendetVal['idl']; ?>" type="hidden">
+                                                <div class="form-group">
+                                                    <label class="col-lg-2 control-label"><?php echo Lang::get('general.course'); ?></label>
+                                                    <div class="col-lg-10">
+                                                        <input class="form-control" name="Emri" placeholder="<?php echo Lang::get('reminders.course_name'); ?>" type="text" value="<?php echo $lendetVal['Emri']; ?>">
+                                                    </div>
+                                                </div>                           
+                                                <div class="form-group">
+                                                    <label for="select" class="col-lg-2 control-label"><?php echo Lang::get('general.profile'); ?></label>
+                                                    <div class="col-lg-10">
+                                                        <select class="form-control" name="Drejtimi">
+                                                            <?php foreach($drejtimet as $vald): ?>
+                                                            <option value="<?php echo $vald['idDrejtimet']; ?>"><?php echo $vald['Emri']; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                </div>                     
+                                                <div class="form-group">
+                                                    <label for="select" class="col-lg-2 control-label"><?php echo Lang::get('general.semester'); ?></label>
+                                                    <div class="col-lg-10">
+                                                        <select class="form-control" name="Semestri">
+                                                            <?php for($i=1;$i<=6;$i++): ?>
+                                                            <option value="<?php echo $i; ?>" <?php if($lendetVal['Semestri'] == $i): ?>
+                                                                    selected="selected"
+                                                                    <?php endif; ?> ><?php echo $i; ?> </option>
+                                                            <?php endfor; ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-2 control-label"></label>
+                                                    <div class="col-lg-10">
+                                                        <div class="btn-group" data-toggle="buttons">
+                                                            <label class="btn btn-primary
+                                                                   <?php if($lendetVal['Zgjedhore'] == Enum::jozgjedhore): ?> 
+                                                                   active 
+                                                                   <?php endif; ?>">
+                                                                <input type="radio" name="zgjedhore" autocomplete="off" value='<?php echo Enum::jozgjedhore; ?>' <?php if($lendetVal['Zgjedhore'] == Enum::jozgjedhore): ?> 
+                                                                       checked="checked" 
+                                                                       <?php endif; ?>> <?php echo Lang::get('general.mandatory'); ?>
+
+                                                            </label>
+                                                            <label class="btn btn-primary 
+                                                                   <?php if($lendetVal['Zgjedhore'] == Enum::zgjedhore): ?>
+                                                                   active
+                                                                   <?php endif; ?>">
+                                                                <input type="radio" name="zgjedhore" autocomplete="off" value='<?php echo Enum::zgjedhore; ?>'  <?php if($lendetVal['Zgjedhore'] == Enum::zgjedhore): ?>
+                                                                       checked="checked" 
+                                                                       <?php endif; ?>> <?php echo Lang::get('general.zgjedhore'); ?>
+
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-2 control-label"><?php echo Lang::get('general.ect'); ?></label>
+                                                    <div class="col-lg-10">
+                                                        <input class="form-control"  placeholder="<?php echo Lang::get('reminders.ect_number'); ?>" type="text" name="ect" value="<?php echo $lendetVal['Ect']; ?>">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Lang::get('general.close'); ?></button>
+                                                <button type="submit" class="btn btn-primary" ><?php echo Lang::get('general.update'); ?></button>
+                                            </div>
+                                            <?php echo Form::close(); ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
+
+                    </table>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <table class="table table-responsive">
+                    <tr>
+                        <td width="50%"><span class="label label-info"> <?php echo Lang::get('general.course_num'); ?> = <?php echo $crs; ?></span></td>
+
+                        <td><span class="label label-primary"> O = <?php echo $o; ?></span><br><br>
+                            <span class="label label-info"> Z = <?php echo $z; ?></span></td>
+                        <td><span class="label label-info"> <?php echo Lang::get('general.all_ect'); ?> = <?php echo $ect; ?></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+
+
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('title'); ?>
+<section class="content-header">
+    <h1>
+        <?php echo Lang::get('general.departments'); ?><small><?php echo Lang::get('general.departments'); ?></small>
+    </h1>
+</section>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?> 
+<?php echo $__env->yieldContent('title'); ?>
+
+<section class="content">
+<?php echo $__env->yieldContent('notification'); ?>
+<?php echo $__env->yieldContent('listDepartments'); ?>
+</section>
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('scripts'); ?>
+<script type='text/javascript'>
+    $('#comboDepartmentet').change(function () {
+        var department = $("#comboDepartmentet").val();
+        if (department >= 1) {
+            window.location.href = "<?php echo action('DepartmentsController@getDep'); ?>/" + department;
+        }
+    });
+</script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

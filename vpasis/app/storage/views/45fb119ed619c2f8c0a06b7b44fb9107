@@ -1,0 +1,192 @@
+<?php $__env->startSection('notification'); ?>
+
+<!-- Regjistrimi Departmentit -->
+<?php if(null !== Session::get('message') && Session::get('message') == Enum::successful): ?>
+<div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <?php echo Session::get('reason'); ?>
+
+</div>
+<?php elseif(Session::get('message') == Enum::failed): ?>
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <?php echo Lang::get('warn.error_undefined'); ?>
+
+</div>
+
+<?php endif; ?>
+<!-- End Regjistrimi Departmentit -->
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('registerVijushmeria'); ?>
+<?php echo Form::open(array('url'=>action('VijushmeriaController@postRegisterVijushmeria'),'method'=>'POST','files'=>true,'class'=>"form-horizontal")); ?>
+
+
+<div class='row'>
+
+    <div class='col-lg-3'>
+        <div class="form-group">
+            <div class="input-group col-lg-10">
+                <span class="input-group-addon"><?php echo Lang::get('general.subject'); ?></span>
+                <?php echo Form::select('drejtimi', $drejtimet,$selDrejtimi,array('class'=>'form-control','id'=>"drejtimi")); ?>
+
+            </div>
+        </div>
+    </div>
+    <div class='col-lg-3'>
+        <?php if($selDrejtimi > 0): ?>
+        <div class="form-group">
+            <div class="input-group col-lg-10">
+                <span class="input-group-addon"><?php echo Lang::get('general.course'); ?></span>
+                <?php echo Form::select('idl', $lendet,current($lendet),array('class'=>'form-control','id'=>"drejtimi")); ?>
+
+            </div>
+        </div>
+        <?php else: ?> 
+        <div class="form-group">
+            <div class="input-group col-lg-10">
+                <span class="input-group-addon"><?php echo Lang::get('general.course'); ?></span>
+                <?php echo Form::select('idl', $lendet,current($lendet),array('class'=>'form-control','id'=>"drejtimi","disabled"=>"disabled")); ?>
+
+            </div>
+        </div>
+
+        <?php endif; ?>
+    </div>
+
+    <div class='col-lg-2'>
+        <div class="form-group">
+            <div class="input-group col-lg-10">
+                <span class="input-group-addon"><?php echo Lang::get('general.semester'); ?></span>
+                <?php echo Form::select('semestri', Enum::getSemester(),$semestri,array('class'=>'form-control','id'=>"semester")); ?>
+
+            </div>
+        </div>
+    </div>
+
+    <div class='col-lg-1'>
+        <div class="form-group">
+            <div class="input-group col-lg-11">
+                <input class="form-control " id="ora"  placeholder="HH:MM" data-mask="" type="text" name="ora">
+            </div>
+            <script>
+                $('#ora').inputmask({
+                mask: '99:99'
+                })
+            </script>
+        </div>
+    </div>
+    <div class='col-lg-3'>
+        <div class="form-group col-lg-12">
+            <div class="input-group"> 
+                <input class="form-control " id="date"  placeholder="VVVV/MM/DD" data-mask="" type="text" name="data">
+
+            </div>
+            <script>
+                        $('#date').inputmask({
+                mask: '9999-99-99'
+                })
+            </script>
+        </div>
+    </div>
+        <?php if($selDrejtimi > 0): ?>
+    <div class='col-lg-4'>
+        <div class="form-group">
+            <div class="input-group col-lg-10">
+                <span class="input-group-addon"><?php echo Lang::get('general.lecturer'); ?></span>
+                <?php echo Form::select('professor', $professor,current($professor),array('class'=>'form-control','id'=>"professor")); ?>
+
+            </div>
+        </div>
+    </div>
+        <?php else: ?> 
+    <div class='col-lg-4'>
+        <div class="form-group">
+            <div class="input-group col-lg-10">
+                <span class="input-group-addon"><?php echo Lang::get('general.lecturer'); ?></span>
+                <?php echo Form::select('professor', $professor,current($professor),array('class'=>'form-control','id'=>"professor","diasbled"=>"diasbled")); ?>
+
+            </div>
+        </div>
+    </div>
+    
+        
+        <?php endif; ?>
+</div>
+
+
+<table class="table table-responsive table-striped">
+    <tr>
+        <th>#</th>
+        <th><?php echo Lang::get('general.name'); ?> <?php echo Lang::get('general.surname'); ?></th>
+        <th><?php echo Lang::get('general.email'); ?></th>
+        <th style='width:20%;'> 
+            </th>
+    </tr>
+    <?php foreach($students as $value): ?>
+    <tr>
+        <td><?php echo $value['uid']; ?></td>
+        <td><?php echo $value['emri'].' '.$value['mbiemri']; ?></td>
+        <td><div class="checkbox">
+                <label>
+                    <input type="checkbox" id="blankCheckbox" name='vijushmeria[]' value="<?php echo $value['uid']; ?>" aria-label="...">
+                </label>
+            </div></td>
+        <td> </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+
+<script>
+            $('#drejtimi').change(function () {
+
+    var drejtimi = $("#drejtimi").val();
+            if (drejtimi > 0) {
+    <?php if($semestri): ?>
+            window.location.href = "<?php echo action('VijushmeriaController@getVijushmeria'); ?>/" + drejtimi + "/<?php echo $semestri; ?>";
+            <?php else: ?>
+            window.location.href = "<?php echo action('VijushmeriaController@getVijushmeria'); ?>/" + drejtimi;
+            <?php endif; ?>
+    }
+
+    });
+            $('#semester').change(function () {
+
+    var semester = $("#semester").val();
+            if (semester) {
+    <?php if($selDrejtimi > 0): ?>
+            window.location.href = "<?php echo action('VijushmeriaController@getVijushmeria'); ?>/<?php echo $selDrejtimi; ?>/" + semester;
+            <?php else: ?>
+            window.location.href = "<?php echo action('VijushmeriaController@getVijushmeria'); ?>/-1/" + semester;
+            <?php endif; ?>
+
+    }
+    });
+</script>
+<center>
+    <button type='submit' class='btn btn-primary'><?php echo Lang::get('general.register'); ?></button>
+</center>
+<?php echo Form::close(); ?>
+
+
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?>
+<section class="content-header">
+    <h1>
+        <?php echo Lang::get('general.attendance'); ?><small><?php echo Lang::get('general.attendance'); ?></small>
+    </h1>
+</section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->yieldContent('title'); ?>
+<section class="content">
+<?php echo $__env->yieldContent('notification'); ?>
+<?php echo $__env->yieldContent('registerVijushmeria'); ?>
+</section>
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('admin.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

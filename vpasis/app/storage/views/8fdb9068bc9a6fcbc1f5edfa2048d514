@@ -1,0 +1,55 @@
+<aside class="main-sidebar ">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" style='height:auto;'>
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            <li class="treeview <?php if(Request::is('smps/admin/departments/*')||Request::is('smps/admin/options*')): ?> active <?php endif; ?>"  >
+                <a href="#"><i class="fa fa-university" aria-hidden="true"></i>
+                    <span><?php echo Lang::get('general.settings'); ?></span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li class='<?php if(Request::is('smps/admin/departments/*')): ?> active <?php endif; ?>'><a href="<?php echo action('DepartmentsController@getIndex'); ?>"><?php echo Lang::get('general.departments'); ?></a></li>
+                    <li class='<?php if(Request::is('smps/admin/options/*')): ?> active <?php endif; ?>'><a href="<?php echo action('OptionsController@getIndex'); ?>"><?php echo Lang::get('general.options'); ?></a></li>
+                </ul>
+            </li>
+            <li class="treeview <?php if(Request::is('smps/admin/student*')||Request::is('smps/admin/vijushmeria*')): ?> active <?php endif; ?>">
+                <a href="#"><i class="fa fa-street-view" aria-hidden="true"></i>
+                    <span><?php echo Lang::get('general.student'); ?></span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li class='<?php if(Request::is('smps/admin/student/register*')): ?> active <?php endif; ?>'><a href="<?php echo action('StudentController@getRegister'); ?>"><?php echo Lang::get('general.register_student'); ?></a></li>
+                    <li class='<?php if(Request::is('smps/admin/student/list*')): ?> active <?php endif; ?>'><a href="<?php echo action('StudentController@getList'); ?>"><?php echo Lang::get('general.student_list'); ?></a></li>
+                    <li class='<?php if(Request::is('smps/admin/vijushmeria/*')): ?> active <?php endif; ?>'><a href="<?php echo action('VijushmeriaController@getVijushmeria'); ?>"><?php echo Lang::get('general.attendance'); ?></a></li>
+                </ul>
+            </li>
+            <li class="treeview <?php if(Request::is('smps/admin/provimet/*')): ?> active <?php endif; ?>" >
+                <a href="#"><i class="fa fa-clipboard" aria-hidden="true"></i>
+                    <span><?php echo Lang::get('general.exams'); ?></span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li class='<?php if(Request::is('smps/admin/provimet/add-rap*')): ?> active <?php endif; ?>'><a href="<?php echo action('ProvimetController@getAddRaportiNotave'); ?>"><?php echo Lang::get('general.add_new_report_grade'); ?></a></li>
+                    <li class='<?php if(Request::is('smps/admin/provimet/raport*')): ?> active <?php endif; ?>'><a href="<?php echo action('ProvimetController@getRaportiNotave'); ?>"><?php echo Lang::get('general.report_grade'); ?></a></li>
+                </ul>
+            </li>
+            <li class="treeview <?php if(Request::is('smps/admin/fee*')): ?> active <?php endif; ?>">
+                <a href="#">
+                    <i class="fa fa-eur" aria-hidden="true"></i>
+
+                    <span><?php echo Lang::get('general.fee'); ?></span> 
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li class='<?php if(Request::is('smps/admin/fee/index*')): ?> active <?php endif; ?>'><a href="<?php echo action('FeeController@getIndex'); ?>"><?php echo Lang::get('general.fee'); ?></a></li>
+                </ul>
+            </li>
+            <li class="treeview <?php if(Request::is('smps/admin/staff/*')): ?> active <?php endif; ?>">
+                <a href="#"><i class="fa fa-users" aria-hidden="true"></i>
+                    <span><?php echo Lang::get('general.employe'); ?></span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li class='<?php if(Request::is('smps/admin/staff/register*')): ?> active <?php endif; ?>'><a href="<?php echo action('StaffController@getRegister'); ?>"><?php echo Lang::get('general.add_employe'); ?></a></li>
+                    <li class='<?php if(Request::is('smps/admin/staff/display-staff*')): ?> active <?php endif; ?>'><a href="<?php echo action('StaffController@getDisplayStaff'); ?>"><?php echo Lang::get('general.staff_list'); ?></a></li>
+                    <li class='<?php if(Request::is('smps/admin/staff/display-academic-staff*')): ?> active <?php endif; ?>'><a href="<?php echo action('StaffController@getDisplayAcademicStaff'); ?>"><?php echo Lang::get('general.academic_list'); ?></a></li>
+                </ul>
+            </li>
+        </ul><!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+</aside>

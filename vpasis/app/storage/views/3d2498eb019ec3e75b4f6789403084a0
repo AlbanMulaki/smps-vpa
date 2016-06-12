@@ -1,0 +1,32 @@
+<?php $__env->startSection('content'); ?>
+
+
+<table class='list'>
+    <tr class='head' style="font-size: 13px;">
+        <th>#</th>
+        <th><?php echo Lang::get('general.bank_name'); ?></th>
+        <th><?php echo Lang::get('general.description_fee'); ?></th>
+        <th><?php echo Lang::get('general.feetype'); ?></th>
+        <th><?php echo Lang::get('general.sum'); ?></th>
+        <th><?php echo Lang::get('general.registred');$numFee=0; ?></th>
+    </tr>
+
+    <?php foreach($pagesat as $value): ?>
+    <tr class='head' style='background:#fff; font-weight: 100;'>
+        <td><?php echo ++$numFee; ?></td>
+        <td><?php echo Enum::convertTypeBank($value->emri_bankes); ?></td>
+        <td><?php echo $value['pershkrimi']; ?></td>
+        <td><?php echo Enum::convertLlojetPagesave($value['tipi']); ?></td>
+        <td><?php echo $value['shuma'];$shumaPaguar = $shumaPaguar + $value['shuma']; ?> €</td>
+        <td><?php echo $value['created_at']; ?></td>
+    </tr>
+    <?php endforeach; ?>
+    <tr class="foot">
+        <td colspan="3"> </td>
+        <td><?php echo Lang::get('general.total_sum'); ?></td>
+        <td colspan="2"><?php echo $shumaPaguar; ?> €</td>
+    </tr>
+</table>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('printa4v', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
