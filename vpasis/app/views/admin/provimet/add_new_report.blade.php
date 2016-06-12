@@ -25,7 +25,8 @@
             <td> 
                 <input name='id[]' type='hidden' value='' />
                 <input name='idraportit' type='hidden' value='' />
-                <input name="uid[]" class='form-control input-sm' type='number' min="0" value='' />
+                <input class='form-control input-sm uidSearch' type='text' />
+                <div style="position: absolute;" class="intelli-student"></div>
             </td>
             <td>
                 <input name="test_semestral[]" class='form-control input-sm' type='number' min="0" value='' />
@@ -182,4 +183,5 @@
     @yield('createReport')
     {{ Form::close() }}
 </section>
+
 @stop

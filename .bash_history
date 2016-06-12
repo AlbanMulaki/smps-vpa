@@ -468,3 +468,11 @@ sudo git pull origin master
 exit
 systemctl status httpd.service
 exit
+ls
+sudo git status
+sudo git .
+sudo git add .
+sudo git status
+sudo git commit -am "Gjat printimit te listes se studentve - failed to open streeam #27"
+sudo git push origin master
+exit

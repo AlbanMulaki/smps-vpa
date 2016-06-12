@@ -264,8 +264,6 @@ class StudentController extends \BaseController {
         $listDrejtimet = Drejtimet::getComboDrejtimetGroupedAll();
         $listDrejtimet[Lang::get('general.choose_subject')][0] = Lang::get('general.choose_subject');
         $selectedPage = $id / $numList;
-
-
         $pdf = PDF::loadView('admin.students.print_list_students', [ 'title' => Lang::get('printable.title_list_student'),
                     'students' => $students,
                     'drejtimi' => $drejtimi]);
@@ -350,6 +348,9 @@ class StudentController extends \BaseController {
         } else if (preg_match("/^[a-zA-Z ]+$/ ", Input::get('search'))) {
             if (Input::get('admin') != "admin") {
                 $person = self::ByName('student');
+                if(Request::ajax()){
+                    return $person->toArray();
+                }
                 return View::make('student.search.searchinbox', ['title' => Lang::get('general.search'), 'person' => $person]);
             } else if (Input::get('admin') == "admin") {
 
@@ -373,16 +374,22 @@ class StudentController extends \BaseController {
     public function ByName($access) {
         $search = explode(' ', Input::get('search'));
         if ($access == "student") {
+            $studenti = Studenti::query();
             if (count($search) > 1) {
-                return Studenti::where('emri', 'like', '%' . $search[0] . '%')->where('mbiemri', 'like', $search[1])->take(5)->get();
+                $studenti->where('emri', 'like', '%' . $search[0] . '%');
+                if($search[1] != ""){
+                    $studenti->where('mbiemri', 'like', '%' . $search[1] . '%');
+                }
+                return $studenti->take(5)->get(['uid','emri','mbiemri']);
+                //return Studenti::where('emri', 'like', '%' . $search[0] . '%')->where('mbiemri', 'like', $search[1])->take(5)->get(['uid','emri','mbiemri']);
             } else if (count($search) == 1) {
-                return Studenti::where('emri', 'like', '%' . $search[0] . '%')->orWhere('mbiemri', 'like', '%' . $search[0] . '%')->take(5)->get();
+                return Studenti::where('emri', 'like', '%' . $search[0] . '%')->orWhere('mbiemri', 'like', '%' . $search[0] . '%')->take(5)->get(['uid','emri','mbiemri']);
             }
         } else {
             if (count($search) > 1) {
-                return Admin::where('emri', 'like', '%' . $search[0] . '%')->where('mbiemri', 'like', $search[1])->take(5)->get();
+                return Admin::where('emri', 'like', '%' . $search[0] . '%')->where('mbiemri', 'like', $search[1])->take(5)->get(['uid','emri','mbiemri']);
             } else if (count($search) == 1) {
-                return Admin::where('emri', 'like', '%' . $search[0] . '%')->orWhere('mbiemri', 'like', '%' . $search[0] . '%')->take(5)->get();
+                return Admin::where('emri', 'like', '%' . $search[0] . '%')->orWhere('mbiemri', 'like', '%' . $search[0] . '%')->take(5)->get(['uid','emri','mbiemri']);
             }
         }
     }
