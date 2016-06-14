@@ -348,8 +348,8 @@ class StudentController extends \BaseController {
         } else if (preg_match("/^[a-zA-Z ]+$/ ", Input::get('search'))) {
             if (Input::get('admin') != "admin") {
                 $person = self::ByName('student');
-                if(Request::ajax()){
-                    return $person->toArray();
+                if(Request::ajax()){ 
+                    return $person;
                 }
                 return View::make('student.search.searchinbox', ['title' => Lang::get('general.search'), 'person' => $person]);
             } else if (Input::get('admin') == "admin") {

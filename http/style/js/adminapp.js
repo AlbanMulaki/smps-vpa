@@ -58,7 +58,6 @@ $(document).ready(function () {
     });
     $(document).on('keyup', '#searchPerson', function ($element) {
         $('.intelli-person').empty();
-        console.log($(this).val());
 //        if($(this).val().length <= 3 ){
 //            $(this).closest('td').find('input[name="uid[]"]').remove();
 //        }
