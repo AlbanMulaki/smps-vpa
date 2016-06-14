@@ -16,11 +16,6 @@
 <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('view_report'); ?>
-
-<?php $__env->stopSection(); ?>
-
-
 
 <?php $__env->startSection('report_grade'); ?>
 <div class="box box-success">
