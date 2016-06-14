@@ -24,25 +24,38 @@ $(document).ready(function () {
     /**
      *  Select Student 
      */
-    $(document).on('click', '.intelli-student div a', function (element) {
-        var uid = $(this).data('uid');
-        var nameStudent = $(this).data('name');
-        var addInput = '<input name="uid[]" type="hidden" value="' + uid + '" />';
-        $(this).closest('td').find('.uidSearch').val(nameStudent);
-        // Control if uid exist
-        var replaceUid = $(this).closest('td').find('input[name="uid[]"]');
-        if (replaceUid.val()) {
-            replaceUid.val(uid);
-        } else {
-            $(this).closest('td').append(addInput);
-        }
-        
+    $(document).on('keyup', '.uidSearch', function ($element) {
         $('.intelli-student').empty();
+        if($(this).val().length <= 3 ){
+            $(this).closest('td').find('input[name="uid[]"]').remove();
+        }
+        var activeIn = $(this);
+        $.ajax({
+            method: "POST",
+            url: "/smps/admin/student/search",
+            data: {search: $(this).val()}
+        }).success(function (msg) {
+            var result = '<div class="list-group">';
+            var uidExist = $('input[name="uid[]"]').toArray();
+            $.each(msg, function (index, value) {
+                var doesUidExist = false;
+                $.each(uidExist, function (indexExist, valueUID) {
+                    if (valueUID['value'] == value.uid) {
+                        doesUidExist = true;
+                    }
+                });
+
+                if (doesUidExist == false) {
+                    result += ' <a href="#" class="list-group-item" data-uid="' + value.uid + '" data-name="' + value.emri + " " + value.mbiemri + '">' + value.emri + " " + value.mbiemri + '</a>';
+                }
+            });
+            result += "</div>";
+            activeIn.closest('td').find('div').empty();
+            activeIn.closest('td').find('div').append(result);
+        }).done(function (msg) {
+//                    alert("Data Saved: " + msg);
+        });
     });
-    
-    /**
-     * Search Student
-     */
     $(document).on('keyup', '#searchPerson', function ($element) {
         $('.intelli-person').empty();
         console.log($(this).val());
@@ -123,7 +136,7 @@ $(document).ready(function () {
                 testi_final +
                 nota +
                 refuzim +
-                paraqit +
+                paraqit + 
                 present;
         $('#raportiNotaveTable tr:last').before("<tr class='info'>" + contentTd + "</tr>").fadeIn('slow');
 

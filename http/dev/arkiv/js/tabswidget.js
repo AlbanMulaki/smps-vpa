@@ -1,1 +1,0 @@
-menuscript.definemenu("tab_menu1", 0)
