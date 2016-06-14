@@ -59,7 +59,9 @@ $(document).ready(function () {
             data: {search: $(this).val()}
         }).success(function (msg) {
             var result = '<div class="list-group">';
+            var msg = $.parseJSON(msg);
             var uidExist = $('input[name="uid[]"]').toArray();
+            uidExist = $.parseJSON(uidExist);
             $.each(msg, function (index, value) {
                 var doesUidExist = false;
                 if (uidExist) {
@@ -94,6 +96,7 @@ $(document).ready(function () {
             data: {search: $(this).val()}
         }).success(function (msg) {
             var result = '';
+            var msg = $.parseJSON(msg);
             $.each(msg, function (index, value) {
                 result += '<li class="treeview"> <a href="/smps/admin/student/profile/' + value.uid + '"><i class="fa fa-circle-o text-aqua"></i>' + value.emri + " " + value.mbiemri + '</a></li>';
             });
