@@ -53,6 +53,8 @@ $(document).ready(function () {
         var activeIn = $(this);
         $.ajax({
             method: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
             url: "/smps/admin/student/search",
             data: {search: $(this).val()}
         }).success(function (msg) {
