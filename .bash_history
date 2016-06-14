@@ -1,13 +1,3 @@
-ls
-sudo cp /srv /srvcopy
-sudo mkdir /srvcopy
-sudo cp /srv /srvcopy
-sudo cp -R /srv /srvcopy
-sudo composer update
-sudo php54 composer update
-sudo php56 composer update
-ls
-sudo php56 composer
 sudo composer
 sudo php56 composer
 sudo php56 composer -h
@@ -497,4 +487,14 @@ cd ..
 ls
 sudo git add --all -f
 sudo git commit -am "Search API"
+sudo git push origin master
+sudo git add --all
+sudo git commit -am "Fix kerkimi i studentve te raporti notave dhe profili"
+sudo git push origin master
+sudo git add .
+sudo git commit -am "Fix undefined property at report grade"
+sudo git push origin master
+sudo git add --all -f
+sudo git status
+sudo git commit -am "Fix"
 sudo git push origin master

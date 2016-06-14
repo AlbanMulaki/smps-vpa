@@ -24,6 +24,27 @@ $(document).ready(function () {
     /**
      *  Select Student 
      */
+       /**
+     *  Select Student 
+     */
+    $(document).on('click', '.intelli-student div a', function (element) {
+        var uid = $(this).data('uid');
+        var nameStudent = $(this).data('name');
+        var addInput = '<input name="uid[]" type="hidden" value="' + uid + '" />';
+        $(this).closest('td').find('.uidSearch').val(nameStudent);
+        // Control if uid exist
+        var replaceUid = $(this).closest('td').find('input[name="uid[]"]');
+        if (replaceUid.val()) {
+            replaceUid.val(uid);
+        } else {
+            $(this).closest('td').append(addInput);
+        }
+        
+        $('.intelli-student').empty();
+    });
+    
+    
+    
     $(document).on('keyup', '.uidSearch', function ($element) {
         $('.intelli-student').empty();
         if($(this).val().length <= 3 ){
