@@ -4,7 +4,7 @@
 @section('regjistrmiNotave')
 <table class='table table-bordered' id="raportiNotaveTable">
 
-    <thead
+    <thead>
         <tr>
             <th>{{ Lang::get('general.studentId') }}</th>
             <th>{{ Lang::get('general.test_semester') }}</th>

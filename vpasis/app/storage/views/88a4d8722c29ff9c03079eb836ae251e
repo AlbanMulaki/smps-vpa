@@ -20,7 +20,6 @@
         </tr>
         <tr>
             <th><?php echo Lang::get('general.student'); ?></th>
-            <th><?php echo Lang::get('general.studentId'); ?></th>
             <th><?php echo Lang::get('general.test_semester'); ?></th>
             <th>Testi Gj.Sem</th>
             <th><?php echo Lang::get('general.seminar'); ?></th>
@@ -41,11 +40,12 @@
 
 <?php foreach($raporti->raportiNotaveStudent as $value): ?>
         <tr class="provRow">
-            <td>
-                <input name="name_surname[]" class='form-control input-sm' type='text' value='<?php echo $value->getStudent->emri." ".$value->getStudent->mbiemri; ?>' disabled="" style="min-width:100px;"/>
-            </td>
-            <td>
-                <input name="uid[]" class='form-control input-sm' type='number' min="0" value='<?php echo $value->getStudent->uid; ?>' />
+            
+            <td> 
+                <input name='id[]' type='hidden' value='' />
+                <input class='form-control input-sm uidSearch' type='text' value="<?php echo $value->getStudent->emri." ".$value->getStudent->mbiemri; ?>" disabled=""/>
+                <div style="position: absolute;" class="intelli-student"></div>
+                <input name="uid[]" class='form-control input-sm' type='hidden' min="0" value='<?php echo $value->getStudent->uid; ?>' />
             </td>
             <td>
                 <input name="testi_semestral[]" class='form-control input-sm' type='number' min="0" value='<?php echo $value->testi_semestral; ?>' />
@@ -93,11 +93,13 @@
 
 <?php for($j=0; $j<5; $j++): ?>
         <tr class="provRow">
-            <td>
-                <input name="name_surname[]" class='form-control input-sm' type='text'/>
-            </td>
-            <td>
-                <input name="uid[]" class='form-control input-sm' type='number' min="0" />
+            
+            
+            
+            <td> 
+                <input name='id[]' type='hidden' value='' />
+                <input class='form-control input-sm uidSearch' type='text' />
+                <div style="position: absolute;" class="intelli-student"></div>
             </td>
             <td>
                 <input name="testi_semestral[]" class='form-control input-sm' type='number' min="0" />

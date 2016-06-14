@@ -104,8 +104,9 @@ class ProvimetController extends \BaseController {
             $doesStudentExist = RaportiNotaveStudent::where('idraportit', Input::get('idraportit'))
                     ->where('studenti', $uid)
                     ->first();
+            $isStudent = Studenti::where('uid',$uid)->first();
             //If student id doesnt exist return save for error
-            if ($doesStudentExist == NULL) {
+            if ($doesStudentExist == NULL && $isStudent == NULL) {
                 $userDoesntExistError[] = $uid;
                 continue;
             }

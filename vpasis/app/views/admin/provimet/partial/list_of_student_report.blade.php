@@ -20,7 +20,6 @@
         </tr>
         <tr>
             <th>{{ Lang::get('general.student') }}</th>
-            <th>{{ Lang::get('general.studentId') }}</th>
             <th>{{ Lang::get('general.test_semester') }}</th>
             <th>Testi Gj.Sem</th>
             <th>{{ Lang::get('general.seminar') }}</th>
@@ -40,11 +39,12 @@
 {{ "";$i=0 }}
 @foreach($raporti->raportiNotaveStudent as $value)
         <tr class="provRow">
-            <td>
-                <input name="name_surname[]" class='form-control input-sm' type='text' value='{{ $value->getStudent->emri." ".$value->getStudent->mbiemri }}' disabled="" style="min-width:100px;"/>
-            </td>
-            <td>
-                <input name="uid[]" class='form-control input-sm' type='number' min="0" value='{{ $value->getStudent->uid }}' />
+            
+            <td> 
+                <input name='id[]' type='hidden' value='' />
+                <input class='form-control input-sm uidSearch' type='text' value="{{ $value->getStudent->emri." ".$value->getStudent->mbiemri }}" disabled=""/>
+                <div style="position: absolute;" class="intelli-student"></div>
+                <input name="uid[]" class='form-control input-sm' type='hidden' min="0" value='{{ $value->getStudent->uid }}' />
             </td>
             <td>
                 <input name="testi_semestral[]" class='form-control input-sm' type='number' min="0" value='{{ $value->testi_semestral }}' />
@@ -87,11 +87,13 @@
 
 @for($j=0; $j<5; $j++)
         <tr class="provRow">
-            <td>
-                <input name="name_surname[]" class='form-control input-sm' type='text'/>
-            </td>
-            <td>
-                <input name="uid[]" class='form-control input-sm' type='number' min="0" />
+            
+            
+            
+            <td> 
+                <input name='id[]' type='hidden' value='' />
+                <input class='form-control input-sm uidSearch' type='text' />
+                <div style="position: absolute;" class="intelli-student"></div>
             </td>
             <td>
                 <input name="testi_semestral[]" class='form-control input-sm' type='number' min="0" />

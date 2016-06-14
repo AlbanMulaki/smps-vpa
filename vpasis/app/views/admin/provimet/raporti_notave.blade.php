@@ -18,16 +18,12 @@
 @endif
 @stop
 
-@section('view_report')
-
-@stop
-
-
 
 @section('report_grade')
 <div class="box box-success">
     <div class="box-body">
         {{ Form::open(array('url'=>action('ProvimetController@getRaportiNotave'),'method'=>'GET')) }}
+        <input type="hidden" name='idraportit' value='{{ $raportet->idraportit }}' />
         <div class="row">
             <div class='col-lg-2'>
                 <div class="form-group">
