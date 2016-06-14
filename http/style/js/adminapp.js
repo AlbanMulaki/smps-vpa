@@ -54,7 +54,7 @@ $(document).ready(function () {
         $.ajax({
             method: "POST",
             url: "/smps/admin/student/search",
-            data: {search: $(this).val()}
+            data: {search: "$(this).val()"}
         }).success(function (msg) {
             var result = '<div class="list-group">';
             var msg = $.parseJSON(msg);
