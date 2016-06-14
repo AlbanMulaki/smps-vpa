@@ -53,15 +53,12 @@ $(document).ready(function () {
         var activeIn = $(this);
         $.ajax({
             method: "POST",
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
             url: "/smps/admin/student/search",
             data: {search: $(this).val()}
         }).success(function (msg) {
             var result = '<div class="list-group">';
             var msg = $.parseJSON(msg);
-            var uidExist = $('input[name="uid[]"]').toArray();
-            uidExist = $.parseJSON(uidExist);
+            var uidExist = $('input[name="uid[]"]');
             $.each(msg, function (index, value) {
                 var doesUidExist = false;
                 if (uidExist) {
