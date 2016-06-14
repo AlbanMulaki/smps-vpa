@@ -24,7 +24,7 @@ $(document).ready(function () {
     /**
      *  Select Student 
      */
-       /**
+    /**
      *  Select Student 
      */
     $(document).on('click', '.intelli-student div a', function (element) {
@@ -39,15 +39,15 @@ $(document).ready(function () {
         } else {
             $(this).closest('td').append(addInput);
         }
-        
+
         $('.intelli-student').empty();
     });
-    
-    
-    
+
+
+
     $(document).on('keyup', '.uidSearch', function ($element) {
         $('.intelli-student').empty();
-        if($(this).val().length <= 3 ){
+        if ($(this).val().length <= 3) {
             $(this).closest('td').find('input[name="uid[]"]').remove();
         }
         var activeIn = $(this);
@@ -60,11 +60,13 @@ $(document).ready(function () {
             var uidExist = $('input[name="uid[]"]').toArray();
             $.each(msg, function (index, value) {
                 var doesUidExist = false;
-                $.each(uidExist, function (indexExist, valueUID) {
-                    if (valueUID['value'] == value.uid) {
-                        doesUidExist = true;
-                    }
-                });
+                if (uidExist) {
+                    $.each(uidExist, function (indexExist, valueUID) {
+                        if (valueUID['value'] == value.uid) {
+                            doesUidExist = true;
+                        }
+                    });
+                }
 
                 if (doesUidExist == false) {
                     result += ' <a href="#" class="list-group-item" data-uid="' + value.uid + '" data-name="' + value.emri + " " + value.mbiemri + '">' + value.emri + " " + value.mbiemri + '</a>';
@@ -82,7 +84,7 @@ $(document).ready(function () {
 //        if($(this).val().length <= 3 ){
 //            $(this).closest('td').find('input[name="uid[]"]').remove();
 //        }
-        
+
         var activeIn = $(this);
         $.ajax({
             method: "POST",
@@ -91,7 +93,7 @@ $(document).ready(function () {
         }).success(function (msg) {
             var result = '';
             $.each(msg, function (index, value) {
-                    result += '<li class="treeview"> <a href="/smps/admin/student/profile/'+value.uid+'"><i class="fa fa-circle-o text-aqua"></i>' + value.emri + " " + value.mbiemri + '</a></li>';
+                result += '<li class="treeview"> <a href="/smps/admin/student/profile/' + value.uid + '"><i class="fa fa-circle-o text-aqua"></i>' + value.emri + " " + value.mbiemri + '</a></li>';
             });
 //            result += "</div>";
             $('.intelli-person').empty();
@@ -100,10 +102,10 @@ $(document).ready(function () {
 //                    alert("Data Saved: " + msg);
         });
     });
-    
-    
-    
-    
+
+
+
+
 
 
     var ESC = 27;
@@ -156,7 +158,7 @@ $(document).ready(function () {
                 testi_final +
                 nota +
                 refuzim +
-                paraqit + 
+                paraqit +
                 present;
         $('#raportiNotaveTable tr:last').before("<tr class='info'>" + contentTd + "</tr>").fadeIn('slow');
 
