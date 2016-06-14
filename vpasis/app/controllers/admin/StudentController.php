@@ -349,7 +349,7 @@ class StudentController extends \BaseController {
             if (Input::get('admin') != "admin") {
                 $person = self::ByName('student');
                 if(Request::ajax()){ 
-                    return $person->toJson();
+                    return $person->toArray();
                 }
                 return View::make('student.search.searchinbox', ['title' => Lang::get('general.search'), 'person' => $person]);
             } else if (Input::get('admin') == "admin") {
