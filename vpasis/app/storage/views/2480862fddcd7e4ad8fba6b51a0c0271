@@ -1,7 +1,7 @@
 <?php $__env->startSection('regjistrmiNotave'); ?>
 <table class='table table-bordered' id="raportiNotaveTable">
 
-    <thead
+    <thead>
         <tr>
             <th><?php echo Lang::get('general.studentId'); ?></th>
             <th><?php echo Lang::get('general.test_semester'); ?></th>

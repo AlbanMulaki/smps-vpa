@@ -1,8 +1,22 @@
 <aside class="main-sidebar ">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar" style='height:auto;'>
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" id='searchPerson' class="form-control" placeholder="@lang('general.search_person')">
+                <span class="input-group-btn">
+                    <button name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        
         <!-- Sidebar Menu -->
+        <ul class="sidebar-menu intelli-person">
+            
+        </ul>
         <ul class="sidebar-menu">
+            
             <li class="treeview @if(Request::is('smps/admin/departments/*')||Request::is('smps/admin/options*')) active @endif"  >
                 <a href="#"><i class="fa fa-university" aria-hidden="true"></i>
                     <span>{{ Lang::get('general.settings') }}</span> <i class="fa fa-angle-left pull-right"></i>
@@ -18,7 +32,7 @@
                 <ul class="treeview-menu">
                     <li class='@if(Request::is('smps/admin/student/register*')) active @endif'><a href="{{ action('StudentController@getRegister') }}">{{ Lang::get('general.register_student') }}</a></li>
                     <li class='@if(Request::is('smps/admin/student/list*')) active @endif'><a href="{{ action('StudentController@getList') }}">{{ Lang::get('general.student_list') }}</a></li>
-                    <li class='@if(Request::is('smps/admin/vijushmeria/*')) active @endif'><a href="{{ action('VijushmeriaController@getVijushmeria') }}">{{ Lang::get('general.attendance') }}</a></li>
+                    <!--<li class='@if(Request::is('smps/admin/vijushmeria/*')) active @endif'><a href="{{ action('VijushmeriaController@getVijushmeria') }}">{{ Lang::get('general.attendance') }}</a></li>-->
                 </ul>
             </li>
             <li class="treeview @if(Request::is('smps/admin/provimet/*')) active @endif" >

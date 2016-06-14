@@ -43,38 +43,34 @@ $(document).ready(function () {
     /**
      * Search Student
      */
-    $(document).on('keyup', '.uidSearch', function ($element) {
-        $('.intelli-student').empty();
-        if($(this).val().length <= 3 ){
-            $(this).closest('td').find('input[name="uid[]"]').remove();
-        }
+    $(document).on('keyup', '#searchPerson', function ($element) {
+        $('.intelli-person').empty();
+        console.log($(this).val());
+//        if($(this).val().length <= 3 ){
+//            $(this).closest('td').find('input[name="uid[]"]').remove();
+//        }
+        
         var activeIn = $(this);
         $.ajax({
             method: "POST",
             url: "/smps/admin/student/search",
             data: {search: $(this).val()}
         }).success(function (msg) {
-            var result = '<div class="list-group">';
-            var uidExist = $('input[name="uid[]"]').toArray();
+            var result = '';
             $.each(msg, function (index, value) {
-                var doesUidExist = false;
-                $.each(uidExist, function (indexExist, valueUID) {
-                    if (valueUID['value'] == value.uid) {
-                        doesUidExist = true;
-                    }
-                });
-
-                if (doesUidExist == false) {
-                    result += ' <a href="#" class="list-group-item" data-uid="' + value.uid + '" data-name="' + value.emri + " " + value.mbiemri + '">' + value.emri + " " + value.mbiemri + '</a>';
-                }
+                    result += '<li class="treeview"> <a href="/smps/admin/student/profile/'+value.uid+'"><i class="fa fa-circle-o text-aqua"></i>' + value.emri + " " + value.mbiemri + '</a></li>';
             });
-            result += "</div>";
-            activeIn.closest('td').find('div').empty();
-            activeIn.closest('td').find('div').append(result);
+//            result += "</div>";
+            $('.intelli-person').empty();
+            $('.intelli-person').append(result);
         }).done(function (msg) {
 //                    alert("Data Saved: " + msg);
         });
     });
+    
+    
+    
+    
 
 
     var ESC = 27;

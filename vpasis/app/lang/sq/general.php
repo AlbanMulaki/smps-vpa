@@ -368,6 +368,7 @@ return array(
     "add_student" => "Regjistro student",
     "saved_successful"=>"Ndryshimet u bene me sukses",
     'edit_fee'=>"Ndrysho pagesen",
+    'search_person' => "Kerko personin...",
     
         )
 ;
