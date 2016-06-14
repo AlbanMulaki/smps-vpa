@@ -54,6 +54,8 @@ $(document).ready(function () {
         $.ajax({
             method: "POST",
             url: "/smps/admin/student/search",
+            accepts:'*/*',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             data: {search: "$(this).val()"}
         }).success(function (msg) {
             var result = '<div class="list-group">';
