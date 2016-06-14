@@ -26,26 +26,28 @@ $(document).ready(function () {
      */
     $(document).on('click', '.intelli-student div a', function (element) {
         var uid = $(this).data('uid');
-        $('.intelli-student').empty();
+        var nameStudent = $(this).data('name');
         var addInput = '<input name="uid[]" type="hidden" value="' + uid + '" />';
-//        $('input=["text"]')
+        $(this).closest('td').find('.uidSearch').val(nameStudent);
+        // Control if uid exist
+        var replaceUid = $(this).closest('td').find('input[name="uid[]"]');
+        if (replaceUid.val()) {
+            replaceUid.val(uid);
+        } else {
+            $(this).closest('td').append(addInput);
+        }
         
-//        var uidExist = $('input[name="uid[]"]').val();
-//        alert(uidExist);
-//        alert(uid);
-//        if(uidExist == uid){
-//            alert("Exist");
-//        }
-        
-        
-        $('#submitRaport').append(addInput);
-        $(this).closest('td').find('.uidSearch').val('AAAAA');
+        $('.intelli-student').empty();
     });
+    
     /**
      * Search Student
      */
     $(document).on('keyup', '.uidSearch', function ($element) {
         $('.intelli-student').empty();
+        if($(this).val().length <= 3 ){
+            $(this).closest('td').find('input[name="uid[]"]').remove();
+        }
         var activeIn = $(this);
         $.ajax({
             method: "POST",
@@ -53,18 +55,17 @@ $(document).ready(function () {
             data: {search: $(this).val()}
         }).success(function (msg) {
             var result = '<div class="list-group">';
-            
             var uidExist = $('input[name="uid[]"]').toArray();
-            alert(uidExist[0]);
             $.each(msg, function (index, value) {
                 var doesUidExist = false;
-                $.each(uidExist,function(indexExist,valueUID){
-                    if( valueUID == value.uid ){
+                $.each(uidExist, function (indexExist, valueUID) {
+                    if (valueUID['value'] == value.uid) {
                         doesUidExist = true;
                     }
                 });
-                if(doesUidExist == false){
-                    result += ' <a href="#" class="list-group-item" data-uid="' + value.uid + '">' + value.emri + " " + value.mbiemri + '</a>';
+
+                if (doesUidExist == false) {
+                    result += ' <a href="#" class="list-group-item" data-uid="' + value.uid + '" data-name="' + value.emri + " " + value.mbiemri + '">' + value.emri + " " + value.mbiemri + '</a>';
                 }
             });
             result += "</div>";
@@ -83,7 +84,7 @@ $(document).ready(function () {
             $('.intelli-student').empty();
         }
     });
-    
+
     $(document).on('keydown', document, function (e) {
         if (e.keyCode == ESC) { // escape key maps to keycode `27`
             $('.intelli-student').empty();

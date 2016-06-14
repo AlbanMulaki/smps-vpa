@@ -1,16 +1,3 @@
-ifconfig
-lspci
-clear
-ifconfig -h
-ifconfig -a
-clear
-ifconfig -a
-ifconfig enp0s8 192.168.0.180
-sudo ifconfig enp0s8 192.168.0.180
-ifconfig enp0s8 192.168.0.180
-ifconfig -a
-clear
-git
 ls
 sudo cp /srv /srvcopy
 sudo mkdir /srvcopy
@@ -476,3 +463,38 @@ sudo git status
 sudo git commit -am "Gjat printimit te listes se studentve - failed to open streeam #27"
 sudo git push origin master
 exit
+sudo chmod -R 777 vpasis/
+systemctl status httpd.service
+git add .
+sudo git add .
+sudo git commit -am "search student backend"
+sudo git push origin master
+ls
+ls -a
+cd http/
+ls
+ls -a
+cd style
+ls
+cd js
+ls -a
+cd ..
+ls -a
+cd ..
+ls
+ls -a
+cd ..
+ls
+ls -a
+cd vpas
+cd vpasis/
+ls
+ls -a
+cd  app
+ls -a
+cd ..
+cd ..
+ls
+sudo git add --all -f
+sudo git commit -am "Search API"
+sudo git push origin master
