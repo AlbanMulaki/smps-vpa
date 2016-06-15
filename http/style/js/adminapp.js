@@ -60,7 +60,8 @@ $(document).ready(function () {
         }).success(function (msg) {
             var result = '<div class="list-group">';
             var uidExist = $('input[name="uid[]"]');
-            $.each(msg, function (index, value) {
+            var obj = $.parseJSON(msg);
+            $.each(obj, function (index, value) {
                 var doesUidExist = false;
                 if (uidExist) {
                     $.each(uidExist, function (indexExist, valueUID) {
@@ -94,7 +95,8 @@ $(document).ready(function () {
             data: {search: $(this).val()}
         }).success(function (msg) {
             var result = '';
-            $.each(msg, function (index, value) {
+            var obj = $.parseJSON(msg);
+            $.each(obj, function (index, value) {
                 result += '<li class="treeview"> <a href="/smps/admin/student/profile/' + value.uid + '"><i class="fa fa-circle-o text-aqua"></i>' + value.emri + " " + value.mbiemri + '</a></li>';
             });
 //            result += "</div>";

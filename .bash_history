@@ -1,48 +1,3 @@
-sudo composer
-sudo php56 composer
-sudo php56 composer -h
-php56 composer -h
-su
-sudo php56 /root/composer.phar
-sudo php56 /root/composer.phar update
-php artisan --version
-php56 artisan --version
-ls
-cd vpasis/
-ls
-sudo php56 /root/composer.phar update
-ls /usr/bin/php56
-ls /usr/bin/php
-ln -s /usr/bin/php56 /usr/bin/php
-sudo ln -s /usr/bin/php56 /usr/bin/php
-php -v
-sudo php56 /root/composer.phar update
-php artisan
-php artisan | less
-php artisan debugbar
-php artisan debugbar:clear
-php artisan debugbar:publish
-ls
-ls -a
- cd vendor
-ls
-ls -la
-ls -la | less
-cd barryvdh/
-ls
-ls -a
-ls -la
-cd ..
-cd ..
-cd ..
-ls
-rm flyspray-1.0.alpha2.zip 
-clear
-ls
-README.md
-rm composer.json
-cd vpasis
-ls
 cd ..
 ls
 clear
@@ -498,3 +453,48 @@ sudo git add --all -f
 sudo git status
 sudo git commit -am "Fix"
 sudo git push origin master
+ls
+git add --all --force
+git status
+sudo git add --all --force
+git status
+sudo git add .
+sudo git commit -am "Fix complicated thing with js"
+sudo git push origin master
+sudo git add .
+sudo git commit -am "Fix complicated thing with js"
+sudo git push origin master
+sudo git add .
+sudo git commit -am "Fix complicated thing with js"
+sudo git push origin master
+sudo git add .
+sudo git commit -am "Fix complicated thing with js"
+sudo git push origin master
+sudo git add .
+sudo git commit -am "Fix complicated thing with js"
+sudo git push origin master
+sudo git add .
+sudo git commit -am "Fix complicated thing with js"
+sudo git push origin master
+sudo git add .
+sudo git commit -am "Fix complicated thing with js"
+sudo git push origin master
+sudo git add .
+sudo git commit -am "Fix complicated thing with js"
+sudo git push origin master
+sudo git add .
+sudo git commit -am "Fix complicated thing with js"
+sudo git push origin master
+sudo git add .
+sudo git commit -am "Fix complicated thing with js"
+sudo git push origin master
+sudo git add .
+sudo git commit -am "Fix complicated thing with js"
+sudo git push origin master
+php
+php -v
+cd vpasis
+ls
+php artisan
+php artisan optimize
+php artisan dump-autoload
