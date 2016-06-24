@@ -11,7 +11,7 @@ class ProvimetController extends \BaseController {
         $drejtimi = Input::get('drejtimi');
         if ($year == 0 && $month == 0 && $drejtimi == 0) {
             $drejtimet = Drejtimet::getComboDrejtimetGroupedAll();
-            $raportedEFundit = RaportiNotave::take(15)->orderBy('id', 'DESC')->get();
+            $raportedEFundit = RaportiNotave::orderBy('id', 'DESC')->paginate(15);
             return View::make('admin.provimet.raporti_notave', ['drejtimi' => $drejtimet,
                         'raportet' => $raportedEFundit]);
         } else {

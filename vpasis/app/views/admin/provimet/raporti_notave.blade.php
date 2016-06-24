@@ -133,8 +133,10 @@
                     @endif
                 </tr>
                 @endforeach
+                
             </tbody>
         </table>
+        {{ $raportet->links(); }}
         @else
         <div class='text-center text-gray'>
             <br><br>

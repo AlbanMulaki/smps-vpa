@@ -28,7 +28,6 @@
             <th><?php echo Lang::get('general.final_test'); ?></th>
             <th style='width: 80px;'><?php echo Lang::get('general.grade'); ?></th>
             <th style='width: 80px;'><?php echo Lang::get('general.refuse'); ?></th>
-            <th style='width: 80px;'><?php echo Lang::get('general.apply'); ?></th>
             <th  style='width: 80px;'><?php echo Lang::get('general.present'); ?></th>
             <th  style='width: 80px;'> &nbsp;</th>
         </tr>
@@ -72,10 +71,6 @@
             <td>
 
                 <?php echo Form::select('refuzim[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),$value['refuzim'],array('class'=>'form-control input-sm')); ?>
-
-            </td>
-            <td>
-                <?php echo Form::select('paraqit[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),$value['paraqit'],array('class'=>'form-control input-sm')); ?>
 
             </td>
             <td>

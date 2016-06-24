@@ -139,8 +139,11 @@
                     <?php endif; ?>
                 </tr>
                 <?php endforeach; ?>
+                
             </tbody>
         </table>
+        <?php echo $raportet->links();; ?>
+
         <?php else: ?>
         <div class='text-center text-gray'>
             <br><br>
