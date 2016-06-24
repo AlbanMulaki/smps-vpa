@@ -12,9 +12,10 @@
             <th>{{ Lang::get('general.seminar') }}</th>
             <th>{{ Lang::get('general.attendance') }}</th>
             <th>{{ Lang::get('general.practice_work') }}</th>
-            <th style='width: 80px;'>{{ Lang::get('general.final_test') }}</th>
+            <th>{{ Lang::get('general.final_test') }}</th>
             <th style='width: 80px;'>{{ Lang::get('general.grade') }}</th>
             <th style='width: 80px;'>{{ Lang::get('general.refuse') }}</th>
+            <th style='width: 80px;'>{{ Lang::get('general.apply') }}</th>
             <th  style='width: 80px;'>{{ Lang::get('general.present') }}</th>
         </tr>
     </thead>
@@ -46,12 +47,24 @@
                 <input name="testi_final[]" class='form-control input-sm' style='width:60px;' type='number' value='' />
             </td>
             <td>
-                {{ Form::selectRange('nota[]', 5,10,5,array('class'=>'form-control input-sm')) }}
+                
+                <select name="nota[]" class='form-control input-sm'>
+                    <option value='4'>E Padefinuar</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                    <option value='8'>8</option>
+                    <option value='9'>9</option>
+                    <option value='10'>10</option>
+                </select>
             </td>
             <td>
 
                 {{ Form::select('refuzim[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),Enum::NO,array('class'=>'form-control input-sm')) }}
             </td>
+            <td>
+                {{ Form::select('paraqit[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),Enum::YES,array('class'=>'form-control input-sm')) }}
+            </td> 
             <td>
                 {{ Form::select('paraqit_prezent[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),Enum::YES,array('class'=>'form-control input-sm')) }}
             </td>

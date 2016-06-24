@@ -28,6 +28,7 @@
             <th>{{ Lang::get('general.final_test') }}</th>
             <th style='width: 80px;'>{{ Lang::get('general.grade') }}</th>
             <th style='width: 80px;'>{{ Lang::get('general.refuse') }}</th>
+            <th style='width: 80px;'>{{ Lang::get('general.apply') }}</th>
             <th  style='width: 80px;'>{{ Lang::get('general.present') }}</th>
             <th  style='width: 80px;'> &nbsp;</th>
         </tr>
@@ -64,11 +65,23 @@
                 <input name="testi_final[]" class='form-control input-sm' style='width:60px;' type='number' value='{{ $value->testi_final }}' />
             </td>
             <td>
-                {{ Form::selectRange('nota[]', 5,10,$value['nota'],array('class'=>'form-control input-sm')) }}
+                <select name="nota[]" class='form-control input-sm'>
+                    <option value='4' @if($value['nota'] == 4) selected @endif >E Padefinuar</option>
+                    <option value='5' @if($value['nota'] == 5) selected @endif >5</option>
+                    <option value='6' @if($value['nota'] == 6) selected @endif >6</option>
+                    <option value='7'  @if($value['nota'] == 7) selected @endif >7</option>
+                    <option value='8'  @if($value['nota'] == 8) selected @endif >8</option>
+                    <option value='9'  @if($value['nota'] == 9) selected @endif >9</option>
+                    <option value='10'  @if($value['nota'] == 100) selected @endif >10</option>
+                    
+                </select>
             </td>
             <td>
 
                 {{ Form::select('refuzim[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),$value['refuzim'],array('class'=>'form-control input-sm')) }}
+            </td>
+            <td>
+                {{ Form::select('paraqit[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),$value['paraqit'],array('class'=>'form-control input-sm')) }}
             </td>
             <td>
                 {{ Form::select('paraqit_prezent[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),$value['paraqit_prezent'],array('class'=>'form-control input-sm')) }}
@@ -110,7 +123,16 @@
                 <input name="testi_final[]" class='form-control input-sm' style='width:60px;' type='number' />
             </td>
             <td>
-                {{ Form::selectRange('nota[]', 5,10,5,array('class'=>'form-control input-sm')) }}
+                
+                <select name="nota[]" class='form-control input-sm'>
+                    <option value='4'>E Padefinuar</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                    <option value='8'>8</option>
+                    <option value='9'>9</option>
+                    <option value='10'>10</option>
+                </select>
             </td>
             <td>
 
