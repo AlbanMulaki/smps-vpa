@@ -1823,10 +1823,11 @@
     <h2>{{ $title }}</h2>
 </center>
 @stop
-
+<html>
 @yield('includeheader')
 @yield('header')
 <div class='content'>
     @yield('content')
 </div>
 @yield('footer')
+</html>

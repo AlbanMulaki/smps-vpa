@@ -1,15 +1,3 @@
-cd ..
-ls
-clear
-ls
-git status
-git add --all
-sudo git add --all
-git commit -am "update framework libraries"
-sudo git commit -am "update framework libraries"
-sudo git push origin master
-git status
-sudo git status
 ls
 sudo git status
 clear
@@ -498,3 +486,15 @@ ls
 php artisan
 php artisan optimize
 php artisan dump-autoload
+sudo git add .
+sudo git commit -am "Fix revision and error with search student"
+sudo git push origin master
+sudo git status
+sudo git diff
+sudo git add --all -f
+sudo git status
+cd http
+ls
+ls -a
+clear
+ls -a

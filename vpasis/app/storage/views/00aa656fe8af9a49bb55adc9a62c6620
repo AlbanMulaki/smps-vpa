@@ -1824,10 +1824,11 @@
     <h2><?php echo $title; ?></h2>
 </center>
 <?php $__env->stopSection(); ?>
-
+<html>
 <?php echo $__env->yieldContent('includeheader'); ?>
 <?php echo $__env->yieldContent('header'); ?>
 <div class='content'>
     <?php echo $__env->yieldContent('content'); ?>
 </div>
 <?php echo $__env->yieldContent('footer'); ?>
+</html>

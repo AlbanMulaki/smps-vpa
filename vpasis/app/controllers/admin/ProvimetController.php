@@ -163,9 +163,9 @@ class ProvimetController extends \BaseController {
     }
 
     public function getAddRaportiNotave() {
-
+   
         $raportiNotave = Lendet::getComboLendetAll();
-        $prof = Admin::all()->sortBy('emri');
+        $prof = Admin::where('grp',Enum::prof)->orderBy('emri')->get();
 
         return View::make('admin.provimet.add_new_report', [
                     'raportiNotave' => $raportiNotave,
