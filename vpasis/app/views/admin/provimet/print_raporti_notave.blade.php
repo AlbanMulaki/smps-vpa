@@ -15,7 +15,7 @@
             <td>{{ Lang::get('general.final_test') }}</td>
             <td>{{ Lang::get('general.grade') }}</td>
             <td>{{ Lang::get('general.refuse') }}</td>
-            <td>{{ Lang::get('general.apply') }}</td>
+            <td>{{ Lang::get('general.apply') }} test</td>
         </tr>
         @foreach($raportiNotave->raportiNotaveStudent as $value)
         <tr class='head' style='background:#fff;'>

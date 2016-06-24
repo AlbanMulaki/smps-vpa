@@ -28,7 +28,6 @@
             <th>{{ Lang::get('general.final_test') }}</th>
             <th style='width: 80px;'>{{ Lang::get('general.grade') }}</th>
             <th style='width: 80px;'>{{ Lang::get('general.refuse') }}</th>
-            <th style='width: 80px;'>{{ Lang::get('general.apply') }}</th>
             <th  style='width: 80px;'>{{ Lang::get('general.present') }}</th>
             <th  style='width: 80px;'> &nbsp;</th>
         </tr>
@@ -70,9 +69,6 @@
             <td>
 
                 {{ Form::select('refuzim[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),$value['refuzim'],array('class'=>'form-control input-sm')) }}
-            </td>
-            <td>
-                {{ Form::select('paraqit[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),$value['paraqit'],array('class'=>'form-control input-sm')) }}
             </td>
             <td>
                 {{ Form::select('paraqit_prezent[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),$value['paraqit_prezent'],array('class'=>'form-control input-sm')) }}

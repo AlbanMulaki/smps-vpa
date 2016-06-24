@@ -12,7 +12,7 @@
             <td><?php echo Lang::get('general.final_test'); ?></td>
             <td><?php echo Lang::get('general.grade'); ?></td>
             <td><?php echo Lang::get('general.refuse'); ?></td>
-            <td><?php echo Lang::get('general.apply'); ?></td>
+            <td><?php echo Lang::get('general.apply'); ?> </td>
         </tr>
         <?php foreach($raportiNotave->raportiNotaveStudent as $value): ?>
         <tr class='head' style='background:#fff;'>
