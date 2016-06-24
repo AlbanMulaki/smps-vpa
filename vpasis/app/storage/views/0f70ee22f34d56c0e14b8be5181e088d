@@ -12,7 +12,7 @@
             <td><?php echo Lang::get('general.final_test'); ?></td>
             <td><?php echo Lang::get('general.grade'); ?></td>
             <td><?php echo Lang::get('general.refuse'); ?></td>
-            <td><?php echo Lang::get('general.apply'); ?> </td>
+            
         </tr>
         <?php foreach($raportiNotave->raportiNotaveStudent as $value): ?>
         <tr class='head' style='background:#fff;'>
@@ -26,7 +26,7 @@
             <td><?php echo $value->testi_final; ?></td>
             <td><?php echo $value->nota; ?></td>
             <td><?php echo Enum::convertRefuzimi($value->refuzim); ?></td>
-            <td><?php echo Enum::convertParaqitjen($value->paraqit); ?></td>
+          
         </tr>
         <?php endforeach; ?>
     </tbody>

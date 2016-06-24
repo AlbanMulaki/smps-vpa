@@ -15,7 +15,7 @@
             <td>{{ Lang::get('general.final_test') }}</td>
             <td>{{ Lang::get('general.grade') }}</td>
             <td>{{ Lang::get('general.refuse') }}</td>
-            <td>{{ Lang::get('general.apply') }} test</td>
+            
         </tr>
         @foreach($raportiNotave->raportiNotaveStudent as $value)
         <tr class='head' style='background:#fff;'>
@@ -29,7 +29,7 @@
             <td>{{ $value->testi_final }}</td>
             <td>{{ $value->nota }}</td>
             <td>{{ Enum::convertRefuzimi($value->refuzim) }}</td>
-            <td>{{ Enum::convertParaqitjen($value->paraqit) }}</td>
+          
         </tr>
         @endforeach
     </tbody>
