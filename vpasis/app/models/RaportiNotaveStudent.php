@@ -40,5 +40,9 @@ class RaportiNotaveStudent extends Eloquent implements UserInterface, Remindable
         return self::hasOne('Studenti', 'uid', 'studenti');
     }
     
+    public function raportiNotave() {
+        return self::hasOne('RaportiNotave', 'id', 'idraportit');
+    }
+
 
 }

@@ -5,7 +5,7 @@ class StudentController extends \BaseController {
 
     public function getPrint($drejtimi) {
         $listStaff = Studenti::where('deleted', '=', Enum::notdeleted)
-                ->where('drejtimi','=',$drejtimi)
+                ->where('drejtimi', '=', $drejtimi)
                 ->get();
         $pdf = PDF::loadView('admin.students.kontrata_student', [ 'title' => Lang::get('printable.title_contract_studies'),
                     'listStaff' => $listStaff]);
@@ -116,8 +116,8 @@ class StudentController extends \BaseController {
         $listDrejtimet = Drejtimet::getComboDrejtimetGroupedAll();
         $listDrejtimet[Lang::get('general.choose_subject')][0] = Lang::get('general.choose_subject');
         $selectedPage = $id / $numList;
-         $students = null;
-         $students = Studenti::paginate(15);
+        $students = null;
+        $students = Studenti::paginate(15);
         return View::make('admin.students.list_students', ["students" => $students,
                     "studentNum" => $studentNum[0]['students'],
                     'page' => $page,
@@ -201,7 +201,7 @@ class StudentController extends \BaseController {
         $pagesat = Pagesat::where('paguesi', '=', $uid)
                 ->where('deleted', '=', Enum::notdeleted)
                 ->get();
-        
+
         $profile = Studenti::where('uid', '=', $uid)->get();
         $studenti = Studenti::where('uid', '=', $uid)->first();
         $drejtimet = Drejtimet::getComboDrejtimetGroupedAll();
@@ -218,8 +218,18 @@ class StudentController extends \BaseController {
         foreach ($vijushmeria_ as $value) {
             $vijushmeria[$i++]['numhour'] = Vijushmeria::where('idl', '=', $value['idl'])->count();
         }
-        
-        $notimet = StudentLendet::getLendetProfile();
+        $notimet = RaportiNotaveStudent::join('raporti_notave', 'raporti_notave.id', '=', 'raporti_notave_student.idraportit')
+                ->join('lendet', 'lendet.idl', '=', 'raporti_notave.idl')
+                ->where('studenti', $uid)
+                ->orderBy('lendet.Semestri', 'ASC')
+                ->orderBy('lendet.Emri', 'ASC')
+                ->orderBy('raporti_notave_student.refuzim', 'ASC')
+                ->orderBy('raporti_notave.data_provimit', 'DESC')
+                ->get();
+//        return $notimet->toJson();
+//        echo "<pre>";
+//        return print_r($notimet->toArray());
+//        $notimet = StudentLendet::getLendetProfile();
 //        SELECT * FROM `raporti_notave_student` where studenti=1373
 
         return View::make('admin.students.profile', ['profile' => $profile[0],
@@ -333,7 +343,24 @@ class StudentController extends \BaseController {
                     'shumaPaguar' => $shumaPaguar]);
 
         return $pdf->stream();
-        return $pdf->download(self::printdir('ListPagesaveStudent', null, Session::get('uid')));
+    }
+
+    /*
+     * Print transkripten e notave per student ($uid)
+     */
+    public function getPrintTranskriptaNotave($uid) {
+        $notimet = RaportiNotaveStudent::join('raporti_notave', 'raporti_notave.id', '=', 'raporti_notave_student.idraportit')
+                ->join('lendet', 'lendet.idl', '=', 'raporti_notave.idl')
+                ->where('studenti', $uid)
+                ->orderBy('lendet.Semestri', 'ASC')
+                ->orderBy('lendet.Emri', 'ASC')
+                ->orderBy('raporti_notave_student.refuzim', 'ASC')
+                ->orderBy('raporti_notave.data_provimit', 'DESC')
+                ->get();
+        $pdf = PDF::loadView('admin.students.print.transcript_grade', [ 'title' => Lang::get('printable.title_transcript_grade'),
+                    'notimet' => $notimet]);
+        $studenti = Studenti::where('uid',$uid)->first();
+        return $pdf->stream("RaportiNotave-".$studenti->emri."_".$studenti->mbiemri."-".$uid.".pdf");
     }
 
     public function postSearch() {
@@ -349,7 +376,7 @@ class StudentController extends \BaseController {
             if (Input::get('admin') != "admin") {
                 $person = self::ByName('student');
                 //if(Request::ajax()){ 
-                    return $person->toArray();
+                return $person->toArray();
                 //}
                 return View::make('student.search.searchinbox', ['title' => Lang::get('general.search'), 'person' => $person]);
             } else if (Input::get('admin') == "admin") {
@@ -377,19 +404,19 @@ class StudentController extends \BaseController {
             $studenti = Studenti::query();
             if (count($search) > 1) {
                 $studenti->where('emri', 'like', '%' . $search[0] . '%');
-                if($search[1] != ""){
+                if ($search[1] != "") {
                     $studenti->where('mbiemri', 'like', '%' . $search[1] . '%');
                 }
-                return $studenti->take(5)->get(['uid','emri','mbiemri']);
+                return $studenti->take(5)->get(['uid', 'emri', 'mbiemri']);
                 //return Studenti::where('emri', 'like', '%' . $search[0] . '%')->where('mbiemri', 'like', $search[1])->take(5)->get(['uid','emri','mbiemri']);
             } else if (count($search) == 1) {
-                return Studenti::where('emri', 'like', '%' . $search[0] . '%')->orWhere('mbiemri', 'like', '%' . $search[0] . '%')->take(5)->get(['uid','emri','mbiemri']);
+                return Studenti::where('emri', 'like', '%' . $search[0] . '%')->orWhere('mbiemri', 'like', '%' . $search[0] . '%')->take(5)->get(['uid', 'emri', 'mbiemri']);
             }
         } else {
             if (count($search) > 1) {
-                return Admin::where('emri', 'like', '%' . $search[0] . '%')->where('mbiemri', 'like', $search[1])->take(5)->get(['uid','emri','mbiemri']);
+                return Admin::where('emri', 'like', '%' . $search[0] . '%')->where('mbiemri', 'like', $search[1])->take(5)->get(['uid', 'emri', 'mbiemri']);
             } else if (count($search) == 1) {
-                return Admin::where('emri', 'like', '%' . $search[0] . '%')->orWhere('mbiemri', 'like', '%' . $search[0] . '%')->take(5)->get(['uid','emri','mbiemri']);
+                return Admin::where('emri', 'like', '%' . $search[0] . '%')->orWhere('mbiemri', 'like', '%' . $search[0] . '%')->take(5)->get(['uid', 'emri', 'mbiemri']);
             }
         }
     }

@@ -117,5 +117,5 @@ induviduale e jo në menyrë grupore.",
     "department" => "Departmenti",
     "profile" => "Drejtimi",
     "status" => "Statusi",
-    
+    "title_transcript_grade" => "Transkripta Notave",
 );

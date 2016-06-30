@@ -29,6 +29,7 @@
             <th><?php echo Lang::get('general.final_test'); ?></th>
             <th style='width: 80px;'><?php echo Lang::get('general.grade'); ?></th>
             <th style='width: 80px;'><?php echo Lang::get('general.refuse'); ?></th>
+            <th style='width: 80px;'><?php echo Lang::get('general.apply'); ?></th>
             <th  style='width: 80px;'><?php echo Lang::get('general.present'); ?></th>
         </tr>
     </thead>
@@ -72,11 +73,19 @@
 
             </td>
             <td>
+                <?php if($value->nota == 4): ?>
+                E Padefinuar
+                <?php else: ?>
                 <?php echo $value->nota; ?>
 
+                <?php endif; ?>
             </td>
             <td>
                 <?php echo Enum::convertrefuzimin($value->refuzim); ?>
+
+            </td>
+            <td>
+                <?php echo Enum::convertParaqitjen($value->paraqit); ?>
 
             </td>
             <td>

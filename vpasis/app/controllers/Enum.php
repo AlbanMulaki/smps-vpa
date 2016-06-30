@@ -89,7 +89,9 @@ class Enum extends Controller {
     const parefuzuar = 0;
     const notdeleted = 0;
     const deleted = 1;
-
+    
+    
+    
     /*
      * gradata shkencore
      */
@@ -100,9 +102,9 @@ class Enum extends Controller {
     const phdcan = 5;
 
     public static function convertrefuzimin($ref) {
-        if ($ref == self::parefuzuar) {
+        if ($ref == self::YES) {
             return Lang::get('general.yes');
-        } else if ($ref == self::refuzuar) {
+        } else if ($ref == self::NO) {
             return Lang::get('general.no');
         }
     }
@@ -581,6 +583,17 @@ class Enum extends Controller {
         }
     }
     public static function convertParaqitjen($ref) {
+        switch ($ref) {
+            case self::paraqitur :
+                return Lang::get('general.featured');
+                break;
+
+            case self::paraqiturprezent :
+                return Lang::get('general.featuredpresent');
+                break;
+        }
+    }
+    public static function convertPrezencen($ref) {
         switch ($ref) {
             case self::paraqitur :
                 return Lang::get('general.featured');

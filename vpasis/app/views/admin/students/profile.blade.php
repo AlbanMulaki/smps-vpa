@@ -21,12 +21,7 @@
 
 @section('profile')
 
-<div class="box box-info">
-
-    <div class="box-header with-border">
-        <h3 class='box-title'>{{ Lang::get('general.student_details') }}</h3>
-    </div>
-
+<div class="box box-solid">
     <div class="box-body">
 
         <div class='col-lg-3'>
@@ -50,7 +45,7 @@
 
         <div class="col-lg-3">
 
-            <ul class="list-group">
+            <ul class="list-group list-group-unbordered">
 
                 <li class="list-group-item"> <strong>{{ Lang::get('general.contract_fee') }}: </strong><span 
                         class="label label-info" >{{ $profile['kontrata_pageses'] }} <span class="fa fa-euro"></span> </span> </li>
@@ -67,12 +62,12 @@
 <div class="row">
     <div  class='col-lg-6'>
         <br>
-        <div class="box box-info">
+        <div class="box box-solid">
             <div class="box-header with-border">
                 <h3 class='box-title'>{{ Lang::get('general.student_details') }}</h3>
             </div>
             <div class="box-body">
-                <ul class="list-group">
+                <ul class="list-group list-group-unbordered">
                     <li class="list-group-item"> <strong>{{ Lang::get('general.location') }}: </strong>{{ $profile['vendbanimi'] }} - {{ $profile['adressa'] }}</li>
                     <li class="list-group-item"><strong>{{ Lang::get('general.birthplace') }}: </strong> {{ $profile['vendlindja'] }}</li>
                     <li class="list-group-item"><strong>{{ Lang::get('general.gender') }}: </strong> {{ Enum::convertGjinia($profile['gjinia']) }}</li>
@@ -87,12 +82,12 @@
 
 
     <div  class='col-lg-6'>
-        <div class="box box-info">
+        <div class="box box-solid">
             <div class="box-header with-border">
                 <h3 class='box-title'>{{ Lang::get('general.education_details') }}</h3>
             </div>
             <div class="box-body">
-                <ul class="list-group">
+                <ul class="list-group list-group-unbordered">
                     <li class="list-group-item"> <strong>{{ Lang::get('general.subject') }}: </strong>{{ Enum::convertdrejtimi($profile['drejtimi'])  }} </li>
                     <li class="list-group-item"><strong>{{ Lang::get('general.level') }}: </strong> {{ Enum::convertLevel($profile['niveli']) }}</li>
                     <li class="list-group-item"><strong>{{ Lang::get('general.status') }}: </strong> {{ Enum::convertStatusi($profile['statusi']) }}</li>
@@ -109,42 +104,32 @@
 
 
 @section('vijushmeria')
-
-<div class="box box-info">
-    <div class="box-header with-border">
-        <h3 class='box-title'>{{ Lang::get('general.attendance') }}</h3>
-    </div>
-    <div class="box-body">
-        <table class='table table-responsive table-bordered'>
-            <tr>
-                <th>{{ Lang::get("general.course") }}</th>
-                <th>{{ Lang::get("general.professor") }}</th>
-                <th>{{ Lang::get("general.num_hour")}}</th>
-            </tr>
-            @foreach($vijushmeria as $value)
-            <tr>
-                <td>{{ $value['lenda'] }}</td>
-                <td>{{ $value['prof'] }}</td>
-                <td>{{ $value['numhour'] }}</td>
-            </tr>
-            @endforeach
-        </table>
-
-    </div>
-</div>
+<table class='table table-responsive table-bordered'>
+    <tr>
+        <th>{{ Lang::get("general.course") }}</th>
+        <th>{{ Lang::get("general.professor") }}</th>
+        <th>{{ Lang::get("general.num_hour")}}</th>
+    </tr>
+    @foreach($vijushmeria as $value)
+    <tr>
+        <td>{{ $value['lenda'] }}</td>
+        <td>{{ $value['prof'] }}</td>
+        <td>{{ $value['numhour'] }}</td>
+    </tr>
+    @endforeach
+</table>
 
 @stop
 
 @section('pagesat')
-<div class="box box-info">
-    <div class="box-header with-border">
-        <h3 class="box-title">{{ Lang::get('general.list_fee') }}</h3>
-        <div class="box-tools">
-            <a class="btn btn-default btn-sm" href="{{ action('StudentController@getPrintListPagesat',array($profile['uid'])) }}">
-                <span class="fa fa-print"></span>
-            </a>
-        </div>
-    </div>
+<div class="text-right">
+    <a class="btn btn-default btn-sm" href="{{ action('StudentController@getPrintListPagesat',array($profile['uid'])) }}">
+        <span class="fa fa-print"></span>
+    </a>
+    <br>
+    <br>
+</div>
+<div class="box box-solid">
     <div class="box-body no-padding">
         <table class='table table-responsive table-bordered'>
             <tr>
@@ -179,37 +164,118 @@
 @stop
 
 @section('notimet')
-<div class="box box-info">
-    <div class="box-header with-border">
-        <h3 class='box-title'>{{ Lang::get('general.exams') }}</h3>
-    </div>
+<div class="box box-solid">
     <div class="box-body">
-
-        <table class='table table-responsive table-bordered'>
-            <tr>
-                <th>#</th>
-                <th>{{ Lang::get('general.course') }}</th>
-                <th>{{ Lang::get('general.grade') }}</th>
-                <th>{{ Lang::get('general.lecturer') }}</th>
-                <th>{{ Lang::get('general.date') }}</th>
-                @if($settings['provim_active'] == Enum::yes)
-                <th>{{ Lang::get('general.refuse')}}</th>
-                <th>{{ Lang::get('general.apply')}}</th>
-                @endif
-                <th>{{ Lang::get('general.attendance')}}</th>
-            </tr>
-            @foreach($notimet as $value)
-            <tr>
-                <td> </td>
-                <td>{{ $value['lenda'] }}</td>
-                <td>{{ $value['nota'] }}</td>
-                <td>{{ $value['prof'] }}</td>
-                <td>{{ $value['data'] }}</td>
-            </tr>
-            @endforeach
-        </table>
+        <div class="col-md-6">
+            <p><i class="fa fa-circle text-red"></i><b> Jo kaluese | Refuzim</b></p>
+            <p><i class="fa fa-circle text-green"></i><b> Pranuar</b></p>
+            <p><i class="fa fa-circle text-yellow"></i><b> Nuk eshte perfundimtare ende | Raporti eshte i hapur</b></p>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-app" href="{{ action('StudentController@getPrintTranskriptaNotave',array($profile['uid'])) }}">
+                <i class="fa fa-print"></i> Print
+            </a>
+        </div>
     </div>
 </div>
+<table class='table table-responsive table-bordered'>
+    <tr>
+        <th>#</th>
+        <th>{{ Lang::get('general.course') }}</th>
+        <th>{{ Lang::get('general.grade') }}</th>
+        <th>{{ Lang::get('general.lecturer') }}</th>
+        <th>{{ Lang::get('general.date') }}</th>
+        @if($settings['provim_active'] == Enum::yes)
+        <th>{{ Lang::get('general.refuse')}}</th>
+        @endif
+        <th>{{ Lang::get('general.present') }}</th>
+    </tr>
+    <?php
+    $i = -1;
+    $currentSem = 1;
+    ?>
+    @foreach($notimet as $value)
+    <?php
+    $i++;
+    if ($value->refuzim == Enum::YES || $value->nota == 5) {
+        $classColor = "bg-danger";
+        $bulletColor = ' text-red';
+    } else if ($value->refuzim == Enum::NO && $value->raportiNotave->locked == Enum::locked && $value->nota > 5) {
+        $classColor = "bg-success";
+        $bulletColor = ' text-green';
+    } else if ($value->refuzim == Enum::NO && $value->raportiNotave->locked == Enum::nolocked) {
+        $classColor = "bg-warning";
+        $bulletColor = ' text-yellow';
+    } else {
+        $classColor = "";
+        $bulletColor = ' ';
+    }
+    $classTree = "";
+    if (isset($notimet[$i + 1])) {
+        if ($notimet[$i + 1]->raportiNotave->lendet->idl == $value->raportiNotave->lendet->idl) {
+            $classTree = "fa fa-plus-square";
+        }
+    }
+    if (isset($notimet[$i - 1])) {
+        if ($notimet[$i - 1]->raportiNotave->lendet->idl == $value->raportiNotave->lendet->idl) {
+            $classColor .= " hide";
+        }
+    }
+    ?>
+    @if($i == 0)
+    <?php
+    $prevSemester = $value->raportiNotave->lendet->Semestri;
+    ?>
+    <tr class="bg-gray">
+        <th colspan="6" class="text-center"> Semestri {{ $value->raportiNotave->lendet->Semestri }}</th>
+    </tr>
+    @elseif($prevSemester !=  $value->raportiNotave->lendet->Semestri)
+    <tr class="bg-gray">
+        <th colspan="6" class="text-center"> Semestri {{  $value->raportiNotave->lendet->Semestri    }}</th>
+    </tr>
+    @endif
+    <?php
+    $prevSemester = $value->raportiNotave->lendet->Semestri;
+    ?>
+
+
+
+    @if(($value->refuzim == Enum::YES || $value->nota == 5) && $value->raportiNotave->locked == Enum::locked)
+    <tr class="{{ $classColor }} failedIdl-{{ $value->raportiNotave->lendet->idl }} ">
+        <td><span class=" fa fa-circle {{ $bulletColor }}"></span></td>
+        <td> -- {{ $value->raportiNotave->lendet->Emri }}</td>
+        <td>{{ $value->nota }}</td>
+        <td>{{ $value->raportiNotave->administrata->emri. " ".$value->raportiNotave->administrata->mbiemri  }}</td>
+        <td>{{ date_format(date_create($value->raportiNotave->data_provimit),'d-m-Y') }}</td>
+        <td>@if($value->paraqit_prezent)
+            <input type="checkbox" checked="checked" disabled>
+            @else
+            <input type="checkbox" disabled>
+            @endif
+        </td>
+    </tr>
+    @else
+    <tr class="{{ $classColor }} ">
+        <td> <span class=" fa fa-circle {{ $bulletColor }}"></td>
+        <td><span class="{{ $classTree }} trigger-show-detail-course text-default"  data-show-course-failed="{{ $value->raportiNotave->lendet->idl }}"> {{ $value->raportiNotave->lendet->Emri }}</span> </td>
+
+        @if($value->nota == 4)
+        <td>E Padefinuar</td>
+        @else
+        <td>{{ $value->nota }}</td>
+        @endif
+        <td>{{ $value->raportiNotave->administrata->emri. " ".$value->raportiNotave->administrata->mbiemri  }}</td>
+        <td>{{ date_format(date_create($value->raportiNotave->data_provimit),'d-m-Y') }}</td>
+        <td>@if($value->paraqit_prezent)
+            <input type="checkbox" checked="checked" disabled>
+            @else
+            <input type="checkbox" disabled>
+            @endif
+        </td>
+    </tr>
+    @endif
+    @endforeach
+</table>
 
 @stop
 
@@ -226,23 +292,27 @@
 @yield('title')
 <section class="content">
     @yield('notification')
-
-    <!-- Nav tabs -->
     <div class="nav-tabs-custom">
-        <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ Lang::get('general.student_profile') }}</a></li>
-            <li role="presentation"><a href="#vijushmeria" aria-controls="vijushmeria" role="tab" data-toggle="tab">{{ Lang::get('general.attendance') }}</a></li>
-            <li role="presentation"><a href="#notimet" aria-controls="notimet" role="tab" data-toggle="tab">{{ Lang::get('general.exams') }}</a></li>
-            <li role="presentation"><a href="#pagesat" aria-controls="pagesat" role="tab" data-toggle="tab">{{ Lang::get('general.fee') }}</a></li>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">{{ Lang::get('general.student_profile') }}</a></li>
+            <li class=""><a href="#vijushmeria" data-toggle="tab" aria-expanded="false">{{ Lang::get('general.attendance') }}</a></li>
+            <li class=""><a href="#notimet" data-toggle="tab" aria-expanded="false">{{ Lang::get('general.exams') }}</a></li>
+            <li class=""><a href="#pagesat" data-toggle="tab" aria-expanded="false">{{ Lang::get('general.fee') }}</a></li>
         </ul>
-    </div>
-
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="profile">@yield('profile')</div>
-        <div role="tabpanel" class="tab-pane" id="vijushmeria">@yield('vijushmeria')</div>
-        <div role="tabpanel" class="tab-pane" id="notimet">@yield('notimet')</div>
-        <div role="tabpanel" class="tab-pane" id="pagesat">@yield('pagesat')</div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="profile">
+                @yield('profile')
+            </div>
+            <div class="tab-pane" id="vijushmeria">
+                @yield('vijushmeria')
+            </div>
+            <div class="tab-pane" id="notimet">
+                @yield('notimet')
+            </div>
+            <div class="tab-pane" id="pagesat">
+                @yield('pagesat')
+            </div>
+        </div>
     </div>
 </section>
 

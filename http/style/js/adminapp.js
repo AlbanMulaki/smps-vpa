@@ -103,8 +103,24 @@ $(document).ready(function () {
         });
     });
 
+    /*
+     * Show & Hide failed courses
+     */
+    $(".trigger-show-detail-course").on('click', '', function () {
+        var idl = $(this).data('show-course-failed');
+        var swap = $(this).closest('tr').find('.fa-plus-square').html();
+        if (swap) {
+            $('.failedIdl-' + idl).removeClass('hide');
+        } else {
+            $('.failedIdl-' + idl).addClass('hide');
 
+        }
+//        console.log($(this).closest('tr').find('.fa-plus-square').html());
+        $(this).toggleClass('fa-plus-square fa-minus-square');
 
+//        $(this).removeClass('fa-plus-square');
+//        $(this).addClass('fa-minus-square');
+    });
 
 
 

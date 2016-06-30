@@ -157,6 +157,7 @@ return array(
     "fondi_oreve" => "Oret",
     "lecturer" => "Ligjerues",
     "refuse" => "Refuzo",
+    "refuses" => "Refuzim",
     "apply_exams" => "Paraqit",
     "ect" => "ECT",
     "pay_bill_semester" => "Pages per semestrin",
