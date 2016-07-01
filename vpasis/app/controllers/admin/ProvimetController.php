@@ -9,31 +9,43 @@ class ProvimetController extends \BaseController {
         $year = Input::get('year');
         $month = Input::get('month');
         $drejtimi = Input::get('drejtimi');
-        if ($year == 0 && $month == 0 && $drejtimi == 0) {
+        $reportSearchId = Input::get('reportSearchId');
+
+        if ($reportSearchId > 0) {
+            
+            $drejtimet = Drejtimet::getComboDrejtimetGroupedAll();
+            $raportet = RaportiNotave::where('id','like','%'.$reportSearchId.'%')
+                    ->orderBy('id', 'DESC')
+                    ->paginate(15);
+            
+            return View::make('admin.provimet.raporti_notave', ['drejtimi' => $drejtimet,
+                        'raportet' => $raportet]);
+        } else if ($year == 0 && $month == 0 && $drejtimi == 0) {
             $drejtimet = Drejtimet::getComboDrejtimetGroupedAll();
             $raportedEFundit = RaportiNotave::orderBy('id', 'DESC')->paginate(15);
             return View::make('admin.provimet.raporti_notave', ['drejtimi' => $drejtimet,
                         'raportet' => $raportedEFundit]);
         } else {
             $drejtimet = Drejtimet::getComboDrejtimetGroupedAll();
-            $raportet = RaportiNotave::where('afati_provimit', $month)
-                    ->get();
-            $raportet = $raportet->filter(function($raport)use($drejtimi) {
-                if ($raport->lendet->drejtimi->idDrejtimet == $drejtimi) {
-                    return $raport;
-                }
-            });
-            $reportlist = array();
-            foreach ($raportet as $value) {
-                $temp = RaportiNotaveStudent::getRaportNotaveList($value['idraportit']);
-                $reportlist[$value['idraportit']] = $temp;
+            $raportet = RaportiNotave::query();
+            debug($year);
+            debug($month);
+            debug($drejtimi);
+            if($year>0){
+                $raportet->where('data_provimit','like',$year.'%');
+            }
+            if($month>0){
+                $raportet->where('afati_provimit',$month);
+            }
+            if($drejtimi>0){
+                $raportet->join('lendet', 'lendet.idl', '=', 'raporti_notave.idl');
+                $raportet->where('lendet.Drejtimi',$drejtimi);
             }
             return View::make('admin.provimet.raporti_notave', ['drejtimi' => $drejtimet,
-                        'raportet' => $raportet,
+                        'raportet' => $raportet->paginate(15),
                         'year' => $year,
                         'month' => $month,
-                        'drejtimSel' => $drejtimi,
-                        'reportList' => $reportlist]);
+                        'drejtimSel' => $drejtimi]);
         }
     }
 
@@ -104,7 +116,7 @@ class ProvimetController extends \BaseController {
             $doesStudentExist = RaportiNotaveStudent::where('idraportit', Input::get('idraportit'))
                     ->where('studenti', $uid)
                     ->first();
-            $isStudent = Studenti::where('uid',$uid)->first();
+            $isStudent = Studenti::where('uid', $uid)->first();
             //If student id doesnt exist return save for error
             if ($doesStudentExist == NULL && $isStudent == NULL) {
                 $userDoesntExistError[] = $uid;
@@ -163,9 +175,9 @@ class ProvimetController extends \BaseController {
     }
 
     public function getAddRaportiNotave() {
-   
+
         $raportiNotave = Lendet::getComboLendetAll();
-        $prof = Admin::where('grp',Enum::prof)->orderBy('emri')->get();
+        $prof = Admin::where('grp', Enum::prof)->orderBy('emri')->get();
 
         return View::make('admin.provimet.add_new_report', [
                     'raportiNotave' => $raportiNotave,
@@ -235,8 +247,8 @@ class ProvimetController extends \BaseController {
                 }
             }
             return Redirect::to(action('ProvimetController@getRegisterNotat', [$raportiNotave->id]));
-        }else{
-            return Redirect::back()->withErrors($validator,'validator');
+        } else {
+            return Redirect::back()->withErrors($validator, 'validator');
         }
     }
 

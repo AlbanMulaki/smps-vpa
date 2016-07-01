@@ -60,11 +60,24 @@
                     </div>
                 </div>
             </div>
-            <div class='col-lg-2'>
+            <div class='col-lg-1'>
                 <div class="form-group">
                     <div class="col-sm-9">
                         <button name="submit" type="submit" class="btn btn-primary"> {{ Lang::get('general.search') }}</button>
                     </div>
+                </div>
+            </div>
+            
+            <div class='col-lg-2'>
+                <div class="form-group">
+                   <div class="input-group ">
+                        <span class="input-group-addon">#</span>
+                    @if(isset($reportSearchId))
+                    <input autocomplete="off" type='text'  name="reportSearchId" value='{{ $reportSearchId }}' class='form-control'>
+                    @else
+                    <input autocomplete="off" type='text' name="reportSearchId" class='form-control'>
+                    @endif
+                </div>
                 </div>
             </div>
         </div>
@@ -133,7 +146,7 @@
                     @endif
                 </tr>
                 @endforeach
-                
+
             </tbody>
         </table>
         {{ $raportet->links(); }}
@@ -144,32 +157,32 @@
             <br><br>
             @lang('warn.no_result_found_empty')
 
-        @endif
+            @endif
+        </div>
+
+
+
+
     </div>
+    @stop
+    @section('title')
+    <section class="content-header">
+        <h1>
+            {{ Lang::get('general.report_grade') }}<small>{{ Lang::get('general.report_grade') }}</small>
+        </h1>
+    </section>
+    @stop
 
 
 
+    @section('content')
+    @yield('title')
+    <section class="content">
 
-</div>
-@stop
-@section('title')
-<section class="content-header">
-    <h1>
-        {{ Lang::get('general.report_grade') }}<small>{{ Lang::get('general.report_grade') }}</small>
-    </h1>
-</section>
-@stop
+        @yield('content')
 
-
-
-@section('content')
-@yield('title')
-<section class="content">
-
-    @yield('content')
-
-    <hr>
-    @yield('notification')
-    @yield('report_grade')
-</section>
-@stop
+        <hr>
+        @yield('notification')
+        @yield('report_grade')
+    </section>
+    @stop

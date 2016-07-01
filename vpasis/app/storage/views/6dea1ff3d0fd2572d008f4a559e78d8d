@@ -65,11 +65,24 @@
                     </div>
                 </div>
             </div>
-            <div class='col-lg-2'>
+            <div class='col-lg-1'>
                 <div class="form-group">
                     <div class="col-sm-9">
                         <button name="submit" type="submit" class="btn btn-primary"> <?php echo Lang::get('general.search'); ?></button>
                     </div>
+                </div>
+            </div>
+            
+            <div class='col-lg-2'>
+                <div class="form-group">
+                   <div class="input-group ">
+                        <span class="input-group-addon">#</span>
+                    <?php if(isset($reportSearchId)): ?>
+                    <input autocomplete="off" type='text'  name="reportSearchId" value='<?php echo $reportSearchId; ?>' class='form-control'>
+                    <?php else: ?>
+                    <input autocomplete="off" type='text' name="reportSearchId" class='form-control'>
+                    <?php endif; ?>
+                </div>
                 </div>
             </div>
         </div>
@@ -139,7 +152,7 @@
                     <?php endif; ?>
                 </tr>
                 <?php endforeach; ?>
-                
+
             </tbody>
         </table>
         <?php echo $raportet->links();; ?>
@@ -151,33 +164,33 @@
             <br><br>
             <?php echo \Illuminate\Support\Facades\Lang::get('warn.no_result_found_empty'); ?>
 
-        <?php endif; ?>
+            <?php endif; ?>
+        </div>
+
+
+
+
     </div>
+    <?php $__env->stopSection(); ?>
+    <?php $__env->startSection('title'); ?>
+    <section class="content-header">
+        <h1>
+            <?php echo Lang::get('general.report_grade'); ?><small><?php echo Lang::get('general.report_grade'); ?></small>
+        </h1>
+    </section>
+    <?php $__env->stopSection(); ?>
 
 
 
+    <?php $__env->startSection('content'); ?>
+    <?php echo $__env->yieldContent('title'); ?>
+    <section class="content">
 
-</div>
-<?php $__env->stopSection(); ?>
-<?php $__env->startSection('title'); ?>
-<section class="content-header">
-    <h1>
-        <?php echo Lang::get('general.report_grade'); ?><small><?php echo Lang::get('general.report_grade'); ?></small>
-    </h1>
-</section>
-<?php $__env->stopSection(); ?>
+        <?php echo $__env->yieldContent('content'); ?>
 
-
-
-<?php $__env->startSection('content'); ?>
-<?php echo $__env->yieldContent('title'); ?>
-<section class="content">
-
-    <?php echo $__env->yieldContent('content'); ?>
-
-    <hr>
-    <?php echo $__env->yieldContent('notification'); ?>
-    <?php echo $__env->yieldContent('report_grade'); ?>
-</section>
-<?php $__env->stopSection(); ?>
+        <hr>
+        <?php echo $__env->yieldContent('notification'); ?>
+        <?php echo $__env->yieldContent('report_grade'); ?>
+    </section>
+    <?php $__env->stopSection(); ?>
 <?php echo $__env->make("admin.index", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
