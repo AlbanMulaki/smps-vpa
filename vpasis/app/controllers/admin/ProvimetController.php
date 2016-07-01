@@ -2,7 +2,6 @@
 
 class ProvimetController extends \BaseController {
 
-    
     /**
      * Filtrimi raportit te notave dhe kerkimi ne baz te id
      * @param type year
@@ -169,8 +168,31 @@ class ProvimetController extends \BaseController {
      */
     public function getPrintReportNotat($idraportit, $print = false) {
         $raportiNotave = RaportiNotave::find($idraportit);
+        $statsGrade = array(
+            '5' => 0,
+            '6' => 0,
+            '7' => 0,
+            '8' => 0,
+            '9' => 0,
+            '10' => 0
+        );
+        for ($i = 5; $i <= 10; $i++) {
+            $tempStats = null;
+            $tempStats = $raportiNotave->raportiNotaveStudent->filter(function($value) use($i) {
+                if($value->nota == $i){
+                    return $value;
+                }
+            });
+            $statsGrade[$i] = $tempStats->count();
+        }
+        $abstenim = $raportiNotave->raportiNotaveStudent->filter(function($value){
+                if($value->paraqit_prezent == Enum::NO){
+                    return $value;
+                }
+            });
+        $abstenim = $abstenim->count();
         $pdf = PDF::loadView('admin.provimet.print_raporti_notave', [ 'title' => Lang::get('printable.title_report_grade'),
-                    'raportiNotave' => $raportiNotave])->setOrientation('landscape');
+                    'raportiNotave' => $raportiNotave,'statsGrade'=>$statsGrade,'abstenim'=>$abstenim])->setOrientation('landscape');
         if ($print) {
             return $pdf->download("RaportiNotave-" . $raportiNotave->id . ".pdf");
         }

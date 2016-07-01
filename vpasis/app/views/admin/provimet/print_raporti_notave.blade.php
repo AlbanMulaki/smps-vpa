@@ -90,23 +90,23 @@
                             <td style='width:10%; text-align: center;'>{{ Lang::get('general.ect') }}</td>
                         </tr>
                         <tr>
-                            <td style='text-align: center;'>1</td>
-                            <td style='text-align: center;'>421</td>
+                            <td style='text-align: center;'>{{ $raportiNotave->raportiNotaveStudent->count() }}</td>
+                            <td style='text-align: center;'>{{ $abstenim }}</td>
                             <td>
                                 <table  style='width:100%;'  border='1'>
                                     <tbody>
                                         <tr style=' text-align: center;'>
-                                            <td style='text-align: center; height: 50px;'>5</td>
-                                            <td style='text-align: center;'>6</td>
-                                            <td style='text-align: center;'>7</td>
-                                            <td style='text-align: center;'>8</td>
-                                            <td style='text-align: center;'>9</td>
-                                            <td style='text-align: center;'>9</td>
+                                            <td style='text-align: center; height: 50px;'>{{ $statsGrade[5] }}</td>
+                                            <td style='text-align: center;'>{{ $statsGrade[6] }}</td>
+                                            <td style='text-align: center;'>{{ $statsGrade[7] }}</td>
+                                            <td style='text-align: center;'>{{ $statsGrade[8] }}</td>
+                                            <td style='text-align: center;'>{{ $statsGrade[9] }}</td>
+                                            <td style='text-align: center;'>{{ $statsGrade[10] }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </td>
-                            <td style='text-align: center;'>4214</td>
+                            <td style='text-align: center;'>{{ $raportiNotave->lendet->Ect }}</td>
                         </tr>
                     </table>
                 </div>

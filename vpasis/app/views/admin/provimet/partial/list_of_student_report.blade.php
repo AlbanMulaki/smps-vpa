@@ -35,10 +35,10 @@
     <tbody>
 
 
-{{ "";$i=0 }}
-@foreach($raporti->raportiNotaveStudent as $value)
+        {{ "";$i=0 }}
+        @foreach($raporti->raportiNotaveStudent as $value)
         <tr class="provRow">
-            
+
             <td> 
                 <input name='id[]' type='hidden' value='' />
                 <input class='form-control input-sm uidSearch' type='text' value="{{ $value->getStudent->emri." ".$value->getStudent->mbiemri }}" disabled=""/>
@@ -72,7 +72,7 @@
                     <option value='8'  @if($value['nota'] == 8) selected @endif >8</option>
                     <option value='9'  @if($value['nota'] == 9) selected @endif >9</option>
                     <option value='10'  @if($value['nota'] == 100) selected @endif >10</option>
-                    
+
                 </select>
             </td>
             <td>
@@ -87,14 +87,14 @@
             </td>
         </tr>
         {{ "";$i++ }}
-@endforeach
+        @endforeach
 
 
-@for($j=0; $j<5; $j++)
+        @for($j=0; $j<5; $j++)
         <tr class="provRow">
-            
-            
-            
+
+
+
             <td> 
                 <input name='id[]' type='hidden' value='' />
                 <input class='form-control input-sm uidSearch' type='text' />
@@ -119,7 +119,7 @@
                 <input name="testi_final[]" class='form-control input-sm' style='width:60px;' type='number' />
             </td>
             <td>
-                
+
                 <select name="nota[]" class='form-control input-sm'>
                     <option value='4'>E Padefinuar</option>
                     <option value='5'>5</option>
@@ -142,6 +142,6 @@
             </td>
         </tr>
         {{ "";$i++ }}
-@endfor
+        @endfor
     </tbody>
 </table>
