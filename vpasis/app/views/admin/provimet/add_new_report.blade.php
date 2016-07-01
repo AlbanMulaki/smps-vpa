@@ -73,7 +73,7 @@
     </tbody>
 </table>
 <div class="text-center">
-    <button class="btn btn-primary" name="submit" >{{ Lang::get('general.update') }}</button>
+    <button class="btn btn-primary" name="submit" >{{ Lang::get('general.register') }}</button>
 </div>
 @stop
 @section('createReport')

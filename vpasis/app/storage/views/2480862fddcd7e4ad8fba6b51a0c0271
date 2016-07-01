@@ -73,7 +73,7 @@
     </tbody>
 </table>
 <div class="text-center">
-    <button class="btn btn-primary" name="submit" ><?php echo Lang::get('general.update'); ?></button>
+    <button class="btn btn-primary" name="submit" ><?php echo Lang::get('general.register'); ?></button>
 </div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('createReport'); ?>
