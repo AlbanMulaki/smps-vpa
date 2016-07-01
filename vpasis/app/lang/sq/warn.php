@@ -56,6 +56,7 @@ return array(
     "succes_register_fee" => "Regjistrimi pageses është bërë me sukses",
     "succes_report_grade_deleted" => "Fshirja raportit te notave me id <b>#:id</b> eshte bere me sukses.",
     "no_result_found_empty"=>"Nuk eshte gjetur asnje rezultat ose nuk ka te dhena",
+    "password_incorrect" => "Fjalkalimi jo i sakt.",
     'error'=>[
         '404'=>'Oops! Faqja nuk u gjet.',
         '404_description' => "Ne nuk mundem ta gjejm faqen qe ju ishit duke kerkuar. Nese ju deshironi te ktheheni ku ishit klikoni buttonin Kthehu",

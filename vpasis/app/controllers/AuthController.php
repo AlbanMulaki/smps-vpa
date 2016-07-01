@@ -31,6 +31,67 @@ class AuthController extends BaseController {
         return View::make('login');
     }
 
+    public function getChangePassword() {
+        return View::make('admin.changePassword');
+    }
+
+    public function postChangePassword() {
+        $validator = Validator::make(Input::all(), array(
+                    'currentPassword' => "required",
+                    'newPassword' => "required",
+                    'confirmPassword' => "required"
+        ));
+        if ($validator->passes() && Input::get('newPassword') == Input::get('confirmPassword')) {
+            if (Session::get('uid') < 900000) {
+                $user = Studenti::query();
+                $user = $user->where('uid', Session::get('uid'))
+                        ->first();
+                if (Hash::check(Input::get('currentPassword'), $user->psw)) {
+                    Studenti::where('uid', Session::get('uid'))
+                            ->update(array('psw' => Hash::make(Input::get('newPassword'))));
+                    return Redirect::to('AuthController@getLogout');
+                } else {
+                    return Redirect::back()->withErrors(Lang::get('warn.password_incorrect'), 'incorrectNewPassword');
+                }
+            } else {
+                $user = Admin::query();
+                $user = $user->where('uid', Session::get('uid'))
+                        ->first();
+                if (Hash::check(Input::get('currentPassword'), $user->password)) {
+                    Admin::where('uid', Session::get('uid'))
+                            ->update(array('password' => Hash::make(Input::get('newPassword'))));
+                    return Redirect::action('AuthController@getLogout');
+                } else {
+                    return Redirect::back()->withErrors(Lang::get('warn.password_incorrect'), 'incorrectNewPassword');
+                }
+            }
+        }
+        return Redirect::back()->withErrors($validator, 'validator');
+    }
+
+    /**
+     * Change self password
+     * @return type
+     */
+    public function postValidateSelfPassword() {
+        if (Session::get('uid') < 900000) {
+            $user = Studenti::query();
+            $user = $user->where('uid', Session::get('uid'))
+                    ->first();
+            if (Hash::check(Input::get('currentPassword'), $user->psw)) {
+                return array('success');
+            }
+        } else {
+            $user = Admin::query();
+            $user = $user->where('uid', Session::get('uid'))
+                    ->first();
+            if (Hash::check(Input::get('currentPassword'), $user->password)) {
+                return array('success');
+            }
+        }
+        return array('failed');
+    }
+
     // Krijimi Session dhe processimi kyqjes
     public function postLogin() {
         $rules = array(

@@ -1,6 +1,5 @@
 @extends('printa4v')
 
-
 @section('content')
 
 @if($drejtimi)

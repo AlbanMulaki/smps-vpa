@@ -247,7 +247,7 @@ class StudentController extends \BaseController {
         $students->where('confirm', '=', Enum::confirmed)
                 ->where('deleted', '=', Enum::notdeleted)
                 ->orderBy('uid', 'DESC');
-        $pdf = PDF::loadView('admin.students.print_list_students', [ 'title' => Lang::get('printable.title_list_student'),
+        $pdf = PDF::loadView('admin.students.print.list_students', [ 'title' => Lang::get('printable.title_list_student'),
                     'students' => $students->get(),
                     'drejtimi' => $drejtimi]);
         if ($download) {
