@@ -2,10 +2,13 @@
 
 
 @section('content')
+
 @if($drejtimi)
-<div class='text-left'><b>{{ Lang::get('general.subject') }}:</b> {{ Enum::convertDrejtimi($drejtimi) }}</div> 
-<div class='text-left'><b>{{ Lang::get('general.date') }}: </b> {{ date('Y-m-d')}}</div>
+<div class='text-left'><b>{{ Lang::get('general.subject') }}:</b> 
+    {{ Enum::convertDrejtimi($drejtimi) }}
+</div> 
 @endif
+<div class='text-left'><b>{{ Lang::get('general.date') }}: </b> {{ date('Y-m-d')}}</div>
 <table class='list'>
     <tbody>
         <tr class='head'>

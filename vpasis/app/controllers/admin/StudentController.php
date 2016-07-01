@@ -80,28 +80,22 @@ class StudentController extends \BaseController {
         return Redirect::back()->with(['message' => Enum::failed, "reason" => Lang::get('warn.error_undefined')]);
     }
 
-    public function getList($id = 0, $drejtimi = 0) {
+    public function getList($drejtimi = 0) {
         $numList = 20;
-
+        $students = Studenti::query();
         if ($drejtimi == 0) {
-            $students = Studenti::orderBy('uid', 'DESC')
+            $students->orderBy('uid', 'DESC')
                     ->where('confirm', '=', Enum::confirmed)
-                    ->where('deleted', '=', Enum::notdeleted)
-                    ->skip($id)
-                    ->take($numList)
-                    ->get();
+                    ->where('deleted', '=', Enum::notdeleted);
             $studentNum = Studenti::select(DB::raw('COUNT(*) as students'))
                     ->where('confirm', '=', Enum::confirmed)
                     ->where('deleted', '=', Enum::notdeleted)
                     ->get();
         } else if ($drejtimi > 0) {
-            $students = Studenti::orderBy('uid', 'DESC')
+            $students->orderBy('uid', 'DESC')
                     ->where('drejtimi', '=', $drejtimi)
                     ->where('confirm', '=', Enum::confirmed)
-                    ->where('deleted', '=', Enum::notdeleted)
-                    ->skip($id)
-                    ->take($numList)
-                    ->get();
+                    ->where('deleted', '=', Enum::notdeleted);
             $studentNum = Studenti::select(DB::raw('COUNT(*) as students'))
                     ->where('drejtimi', '=', $drejtimi)
                     ->where('confirm', '=', Enum::confirmed)
@@ -113,18 +107,15 @@ class StudentController extends \BaseController {
         if ($studentNum[0]['students'] % $numList <= 20) {
             $page = $page + 1;
         }
+
         $listDrejtimet = Drejtimet::getComboDrejtimetGroupedAll();
         $listDrejtimet[Lang::get('general.choose_subject')][0] = Lang::get('general.choose_subject');
-        $selectedPage = $id / $numList;
-        $students = null;
-        $students = Studenti::paginate(15);
-        return View::make('admin.students.list_students', ["students" => $students,
+
+        return View::make('admin.students.list_students', ["students" => $students->paginate(15),
                     "studentNum" => $studentNum[0]['students'],
                     'page' => $page,
-                    'rows' => $id,
                     'limitList' => $numList,
                     'drejtimi' => $drejtimi,
-                    'selectedPage' => $selectedPage,
                     'listDrejtimet' => $listDrejtimet
         ]);
     }
@@ -242,88 +233,27 @@ class StudentController extends \BaseController {
                     'studenti' => $studenti]);
     }
 
-    public function getListPrintPdfDirect($id = 0, $drejtimi = 0) {
-        $numList = 20;
-
-        if ($drejtimi == 0) {
-            $students = Studenti::orderBy('uid', 'DESC')
-                    ->where('confirm', '=', Enum::confirmed)
-                    ->where('deleted', '=', Enum::notdeleted)
-                    ->get();
-            $studentNum = Studenti::select(DB::raw('COUNT(*) as students'))
-                    ->where('confirm', '=', Enum::confirmed)
-                    ->where('deleted', '=', Enum::notdeleted)
-                    ->get();
-        } else if ($drejtimi > 0) {
-            $students = Studenti::orderBy('uid', 'DESC')
-                    ->where('drejtimi', '=', $drejtimi)
-                    ->where('confirm', '=', Enum::confirmed)
-                    ->where('deleted', '=', Enum::notdeleted)
-                    ->get();
-            $studentNum = Studenti::select(DB::raw('COUNT(*) as students'))
-                    ->where('drejtimi', '=', $drejtimi)
-                    ->where('confirm', '=', Enum::confirmed)
-                    ->where('deleted', '=', Enum::notdeleted)
-                    ->get();
+    /**
+     * Gjenerimi PDF per listen e studentve
+     * @param type $drejtimi
+     * @param type $download
+     * @return Stream | Download  - PDF
+     */
+    public function getListPrintPdf($drejtimi = 0, $download = false) {
+        $students = Studenti::query();
+        if ($drejtimi > 0) {
+            $students->where('drejtimi', '=', $drejtimi);
         }
-
-        $page = $studentNum[0]['students'] / $numList;
-        if ($studentNum[0]['students'] % $numList <= 20) {
-            $page = $page + 1;
-        }
-        $listDrejtimet = Drejtimet::getComboDrejtimetGroupedAll();
-        $listDrejtimet[Lang::get('general.choose_subject')][0] = Lang::get('general.choose_subject');
-        $selectedPage = $id / $numList;
+        $students->where('confirm', '=', Enum::confirmed)
+                ->where('deleted', '=', Enum::notdeleted)
+                ->orderBy('uid', 'DESC');
         $pdf = PDF::loadView('admin.students.print_list_students', [ 'title' => Lang::get('printable.title_list_student'),
-                    'students' => $students,
+                    'students' => $students->get(),
                     'drejtimi' => $drejtimi]);
-        return $pdf->stream();
-    }
-
-    public function getListPrintPdf($id = 0, $drejtimi = 0) {
-        $numList = 20;
-
-        if ($drejtimi == 0) {
-            $students = Studenti::orderBy('uid', 'DESC')
-                    ->where('confirm', '=', Enum::confirmed)
-                    ->where('deleted', '=', Enum::notdeleted)
-                    ->skip($id)
-                    ->take($numList)
-                    ->get();
-            $studentNum = Studenti::select(DB::raw('COUNT(*) as students'))
-                    ->where('confirm', '=', Enum::confirmed)
-                    ->where('deleted', '=', Enum::notdeleted)
-                    ->get();
-        } else if ($drejtimi > 0) {
-            $students = Studenti::orderBy('uid', 'DESC')
-                    ->where('drejtimi', '=', $drejtimi)
-                    ->where('confirm', '=', Enum::confirmed)
-                    ->where('deleted', '=', Enum::notdeleted)
-                    ->skip($id)
-                    ->take($numList)
-                    ->get();
-            $studentNum = Studenti::select(DB::raw('COUNT(*) as students'))
-                    ->where('drejtimi', '=', $drejtimi)
-                    ->where('confirm', '=', Enum::confirmed)
-                    ->where('deleted', '=', Enum::notdeleted)
-                    ->get();
+        if ($download) {
+            return $pdf->download('ListStudentve-' . Session::get('uid') . ".pdf");
         }
-
-        $page = $studentNum[0]['students'] / $numList;
-        if ($studentNum[0]['students'] % $numList <= 20) {
-            $page = $page + 1;
-        }
-        $listDrejtimet = Drejtimet::getComboDrejtimetGroupedAll();
-        $listDrejtimet[Lang::get('general.choose_subject')][0] = Lang::get('general.choose_subject');
-        $selectedPage = $id / $numList;
-
-
-        $pdf = PDF::loadView('admin.students.print_list_students', [ 'title' => Lang::get('printable.title_list_student'),
-                    'students' => $students,
-                    'drejtimi' => $drejtimi]);
-
-        file_put_contents(self::printdir('ListStudentve', null, Session::get('uid')), $pdf->output());
-        return $pdf->download(self::printdir('ListStudentve', null, Session::get('uid')));
+        return $pdf->stream('ListStudentve-' . Session::get('uid') . '.pdf');
     }
 
     /*
@@ -348,6 +278,7 @@ class StudentController extends \BaseController {
     /*
      * Print transkripten e notave per student ($uid)
      */
+
     public function getPrintTranskriptaNotave($uid) {
         $notimet = RaportiNotaveStudent::join('raporti_notave', 'raporti_notave.id', '=', 'raporti_notave_student.idraportit')
                 ->join('lendet', 'lendet.idl', '=', 'raporti_notave.idl')
@@ -359,8 +290,8 @@ class StudentController extends \BaseController {
                 ->get();
         $pdf = PDF::loadView('admin.students.print.transcript_grade', [ 'title' => Lang::get('printable.title_transcript_grade'),
                     'notimet' => $notimet]);
-        $studenti = Studenti::where('uid',$uid)->first();
-        return $pdf->stream("RaportiNotave-".$studenti->emri."_".$studenti->mbiemri."-".$uid.".pdf");
+        $studenti = Studenti::where('uid', $uid)->first();
+        return $pdf->stream("RaportiNotave-" . $studenti->emri . "_" . $studenti->mbiemri . "-" . $uid . ".pdf");
     }
 
     public function postSearch() {

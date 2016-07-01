@@ -203,7 +203,9 @@
     <?php echo $__env->yieldContent('header'); ?>
     <?php echo $__env->yieldContent('hidden'); ?>
     <?php echo $__env->yieldContent('container'); ?>
-    <?php echo $__env->yieldContent('scripts'); ?>
+    <script>
+        <?php echo $__env->yieldContent('scripts'); ?>
+    </script>
 </html>
 
 

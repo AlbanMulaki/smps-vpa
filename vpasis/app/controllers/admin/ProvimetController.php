@@ -2,6 +2,15 @@
 
 class ProvimetController extends \BaseController {
 
+    
+    /**
+     * Filtrimi raportit te notave dhe kerkimi ne baz te id
+     * @param type year
+     * @param type month
+     * @param type reportSearchId
+     * @param type drejtimi
+     * @return view
+     */
     public function getRaportiNotave() {
         $year = 0;
         $month = 0;
@@ -11,35 +20,29 @@ class ProvimetController extends \BaseController {
         $drejtimi = Input::get('drejtimi');
         $reportSearchId = Input::get('reportSearchId');
 
+        $drejtimet = Drejtimet::getComboDrejtimetGroupedAll();
         if ($reportSearchId > 0) {
-            
-            $drejtimet = Drejtimet::getComboDrejtimetGroupedAll();
-            $raportet = RaportiNotave::where('id','like','%'.$reportSearchId.'%')
+            $raportet = RaportiNotave::where('id', 'like', '%' . $reportSearchId . '%')
                     ->orderBy('id', 'DESC')
                     ->paginate(15);
-            
+
             return View::make('admin.provimet.raporti_notave', ['drejtimi' => $drejtimet,
                         'raportet' => $raportet]);
         } else if ($year == 0 && $month == 0 && $drejtimi == 0) {
-            $drejtimet = Drejtimet::getComboDrejtimetGroupedAll();
             $raportedEFundit = RaportiNotave::orderBy('id', 'DESC')->paginate(15);
             return View::make('admin.provimet.raporti_notave', ['drejtimi' => $drejtimet,
                         'raportet' => $raportedEFundit]);
         } else {
-            $drejtimet = Drejtimet::getComboDrejtimetGroupedAll();
             $raportet = RaportiNotave::query();
-            debug($year);
-            debug($month);
-            debug($drejtimi);
-            if($year>0){
-                $raportet->where('data_provimit','like',$year.'%');
+            if ($year > 0) {
+                $raportet->where('data_provimit', 'like', $year . '%');
             }
-            if($month>0){
-                $raportet->where('afati_provimit',$month);
+            if ($month > 0) {
+                $raportet->where('afati_provimit', $month);
             }
-            if($drejtimi>0){
+            if ($drejtimi > 0) {
                 $raportet->join('lendet', 'lendet.idl', '=', 'raporti_notave.idl');
-                $raportet->where('lendet.Drejtimi',$drejtimi);
+                $raportet->where('lendet.Drejtimi', $drejtimi);
             }
             return View::make('admin.provimet.raporti_notave', ['drejtimi' => $drejtimet,
                         'raportet' => $raportet->paginate(15),
@@ -54,7 +57,7 @@ class ProvimetController extends \BaseController {
      * Delete student from report grade
      * @param type $idraportit
      * @param type $idstudenti
-     * @return type
+     * @return redirect
      */
     public function getDeleteStudent($idraportit, $idstudenti) {
         RaportiNotaveStudent::where('studenti', '=', $idstudenti)
@@ -66,7 +69,7 @@ class ProvimetController extends \BaseController {
     /**
      * Delete report grade with all students on it
      * @param type $idraportit
-     * @return type
+     * @return redirect
      */
     public function getDeleteReportGrade($idraportit) {
         $raportiNotave = RaportiNotave::find($idraportit);
@@ -80,7 +83,7 @@ class ProvimetController extends \BaseController {
     /**
      * Lock report grade
      * @param type $idraportit
-     * @return type
+     * @return redirect
      */
     public function getLockReportGrade($idraportit) {
         RaportiNotave::where('id', $idraportit)
@@ -91,7 +94,7 @@ class ProvimetController extends \BaseController {
     /**
      * Get list of students included on report grade based on id of report grade
      * @param type $idraportit
-     * @return type
+     * @return view
      */
     public function getRegisterNotat($idraportit) {
         $raporti = RaportiNotave::find($idraportit);
@@ -100,7 +103,7 @@ class ProvimetController extends \BaseController {
 
     /**
      * Update report of grade
-     * @return type
+     * @return redirect
      */
     public function postUpdateReport() {
 
@@ -171,14 +174,18 @@ class ProvimetController extends \BaseController {
         if ($print) {
             return $pdf->download("RaportiNotave-" . $raportiNotave->id . ".pdf");
         }
-        return $pdf->stream();
+        return $pdf->stream("RaportiNotave-" . $raportiNotave->id . ".pdf");
     }
 
+    /**
+     * Print report of grade based id,and print type
+     * @param type $idraportit
+     * @param type $print
+     * @return PDF File, print
+     */
     public function getAddRaportiNotave() {
-
         $raportiNotave = Lendet::getComboLendetAll();
         $prof = Admin::where('grp', Enum::prof)->orderBy('emri')->get();
-
         return View::make('admin.provimet.add_new_report', [
                     'raportiNotave' => $raportiNotave,
                     'prof' => $prof]);
@@ -205,11 +212,9 @@ class ProvimetController extends \BaseController {
 
     /**
      * Save new report grade for student
-     * @return 
+     * @return redirect
      */
     public function postAddRaportiNotave() {
-//        return Input::all();
-
         $validator = Validator::make(Input::all(), array(
                     'statusi_studentve' => 'required',
                     'prof' => 'required|numeric',

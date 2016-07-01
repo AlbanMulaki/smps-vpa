@@ -177,7 +177,9 @@
     @yield('header')
     @yield('hidden')
     @yield('container')
-    @yield('scripts')
+    <script>
+        @yield('scripts')
+    </script>
 </html>
 
 

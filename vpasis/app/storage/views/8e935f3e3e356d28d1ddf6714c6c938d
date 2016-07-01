@@ -1,8 +1,12 @@
 <?php $__env->startSection('content'); ?>
+
 <?php if($drejtimi): ?>
-<div class='text-left'><b><?php echo Lang::get('general.subject'); ?>:</b> <?php echo Enum::convertDrejtimi($drejtimi); ?></div> 
-<div class='text-left'><b><?php echo Lang::get('general.date'); ?>: </b> <?php echo date('Y-m-d'); ?></div>
+<div class='text-left'><b><?php echo Lang::get('general.subject'); ?>:</b> 
+    <?php echo Enum::convertDrejtimi($drejtimi); ?>
+
+</div> 
 <?php endif; ?>
+<div class='text-left'><b><?php echo Lang::get('general.date'); ?>: </b> <?php echo date('Y-m-d'); ?></div>
 <table class='list'>
     <tbody>
         <tr class='head'>
