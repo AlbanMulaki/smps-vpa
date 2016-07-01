@@ -23,34 +23,29 @@
 <?php echo Form::open(array('url'=>action('DepartmentsController@postRegisterDepartment'),'method'=>'POST')); ?>
 
 <div class="box box-success">
-    
-    
-    
+    <div class="modal fade" id="addDempartment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><?php echo Lang::get('general.register_department'); ?></h4>
+                </div>         
+                <div class="modal-body">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon" id="sizing-addon1"><?php echo Lang::get('general.name'); ?></span>
+                        <?php echo Form::text('departmenti',null,array('class'=>'form-control')); ?>
 
-        <!-- Modal -->
-        <div class="modal fade" id="addDempartment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel"><?php echo Lang::get('general.register_department'); ?></h4>
-                    </div>         
-                    <div class="modal-body">
-                        <div class="input-group input-group">
-                            <span class="input-group-addon" id="sizing-addon1"><?php echo Lang::get('general.name'); ?></span>
-                            <?php echo Form::text('departmenti',null,array('class'=>'form-control')); ?>
-
-                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Lang::get('general.close'); ?></button>
-                        <button type="submit" name="submit" class="btn btn-primary"><?php echo Lang::get('general.save'); ?></button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo Lang::get('general.close'); ?></button>
+                    <button type="submit" name="submit" class="btn btn-primary"><?php echo Lang::get('general.save'); ?></button>
                 </div>
             </div>
         </div>
-        </div>
-       
+    </div>
+</div>
+
 <?php echo Form::close(); ?>
 
 <?php $__env->stopSection(); ?> 
@@ -71,7 +66,7 @@
 <?php echo Form::open(array('url'=>'','method'=>'POST','class'=>'form-inline col-lg-5')); ?>
 
 <div class="box box-success">
-    
+
     <div class="box-body">
 
         <div class="form-group">
@@ -148,7 +143,7 @@
                         </a>
                     </div>
                     <div class="col-lg-4">
-                        
+
                         <a href="<?php echo action('DepartmentsController@getPrintLendet')."/".$value['idDrejtimet']; ?>"type="button" class="btn btn-sm btn-danger">
                             <span class='fa fa-file-pdf-o fa-lg' ></span> 
                         </a>
@@ -440,21 +435,22 @@
 <?php echo $__env->yieldContent('title'); ?>
 
 <section class="content">
-<?php echo $__env->yieldContent('notification'); ?>
-<?php echo $__env->yieldContent('listDepartments'); ?>
+    <?php echo $__env->yieldContent('notification'); ?>
+    <?php echo $__env->yieldContent('listDepartments'); ?>
 </section>
 <?php $__env->stopSection(); ?>
 
 
 <?php $__env->startSection('scripts'); ?>
-<script type='text/javascript'>
-    $('#comboDepartmentet').change(function () {
-        var department = $("#comboDepartmentet").val();
-        if (department >= 1) {
-            window.location.href = "<?php echo action('DepartmentsController@getDep'); ?>/" + department;
-        }
-    });
-</script>
+$(document).on('change', '#comboDepartmentet', function ($element) {
+var department = $("#comboDepartmentet").val();
+if (department >= 1) {
+window.location.href = "<?php echo action('DepartmentsController@getDep'); ?>/" + department;
+} else {
+
+    $('#addDempartment').modal('show');
+    }
+});
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

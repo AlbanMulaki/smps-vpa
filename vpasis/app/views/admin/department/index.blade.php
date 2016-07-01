@@ -20,33 +20,28 @@
 @section('addDepartment')
 {{ Form::open(array('url'=>action('DepartmentsController@postRegisterDepartment'),'method'=>'POST')) }}
 <div class="box box-success">
-    
-    
-    
-
-        <!-- Modal -->
-        <div class="modal fade" id="addDempartment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">{{ Lang::get('general.register_department') }}</h4>
-                    </div>         
-                    <div class="modal-body">
-                        <div class="input-group input-group">
-                            <span class="input-group-addon" id="sizing-addon1">{{ Lang::get('general.name') }}</span>
-                            {{ Form::text('departmenti',null,array('class'=>'form-control')) }}
-                        </div>
+    <div class="modal fade" id="addDempartment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{ Lang::get('general.register_department') }}</h4>
+                </div>         
+                <div class="modal-body">
+                    <div class="input-group input-group">
+                        <span class="input-group-addon" id="sizing-addon1">{{ Lang::get('general.name') }}</span>
+                        {{ Form::text('departmenti',null,array('class'=>'form-control')) }}
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ Lang::get('general.close') }}</button>
-                        <button type="submit" name="submit" class="btn btn-primary">{{ Lang::get('general.save') }}</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ Lang::get('general.close') }}</button>
+                    <button type="submit" name="submit" class="btn btn-primary">{{ Lang::get('general.save') }}</button>
                 </div>
             </div>
         </div>
-        </div>
-       
+    </div>
+</div>
+
 {{ Form::close() }}
 @stop 
 
@@ -65,7 +60,7 @@
 <!-- Small button group -->
 {{ Form::open(array('url'=>'','method'=>'POST','class'=>'form-inline col-lg-5')) }}
 <div class="box box-success">
-    
+
     <div class="box-body">
 
         <div class="form-group">
@@ -136,7 +131,7 @@
                         </a>
                     </div>
                     <div class="col-lg-4">
-                        
+
                         <a href="{{ action('DepartmentsController@getPrintLendet')."/".$value['idDrejtimet'] }}"type="button" class="btn btn-sm btn-danger">
                             <span class='fa fa-file-pdf-o fa-lg' ></span> 
                         </a>
@@ -413,20 +408,20 @@
 @yield('title')
 
 <section class="content">
-@yield('notification')
-@yield('listDepartments')
+    @yield('notification')
+    @yield('listDepartments')
 </section>
 @stop
 
 
 @section('scripts')
-<script type='text/javascript'>
-    $('#comboDepartmentet').change(function () {
-        var department = $("#comboDepartmentet").val();
-        if (department >= 1) {
-            window.location.href = "{{ action('DepartmentsController@getDep') }}/" + department;
-        }
-    });
-</script>
+$(document).on('change', '#comboDepartmentet', function ($element) {
+var department = $("#comboDepartmentet").val();
+if (department >= 1) {
+window.location.href = "{{ action('DepartmentsController@getDep') }}/" + department;
+} else {
+$('#addDempartment').modal('show');
+}
+});
 
 @stop
