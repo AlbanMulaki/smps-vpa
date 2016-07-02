@@ -35,11 +35,11 @@
     <tbody>
 
 
-<?php echo "";$i=0; ?>
+        <?php echo "";$i=0; ?>
 
-<?php foreach($raporti->raportiNotaveStudent as $value): ?>
+        <?php foreach($raporti->raportiNotaveStudent as $value): ?>
         <tr class="provRow">
-            
+
             <td> 
                 <input name='id[]' type='hidden' value='' />
                 <input class='form-control input-sm uidSearch' type='text' value="<?php echo $value->getStudent->emri." ".$value->getStudent->mbiemri; ?>" disabled=""/>
@@ -73,7 +73,7 @@
                     <option value='8'  <?php if($value['nota'] == 8): ?> selected <?php endif; ?> >8</option>
                     <option value='9'  <?php if($value['nota'] == 9): ?> selected <?php endif; ?> >9</option>
                     <option value='10'  <?php if($value['nota'] == 100): ?> selected <?php endif; ?> >10</option>
-                    
+
                 </select>
             </td>
             <td>
@@ -91,14 +91,14 @@
         </tr>
         <?php echo "";$i++; ?>
 
-<?php endforeach; ?>
+        <?php endforeach; ?>
 
 
-<?php for($j=0; $j<5; $j++): ?>
+        <?php for($j=0; $j<5; $j++): ?>
         <tr class="provRow">
-            
-            
-            
+
+
+
             <td> 
                 <input name='id[]' type='hidden' value='' />
                 <input class='form-control input-sm uidSearch' type='text' />
@@ -123,7 +123,7 @@
                 <input name="testi_final[]" class='form-control input-sm' style='width:60px;' type='number' />
             </td>
             <td>
-                
+
                 <select name="nota[]" class='form-control input-sm'>
                     <option value='4'>E Padefinuar</option>
                     <option value='5'>5</option>
@@ -135,12 +135,7 @@
                 </select>
             </td>
             <td>
-
                 <?php echo Form::select('refuzim[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),Enum::NO,array('class'=>'form-control input-sm')); ?>
-
-            </td>
-            <td>
-                <?php echo Form::select('paraqit[]', array(Enum::YES=>Lang::get('general.yes'),Enum::NO=>Lang::get('general.no')),Enum::YES,array('class'=>'form-control input-sm')); ?>
 
             </td>
             <td>
@@ -150,6 +145,6 @@
         </tr>
         <?php echo "";$i++; ?>
 
-<?php endfor; ?>
+        <?php endfor; ?>
     </tbody>
 </table>

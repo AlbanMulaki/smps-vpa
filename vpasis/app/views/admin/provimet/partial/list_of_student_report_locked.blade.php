@@ -29,7 +29,6 @@
             <th>{{ Lang::get('general.final_test') }}</th>
             <th style='width: 80px;'>{{ Lang::get('general.grade') }}</th>
             <th style='width: 80px;'>{{ Lang::get('general.refuse') }}</th>
-            <th style='width: 80px;'>{{ Lang::get('general.apply') }}</th>
             <th  style='width: 80px;'>{{ Lang::get('general.present') }}</th>
         </tr>
     </thead>
@@ -72,9 +71,6 @@
             </td>
             <td>
                 {{ Enum::convertrefuzimin($value->refuzim) }}
-            </td>
-            <td>
-                {{ Enum::convertParaqitjen($value->paraqit) }}
             </td>
             <td>
                 {{ Enum::convertParaqitjen($value->paraqit_prezent) }}
