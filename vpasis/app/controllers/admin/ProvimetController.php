@@ -135,7 +135,6 @@ class ProvimetController extends \BaseController {
                 $doesStudentExist->puna_praktike = Input::get('praktike.' . $i);
                 $doesStudentExist->testi_final = Input::get('testi_final.' . $i);
                 $doesStudentExist->refuzim = Input::get('refuzim.' . $i);
-                $doesStudentExist->paraqit = Input::get('paraqit.' . $i);
                 $doesStudentExist->paraqit_prezent = Input::get('paraqit_prezent.' . $i);
                 $doesStudentExist->save();
             } else if (is_numeric(Input::get('uid.' . $i))) {
@@ -151,7 +150,6 @@ class ProvimetController extends \BaseController {
                 $raportiNotaveStudent->puna_praktike = Input::get('praktike.' . $i);
                 $raportiNotaveStudent->testi_final = Input::get('testi_final.' . $i);
                 $raportiNotaveStudent->refuzim = Input::get('refuzim.' . $i);
-                $raportiNotaveStudent->paraqit = Input::get('paraqit.' . $i);
                 $raportiNotaveStudent->locked = Enum::nolocked;
                 $raportiNotaveStudent->paraqit_prezent = Input::get('paraqit_prezent.' . $i);
                 $raportiNotaveStudent->save();
@@ -267,7 +265,6 @@ class ProvimetController extends \BaseController {
                     $raportiNotaveStudent->puna_praktike = Input::get('praktike.' . $i);
                     $raportiNotaveStudent->testi_final = Input::get('testi_final.' . $i);
                     $raportiNotaveStudent->refuzim = Input::get('refuzim.' . $i);
-                    $raportiNotaveStudent->paraqit = Input::get('paraqit.' . $i);
                     $raportiNotaveStudent->idl = Input::get('idl');
                     $raportiNotaveStudent->paraqit_prezent = Input::get('paraqit_prezent.' . $i);
                     $raportiNotaveStudent->save();

@@ -63,5 +63,10 @@ class Webpost extends Eloquent implements UserInterface, RemindableInterface {
     public static function getSlide() {
         return self::where('slide', '=', 1)->take(7)->orderby('created_at', 'DESC')->get();
     }
+    
+    public function getCategory() {
+        return self::hasOne('Webcategory', 'id', 'cid');
+    }
+    
 
 }

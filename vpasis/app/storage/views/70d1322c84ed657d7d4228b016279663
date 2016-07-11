@@ -1,10 +1,10 @@
 <?php $__env->startSection('category'); ?>
 <div class="list-group">
-    <?php foreach($postin as $value): ?>
+    <?php foreach($posts as $value): ?>
     <div class="col-md-4">
-        <a href="<?php echo action('WebsiteController@getPost'); ?>/<?php echo $value['idp']; ?>" class="thumbnail">
+        <a href="<?php echo action('WebsiteController@getPost'); ?>/<?php echo $value['id']; ?>" class="thumbnail">
             <img data-src="holder.js/100%x180" alt="..." src="http://www.vpa-uni.com/img<?php echo $value['img']; ?>"><br>
-            <center><span class="h4"><?php echo $value['titulli']; ?></span></center>
+            <center><span class="h4"><?php echo $value['title_'.Session::get('lang')]; ?></span></center>
         </a>
     </div>
     <?php endforeach; ?>
@@ -16,7 +16,6 @@
 <br>
 <div class="col-md-offset-1 col-md-7">
     <div class='col-md-12'>
-
         <div class='row'>
             <?php echo $__env->yieldContent('category'); ?>
         </div>

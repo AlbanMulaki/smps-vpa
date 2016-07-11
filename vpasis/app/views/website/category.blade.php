@@ -2,11 +2,11 @@
 
 @section('category')
 <div class="list-group">
-    @foreach($postin as $value)
+    @foreach($posts as $value)
     <div class="col-md-4">
-        <a href="{{ action('WebsiteController@getPost') }}/{{ $value['idp'] }}" class="thumbnail">
+        <a href="{{ action('WebsiteController@getPost') }}/{{ $value['id'] }}" class="thumbnail">
             <img data-src="holder.js/100%x180" alt="..." src="http://www.vpa-uni.com/img{{ $value['img'] }}"><br>
-            <center><span class="h4">{{ $value['titulli'] }}</span></center>
+            <center><span class="h4">{{ $value['title_'.Session::get('lang')] }}</span></center>
         </a>
     </div>
     @endforeach
@@ -18,7 +18,6 @@
 <br>
 <div class="col-md-offset-1 col-md-7">
     <div class='col-md-12'>
-
         <div class='row'>
             @yield('category')
         </div>

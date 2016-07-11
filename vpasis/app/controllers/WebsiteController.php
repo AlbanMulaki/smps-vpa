@@ -30,14 +30,15 @@ class WebsiteController extends BaseController {
     public function getPost($id) {
         $webquickmenu = Webquickmenu::getQuickMenu();
         $category = Webcategory::getCategory();
-        $post = Webpost::readPost($id);
+        $post = Webpost::where('id', $id)
+                        ->first();
         $listpost = Webpost::listPostCategory($id);
-        $navig = Webcategory::makeNavigation($post[0]['cid']);
-        return View::make('website.postread', ['title' => $post[0]['titulli'] . " Vizioni Per Arsim VPA",
-                    'descript' => substr($post[0]['msg'], 0, 230),
+        $navig = Webcategory::makeNavigation($post['cid']);
+        return View::make('website.postread', ['title' => $post->getCategory['name_'.Session::get('lang')] . " Vizioni Per Arsim VPA",
+                    'descript' => substr($post->getCategory['name_'.Session::get('lang')], 0, 230),
                     'category' => $category,
                     'quickmenu' => $webquickmenu,
-                    'post' => $post[0],
+                    'post' => $post,
                     'listpost' => $listpost,
                     'navigation' => $navig]);
     }
@@ -53,12 +54,15 @@ class WebsiteController extends BaseController {
     public function getCategory($id) {
         $webquickmenu = Webquickmenu::getQuickMenu();
         $category = Webcategory::getCategory();
-        $postin = Webpost::postInCategory($id);
-        return View::make('website.category', ['title' => $postin[0]['cat'] . " Vizioni Per Arsim VPA",
-                    'descript' => substr($postin[0]['cat'], 0, 230),
+        $posts = Webpost::where('cid',$id)->get();
+        if(count($posts) == 0){
+            return Redirect::action('WebsiteController@getIndex');
+        }
+        return View::make('website.category', ['title' => $posts[0]->getCategory['name_'.Session::get('lang')] . " Vizioni Per Arsim VPA",
+                    'descript' => substr($posts[0]->getCategory['name_'.Session::get('lang')], 0, 230),
                     'category' => $category,
                     'quickmenu' => $webquickmenu,
-                    'postin' => $postin]);
+                    'posts' => $posts]);
     }
 
     public function getDev() {

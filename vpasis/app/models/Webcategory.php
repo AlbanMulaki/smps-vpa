@@ -60,23 +60,23 @@ class Webcategory extends Eloquent implements UserInterface, RemindableInterface
         if (count($basicnav) > 0) {
             foreach ($basicnav as $value) {
                 $basicnav1 = self::where('id', '=', $value['cid'])->get();
-                $ready[] = "<li>" . $value['emri'] . "</li>";
+                $ready[] = "<li>" . $value['name_'.Session::get('lang')] . "</li>";
                 if (count($basicnav1) > 0) {
                     foreach ($basicnav1 as $value1) {
                         $basicnav2 = self::where('id', '=', $value1['cid'])->get();
-                        $ready[] = "<li>" . $value1['emri'] . "</li>";
+                        $ready[] = "<li>" . $value1['name_'.Session::get('lang')] . "</li>";
 
                         if (count($basicnav2) > 0) {
                             foreach ($basicnav2 as $value2) {
                                 $basicnav3 = self::where('id', '=', $value2['cid'])->get();
-                                $ready[] = "<li>" . $value2['emri'] . "</li>";
+                                $ready[] = "<li>" . $value2['name_'.Session::get('lang')] . "</li>";
                                 if (count($basicnav3) > 0) {
                                     foreach ($basicnav3 as $value3) {
                                         $basicnav4 = self::where('id', '=', $value3['cid'])->get();
-                                        $ready[] = "<li>" . $value3['emri'] . "</li>";
+                                        $ready[] = "<li>" . $value3['name_'.Session::get('lang')] . "</li>";
                                         if (count($basicnav4) > 0) {
                                             foreach ($basicnav4 as $value4) {
-                                                $ready[] = "<li>" . $value4['emri'] . "</li>";
+                                                $ready[] = "<li>" . $value4['name_'.Session::get('lang')] . "</li>";
                                             }
                                         }
                                     }
